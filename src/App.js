@@ -1,10 +1,14 @@
 import React from 'react';
+import GlobalStyles from './style/globalStyle';
+import Input from './components/input/Input';
 
 function App() {
   return (
-    <div className="App">
-      <h1>test2</h1>
-    </div>
+    <>
+      <GlobalStyles />
+      <Input />
+    </>
+
   );
 }
 
