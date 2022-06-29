@@ -1,16 +1,17 @@
 import React from 'react';
-import { LoginBtn } from './index.style';
-import iconUser from '../../asset/icon-user.svg';
+import { LoginBtn } from './buttonStyle';
+import iconEmail from '../../assets/icon-email.svg';
+import iconSign from '../../assets/icon-signup.svg';
 
 export default function Login() {
   return (
     <>
-      <LoginBtn width={322} height={44} icon={iconUser}>
+      <LoginBtn width={322} height={44} icon={iconEmail}>
         이메일로 로그인
       </LoginBtn>
 
-      <LoginBtn width={322} height={44} icon={iconUser}>
-        이메일로 로그인
+      <LoginBtn width={322} height={44} icon={iconSign}>
+        회원가입
       </LoginBtn>
 
       <LoginBtn width={322} height={44}>

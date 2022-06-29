@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 
 export const LoginBtn = styled.button`
   /* background-color: #7eacff; */
-
   border-radius: 44px;
   text-align: center;
   line-height: 22px;
@@ -10,13 +9,14 @@ export const LoginBtn = styled.button`
   margin: 10px;
   box-sizing: border-box;
   /* 기본 색상 */
+
   color: white;
   background-color: #7eacff /* props가 존재하면 바꿔준다. */
-    ${(props) =>
-      props.backcolor &&
-      css`
-        ${(props) => props.backcolor};
-      `};
+  ${(props) =>
+    props.backcolor &&
+    css`
+      ${(props) => props.backcolor};
+    `};
 
   ${(props) =>
     props.color &&
