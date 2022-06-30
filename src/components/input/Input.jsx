@@ -1,7 +1,6 @@
 import React from "react";
 // import styled from "styled-components";
 import { LabelStyle, InputStyle, SearchInput } from './inputStyle';
-import GlobalStyles from '../../style/globalStyle';
 
 export default function Input() {
   // const [userEmail] = useState("");
@@ -17,7 +16,6 @@ export default function Input() {
 
   return (
     <>
-      <GlobalStyles />
       <LabelStyle>이메일
         <InputStyle
           placeholder='이메일 주소를 입력해주세요.'
