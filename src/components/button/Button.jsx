@@ -1,64 +1,66 @@
 import React from 'react';
-import { LoginBtn } from './buttonStyle';
+import { Button } from './buttonStyle';
 import iconEmail from '../../assets/icon-email.svg';
 import iconSign from '../../assets/icon-signup.svg';
 
 export default function Login() {
   return (
     <>
-      <LoginBtn width={322} height={44} icon={iconEmail}>
+      <Button  icon={iconEmail} hover>
         이메일로 로그인
-      </LoginBtn>
+      </Button>
 
-      <LoginBtn width={322} height={44} icon={iconSign}>
+      <Button  icon={iconSign} hover>
         회원가입
-      </LoginBtn>
+      </Button>
 
-      <LoginBtn width={322} height={44}>
+      <Button hover>
         로그인
-      </LoginBtn>
+      </Button>
 
-      <LoginBtn width={322} height={44}>
+      <Button hover>
         다음
-      </LoginBtn>
+      </Button >
 
-      <LoginBtn width={322} height={44}>
+      <Button hover >
         시작하기
-      </LoginBtn>
+      </Button>
 
-      <LoginBtn width={90} height={32}>
+      <Button width={90} height={32} hover >
         저장
-      </LoginBtn>
+      </Button>
 
-      <LoginBtn width={90} height={32}>
+      <Button width={90} height={32} hover>
         업로드
-      </LoginBtn>
+      </Button>
 
-      <LoginBtn width={120} height={44}>
+      <Button width={120} height={44} hover>
         이전페이지
-      </LoginBtn>
+      </Button>
 
-      <LoginBtn
+      <Button
         width={120}
         height={44}
-        color={' #013ba3'}
-        backcolor={'#ffffff'}
+        color={'#1D57C1'}
+        backColor ={'white'}
+        hover
       >
+    
         채팅하기
-      </LoginBtn>
+      </Button>
 
-      <LoginBtn
-        width={120}
-        height={44}
-        color={' #767676'}
-        backcolor={'#ffffff'}
-      >
-        그냥 만든거
-      </LoginBtn>
+      <Button
+        width={56}
+        height={28}
+        color={'#767676'}
+        backColor={'white'}>
 
-      <LoginBtn width={56} height={28}>
+        취소
+      </Button>
+
+      <Button width={56} height={28}>
         팔로우
-      </LoginBtn>
+      </Button>
     </>
   );
 }

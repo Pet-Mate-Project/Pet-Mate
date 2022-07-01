@@ -1,59 +1,52 @@
 import styled, { css } from 'styled-components';
 
-export const LoginBtn = styled.button`
+export const Button = styled.button`
   /* background-color: #7eacff; */
-  border-radius: 44px;
-  text-align: center;
-  line-height: 22px;
-  padding: 0 15px;
+  position: relative;
+  width: 100%;
+  height: 44px;
   margin: 10px;
+  text-align: center;
+  color : white;
+  cursor:pointer;
+  background-color: #7EACFF;
+  border-radius: 44px;
   box-sizing: border-box;
-  /* 기본 색상 */
 
-  color: white;
-  background-color: #7eacff /* props가 존재하면 바꿔준다. */
+    ${(props) => {
+    return css`
+    width: ${props.width}px;
+    height: ${props.height}px;
+    background-color: ${props.backColor};
+    color: ${props.color};
+    border: 1px solid ${props.color};
+    font-size: ${props.width <= 56 ? 12 : 14}px;
+    `}};
+
+ //props로 받은 icon값이 존재할경우 스타일
   ${(props) =>
-    props.backcolor &&
-    css`
-      ${(props) => props.backcolor};
-    `};
-
-  ${(props) =>
-    props.color &&
-    css`
-      color: ${(props) => props.color};
-      border: 1px solid ${(props) => props.color};
-    `};
-
-  /* width, height 설정 */
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
-
-  /* width값에 따른 폰트사이즈*/
-  font-size: 14px;
-  ${(props) =>
-    props.width <= 56 &&
-    css`
-      font-size: 11px;
-      line-height: 14px;
-      padding: 7px 11px;
-    `}
-
-  ${(props) =>
-    //props로 받은 icon값이 존재하면 css적용
     props.icon &&
     css`
+      line-height:22px;
       ::before {
         content: '';
-        float: left;
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
         width: 24px;
         height: 24px;
-        background: url(${(props) => props.icon}) no-repeat center;
+        background: url(${props.icon}) no-repeat center;
       }
     `}
 
-  :hover {
-    background-color: #013ba3;
-    color: white;
-  }
+    ${(props)=>{
+    if(props.hover){
+      return css`
+        :hover{
+          background-color: #1D57C1;
+          color : white;
+        }
+      `}
+  }}
 `;
