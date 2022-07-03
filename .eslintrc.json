@@ -1,43 +1,40 @@
 {
-    // env: 어떤 환경에서 스크립트를 실행할 것인지 설정
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
-    },
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
-    "parserOptions": {
-        // ECMAScript 규격의 JSX 사용 여부: true
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        // 사용할 ECMAScript 버전을 설정
-        "ecmaVersion": "latest",
-        // parser의 export 형태를 설정, react는 module 기반의 import, export 사용
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        // 들여쓰기 2칸만 허용
-        "indent": [
-            "error",
-            2
-        ],
-        // var 키워드 사용 불가능
-        "no-var": "error",
-        // asynn 함수 내부에 await 키워드가 없으면 오류 발생
-        "require-await": "error",
-        // ==, != 대신에 ===, !== 사용
-        "eqeqeq": "error"
+  // env: 어떤 환경에서 스크립트를 실행할 것인지 설정
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
     }
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    // ECMAScript 규격의 JSX 사용 여부: true
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    // 사용할 ECMAScript 버전을 설정
+    "ecmaVersion": "latest",
+    // parser의 export 형태를 설정, react는 module 기반의 import, export 사용
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    // 들여쓰기 2칸만 허용
+    "indent": ["error", 2],
+    // var 키워드 사용 불가능
+    "no-var": "error",
+    // asynn 함수 내부에 await 키워드가 없으면 오류 발생
+    "require-await": "error",
+    // ==, != 대신에 ===, !== 사용
+    "eqeqeq": "error",
+
+    // 호출되지 않은 변수도 사용가능하게 설정
+    "no-unused-vars": "off"
+  }
 }
