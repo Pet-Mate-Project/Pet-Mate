@@ -1,12 +1,12 @@
 import React from 'react';
 import GlobalStyles from './style/globalStyle';
-import Main from './pages/main/Main.jsx';
+import Start from './pages/main/Start';
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <Main />
+      <Start />
     </>
   );
 }
