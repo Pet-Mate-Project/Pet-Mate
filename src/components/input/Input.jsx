@@ -61,7 +61,34 @@ export function UserIntro() {
   )
 }
 
-export default function Input() {
+export function EmailInput() {
+  return (
+    <LabelStyle>이메일
+      <InputStyle
+        placeholder='이메일 주소를 입력해주세요.'
+        type="email"
+        name="userEmail"
+      // value={userEmail}
+      />
+    </LabelStyle>
+  );
+}
+
+export function PasswordInput() {
+  return (
+    <LabelStyle>비밀번호
+      <InputStyle
+        placeholder='비밀번호를 설정해주세요.'
+        type="password"
+        name="userPassword"
+      // value={userPassword}
+      />
+    </LabelStyle>
+  );
+}
+
+
+export function Input() {
   // const [userEmail] = useState("");
   // const [userPassword] = useState("");
   // const [userName] = useState("");
@@ -75,25 +102,6 @@ export default function Input() {
 
   return (
     <>
-      <LabelStyle>이메일
-        <InputStyle
-          placeholder='이메일 주소를 입력해주세요.'
-          type="email"
-          name="userEmail"
-        // value={userEmail}
-        />
-      </LabelStyle>
-
-      <LabelStyle>비밀번호
-        <InputStyle
-          placeholder='비밀번호를 설정해주세요.'
-          type="password"
-          name="userPassword"
-        // value={userPassword}
-        />
-      </LabelStyle>
-
-
       <LabelStyle>제목
         <InputStyle
           placeholder='2-15자 이내여야 합니다.'

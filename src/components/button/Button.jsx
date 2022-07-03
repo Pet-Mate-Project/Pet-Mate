@@ -35,44 +35,44 @@ export function StartBtn() {
   );
 }
 
-export default function Login() {
-  return (
-    <>
-      <Button width={90} height={32} hover >
-        저장
-      </Button>
+// export default function Login() {
+//   return (
+//     <>
+//       <Button width={90} height={32} hover >
+//         저장
+//       </Button>
 
-      <Button width={90} height={32} hover>
-        업로드
-      </Button>
+//       <Button width={90} height={32} hover>
+//         업로드
+//       </Button>
 
-      <Button width={120} height={44} hover>
-        이전페이지
-      </Button>
+//       <Button width={120} height={44} hover>
+//         이전페이지
+//       </Button>
 
-      <Button
-        width={120}
-        height={44}
-        color={'#1D57C1'}
-        backColor={'white'}
-        hover
-      >
+//       <Button
+//         width={120}
+//         height={44}
+//         color={'#1D57C1'}
+//         backColor={'white'}
+//         hover
+//       >
 
-        채팅하기
-      </Button>
+//         채팅하기
+//       </Button>
 
-      <Button
-        width={56}
-        height={28}
-        color={'#767676'}
-        backColor={'white'}>
+//       <Button
+//         width={56}
+//         height={28}
+//         color={'#767676'}
+//         backColor={'white'}>
 
-        취소
-      </Button>
+//         취소
+//       </Button>
 
-      <Button width={56} height={28}>
-        팔로우
-      </Button>
-    </>
-  );
-}
+//       <Button width={56} height={28}>
+//         팔로우
+//       </Button>
+//     </>
+//   );
+// }
