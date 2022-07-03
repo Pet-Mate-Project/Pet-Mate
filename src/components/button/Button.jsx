@@ -27,14 +27,17 @@ export function JoinBtn() {
   );
 }
 
+export function StartBtn() {
+  return (
+    <Button hover >
+      시작하기
+    </Button>
+  );
+}
+
 export default function Login() {
   return (
     <>
-
-      <Button hover >
-        시작하기
-      </Button>
-
       <Button width={90} height={32} hover >
         저장
       </Button>
@@ -51,10 +54,10 @@ export default function Login() {
         width={120}
         height={44}
         color={'#1D57C1'}
-        backColor ={'white'}
+        backColor={'white'}
         hover
       >
-    
+
         채팅하기
       </Button>
 

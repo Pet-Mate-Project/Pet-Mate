@@ -22,7 +22,6 @@ padding-bottom: 5px;
 `;
 
 export const LabelStyle = styled.label`
-margin: 10px;
 display: block;
 font-size: 12px;
 color : #767676;

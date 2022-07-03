@@ -2,6 +2,65 @@ import React from "react";
 // import styled from "styled-components";
 import { LabelStyle, InputStyle, SearchInput } from './inputStyle';
 
+export function UserName() {
+  return (
+    <>
+      <LabelStyle>사용자 이름
+        <InputStyle
+          placeholder='7-10자 이내여야 합니다.'
+          type="text"
+          name="userName"
+        // value={userName}
+        />
+      </LabelStyle>
+    </>
+  )
+}
+
+export function UserEmail() {
+  return (
+    <>
+      <LabelStyle>이메일
+        <InputStyle
+          placeholder='이메일 주소를 입력해주세요.'
+          type="email"
+          name="userEmail"
+        // value={userEmail}
+        />
+      </LabelStyle>
+    </>)
+}
+
+export function UserId() {
+  return (
+    <>
+      <LabelStyle>계정 ID
+        <InputStyle
+          placeholder='영문, 숫자, 특수문자(.),(_)만 사용 가능합니다.'
+          type="text"
+          name="userId"
+        // value={userId}
+        />
+      </LabelStyle>
+    </>
+  )
+}
+
+export function UserIntro() {
+  return (
+    <>
+      <LabelStyle>소개
+        <InputStyle
+          placeholder='자신과 반려동물에 대해 소개해 주세요!'
+          type="text"
+          name="userIntro"
+        // value={userIntro}
+        />
+      </LabelStyle>
+    </>
+  )
+}
+
 export default function Input() {
   // const [userEmail] = useState("");
   // const [userPassword] = useState("");
@@ -31,33 +90,6 @@ export default function Input() {
           type="password"
           name="userPassword"
         // value={userPassword}
-        />
-      </LabelStyle>
-
-      <LabelStyle>사용자 이름
-        <InputStyle
-          placeholder='7-10자 이내여야 합니다.'
-          type="text"
-          name="userName"
-        // value={userName}
-        />
-      </LabelStyle>
-
-      <LabelStyle>계정 ID
-        <InputStyle
-          placeholder='영문, 숫자, 특수문자(.),(_)만 사용 가능합니다.'
-          type="text"
-          name="userId"
-        // value={userId}
-        />
-      </LabelStyle>
-
-      <LabelStyle>소개
-        <InputStyle
-          placeholder='자신과 반려동물에 대해 소개해 주세요!'
-          type="text"
-          name="userIntro"
-        // value={userIntro}
         />
       </LabelStyle>
 
