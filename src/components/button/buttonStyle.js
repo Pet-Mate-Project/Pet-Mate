@@ -5,7 +5,6 @@ export const Button = styled.button`
   position: relative;
   width: 100%;
   height: 44px;
-  margin: 10px;
   text-align: center;
   color : white;
   cursor:pointer;
@@ -18,10 +17,16 @@ export const Button = styled.button`
     width: ${props.width}px;
     height: ${props.height}px;
     background-color: ${props.backColor};
-    color: ${props.color};
-    border: 1px solid ${props.color};
     font-size: ${props.width <= 56 ? 12 : 14}px;
     `}};
+
+    ${(props) => {
+    props.color &&
+      css`
+      color: ${props.color};
+      border: 1px solid ${props.color};
+      `
+  }}
 
  //props로 받은 icon값이 존재할경우 스타일
   ${(props) =>
@@ -40,8 +45,8 @@ export const Button = styled.button`
       }
     `}
 
-    ${(props)=>{
-    if(props.hover){
+    ${(props) => {
+    if (props.hover) {
       return css`
         :hover{
           background-color: #1D57C1;

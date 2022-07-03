@@ -1,11 +1,12 @@
 import React from 'react';
 import GlobalStyles from './style/globalStyle';
+import Main from './pages/main/Main.jsx';
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <h1>Hello 코랑이!</h1>
+      <Main />
     </>
   );
 }

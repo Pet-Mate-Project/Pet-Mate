@@ -3,24 +3,33 @@ import { Button } from './buttonStyle';
 import iconEmail from '../../assets/icon-email.svg';
 import iconSign from '../../assets/icon-signup.svg';
 
+export function NextBtn() {
+  return <Button hover>다음</Button>;
+}
+
+export function LoginBtn() {
+  return <Button hover>로그인</Button>;
+}
+
+export function EmailLoginBtn() {
+  return (
+    <Button icon={iconEmail} hover>
+      이메일로 로그인
+    </Button>
+  );
+}
+
+export function JoinBtn() {
+  return (
+    <Button icon={iconSign} hover>
+      회원가입
+    </Button>
+  );
+}
+
 export default function Login() {
   return (
     <>
-      <Button  icon={iconEmail} hover>
-        이메일로 로그인
-      </Button>
-
-      <Button  icon={iconSign} hover>
-        회원가입
-      </Button>
-
-      <Button hover>
-        로그인
-      </Button>
-
-      <Button hover>
-        다음
-      </Button >
 
       <Button hover >
         시작하기
