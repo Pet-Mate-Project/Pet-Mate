@@ -1,16 +1,15 @@
 import styled from 'styled-components'
-import iconProfile from "../../assets/upload-file.svg"
+import imgUpload from "../../assets/upload-file.svg"
 
 export const Wraper = styled.div`
 width: 120px;
 height: 120px;
-background: url("../../assets/basic-profile.svg");
 border-radius: 50%;
 position: absolute;
 
 ::after{
   content: '';
-  background: url(${(iconProfile)});
+  background: url(${(imgUpload)});
   background-repeat: no-repeat;
   background-size: 36px;
 position: absolute;
