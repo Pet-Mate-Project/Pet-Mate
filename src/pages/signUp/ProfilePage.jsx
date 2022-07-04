@@ -1,7 +1,7 @@
 import React from 'react'
-import { Message, Title, FormStyle } from './profilePageStyle'
+import { Message } from './profilePageStyle'
 import Profile from '../../components/profile/Profile'
-import { MainStyle } from '../main/mainStyle'
+import { MainStyle, Title, FormStyle } from '../../style/commonLoginStyle'
 import { UserId, UserIntro, UserName } from '../../components/input/Input'
 import { StartBtn } from '../../components/button/Button'
 

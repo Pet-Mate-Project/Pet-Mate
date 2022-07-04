@@ -1,19 +1,20 @@
 import React from 'react'
 import { EmailInput, PasswordInput } from '../../components/input/Input'
 import { NextBtn } from '../../components/button/Button'
-import { Margin, SignUpText, SignUpWrapper } from './signUpStyle'
+import { FormStyle, MainStyle, Title } from '../../style/commonLoginStyle'
+
 
 export default function SignUp() {
   return (
     <>
-      <SignUpWrapper>
-        <SignUpText>이메일로 회원가입</SignUpText>
-        <EmailInput></EmailInput>
-        <Margin>
+      <MainStyle>
+        <Title>이메일로 회원가입</Title>
+        <FormStyle>
+          <EmailInput></EmailInput>
           <PasswordInput></PasswordInput>
-        </Margin>
+        </FormStyle>
         <NextBtn></NextBtn>
-      </SignUpWrapper>
+      </MainStyle>
     </>
   )
 }
