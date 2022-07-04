@@ -1,5 +1,6 @@
 import React from 'react'
-import { FullLogoStyle, MainStyle } from './mainStyle'
+import { FullLogoStyle } from './mainStyle'
+import { MainStyle } from '../../style/commonLoginStyle'
 
 function Start() {
   return (
