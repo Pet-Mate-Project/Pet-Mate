@@ -5,7 +5,8 @@ export const Wraper = styled.div`
 width: 120px;
 height: 120px;
 border-radius: 50%;
-position: absolute;
+position: relative;
+margin: 0 auto;
 
 ::after{
   content: '';

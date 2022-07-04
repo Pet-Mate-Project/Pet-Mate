@@ -8,6 +8,7 @@ export const MainStyle = styled.main`
   padding : 0 34px;
   text-align : center;
   margin-bottom : 194px;
+  box-sizing: border-box;
   `
 
 export const LogoStyle = styled.div`

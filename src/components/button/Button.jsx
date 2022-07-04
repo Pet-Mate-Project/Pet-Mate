@@ -27,14 +27,17 @@ export function JoinBtn() {
   );
 }
 
-// export function Login() {
+export function StartBtn() {
+  return (
+    <Button hover >
+      시작하기
+    </Button>
+  );
+}
+
+// export default function Login() {
 //   return (
 //     <>
-
-//       <Button hover >
-//         시작하기
-//       </Button>
-
 //       <Button width={90} height={32} hover >
 //         저장
 //       </Button>
