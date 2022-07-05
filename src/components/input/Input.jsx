@@ -13,6 +13,7 @@ export function NameInput({ userName, setName }) {
           name="userName"
           value={userName}
           onChange={(e) => setName(e.target.value)}
+          autoFocus
         />
       </LabelStyle>
     </>
@@ -20,7 +21,7 @@ export function NameInput({ userName, setName }) {
 }
 
 
-export function IdInput({ userId, setId }) {
+export function IdInput({ userId, setId, IdCheck }) {
   return (
     <>
       <LabelStyle>계정 ID
@@ -30,6 +31,7 @@ export function IdInput({ userId, setId }) {
           name="userId"
           value={userId}
           onChange={(e) => setId(e.target.value)}
+          onBlur={IdCheck}
         />
       </LabelStyle>
     </>
@@ -52,7 +54,7 @@ export function IntroInput({ userIntro, setIntro }) {
   )
 }
 
-export function EmailInput({ userEmail, setEmail }) {
+export function EmailInput({ userEmail, setEmail, emailCheck }) {
   return (
     <LabelStyle>이메일
       <InputStyle
@@ -61,6 +63,8 @@ export function EmailInput({ userEmail, setEmail }) {
         name="userEmail"
         value={userEmail}
         onChange={(e) => setEmail(e.target.value)}
+        onBlur={emailCheck}
+        autoFocus
       />
     </LabelStyle>
   );
