@@ -8,18 +8,19 @@ function SignUpMainPage() {
   const [userName, setName] = useState("");
   const [userId, setId] = useState("");
   const [userIntro, setIntro] = useState("");
+  const [userImg, setImg] = useState('https://raw.githubusercontent.com/Pet-Mate-Project/Pet-Mate/9a1dd2c1758e84421b72fed7d132f5c12e66dc46/src/assets/basic-profile.png');
   const [userEmail, setEmail] = useState("");
   const [userPassword, setPassword] = useState("");
   //유효성 출력 메세지 상태관리
   const [message, setMessage] = useState("");
   //회원 정보 저장
-  const [userList, setUserList] = useState("")
+  const [userList, setUserList] = useState("");
   //다음 버튼 상태관리
   const [next, setNext] = useState(false)
 
   const url = "https://mandarin.api.weniv.co.kr";
 
-  //통신 관리 함수
+  //회원가입시 작성 정보 전달 함수
   function postData() {
 
     let userData = {
@@ -29,7 +30,7 @@ function SignUpMainPage() {
         "password": userPassword,
         "accountname": userId,
         "intro": userIntro,
-        "image": 'https://mandarin.api.weniv.co.kr/1641906557953.png'
+        "image": userImg
       }
     }
 
@@ -82,10 +83,13 @@ function SignUpMainPage() {
         });
   }
 
+
   //다음 버튼 함수
   function nextClick() {
     setNext(true);
   }
+
+
 
   if (next === false) {
     return (
