@@ -27,7 +27,7 @@ font-size: 12px;
 color : #767676;
 `;
 
-export const SearchInput = styled.input`
+export const SearchStyle = styled.input`
 margin: 10px;
 padding: 8px 12px;
 background-color: #F2F2F2;
