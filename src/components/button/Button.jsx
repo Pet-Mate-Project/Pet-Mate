@@ -7,8 +7,12 @@ export function NextBtn({ nextClick }) {
   return <Button onClick={nextClick} hover>다음</Button>;
 }
 
-export function LoginBtn() {
-  return <Button hover>로그인</Button>;
+export function LoginBtn({ onClick }) {
+  return (
+    <Button onClick={onClick} hover>
+      로그인
+    </Button>
+  );
 }
 
 export function EmailLoginBtn() {

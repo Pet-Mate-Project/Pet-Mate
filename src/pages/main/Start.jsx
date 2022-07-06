@@ -2,12 +2,15 @@ import React from 'react'
 import { FullLogoStyle } from './mainStyle'
 import { MainStyle } from '../../style/commonLoginStyle'
 
-function Start() {
+function Start({loading}) {
   return (
     <>
-      <MainStyle>
-        <FullLogoStyle />
-      </MainStyle>
+      {
+        (loading ==='true') &&
+       <MainStyle>
+         <FullLogoStyle />
+       </MainStyle>
+      }
     </>
   )
 }
