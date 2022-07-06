@@ -45,6 +45,8 @@ export default function Login() {
       console.log("1");
       localStorage.setItem("userinfo",JSON.stringify(res.data))
       console.log(JSON.parse(localStorage.getItem("userinfo")));
+      //토큰접근
+      console.log(JSON.parse(localStorage.getItem("userinfo")).user.token);
     }//if문
   } // check함수
   
