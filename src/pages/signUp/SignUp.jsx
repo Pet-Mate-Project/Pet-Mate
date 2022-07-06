@@ -6,7 +6,6 @@ import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 
 
 function SignUp({ nextClick, userEmail, setEmail, userPassword, setPassword, message, emailCheck }) {
-  console.log('메세지', message)
   return (
     <>
       <MainStyle>
