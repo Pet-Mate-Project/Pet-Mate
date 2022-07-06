@@ -46,9 +46,15 @@ table {
 	border-spacing: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 button{
 	all: unset; 
         }
 `;
+
+
 
 export default GlobalStyles;
