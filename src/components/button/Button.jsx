@@ -31,13 +31,15 @@ export function JoinBtn() {
   );
 }
 
-export function StartBtn({ postData }) {
+export function StartBtn({ postImgData }) {
+
   return (
-    <Button onClick={postData} hover >
+    <Button onClick={postImgData} hover >
       시작하기
     </Button>
   );
 }
+
 
 export function SaveBtn() {
   return (

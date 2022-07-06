@@ -2,7 +2,6 @@ import React from 'react'
 import { ErrorMessageStyle, CorrectMessageStyle } from './errorStyle'
 
 export function SignUpErrorMessage({ message }) {
-  console.log('메세지2', message);
 
   if (message === "사용 가능한 이메일 입니다.") {
     return (
