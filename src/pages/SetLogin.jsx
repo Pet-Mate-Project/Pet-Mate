@@ -1,12 +1,12 @@
 import React, { useEffect ,useState} from 'react'
-import { useNavigate ,Router } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
+
 import Start from './main/Start'
 import Main from './main/Main'
 import TempPage from './TempPage'
 
 export default function SetLogin() {
-  const [visible,setvisible] = useState('true');
-  const [loading,setLoding] = useState ('false');
+  const [loading,setLoding] = useState ('false'); //token상태에 따른 리다이렉팅페이지 관리
   const navigate = useNavigate();
 
   // 랜더링 될때 slash화면 로딩
@@ -17,24 +17,18 @@ export default function SetLogin() {
     },1000);
     return ()=>clearTimeout(LodingTimer);
   },[]);
-
-
+  
   useEffect(()=>{
     if(JSON.parse(localStorage.getItem("userinfo"))?.user?.token){
-      setvisible('false')
       navigate('/temppage');
     }
-    else{
-      return
-    }
+
   },[navigate])
-
-  console.log("👁",visible);
-
   return (
     <>
       <Start loading={loading} />
-      <Main loading={loading} visible={visible} />
+      <Main loading={loading}  />
+    
     </>
   );
 }
