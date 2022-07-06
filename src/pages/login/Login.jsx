@@ -39,8 +39,18 @@ export default function Login() {
     } else {
       setErrMsg('false');
     }
-  }
 
+    //토큰값 (유저데이터)저장
+    if(reqMsg!=='이메일 또는 비밀번호가 일치하지 않습니다.') {
+      console.log("1");
+      localStorage.setItem("userinfo",JSON.stringify(res.data))
+      console.log(JSON.parse(localStorage.getItem("userinfo")));
+    }//if문
+  } // check함수
+  
+
+  // hehe@test.com
+  //123456
   return (
     <>
       <MainStyle>
