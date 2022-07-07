@@ -24,7 +24,8 @@ function ProfilePage({ userName, setName, userId, setId, userIntro, setIntro, me
           userId={userId}
           setId={setId}
           IdCheck={IdCheck} />
-        <SignUpErrorMessage message={message} />
+        {message === '' ? '' :
+          <SignUpErrorMessage message={message} />}
         <IntroInput
           userIntro={userIntro}
           setIntro={setIntro} />

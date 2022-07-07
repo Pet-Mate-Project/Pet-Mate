@@ -100,7 +100,7 @@ export function SignUpMainPage() {
   //다음 버튼
   function nextClick() {
     setNext(true);
-    setMessage(false)
+    setMessage('')
   }
 
   if (next === false) {
