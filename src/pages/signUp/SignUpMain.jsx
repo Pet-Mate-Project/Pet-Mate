@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SignUp from './SignUp';
 import ProfilePage from './ProfilePage';
+import { useForm } from 'react-hook-form';
 
 export async function ImgUpload(userImg) {
 
@@ -28,6 +29,15 @@ export function SignUpMainPage() {
   const [next, setNext] = useState(false)
 
   const url = "https://mandarin.api.weniv.co.kr";
+
+
+  //유효성 검사를 위한 react-hook-form 변수 선언
+  const {
+    register,
+    handleSubmit,
+    formState: { isValid, errors },
+  } = useForm({ mode: "onChange" });
+
 
   //이미지 업로드 함수 실행
   ImgUpload(userImg)
@@ -56,6 +66,12 @@ export function SignUpMainPage() {
       .then((res) => console.log('회원가입', res))
   }
 
+
+  //이메일 검증시 메세지 출력을 위한 부분
+  useEffect(() => {
+    setMessage('');
+  }, [userEmail])
+
   //이메일 검증
   function emailCheck() {
     let emailData = {
@@ -64,37 +80,44 @@ export function SignUpMainPage() {
       }
     }
 
-    axios.post(url + '/user/emailvalid', emailData, {
-      headers: {
-        "Content-type": "application/json"
-      }
-    })
-      .then(
-        (res) => {
-          console.log(res)
-          setMessage(res.data.message);
-        });
+    if (!errors.email) {
+      axios.post(url + '/user/emailvalid', emailData, {
+        headers: {
+          "Content-type": "application/json"
+        }
+      })
+        .then(
+          (res) => {
+            console.log(res);
+            setMessage(res.data.message);
+          });
+    }
   }
+
+  //계정 검증시 메세지 출력을 위한 부분
+  useEffect(() => {
+    setMessage('');
+  }, [userId])
 
   // 계정 검증 함수
   function IdCheck() {
-
     let idData = {
       "user": {
         "accountname": userId
       }
     }
-
-    axios.post(url + '/user/accountnamevalid', idData, {
-      headers: {
-        "Content-type": "application/json"
-      }
-    })
-      .then(
-        (res) => {
-          console.log(res)
-          setMessage(res.data.message);
-        });
+    if (!errors.userId) {
+      axios.post(url + '/user/accountnamevalid', idData, {
+        headers: {
+          "Content-type": "application/json"
+        }
+      })
+        .then(
+          (res) => {
+            console.log(res);
+            setMessage(res.data.message);
+          });
+    }
   }
 
   //다음 버튼
@@ -110,10 +133,13 @@ export function SignUpMainPage() {
           userEmail={userEmail}
           setEmail={setEmail}
           nextClick={nextClick}
+          disabled={isValid}
           userPassword={userPassword}
           setPassword={setPassword}
           emailCheck={emailCheck}
           message={message}
+          register={register}
+          errors={errors}
         />
       </>
     )
@@ -128,12 +154,16 @@ export function SignUpMainPage() {
         userIntro={userIntro}
         setIntro={setIntro}
         signUp={signUp}
+        disabled={isValid}
         IdCheck={IdCheck}
         message={message}
         setImg={setImg}
         userImg={userImg}
-
+        register={register}
+        errors={errors}
       />
     )
   }
 }
+
+export default SignUpMainPage
