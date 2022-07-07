@@ -16,8 +16,8 @@ function SignUp({ nextClick, userEmail, setEmail, userPassword, setPassword, mes
             setEmail={setEmail}
             emailCheck={emailCheck}
           ></EmailInput>
-          <SignUpErrorMessage
-            message={message} />
+          {message === '' ? '' :
+            <SignUpErrorMessage message={message} />}
           <PasswordInput
             userPassword={userPassword}
             setPassword={setPassword}></PasswordInput>

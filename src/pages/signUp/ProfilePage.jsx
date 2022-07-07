@@ -6,7 +6,7 @@ import { IdInput, IntroInput, NameInput } from '../../components/input/Input'
 import { StartBtn } from '../../components/button/Button'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 
-function ProfilePage({ userName, setName, userId, setId, userIntro, setIntro, postData, message, IdCheck, userImg, setImg, postImgData }) {
+function ProfilePage({ userName, setName, userId, setId, userIntro, setIntro, message, IdCheck, userImg, setImg, signUp }) {
   return (
     <MainStyle>
 
@@ -15,8 +15,7 @@ function ProfilePage({ userName, setName, userId, setId, userIntro, setIntro, po
       </Message>
       <Profile
         userImg={userImg}
-        setImg={setImg}
-        postImgData={postImgData} />
+        setImg={setImg} />
       <FormStyle>
         <NameInput
           userName={userName}
@@ -25,13 +24,14 @@ function ProfilePage({ userName, setName, userId, setId, userIntro, setIntro, po
           userId={userId}
           setId={setId}
           IdCheck={IdCheck} />
-        <SignUpErrorMessage message={message} />
+        {message === '' ? '' :
+          <SignUpErrorMessage message={message} />}
         <IntroInput
           userIntro={userIntro}
           setIntro={setIntro} />
       </FormStyle>
-      <StartBtn postData={postData}
-        postImgData={postImgData} />
+      <StartBtn
+        signUp={signUp} />
     </MainStyle>
   )
 }
