@@ -45,7 +45,7 @@ export const Button = styled.button`
       }
     `}
 
-    ${(props) => {
+  ${(props) => {
     if (props.hover) {
       return css`
         :hover{
@@ -54,4 +54,12 @@ export const Button = styled.button`
         }
       `}
   }}
+
+${(props) => {
+    if (props.right){
+      return css`
+      float:right;
+  `}
+  } 
+}
 `;

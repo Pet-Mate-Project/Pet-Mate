@@ -41,9 +41,9 @@ export function StartBtn({ signUp }) {
 }
 
 
-export function SaveBtn() {
+export function SaveBtn(props) {
   return (
-    <Button width={90} height={32} hover >
+    <Button width={90} height={32} right={props}  hover >
       저장
     </Button>
   )
