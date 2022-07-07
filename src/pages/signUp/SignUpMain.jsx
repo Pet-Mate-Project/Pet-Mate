@@ -3,7 +3,17 @@ import axios from 'axios';
 import SignUp from './SignUp';
 import ProfilePage from './ProfilePage';
 
-function SignUpMainPage() {
+export async function ImgUpload(userImg) {
+
+  let formData = new FormData()
+  formData.append('image', userImg)
+  // console.log('userimage', userImg)
+
+  const res = await axios.post('https://mandarin.api.weniv.co.kr/image/uploadfile', formData)
+  return res.data.filename
+}
+
+export function SignUpMainPage() {
   //필요한 정보 상태 관리
   const [userName, setName] = useState("");
   const [userId, setId] = useState("");
@@ -13,64 +23,40 @@ function SignUpMainPage() {
   //넣어주는 이미지 
   const [userImg, setImg] = useState('https://raw.githubusercontent.com/Pet-Mate-Project/Pet-Mate/9a1dd2c1758e84421b72fed7d132f5c12e66dc46/src/assets/basic-profile.png');
   //에러 출력 메세지
-  const [message, setMessage] = useState("");
-  //회원 정보 저장
-  const [userList, setUserList] = useState("");
-  //서버 통신후 반환된 파일명
-  const [imgFileName, setImgFileName] = useState("")
+  const [message, setMessage] = useState('');
   //다음 버튼 상태관리
   const [next, setNext] = useState(false)
 
   const url = "https://mandarin.api.weniv.co.kr";
 
-  //프로필 이미지 업로드
-  function postImgData() {
+  //이미지 업로드 함수 실행
+  ImgUpload(userImg)
 
-    let formData = new FormData()
-    formData.append('image', userImg)
-    console.log('userimage', userImg)
-
-    axios.post(url + '/image/uploadfile', formData)
-      .then((res) => {
-        console.log('img res', res)
-        setImgFileName(res.data.filename)
-        postData(res.data.filename)
-      })
-  }
-
-  //파일명 상태관리 되고있는지 확인
-  console.log('imgFileName', imgFileName)
-
-  //회원가입시 작성 정보 전달 함수
-  function postData(file) {
-
-    let userData = {
-      "user": {
-        "username": userName,
-        "email": userEmail,
-        "password": userPassword,
-        "accountname": userId,
-        "intro": userIntro,
-        "image": file
-      }
+  //유저 데이터 저장
+  let userData = {
+    "user": {
+      "username": userName,
+      "email": userEmail,
+      "password": userPassword,
+      "accountname": userId,
+      "intro": userIntro,
+      "image": ""
     }
-
-    console.log('postdata-userdata', userData)
-    axios.post(url + '/user', userData, { headers: { "Content-type": "application/json" } })
-      .then(
-        (res) => {
-          console.log(res)
-        })
   }
 
-  // 이미지 보기
-  // function showImg() {
-  //   axios.get(url + imgFileName).then((res) => {
-  //     console.log(res)
-  //   })
-  // }
+  //회원가입
+  async function signUp() {
+    const imgUploadData = await ImgUpload(userImg)
+    console.log('img res', imgUploadData)
+    //유저데이터 변수의 이미지에 저장 
+    userData.user.image = imgUploadData
+    //회원가입 최종 전송
+    axios.post(url + '/user', userData,
+      { headers: { "Content-type": "application/json" } })
+      .then((res) => console.log('회원가입', res))
+  }
 
-  //이메일 검증 함수
+  //이메일 검증
   function emailCheck() {
     let emailData = {
       "user": {
@@ -111,11 +97,10 @@ function SignUpMainPage() {
         });
   }
 
-
-  //다음 버튼 함수
+  //다음 버튼
   function nextClick() {
     setNext(true);
-    setMessage("")
+    setMessage(false)
   }
 
   if (next === false) {
@@ -142,15 +127,13 @@ function SignUpMainPage() {
         setId={setId}
         userIntro={userIntro}
         setIntro={setIntro}
-        postData={postData}
+        signUp={signUp}
         IdCheck={IdCheck}
         message={message}
         setImg={setImg}
         userImg={userImg}
-        postImgData={postImgData}
+
       />
     )
   }
 }
-
-export default SignUpMainPage

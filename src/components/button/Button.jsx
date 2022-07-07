@@ -31,10 +31,10 @@ export function JoinBtn() {
   );
 }
 
-export function StartBtn({ postImgData }) {
+export function StartBtn({ signUp }) {
 
   return (
-    <Button onClick={postImgData} hover >
+    <Button onClick={signUp} hover >
       시작하기
     </Button>
   );
