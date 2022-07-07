@@ -6,7 +6,8 @@ import Main from './pages/main/Main';
 import InitPage from './template/InitPage';
 import Login from './pages/login/Login'
 import { AnimatePresence } from 'framer-motion';
-import { SignUpMainPage } from './pages/signUp/SignUpMain';
+import SignUpMainPage from './pages/signUp/SignUpMain';
+
 function App() {
   return (
     <>
@@ -23,7 +24,6 @@ function App() {
       </Routes>
       <AnimatePresence />
     </>
-  );
+  )
 }
-
 export default App;

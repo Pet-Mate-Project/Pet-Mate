@@ -6,11 +6,18 @@ import { MainStyle, FormStyle, Title } from '../../style/commonLoginStyle';
 import { useState } from 'react';
 import { LoginErrorMessege } from '../../components/errorMessage/errorMessage'
 import axios from 'axios';
+import { Link } from "react-router-dom";
+import { useNavigate  } from 'react-router-dom';
+
+
 
 export default function Login() {
   const [userEmail, setEmail] = useState('');
   const [userPassword, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('false');
+  const [userInfo,setUserInfo] = useState('fasle')
+  const navigate = useNavigate()
+
 
   // 서버에서 데이터 검증 후 확인
   async function loginCheck() {
@@ -36,8 +43,10 @@ export default function Login() {
     //에러메시지 전달
     if (reqMsg === '이메일 또는 비밀번호가 일치하지 않습니다.') {
       setErrMsg('true'); //에러가 발생한 경우 TRUE
+      setUserInfo('false'); 
     } else {
       setErrMsg('false');
+      setUserInfo('true'); 
     }
 
     //토큰값 (유저데이터)저장
@@ -47,10 +56,14 @@ export default function Login() {
       console.log(JSON.parse(localStorage.getItem("userinfo")));
       //토큰접근
       console.log(JSON.parse(localStorage.getItem("userinfo")).user.token);
+
+      navigate('/temppage');
     }//if문
+
+
   } // check함수
   
-
+  //test값
   // hehe@test.com
   //123456
   return (
@@ -66,7 +79,9 @@ export default function Login() {
           {errMsg === 'true' ? <LoginErrorMessege /> : ''}
         </FormStyle>
         <LoginBtn onClick={loginCheck}></LoginBtn>
-        <SignUpLink>이메일로 회원가입</SignUpLink>
+        <Link to ='/join'> 
+          <SignUpLink>이메일로 회원가입</SignUpLink>
+        </Link> 
       </MainStyle>
     </>
   );
