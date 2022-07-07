@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled,{ css } from 'styled-components';
 
 export const InputStyle = styled.input`
 width: 100%;
@@ -28,8 +28,8 @@ color : #767676;
 `;
 
 export const SearchStyle = styled.input`
-margin: 10px;
 padding: 8px 12px;
+width:316px;
 background-color: #F2F2F2;
 border: none;
 border-radius: 32px;
@@ -41,6 +41,14 @@ box-sizing: border-box;
 }
 :focus{
   outline-color: #1D57C1;
+}
+
+${(props) => {
+    if (props.right){
+      return css`
+      float:right;
+  `}
+  } 
 }
 `
 

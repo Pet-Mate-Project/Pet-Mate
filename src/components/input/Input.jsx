@@ -139,12 +139,13 @@ export function PostIntroInput() {
   );
 }
 
-export function SearchInput() {
+export function SearchInput(props) {
   return (
     <SearchStyle
       placeholder='검색'
       type="search"
       name="search"
+      right= {props}
     // value={search}
     />
   );
