@@ -1,6 +1,6 @@
 import React from 'react'
-import { FollowToggleBtn } from '../../button/Button.jsx'
-import { ProfileIconM } from '../../profileIcon/ProfileIcon.jsx'
+import { FollowToggleBtn } from '../button/Button.jsx'
+import { ProfileIconM } from '../profileIcon/ProfileIcon.jsx'
 import { TextWrapper, UserId, UserName, Wrapper } from './userStyle.js'
 
 
