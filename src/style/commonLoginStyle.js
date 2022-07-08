@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 
-export const MainStyle = styled.main`
+export const NonepaddiingMain = styled.main`
   margin: 0 auto;
   width: 390px;
   height: 820px;
-  padding : 0 34px;
   box-sizing: border-box;
   border: 1px solid transparent;
+`
+
+export const MainStyle = styled(NonepaddiingMain)`
+  padding : 0 34px;
   `
 
 export const Title = styled.h1`
