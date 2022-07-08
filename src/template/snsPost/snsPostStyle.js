@@ -28,7 +28,7 @@ box-sizing: border-box;
 export const IconWrap = styled.div`
 text-align: left;
 display: inline-block;
-margin-bottom: 10px;
+margin: 14px 0;
 `
 
 export const IconImg = styled.img`
