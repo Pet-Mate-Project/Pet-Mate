@@ -1,5 +1,5 @@
 import React from 'react'
-import { FollowToggleBtn } from '../button/Button.jsx'
+import { ChatBtn, FollowToggleBtn } from '../button/Button.jsx'
 import { ProfileIconS } from '../profileIcon/ProfileIcon.jsx'
 import { TextWrapper, UserId, UserName, Wrapper, MoreIcon } from './userStyle.js'
 import moreIcon from '../../assets/icon-more-vertical-small.svg'
@@ -34,6 +34,17 @@ export function UserMore() {
       <Wrapper between>
         <User />
         <MoreIcon src={moreIcon} />
+      </Wrapper>
+    </>
+  )
+}
+
+export function UserChat() {
+  return (
+    <>
+      <Wrapper between>
+        <User />
+        <ChatBtn />
       </Wrapper>
     </>
   )
