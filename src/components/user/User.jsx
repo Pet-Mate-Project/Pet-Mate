@@ -1,5 +1,5 @@
 import React from 'react'
-import { FollowToggleBtn } from '../button/Button.jsx'
+import { ChatBtn, FollowToggleBtn } from '../button/Button.jsx'
 import { ProfileIconS } from '../profileIcon/ProfileIcon.jsx'
 import { TextWrapper, UserId, UserName, Wrapper } from './userStyle.js'
 
@@ -22,6 +22,17 @@ export function UserFollow() {
       <Wrapper between>
         <User />
         <FollowToggleBtn />
+      </Wrapper>
+    </>
+  )
+}
+
+export function UserChat() {
+  return (
+    <>
+      <Wrapper between>
+        <User />
+        <ChatBtn />
       </Wrapper>
     </>
   )

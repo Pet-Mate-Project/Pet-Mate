@@ -75,13 +75,13 @@ export function BackBtn() {
 export function ChatBtn() {
   return (<>
     <Button
-      width={120}
-      height={44}
+      width={90}
+      height={32}
       color={'#1D57C1'}
       backColor={'white'}
       hover
     >
-      채팅하기
+      연락하기
     </Button>
   </>)
 }
