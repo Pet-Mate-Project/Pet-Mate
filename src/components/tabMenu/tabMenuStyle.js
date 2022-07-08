@@ -4,6 +4,7 @@ export const TabMenuStyle = styled.div`
 width: 100%;
 background-color: white;
 position: fixed;
+bottom: 0;
 display : flex;
 justify-content: space-between;
 border: 1px solid black;

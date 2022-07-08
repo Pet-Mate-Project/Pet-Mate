@@ -33,5 +33,9 @@ line-height: 14px;
 color: #767676;
 margin: 0;
 `
-
+export const MoreIcon = styled.img`
+width: 24px;
+height: 24px;
+float: right;
+`
 
