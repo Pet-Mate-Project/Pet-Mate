@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import SignUp from './SignUp';
-import ProfilePage from './ProfilePage';
+import SignUp from '../template/signUp/SignUp';
+import ProfilePage from '../template/signUp/ProfilePage';
 
 function SignUpMainPage() {
   //필요한 정보 상태 관리
