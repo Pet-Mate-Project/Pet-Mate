@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './buttonStyle';
 import iconEmail from '../../assets/icon-email.svg';
 import iconSign from '../../assets/icon-signup.svg';
@@ -86,21 +86,35 @@ export function ChatBtn() {
   </>)
 }
 
-export function CancelBtn() {
-  <Button
-    width={56}
-    height={28}
-    color={'#767676'}
-    backColor={'white'}>
+export function FollowToggleBtn() {
+  const [isFollow, setIsFollow] = useState(false)
 
-    취소
-  </Button>
-}
+  function onClick() {
+    isFollow === false ?
+      setIsFollow(true) :
+      setIsFollow(false);
+    console.log(isFollow)
+  }
 
-export function FollowBtn() {
-  return (
-    <Button width={56} height={28}>
-      팔로우
-    </Button>
-  )
+  if (!isFollow) {
+    return (
+      <Button width={56} height={28}
+        onClick={onClick}>
+        팔로우
+      </Button>
+    )
+  } else {
+    return (
+      <>
+        <Button
+          width={56}
+          height={28}
+          color={'#767676'}
+          backColor={'white'}
+          onClick={onClick}>
+          취소
+        </Button>
+      </>
+    )
+  }
 }

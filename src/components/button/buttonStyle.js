@@ -21,11 +21,12 @@ export const Button = styled.button`
     `}};
 
     ${(props) => {
-    props.color &&
-      css`
+    if (props.color) {
+      return css`
       color: ${props.color};
       border: 1px solid ${props.color};
       `
+    }
   }}
 
  //props로 받은 icon값이 존재할경우 스타일
