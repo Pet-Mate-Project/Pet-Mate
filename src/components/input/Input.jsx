@@ -3,16 +3,28 @@ import React, { useState } from "react";
 import { LabelStyle, InputStyle, SearchStyle } from './inputStyle';
 
 //회원가입, login input 
-export function NameInput({ userName, setName }) {
+export function NameInput({ userName, setName, register }) {
   return (
     <>
       <LabelStyle>사용자 이름
         <InputStyle
-          placeholder='7-10자 이내여야 합니다.'
+          placeholder='2-10자 이내여야 합니다.'
           type="text"
           name="userName"
           value={userName}
-          onChange={(e) => setName(e.target.value)}
+          {...register("userName", {
+            required: "*이름은 필수 입력사항입니다.",
+            minLength: {
+              value: 2,
+              message: "*이름은 2-10자 이내여야 합니다."
+            },
+            maxLength: {
+              value: 10,
+              message: "*이름은 2-10자 이내여야 합니다."
+            },
+            onChange: (e) => setName(e.target.value),
+          })}
+          maxLength='10'
           autoFocus
         />
       </LabelStyle>
@@ -20,8 +32,7 @@ export function NameInput({ userName, setName }) {
   )
 }
 
-
-export function IdInput({ userId, setId, IdCheck }) {
+export function IdInput({ userId, setId, IdCheck, register }) {
   return (
     <>
       <LabelStyle>계정 ID
@@ -30,8 +41,15 @@ export function IdInput({ userId, setId, IdCheck }) {
           type="text"
           name="userId"
           value={userId}
-          onChange={(e) => setId(e.target.value)}
-          onBlur={IdCheck}
+          {...register("userId", {
+            required: "*계정 ID는 필수 입력사항입니다.",
+            pattern: {
+              value: /^[_A-Za-z0-9.]*$/,
+              message: "*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다."
+            },
+            onChange: (e) => setId(e.target.value),
+            onBlur: IdCheck
+          })}
         />
       </LabelStyle>
     </>
@@ -48,13 +66,14 @@ export function IntroInput({ userIntro, setIntro }) {
           name="userIntro"
           value={userIntro}
           onChange={(e) => setIntro(e.target.value)}
+          autoComplete="off"
         />
       </LabelStyle>
     </>
   )
 }
 
-export function EmailInput({ userEmail, setEmail, emailCheck }) {
+export function EmailInput({ userEmail, setEmail, emailCheck, register }) {
   return (
     <LabelStyle>이메일
       <InputStyle
@@ -62,15 +81,22 @@ export function EmailInput({ userEmail, setEmail, emailCheck }) {
         type="email"
         name="userEmail"
         value={userEmail}
-        onChange={(e) => setEmail(e.target.value)}
-        onBlur={emailCheck}
+        {...register("email", {
+          required: "*이메일은 필수 입력사항입니다.",
+          pattern: {
+            value: /\S+@\S+\.\S+/,
+            message: "*올바르지 않은 이메일 형식입니다."
+          },
+          onChange: (e) => setEmail(e.target.value),
+          onBlur: emailCheck
+        })}
         autoFocus
       />
     </LabelStyle>
   );
 }
 
-export function PasswordInput({ userPassword, setPassword }) {
+export function PasswordInput({ userPassword, setPassword, register }) {
   return (
     <LabelStyle>비밀번호
       <InputStyle
@@ -78,7 +104,14 @@ export function PasswordInput({ userPassword, setPassword }) {
         type="password"
         name="userPassword"
         value={userPassword}
-        onChange={(e) => setPassword(e.target.value)}
+        {...register("password", {
+          required: "*비밀번호는 필수 입력입니다.",
+          minLength: {
+            value: 6,
+            message: "*비밀번호는 6자 이상이어야 합니다."
+          },
+          onChange: (e) => setPassword(e.target.value)
+        })}
       />
     </LabelStyle>
   );
@@ -139,12 +172,13 @@ export function PostIntroInput() {
   );
 }
 
-export function SearchInput() {
+export function SearchInput(props) {
   return (
     <SearchStyle
       placeholder='검색'
       type="search"
       name="search"
+      right= {props}
     // value={search}
     />
   );

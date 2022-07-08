@@ -5,7 +5,7 @@ import { FormStyle, MainStyle, Title } from '../../style/commonLoginStyle'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 
 
-function SignUp({ nextClick, userEmail, setEmail, userPassword, setPassword, message, emailCheck }) {
+function SignUp({ disabled, nextClick, userEmail, setEmail, userPassword, setPassword, message, emailCheck, register, errors }) {
   return (
     <>
       <MainStyle>
@@ -15,15 +15,21 @@ function SignUp({ nextClick, userEmail, setEmail, userPassword, setPassword, mes
             userEmail={userEmail}
             setEmail={setEmail}
             emailCheck={emailCheck}
+            register={register}
           ></EmailInput>
-          <SignUpErrorMessage
-            message={message} />
+          {errors.email && <SignUpErrorMessage message={errors.email.message} />}
+          {message && <SignUpErrorMessage message={message} />}
           <PasswordInput
             userPassword={userPassword}
-            setPassword={setPassword}></PasswordInput>
+            setPassword={setPassword}
+            register={register}
+          ></PasswordInput>
+          {errors.password && <SignUpErrorMessage message={errors.password.message} />}
         </FormStyle>
         <NextBtn
           nextClick={nextClick}
+          disabled={disabled}
+          message={message}
         ></NextBtn>
       </MainStyle>
     </>

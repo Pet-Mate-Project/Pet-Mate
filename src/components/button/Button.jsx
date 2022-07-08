@@ -3,9 +3,15 @@ import { Button } from './buttonStyle';
 import iconEmail from '../../assets/icon-email.svg';
 import iconSign from '../../assets/icon-signup.svg';
 
-export function NextBtn({ nextClick }) {
-  return <Button onClick={nextClick} hover>다음</Button>;
+export function NextBtn({ nextClick, disabled, message }) {
+  if (message === '이미 가입된 이메일 주소 입니다.' || message === '' || !disabled) {
+    return <Button type='button'>다음</Button>;
+  }
+  else {
+    return <Button type='button' onClick={nextClick} disabled={!disabled} hover>다음</Button>;
+  }
 }
+
 
 export function LoginBtn({ onClick }) {
   return (
@@ -31,19 +37,20 @@ export function JoinBtn() {
   );
 }
 
-export function StartBtn({ postImgData }) {
+export function StartBtn({ signUp, disabled, message  }) {
 
-  return (
-    <Button onClick={postImgData} hover >
-      시작하기
-    </Button>
-  );
+  if (message === '이미 가입된 계정ID 입니다.' || message === '' || !disabled) {
+    return <Button>시작하기</Button>;
+  }
+  else {
+    return <Button onClick={signUp} disabled={!disabled} hover>시작하기</Button>;
+  }
 }
 
 
-export function SaveBtn() {
+export function SaveBtn(props) {
   return (
-    <Button width={90} height={32} hover >
+    <Button width={90} height={32} right={props}  hover >
       저장
     </Button>
   )

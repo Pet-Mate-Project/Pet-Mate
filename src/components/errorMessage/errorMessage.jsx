@@ -7,12 +7,11 @@ export function SignUpErrorMessage({ message }) {
     return (
       <CorrectMessageStyle>{message}</CorrectMessageStyle>
     )
-  }
-  if (message === "사용 가능한 계정ID 입니다.") {
+  } else if (message === "사용 가능한 계정ID 입니다.") {
     return (
       <CorrectMessageStyle>{message}</CorrectMessageStyle>
     )
-  } else {
+  } else if (message !== '잘못된 접근입니다.') {
     return (
       <ErrorMessageStyle>{message}</ErrorMessageStyle>
     )
