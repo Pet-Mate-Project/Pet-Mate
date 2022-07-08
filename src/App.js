@@ -1,12 +1,12 @@
 import React from 'react';
 import GlobalStyles from './style/globalStyle';
 import { Route, Router, Routes } from 'react-router-dom'
-import TempPage from './pages/TempPage';
-import Main from './pages/main/Main';
-import InitPage from './template/InitPage';
-import Login from './pages/login/Login'
+import TempPage from './template/TempPage';
+import Main from './template/main/Main';
+import InitPage from './pages/InitPage';
+import Login from './template/login/Login'
 import { AnimatePresence } from 'framer-motion';
-import SignUpMainPage from './pages/signUp/SignUpMain';
+import SignUpMainPage from './pages/SignUpMain';
 
 function App() {
   return (
