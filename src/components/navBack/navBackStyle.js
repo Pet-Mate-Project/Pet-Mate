@@ -7,6 +7,7 @@ box-sizing:border-box;
 width: 390px;
 height: 48px;
 padding : 8px 11px;
+margin: 0 auto;
 `
 
 export const Img = styled.img`
@@ -21,7 +22,7 @@ export const NavBtn = styled.button`
     &:last-child{
       float:right;  
     }
-` 
+`
 export const NavTxt = styled.p`
   padding:5px;
   font-size:14px;

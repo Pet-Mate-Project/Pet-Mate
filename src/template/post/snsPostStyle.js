@@ -14,15 +14,16 @@ line-height: 17px;
 text-align: left;
 word-break: keep-all;
 white-space: pre-wrap;
-margin: 14px 0;
+margin:14px 0;  
 `
 
 export const PostImg = styled.img`
 width: 100%;
-height: 60vw;
-border: 1px solid #DBDBDB;
+height: 230px;
+border: 1p x solid #DBDBDB;
 border-radius: 10px;
 box-sizing: border-box;
+object-fit: cover;
 `
 
 export const IconWrap = styled.div`
@@ -35,13 +36,14 @@ export const IconImg = styled.img`
 background-color: none;
 width: 20px;
 height: 20px;
-border: transparent;
+border: tr a nsparent;
 vertical-align: -5px;
 margin: 0 6px 0px 15px;
 :first-child{
   margin-left: 0;
 }
 `
+
 export const DateText = styled.p`
 color: #767676;
 font-size: 10px;

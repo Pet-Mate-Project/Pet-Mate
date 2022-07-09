@@ -1,10 +1,8 @@
 import React from 'react'
 import { Message } from './profilePageStyle'
-import Profile from '../../components/profile/Profile'
-import { MainStyle, Title, FormStyle } from '../../style/commonLoginStyle'
-import { IdInput, IntroInput, NameInput } from '../../components/input/Input'
+import { MainStyle, Title } from '../../style/commonLoginStyle'
 import { StartBtn } from '../../components/button/Button'
-import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
+import { ProfileSet } from '../profile/ProfileSet'
 
 function ProfilePage({ userName, setName, userId, setId, userIntro, setIntro, message, IdCheck, userImg, setImg, disabled, signUp, register, errors }) {
   return (
@@ -12,26 +10,17 @@ function ProfilePage({ userName, setName, userId, setId, userIntro, setIntro, me
       <Title>프로필 설정</Title>
       <Message>나중에 언제든지 변경할 수 있습니다.
       </Message>
-      <Profile
+      <ProfileSet userName={userName}
+        setName={setName}
+        userId={userId}
+        setId={setId}
+        userIntro={userIntro}
+        setIntro={setIntro}
+        IdCheck={IdCheck}
         userImg={userImg}
-        setImg={setImg} />
-      <FormStyle>
-        <NameInput
-          userName={userName}
-          setName={setName}
-          register={register} />
-        {errors.userName && <SignUpErrorMessage message={errors.userName.message} />}
-        <IdInput
-          userId={userId}
-          setId={setId}
-          IdCheck={IdCheck}
-          register={register} />
-        {errors.userId && <SignUpErrorMessage message={errors.userId.message} />}
-        {message && <SignUpErrorMessage message={message} />}
-        <IntroInput
-          userIntro={userIntro}
-          setIntro={setIntro} />
-      </FormStyle>
+        setImg={setImg}
+        register={register}
+        errors={errors} />
       <StartBtn
         signUp={signUp}
         disabled={disabled}
