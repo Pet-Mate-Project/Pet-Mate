@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // import styled from "styled-components";
 import { LabelStyle, InputStyle, SearchStyle } from './inputStyle';
 
@@ -178,7 +178,7 @@ export function SearchInput(props) {
       placeholder='검색'
       type="search"
       name="search"
-      right= {props}
+      right={props}
     // value={search}
     />
   );
