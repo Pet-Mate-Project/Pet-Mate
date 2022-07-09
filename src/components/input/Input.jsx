@@ -105,7 +105,7 @@ export function PasswordInput({ userPassword, setPassword, register }) {
         name="userPassword"
         value={userPassword}
         {...register("password", {
-          required: "*비밀번호는 필수 입력입니다.",
+          required: "*비밀번호는 필수 입력사항입니다.",
           minLength: {
             value: 6,
             message: "*비밀번호는 6자 이상이어야 합니다."

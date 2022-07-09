@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { EmailInput, PasswordInput } from '../../components/input/Input';
 import { LoginBtn } from '../../components/button/Button';
 import { SignUpLink } from './loginStyle';
 import { MainStyle, FormStyle, Title } from '../../style/commonLoginStyle';
 import { useState } from 'react';
-import { LoginErrorMessege } from '../../components/errorMessage/errorMessage'
+import { LoginErrorMessege, SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useNavigate  } from 'react-router-dom';
-
+import { useForm } from 'react-hook-form';
 
 
 export default function Login() {
@@ -16,7 +16,13 @@ export default function Login() {
   const [userPassword, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('false');
   const [userInfo,setUserInfo] = useState('fasle')
+  const {register, formState: {errors}} = useForm({mode: "onChange"})
   const navigate = useNavigate()
+
+  //비밀번호 입력시 '이메일 또는 비밀번호가 일치하지 않습니다.' 메시지 숨김
+  useEffect(() => {
+    setErrMsg('false')
+  }, [userPassword])
 
 
   // 서버에서 데이터 검증 후 확인
@@ -71,11 +77,17 @@ export default function Login() {
       <MainStyle>
         <Title>로그인</Title>
         <FormStyle>
-          <EmailInput userEmail={userEmail} setEmail={setEmail}></EmailInput>
+          <EmailInput
+            userEmail={userEmail}
+            setEmail={setEmail}
+            register={register} /> 
+          {errors.email && <SignUpErrorMessage message={errors.email.message} />}
           <PasswordInput
             userPassword={userPassword}
             setPassword={setPassword}
-          ></PasswordInput>
+            register={register} 
+          />
+          {errors.password?.type === "required" && <SignUpErrorMessage message={errors.password.message} />}
           {errMsg === 'true' ? <LoginErrorMessege /> : ''}
         </FormStyle>
         <LoginBtn onClick={loginCheck}></LoginBtn>
