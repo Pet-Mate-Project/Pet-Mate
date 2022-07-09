@@ -2,7 +2,7 @@ import React from 'react';
 import { EmailInput, PasswordInput } from '../../components/input/Input';
 import { LoginBtn } from '../../components/button/Button';
 import { SignUpLink } from './loginStyle';
-import { MainStyle, FormStyle, Title } from '../../style/commonLoginStyle';
+import { PaddingMain, FormStyle, Title } from '../../style/commonStyle';
 import { useState } from 'react';
 import { LoginErrorMessege } from '../../components/errorMessage/errorMessage'
 import axios from 'axios';
@@ -68,7 +68,7 @@ export default function Login() {
   //123456
   return (
     <>
-      <MainStyle>
+      <PaddingMain>
         <Title>로그인</Title>
         <FormStyle>
           <EmailInput userEmail={userEmail} setEmail={setEmail}></EmailInput>
@@ -82,7 +82,7 @@ export default function Login() {
         <Link to ='/join'> 
           <SignUpLink>이메일로 회원가입</SignUpLink>
         </Link> 
-      </MainStyle>
+      </PaddingMain>
     </>
   );
 }
