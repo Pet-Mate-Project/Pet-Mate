@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { SaveNav } from '../../components/navBack/NavBack';
-import GlobalStyles from '../../style/globalStyle';
 import { ImgUpload } from '../../pages/SignUpMain';
 import { ProfileSet } from '../profile/ProfileSet';
 import { useForm } from 'react-hook-form';
-import { MainStyle } from '../../style/commonLoginStyle';
+import { AllWrap, PaddingMain } from '../../style/commonStyle';
 
 
 function ProfileModify() {
@@ -83,13 +82,14 @@ function ProfileModify() {
   }
 
   return (
-    <>
-      <GlobalStyles />
-      <SaveNav profileSave={profileSave} />
-      <MainStyle>
+    <AllWrap>
+      <header>
+        <SaveNav profileSave={profileSave} />
+      </header>
+      <PaddingMain>
         <ProfileSet userName={userName} setName={setName} userId={userId} setId={setId} userIntro={userIntro} setIntro={setIntro} message={message} userImg={userImg} setImg={setImg} register={register} IdCheck={IdCheck} errors={errors} />
-      </MainStyle>
-    </>
+      </PaddingMain>
+    </AllWrap>
   )
 }
 

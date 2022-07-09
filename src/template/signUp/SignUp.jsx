@@ -1,13 +1,13 @@
 import React from 'react'
 import { EmailInput, PasswordInput } from '../../components/input/Input'
 import { NextBtn } from '../../components/button/Button'
-import { FormStyle, PaddingMain, Title } from '../../style/commonStyle'
+import { AllWrap, FormStyle, PaddingMain, Title } from '../../style/commonStyle'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 
 
 function SignUp({ disabled, nextClick, userEmail, setEmail, userPassword, setPassword, message, emailCheck, register, errors }) {
   return (
-    <>
+    <AllWrap>
       <PaddingMain>
         <Title>이메일로 회원가입</Title>
         <FormStyle>
@@ -32,7 +32,7 @@ function SignUp({ disabled, nextClick, userEmail, setEmail, userPassword, setPas
           message={message}
         ></NextBtn>
       </PaddingMain>
-    </>
+    </AllWrap>
   )
 }
 

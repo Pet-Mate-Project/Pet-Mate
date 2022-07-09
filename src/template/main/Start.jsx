@@ -1,15 +1,17 @@
 import React from 'react'
 import { FullLogoStyle } from './mainStyle'
-import { PaddingMain } from '../../style/commonStyle'
+import { AllWrap, PaddingMain } from '../../style/commonStyle'
 
-function Start({loading}) {
+function Start({ loading }) {
   return (
     <>
       {
-        (loading ==='true') &&
-       <PaddingMain>
-         <FullLogoStyle />
-       </PaddingMain>
+        (loading === 'true') &&
+        <AllWrap>
+          <PaddingMain>
+            <FullLogoStyle />
+          </PaddingMain>
+        </AllWrap>
       }
     </>
   )

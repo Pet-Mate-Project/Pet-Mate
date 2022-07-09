@@ -1,14 +1,13 @@
 import React from 'react'
-import GlobalStyles from '../../style/globalStyle'
 import { NavBack } from '../../components/navBack/NavBack'
 import { UserFollow } from '../../components/user/User'
 import { FollowMain } from './followStyle'
 import TabMenu from '../../components/tabMenu/TabMenu'
+import { AllWrap } from '../../style/commonStyle'
 
 function Follow() {
   return (
-    <>
-      <GlobalStyles />
+    <AllWrap>
       <NavBack
         text={"Followers"} />
       <FollowMain>
@@ -32,7 +31,7 @@ function Follow() {
       </FollowMain>
       <TabMenu />
 
-    </>
+    </AllWrap>
   )
 }
 
