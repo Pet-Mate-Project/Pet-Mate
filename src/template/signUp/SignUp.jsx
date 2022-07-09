@@ -1,14 +1,14 @@
 import React from 'react'
 import { EmailInput, PasswordInput } from '../../components/input/Input'
 import { NextBtn } from '../../components/button/Button'
-import { FormStyle, MainStyle, Title } from '../../style/commonLoginStyle'
+import { FormStyle, PaddingMain, Title } from '../../style/commonStyle'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 
 
 function SignUp({ disabled, nextClick, userEmail, setEmail, userPassword, setPassword, message, emailCheck, register, errors }) {
   return (
     <>
-      <MainStyle>
+      <PaddingMain>
         <Title>이메일로 회원가입</Title>
         <FormStyle>
           <EmailInput
@@ -31,7 +31,7 @@ function SignUp({ disabled, nextClick, userEmail, setEmail, userPassword, setPas
           disabled={disabled}
           message={message}
         ></NextBtn>
-      </MainStyle>
+      </PaddingMain>
     </>
   )
 }
