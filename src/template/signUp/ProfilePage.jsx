@@ -11,7 +11,7 @@ function ProfilePage({ userName, setName, userId, setId, userIntro, setIntro, me
       <Message>나중에 언제든지 변경할 수 있습니다.
       </Message>
       <ProfileSet userName={userName}
-        setNam={setName}
+        setName={setName}
         userId={userId}
         setId={setId}
         userIntro={userIntro}
