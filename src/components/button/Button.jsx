@@ -72,10 +72,10 @@ export function UploadBtn() {
 }
 
 //중간사이즈(120x44) 버튼
-export function MiddleBtn({ text,onClickFt }) {
+export function MiddleBtn({ textBtn,onClickFt }) {
   return (
     <Button width={120} height={44} hover onClick={onClickFt}>
-      {text}
+      {textBtn}
     </Button>
   )
 }
