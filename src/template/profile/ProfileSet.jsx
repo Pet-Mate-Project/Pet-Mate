@@ -2,7 +2,7 @@ import React from 'react'
 import { IdInput, IntroInput, NameInput } from '../../components/input/Input'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 import Profile from '../../components/profile/Profile'
-import { FormStyle } from '../../style/commonLoginStyle'
+import { FormStyle } from '../../style/commonStyle'
 
 export function ProfileSet({ userName, setName, userId, setId, userIntro, setIntro, message, IdCheck, userImg, setImg, register, errors }) {
   return (
