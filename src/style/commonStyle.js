@@ -1,14 +1,12 @@
 import styled from 'styled-components'
 
-export const NonPaddingMain = styled.main`
+export const AllWrap = styled.div`
   margin: 0 auto;
   width: 390px;
   height: 820px;
-  box-sizing: border-box;
-  border: 1px solid transparent;
 `
 
-export const PaddingMain = styled(NonPaddingMain)`
+export const PaddingMain = styled.main`
   padding : 30px 34px;
   `
 
