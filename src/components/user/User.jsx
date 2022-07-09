@@ -1,13 +1,14 @@
 import React from 'react'
-import { FollowToggleBtn } from '../button/Button.jsx'
-import { ProfileIconM } from '../profileIcon/ProfileIcon.jsx'
-import { TextWrapper, UserId, UserName, Wrapper } from './userStyle.js'
+import { ChatBtn, FollowToggleBtn } from '../button/Button.jsx'
+import { ProfileIconS } from '../profileIcon/ProfileIcon.jsx'
+import { TextWrapper, UserId, UserName, Wrapper, MoreIcon } from './userStyle.js'
+import moreIcon from '../../assets/icon-more-vertical-small.svg'
 
 
 export function User() {
   return (
     <Wrapper>
-      <ProfileIconM />
+      <ProfileIconS />
       <TextWrapper>
         <UserName>코랑이</UserName>
         <UserId>@coding_arang</UserId>
@@ -22,6 +23,28 @@ export function UserFollow() {
       <Wrapper between>
         <User />
         <FollowToggleBtn />
+      </Wrapper>
+    </>
+  )
+}
+
+export function UserMore() {
+  return (
+    <>
+      <Wrapper between>
+        <User />
+        <MoreIcon src={moreIcon} />
+      </Wrapper>
+    </>
+  )
+}
+
+export function UserChat() {
+  return (
+    <>
+      <Wrapper between>
+        <User />
+        <ChatBtn />
       </Wrapper>
     </>
   )

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import SignUp from '../template/signUp/SignUp';
 import ProfilePage from '../template/signUp/ProfilePage';
 import { useForm } from 'react-hook-form';

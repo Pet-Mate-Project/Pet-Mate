@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Button } from './buttonStyle';
+import { Button,IconButton } from './buttonStyle';
 import iconEmail from '../../assets/icon-email.svg';
 import iconSign from '../../assets/icon-signup.svg';
 
-export function NextBtn({ nextClick, disabled, message }) {
+//검증관련 버튼 
+export function NextBtn({ nextClick , disabled, message }) {
   if (message === '이미 가입된 이메일 주소 입니다.' || message === '' || !disabled) {
     return <Button type='button'>다음</Button>;
   }
@@ -12,32 +13,7 @@ export function NextBtn({ nextClick, disabled, message }) {
   }
 }
 
-
-export function LoginBtn({ onClick }) {
-  return (
-    <Button onClick={onClick} hover>
-      로그인
-    </Button>
-  );
-}
-
-export function EmailLoginBtn() {
-  return (
-    <Button icon={iconEmail} hover>
-      이메일로 로그인
-    </Button>
-  );
-}
-
-export function JoinBtn() {
-  return (
-    <Button icon={iconSign} hover>
-      회원가입
-    </Button>
-  );
-}
-
-export function StartBtn({ signUp, disabled, message  }) {
+export function StartBtn({ signUp, disabled, message }) {
 
   if (message === '이미 가입된 계정ID 입니다.' || message === '' || !disabled) {
     return <Button>시작하기</Button>;
@@ -47,10 +23,41 @@ export function StartBtn({ signUp, disabled, message  }) {
   }
 }
 
+// -------------------------------------------------------
+// 기본 버튼 -> 텍스트 넣어서 사용
+export function LoginBtn({ onClick }) {
+  return (
+    <Button onClick={onClick} hover>
+      로그인
+    </Button>
+  );
+}
+    
+// -------------------------------------------------------
+//아이콘있는 버튼
+export function EmailLoginBtn() {
+  return (
+    <IconButton icon={iconEmail} hover>
+      이메일로 로그인
+    </IconButton>
+  );
+}
+
+export function JoinBtn() {
+  return (
+    <IconButton icon={iconSign} hover>
+      회원가입
+    </IconButton>
+  );
+}
+
+// -------------------------------------------------------
 
 export function SaveBtn(props) {
+
   return (
-    <Button width={90} height={32} right={props}  hover >
+    <Button width={90} height={32} right={props} hover
+      onClick={props.profileSave} >
       저장
     </Button>
   )
@@ -64,38 +71,42 @@ export function UploadBtn() {
   )
 }
 
-export function BackBtn() {
+//중간사이즈(120x44) 버튼
+export function MiddleBtn({ text,onClickFt }) {
   return (
-    <Button width={120} height={44} hover>
-      이전페이지
+    <Button width={120} height={44} hover onClick={onClickFt}>
+      {text}
     </Button>
   )
 }
 
+// -------------------------------------------------------
+// 색상반전 버튼
 export function ChatBtn() {
   return (<>
     <Button
-      width={120}
-      height={44}
+      width={90}
+      height={32}
       color={'#1D57C1'}
       backColor={'white'}
       hover
     >
-      채팅하기
+      연락하기
     </Button>
   </>)
 }
+ 
+// -------------------------------------------------------
+//토글버튼
 
 export function FollowToggleBtn() {
   const [isFollow, setIsFollow] = useState(false)
-
   function onClick() {
     isFollow === false ?
       setIsFollow(true) :
       setIsFollow(false);
     console.log(isFollow)
   }
-
   if (!isFollow) {
     return (
       <Button width={56} height={28}
