@@ -1,13 +1,17 @@
 import styled, { css } from 'styled-components';
 
-export const TabMenuStyle = styled.div`
-width: 100%;
+export const TabMenuStyle = styled.nav`
+width: 390px;
 background-color: white;
 position: fixed;
 bottom: 0;
+left: 50%;
+transform: translate(-50%, 0);
 display : flex;
 justify-content: space-between;
-border: 1px solid black;
+box-sizing: border-box;
+border-top: 1px solid #DBDBDB;
+padding: 12px 0 8px
 `
 
 export const IconNameStyle = styled.p`
