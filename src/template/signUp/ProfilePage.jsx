@@ -1,12 +1,8 @@
 import React from 'react'
 import { Message } from './profilePageStyle'
-<<<<<<< HEAD
 import Profile from '../../components/profile/Profile'
 import { PaddingMain, Title, FormStyle } from '../../style/commonStyle'
 import { IdInput, IntroInput, NameInput } from '../../components/input/Input'
-=======
-import { MainStyle, Title } from '../../style/commonLoginStyle'
->>>>>>> 10eb87d03e2ccc0a042d43a9d43afbfd9d2d2403
 import { StartBtn } from '../../components/button/Button'
 import { ProfileSet } from '../profile/ProfileSet'
 
