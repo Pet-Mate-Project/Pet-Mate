@@ -37,7 +37,7 @@ export function JoinBtn() {
   );
 }
 
-export function StartBtn({ signUp, disabled, message  }) {
+export function StartBtn({ signUp, disabled, message }) {
 
   if (message === '이미 가입된 계정ID 입니다.' || message === '' || !disabled) {
     return <Button>시작하기</Button>;
@@ -49,8 +49,10 @@ export function StartBtn({ signUp, disabled, message  }) {
 
 
 export function SaveBtn(props) {
+
   return (
-    <Button width={90} height={32} right={props}  hover >
+    <Button width={90} height={32} right={props} hover
+      onClick={props.profileSave} >
       저장
     </Button>
   )
