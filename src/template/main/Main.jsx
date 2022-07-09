@@ -8,19 +8,21 @@ import { Link } from "react-router-dom";
 function Main({ loading, visible }) {
 
   return (
-    <AllWrap>
+    <>
       {
         (loading === 'false') &&
-        <PaddingMain>
-          <LogoStyle />
-          <Gap>
-            <Link to="/login" >  <EmailLoginBtn /></Link>
-          </Gap>
-          <Link to="/join" > <JoinBtn /></Link>
-        </PaddingMain>
+        <AllWrap>
+          <PaddingMain>
+            <LogoStyle />
+            <Gap>
+              <Link to="/login" >  <EmailLoginBtn /></Link>
+            </Gap>
+            <Link to="/join" > <JoinBtn /></Link>
+          </PaddingMain>
+        </AllWrap>
 
       }
-    </AllWrap>
+    </>
   )
 }
 

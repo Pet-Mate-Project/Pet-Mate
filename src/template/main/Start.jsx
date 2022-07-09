@@ -4,14 +4,16 @@ import { AllWrap, PaddingMain } from '../../style/commonStyle'
 
 function Start({ loading }) {
   return (
-    <AllWrap>
+    <>
       {
         (loading === 'true') &&
-        <PaddingMain>
-          <FullLogoStyle />
-        </PaddingMain>
+        <AllWrap>
+          <PaddingMain>
+            <FullLogoStyle />
+          </PaddingMain>
+        </AllWrap>
       }
-    </AllWrap>
+    </>
   )
 }
 
