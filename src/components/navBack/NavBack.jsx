@@ -2,7 +2,7 @@ import React from 'react';
 import { NavWrapper, Img, NavBtn, NavTxt, FloatR } from './navBackStyle'
 import arrow from '../../assets/icon-arrow-left.svg'
 import vertical from '../../assets/icon-more-vertical.svg'
-import serchbar from '../../assets/icon-search.svg'
+import searchbar from '../../assets/icon-search.svg'
 import { SearchInput } from '../input/Input'
 import { SaveBtn } from '../button/Button';
 
@@ -41,20 +41,20 @@ export function NavSearch(props) {
     <NavWrapper>
       <NavTxt>{props.text}</NavTxt>
       <NavBtn>
-        <Img src={serchbar} alt="" />
+        <Img src={searchbar} alt="" />
       </NavBtn>
     </NavWrapper>
   )
 }
 
 //top-upload-nav
-export function SaveNav({ profileSave }) {
+export function SaveNav({ profileSave, disabled }) {
   return (
     <NavWrapper>
       <NavBtn>
         <Img src={arrow} alt="" />
       </NavBtn>
-      <SaveBtn profileSave={profileSave} right />
+      <SaveBtn profileSave={profileSave} disabled={disabled} right />
     </NavWrapper>
   )
 }

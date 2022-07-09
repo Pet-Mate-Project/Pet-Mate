@@ -23,7 +23,7 @@ export const NavBtn = styled.button`
       float:right;  
     }
 `
-export const NavTxt = styled.p`
+export const NavTxt = styled.h1`
   padding:5px;
   font-size:14px;
   line-height:20px;
