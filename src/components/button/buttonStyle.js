@@ -1,16 +1,15 @@
 import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
-  /* background-color: #7eacff; */
-  position: relative;
-  width: 100%;
-  height: 44px;
-  text-align: center;
-  color : white;
-  cursor:pointer;
-  background-color: #7EACFF;
-  border-radius: 44px;
-  box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height: 44px;
+    text-align: center;
+    color : white;
+    cursor:pointer;
+    background-color: #7EACFF;
+    border-radius: 44px;
+    box-sizing: border-box;
 
     ${(props) => {
     return css`
@@ -29,8 +28,28 @@ export const Button = styled.button`
     }
   }}
 
- //props로 받은 icon값이 존재할경우 스타일
-  ${(props) =>
+  ${(props) => {
+    if (props.hover) {
+      return css`
+        :hover{
+          background-color: #1D57C1;
+          color : white;
+        }
+      `}
+  }}
+
+  ${(props) => {
+    if (props.right){
+      return css`
+        float:right;
+    `}
+  } 
+}
+  `;
+
+//icon이 존재할경우 스타일
+export const IconButton = styled(Button)`
+ ${(props) =>
     props.icon &&
     css`
       line-height:22px;
@@ -45,22 +64,4 @@ export const Button = styled.button`
         background: url(${props.icon}) no-repeat center;
       }
     `}
-
-  ${(props) => {
-    if (props.hover) {
-      return css`
-        :hover{
-          background-color: #1D57C1;
-          color : white;
-        }
-      `}
-  }}
-
-${(props) => {
-    if (props.right){
-      return css`
-      float:right;
-  `}
-  } 
-}
-`;
+`
