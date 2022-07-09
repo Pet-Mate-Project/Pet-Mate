@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { NonPaddingMain } from '../../style/commonStyle';
 
-export const FollowMain = styled(NonPaddingMain)`
+export const FollowMain = styled.main`
 padding: 20px 16px 0;
 display: flex;
 flex-direction: column;
