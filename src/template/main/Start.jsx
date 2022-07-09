@@ -1,15 +1,15 @@
 import React from 'react'
 import { FullLogoStyle } from './mainStyle'
-import { MainStyle } from '../../style/commonLoginStyle'
+import { PaddingMain } from '../../style/commonStyle'
 
 function Start({loading}) {
   return (
     <>
       {
         (loading ==='true') &&
-       <MainStyle>
+       <PaddingMain>
          <FullLogoStyle />
-       </MainStyle>
+       </PaddingMain>
       }
     </>
   )
