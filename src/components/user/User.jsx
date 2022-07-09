@@ -5,23 +5,23 @@ import { TextWrapper, UserId, UserName, Wrapper, MoreIcon } from './userStyle.js
 import moreIcon from '../../assets/icon-more-vertical-small.svg'
 
 
-export function User() {
+export function User(props) {
   return (
     <Wrapper>
       <ProfileIconS />
       <TextWrapper>
-        <UserName>코랑이</UserName>
-        <UserId>@coding_arang</UserId>
+        <UserName>{props.userName}</UserName>
+        <UserId>@ {props.userId}</UserId>
       </TextWrapper>
     </Wrapper>
   )
 }
 
-export function UserFollow() {
+export function UserFollow({ userName, userId }) {
   return (
     <>
       <Wrapper between>
-        <User />
+        <User userName={userName} userId={userId} />
         <FollowToggleBtn />
       </Wrapper>
     </>

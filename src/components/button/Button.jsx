@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Button,IconButton } from './buttonStyle';
+import { Button, IconButton } from './buttonStyle';
 import iconEmail from '../../assets/icon-email.svg';
 import iconSign from '../../assets/icon-signup.svg';
 
 //검증관련 버튼 
-export function NextBtn({ nextClick , disabled, message }) {
+export function NextBtn({ nextClick, disabled, message }) {
   if (message === '이미 가입된 이메일 주소 입니다.' || message === '' || !disabled) {
     return <Button type='button'>다음</Button>;
   }
@@ -32,7 +32,7 @@ export function LoginBtn({ onClick }) {
     </Button>
   );
 }
-    
+
 // -------------------------------------------------------
 //아이콘있는 버튼
 export function EmailLoginBtn() {
@@ -72,7 +72,7 @@ export function UploadBtn() {
 }
 
 //중간사이즈(120x44) 버튼
-export function MiddleBtn({ textBtn,onClickFt }) {
+export function MiddleBtn({ textBtn, onClickFt }) {
   return (
     <Button width={120} height={44} hover onClick={onClickFt}>
       {textBtn}
@@ -95,7 +95,7 @@ export function ChatBtn() {
     </Button>
   </>)
 }
- 
+
 // -------------------------------------------------------
 //토글버튼
 
@@ -105,7 +105,6 @@ export function FollowToggleBtn() {
     isFollow === false ?
       setIsFollow(true) :
       setIsFollow(false);
-    console.log(isFollow)
   }
   if (!isFollow) {
     return (
