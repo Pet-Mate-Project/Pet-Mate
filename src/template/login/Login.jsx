@@ -63,7 +63,7 @@ export default function Login() {
       //토큰접근
       console.log(JSON.parse(localStorage.getItem("userinfo")).user.token);
 
-      navigate('/temppage');
+      navigate('/homepage');
     }//if문
 
 
