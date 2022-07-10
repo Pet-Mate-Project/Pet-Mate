@@ -1,6 +1,7 @@
 import styled,{ css } from 'styled-components';
 
 export const IconBtn = styled.button`
-  float:right;
+  position:fixed;
+  right:10px;
   cursor: pointer;
 `

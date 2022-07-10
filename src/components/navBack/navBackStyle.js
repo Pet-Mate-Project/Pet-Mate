@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-
 export const NavWrapper = styled.nav`
 border-bottom:1px solid #DBDBDB; 
 box-sizing:border-box;
@@ -8,6 +7,10 @@ width: 390px;
 height: 48px;
 padding : 8px 11px;
 margin: 0 auto;
+position: fixed;
+top: 0;
+background:white;
+z-index:10;
 `
 
 export const Img = styled.img`
@@ -25,7 +28,7 @@ export const NavBtn = styled.button`
 `
 export const NavTxt = styled.h1`
   padding:5px;
-  font-size:14px;
+  font-size:18px;
   line-height:20px;
   display:inline-block; 
 `

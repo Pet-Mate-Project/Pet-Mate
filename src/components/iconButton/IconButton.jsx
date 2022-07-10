@@ -1,5 +1,5 @@
 import React from "react";
-import {IconBtn} from './iconButton';
+import {IconBtn} from './iconButtonStyle'
 import addBtn from '../../assets/icon-add.svg';
 import imgUpload from "../../assets/upload-file.svg";
 
