@@ -6,7 +6,6 @@ import { ProfileSet } from '../profile/ProfileSet';
 import { useForm } from 'react-hook-form';
 import { AllWrap, PaddingMain } from '../../style/commonStyle';
 
-
 function ProfileModify() {
   const [userName, setName] = useState("");
   const [userId, setId] = useState("");
@@ -71,7 +70,7 @@ function ProfileModify() {
     console.log(userData)
     axios.put(url + '/user/accountnamevalid', userData, {
       headers: {
-        "Authorization": "Bearer {token}",
+        "Authorization": "Bearer" + JSON.parse(localStorage.getItem("userinfo"))?.user?.token,
         "Content-type": "application/json"
       }
     })
@@ -82,14 +81,18 @@ function ProfileModify() {
   }
 
   return (
-    <AllWrap>
-      <header>
-        <SaveNav profileSave={profileSave} />
-      </header>
-      <PaddingMain>
-        <ProfileSet userName={userName} setName={setName} userId={userId} setId={setId} userIntro={userIntro} setIntro={setIntro} message={message} userImg={userImg} setImg={setImg} register={register} IdCheck={IdCheck} errors={errors} />
-      </PaddingMain>
-    </AllWrap>
+    <>
+      <AllWrap>
+        <header>
+          <SaveNav profileSave={profileSave}
+            message={message}
+            disabled={isValid} />
+        </header>
+        <PaddingMain>
+          <ProfileSet userName={userName} setName={setName} userId={userId} setId={setId} userIntro={userIntro} setIntro={setIntro} message={message} userImg={userImg} setImg={setImg} register={register} IdCheck={IdCheck} errors={errors} />
+        </PaddingMain>
+      </AllWrap>
+    </>
   )
 }
 

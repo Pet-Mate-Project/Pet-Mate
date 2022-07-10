@@ -54,10 +54,16 @@ export function JoinBtn() {
 // -------------------------------------------------------
 
 export function SaveBtn(props) {
-
+  if (props.message === '이미 가입된 계정ID 입니다.' || props.message === '' || !props.disabled)
+    return (
+      <Button width={90} height={32} right={props} >
+        저장
+      </Button>
+    )
   return (
     <Button width={90} height={32} right={props} hover
-      onClick={props.profileSave} >
+      onClick={props.profileSave}
+      disabled={!props.disabled} >
       저장
     </Button>
   )
