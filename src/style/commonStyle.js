@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 
 export const AllWrap = styled.div`
-  margin: 0 auto;
+  border: 1px solid #dddddd;
+  position: absolute;
+  background-color:white;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%, -50%);
   width: 390px;
   height: 820px;
 `
