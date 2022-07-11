@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const NavWrapper = styled.nav`
 border-bottom:1px solid #DBDBDB; 
 box-sizing:border-box;
-width: 390px;
+width: 100%;
 height: 48px;
 padding : 8px 11px;
 margin: 0 auto;
