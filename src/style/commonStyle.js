@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const AllWrap = styled.div`
-  border: 1px solid #dddddd;
   position: absolute;
   background-color:white;
   left: 50%;
@@ -9,6 +8,10 @@ export const AllWrap = styled.div`
   transform: translate(-50%, -50%);
   width: 390px;
   height: 820px;
+  width:100%;
+  height:100%;
+  max-width: 600px;
+  max-height:  1200px;
 `
 
 export const PaddingMain = styled.main`
