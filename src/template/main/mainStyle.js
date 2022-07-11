@@ -15,5 +15,8 @@ export const FullLogoStyle = styled.div`
   height: 270px;
   width: 270px;
   background: url(${fullPetLogo}) no-repeat;
-  margin: 287px 26px;
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `
