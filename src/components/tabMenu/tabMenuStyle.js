@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const TabMenuStyle = styled.nav`
-width: 390px;
+width: 100%;
 background-color: white;
 position: fixed;
 bottom: 0;
