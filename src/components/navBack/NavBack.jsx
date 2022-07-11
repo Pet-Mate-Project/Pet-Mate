@@ -48,13 +48,24 @@ export function NavSearch(props) {
 }
 
 //top-upload-nav
-export function SaveNav({ profileSave, disabled }) {
+export function ProfileSaveNav({ profileSave, disabled }) {
   return (
     <NavWrapper>
       <NavBtn>
         <Img src={arrow} alt="" />
       </NavBtn>
       <SaveBtn profileSave={profileSave} disabled={disabled} right />
+    </NavWrapper>
+  )
+}
+
+export function PostSaveNav({ onClick, disabled }) {
+  return (
+    <NavWrapper>
+      <NavBtn>
+        <Img src={arrow} alt="" />
+      </NavBtn>
+      <SaveBtn onClick={onClick} disabled={disabled} />
     </NavWrapper>
   )
 }
