@@ -14,7 +14,6 @@ export default function AddPost() {
         <FormStyle>
           <TitleInput/>
           <PetInfoInput/>
-          <PostMeetTimeInput/>
           <PostIntroInput/>
         </FormStyle>
       </PaddingMain>
