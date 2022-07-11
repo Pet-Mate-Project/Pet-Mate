@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { SaveNav } from '../../components/navBack/NavBack';
+import { ProfileSaveNav } from '../../components/navBack/NavBack';
 import { ImgUpload } from '../../pages/SignUpMain';
 import { ProfileSet } from '../profile/ProfileSet';
 import { useForm } from 'react-hook-form';
@@ -84,7 +84,7 @@ function ProfileModify() {
     <>
       <AllWrap>
         <header>
-          <SaveNav profileSave={profileSave}
+          <ProfileSaveNav profileSave={profileSave}
             message={message}
             disabled={isValid} />
         </header>
