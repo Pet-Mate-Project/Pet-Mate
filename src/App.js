@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalStyles from './style/globalStyle';
 import { Route, Router, Routes } from 'react-router-dom'
-import TempPage from './template/TempPage';
+import Homepage from './pages/Homepage';
 import Main from './template/main/Main';
 import InitPage from './pages/InitPage';
 import Login from './template/login/Login'
@@ -19,8 +19,8 @@ function App() {
         {/* <Route path='/main' element={<Main/>}> </Route> */}
         <Route path='/login' element={<Login />}></Route>
         <Route path='/join' element={<SignUpMainPage />}> </Route>
-        {/* 임시페이지입니다  */}
-        <Route path='/temppage' element={<TempPage />}></Route>
+        <Route path='/homepage' element={<Homepage/>}></Route>
+        
       </Routes>
       <AnimatePresence />
     </>
