@@ -4,7 +4,7 @@ import arrow from '../../assets/icon-arrow-left.svg'
 import vertical from '../../assets/icon-more-vertical.svg'
 import searchbar from '../../assets/icon-search.svg'
 import { SearchInput } from '../input/Input'
-import { SaveBtn } from '../button/Button';
+import { SaveBtn,PostSaveBtn } from '../button/Button';
 
 // props가 있는 경우 chat-nav, 없는경우 top-basic-nav  
 // 사용예 (텍스트가 있는경우): <NavBack text={"코랑이"} /> 
@@ -65,7 +65,7 @@ export function PostSaveNav({ onClick, disabled }) {
       <NavBtn>
         <Img src={arrow} alt="" />
       </NavBtn>
-      <SaveBtn onClick={onClick} disabled={disabled} />
+      <PostSaveBtn onClick={onClick} disabled={disabled} />
     </NavWrapper>
   )
 }

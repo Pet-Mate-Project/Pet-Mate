@@ -28,6 +28,8 @@ export default function AddPost() {
   //input 데이터
   const [Title,setTitle] = useState("")
   const [petInfo,setPetInfo] = useState("")
+  //버튼활성화
+  const [btn,setBtn] = useState(true)
 
 
   //서버에 보낼 데이터
@@ -39,7 +41,18 @@ export default function AddPost() {
       "itemImage": ""
     },
   }
-  
+
+  //버튼활성화
+  useEffect(()=>{
+    console.log(Title.length);
+    if(Title.length>=2&& petInfo!==""&& showImg!==""){
+      setBtn(false)
+    }
+    else{
+      setBtn(true)
+    }
+  },[Title,petInfo,showImg])
+
   //이미지미리보기
   const onChange = (e) => {
     if (e.target.files[0]) { 
@@ -51,11 +64,13 @@ export default function AddPost() {
       if (reader.readyState === 2) {
         setShowImg(reader.result)
       }
+      else{
+        return
+      }
     }
     reader.readAsDataURL(e.target.files[0])
   }
   
-
   // 게시글 서버에 보내기
   async function PostSave(){
     const imgData = await ImgUpload(userImg);
@@ -73,15 +88,14 @@ export default function AddPost() {
     console.log("res : ",res);
     dispatch(postActions.postAllCont(postData));
   }
-
+  
   return (
     <AllWrap>
       <header>
-        <PostSaveNav/>
+        <PostSaveNav onClick={PostSave} disabled={btn}/>
       </header>
       <PaddingMain>
         <ImgUploadBox onChange={onChange} src={showImg} fileref={fileInput} setImg={setImg} />
-        <button onClick={PostSave}>post test</button>
         <FormStyle>
           <TitleInput Title={Title} setTitle={setTitle} register={register} />
           <PetInfoInput petInfo = {petInfo} setPetInfo={setPetInfo}/>
