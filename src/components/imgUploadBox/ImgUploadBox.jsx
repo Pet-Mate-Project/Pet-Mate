@@ -1,20 +1,20 @@
 import React from 'react'
 import {FileUploader,FileInput,ImgRegist,TitleTxt ,ImgUploadWrapper} from './imgUploadBoxStyle'
 
-export default function ImgUploadBox() {
+export default function ImgUploadBox({onChange,ref,src}) {
   return (
     <>
       <ImgUploadWrapper>
         <TitleTxt>이미지 등록</TitleTxt>
-        <ImgRegist/>
+        <ImgRegist src={src} alt='반려동물 이미지 등록' onClick={()=> {ref.current.click()}}/>
         <FileUploader htmlFor="input-file">
           <FileInput
             id="input-file"
             type="file"
             accept='image/*'
             name='profileImg'
-            // onChange={onChange}
-            // ref={fileInput}
+            onChange={onChange}
+            ref={ref}
           />
         </FileUploader>
       </ImgUploadWrapper>
