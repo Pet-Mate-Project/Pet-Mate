@@ -23,9 +23,13 @@ font-size: 24px;
 text-align: center;
 `
 
-export const FormStyle = styled.form`
-display: flex;
-flex-direction: column;
-  gap: 16px;
+export const FormStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   margin: 30px 0;
+  //모바일 환경일경우
+  @media screen  and (max-width:420px) {
+    gap: 16px; 
+  }
 `

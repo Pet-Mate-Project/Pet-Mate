@@ -3,9 +3,13 @@ import imgUpload from '../../assets/icon-img-gray.svg'
 
 export const ImgUploadWrapper = styled.div`
   position: relative;
-  width: 322px;
-  height: 236px;
-  margin:48px auto 30px;
+  width: 100%;
+  max-height: 600px;
+  margin:48px auto 60px;
+  //모바일 환경에서 마진조정
+  @media screen  and (max-width:420px ){
+    margin-bottom: 36px;
+  }
 `
 
 export const TitleTxt = styled.p`
@@ -15,11 +19,19 @@ export const TitleTxt = styled.p`
 ` 
 
 export const ImgRegist = styled.img`
+  box-sizing:border-box;
+  display: block;
   border: 0.5px solid #DBDBDB;
   background-color: #F2F2F2;
+  object-fit: cover;
   border-radius: 10px;
-  width:322px;
-  height:204px;
+  width: 100%;
+  height:300px; 
+   //모바일 환경에서는 사진 크기 고정
+  @media screen  and (max-width:420px ){
+    width:100%;
+    height: 236px; 
+  }
 `
 
 export const FileUploader = styled.label`
