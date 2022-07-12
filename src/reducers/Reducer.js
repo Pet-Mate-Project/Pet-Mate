@@ -12,8 +12,10 @@ export const postSlice = createSlice({
   initialState,
   reducers:{
     postAllCont(state,action){
+
       state = action.payload.data;
-      console.log(action);
+      console.log("state:",state);
+      console.log("action:",action);
     }
   }
 })

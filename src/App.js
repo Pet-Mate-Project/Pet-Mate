@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalStyles from './style/globalStyle';
 import { Route, Router, Routes } from 'react-router-dom'
-import Homepage from './pages/Homepage';
+import HomePage from './pages/HomePage';
 import Main from './template/main/Main';
 import InitPage from './pages/InitPage';
 import Login from './template/login/Login'
@@ -19,7 +19,7 @@ function App() {
         {/* <Route path='/main' element={<Main/>}> </Route> */}
         <Route path='/login' element={<Login />}></Route>
         <Route path='/join' element={<SignUpMainPage />}> </Route>
-        <Route path='/homepage' element={<Homepage/>}></Route>
+        <Route path='/homepage' element={<HomePage/>}></Route>
         
       </Routes>
       <AnimatePresence />
