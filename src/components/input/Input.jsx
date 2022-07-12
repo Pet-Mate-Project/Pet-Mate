@@ -118,28 +118,32 @@ export function PasswordInput({ userPassword, setPassword, register }) {
 }
 
 // post에 필요한 input
-export function TitleInput() {
+export function TitleInput({Title,setTitle}) {
   return (
     <LabelStyle>제목
       <InputStyle
         placeholder='2-15자 이내여야 합니다.'
         type="text"
-        name="postTitle"
-      // value={postTitle}
+        name="Title"
+        value={Title}
+        minLength="2"
+        maxLength = "15"
+        onChange={(e)=>{setTitle(e.target.value)}}
       />
     </LabelStyle>
   );
 }
 
 
-export function PetInfoInput() {
+export function PetInfoInput({petInfo,setPetInfo}) {
   return (
     <LabelStyle>반려동물 정보
       <InputStyle
-        placeholder='종류 / 나이 / 성별'
+        placeholder='종류 / 나이 / 성별 / 주의사항을 작성해주세요.'
         type="text"
-        name="postPetInfo"
-      // value={postPetInfo}
+        name="petInfo"
+        value={petInfo}
+        onChange={(e)=>{setPetInfo(e.target.value)}}
       />
     </LabelStyle>
   );
@@ -159,14 +163,17 @@ export function PostMeetTimeInput() {
   );
 }
 
-export function PostIntroInput() {
+export function PostIntroInput({postIntro,setPostIntro}) {
   return (
     <LabelStyle>한마디
       <InputStyle
         placeholder='주의사항이나 남기고싶은 말을 입력해주세요!'
         type="text"
-        name="postIntro"
-      // value={postIntro}
+        name="wanttoSay"
+        value={postIntro}
+        onChange={(e)=>{
+          setPostIntro(e.target.value)
+        }}
       />
     </LabelStyle>
   );

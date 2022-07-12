@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState,useRef } from 'react'
+import { useState,useRef ,useEffect} from 'react'
 import {AllWrap,PaddingMain,FormStyle} from '../../style/commonStyle'
 import {PostSaveNav} from '../../components/navBack/NavBack'
 import ImgUploadBox from '../../components/imgUploadBox/ImgUploadBox'
@@ -8,16 +8,43 @@ import { useDispatch, useSelector } from "react-redux";
 import {postAllCont,postActions} from '../../reducers/Reducer'
 import axios from 'axios';
 import { ImgUpload } from '../../pages/SignUpMain';
+import {useForm} from 'react-hook-form'
 
 export default function AddPost() {
+  const dispatch = useDispatch();
+  //form state
+  const {
+    register,
+    formState: {isValid, errors},
+  } = useForm({mode : "onChange"});
 
-  //이미지 미리보기
+  //미리보기 이미지 state
   const [showImg, setShowImg] = useState("")
   const fileInput = useRef(null)
 
+  //서버에 보낼 file객체
+  const [userImg, setImg] = useState("");
+
+  //input 데이터
+  const [Title,setTitle] = useState("")
+  const [petInfo,setPetInfo] = useState("")
+
+
+  //서버에 보낼 데이터
+  let postData= {
+    "product":{
+      "itemName": Title,
+      "price": 9999999,
+      "link": petInfo,
+      "itemImage": ""
+    },
+  }
+  
+  //이미지미리보기
   const onChange = (e) => {
     if (e.target.files[0]) { 
       setShowImg(e.target.files[0])  
+      setImg(e.target.files[0])
     } 
     const reader = new FileReader();
     reader.onload = () => {
@@ -27,6 +54,25 @@ export default function AddPost() {
     }
     reader.readAsDataURL(e.target.files[0])
   }
+  
+
+  // 게시글 서버에 보내기
+  async function PostSave(){
+    const imgData = await ImgUpload(userImg);
+    postData.product.itemImage = imgData
+    console.log("postData",postData);
+    const URL = "https://mandarin.api.weniv.co.kr";
+    const loginReqPath = "/product";
+    const token = JSON.parse(localStorage.getItem("userinfo")).user.token;
+    const res = await axios.post(URL+loginReqPath,postData,{
+      headers: {
+        "Authorization" : `Bearer ${token}`,
+        "Content-type" : "application/json"
+      },
+    });
+    console.log("res : ",res);
+    dispatch(postActions.postAllCont(postData));
+  }
 
   return (
     <AllWrap>
@@ -34,11 +80,11 @@ export default function AddPost() {
         <PostSaveNav/>
       </header>
       <PaddingMain>
-        <ImgUploadBox onChange={onChange} src={showImg} ref={fileInput} />
+        <ImgUploadBox onChange={onChange} src={showImg} fileref={fileInput} setImg={setImg} />
+        <button onClick={PostSave}>post test</button>
         <FormStyle>
-          <TitleInput/>
-          <PetInfoInput/>
-          <PostIntroInput/>
+          <TitleInput Title={Title} setTitle={setTitle} register={register} />
+          <PetInfoInput petInfo = {petInfo} setPetInfo={setPetInfo}/>
         </FormStyle>
       </PaddingMain>
     </AllWrap>
