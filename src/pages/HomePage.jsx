@@ -4,7 +4,7 @@ import { AllWrap } from '../style/commonStyle'
 import { FollowCompo } from '../components/followCompo/FollowCompo'
 import { AddBtn } from '../components/iconButton/IconButton'
 import TabMenu from '../components/tabMenu/TabMenu'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export default function HomePage() {
   const textBtn = "펫 등록하기"
