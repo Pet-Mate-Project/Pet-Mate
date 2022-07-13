@@ -1,10 +1,10 @@
 import {createSlice,createAsyncThunk} from "@reduxjs/toolkit";
 
 let initialState = {
-  "itemName": "hello", //글제목
-  "price": "100000",
-  "link": "www",
-  "itemImage": "image1"
+  "itemName": "", 
+  "price": "99999999",
+  "link": "",
+  "itemImage": ""
 }
 
 export const postSlice = createSlice({
@@ -12,10 +12,10 @@ export const postSlice = createSlice({
   initialState,
   reducers:{
     postAllCont(state,action){
+
+      state = action.payload.data;
       console.log("state:",state);
       console.log("action:",action);
-      state.itemName = action.payload.data;
-      console.log(state.itemName);
     }
   }
 })

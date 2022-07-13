@@ -64,6 +64,7 @@ function ProfileModify() {
   //토큰값 부분 수정 필요
   async function profileSave() {
     console.log('클릭')
+    console.log(userImg);
     const imgUploadData = await ImgUpload(userImg)
     console.log('img res', imgUploadData)
     userData.user.image = imgUploadData

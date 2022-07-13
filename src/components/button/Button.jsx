@@ -69,6 +69,28 @@ export function SaveBtn(props) {
   )
 }
 
+export function PostSaveBtn({disabled,onClick}) {
+  console.log(disabled);
+  if (disabled) {
+    return (
+      <Button width={90} height={32} right 
+        disabled={disabled} >
+        저장
+      </Button>
+    )
+  }
+  else{
+    return(
+      <Button width={90} height={32} right 
+        onClick={onClick}
+        disabled={disabled} hover >
+      저장
+      </Button>
+    )
+  }
+
+}
+
 export function UploadBtn() {
   return (
     <Button width={90} height={32} hover>
