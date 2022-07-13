@@ -179,10 +179,10 @@ export function PostIntroInput({postIntro,setPostIntro}) {
   );
 }
 
-export function SearchInput(props) {
+export function SearchInput({props, placeholder}) {
   return (
     <SearchStyle
-      placeholder='검색'
+      placeholder={placeholder}
       type="search"
       name="search"
       right={props}

@@ -69,16 +69,17 @@ export function SaveBtn(props) {
   )
 }
 
-export function PostSaveBtn({disabled,onClick}) {
+export function PostSaveBtn({ disabled, onClick }) {
   console.log(disabled);
   if (disabled) {
     return (
-      <Button width={90} height={32} right 
+      <Button width={90} height={32} right
         disabled={disabled} >
         저장
       </Button>
     )
   }
+
   else{
     return(
       <Link to='/homepage'>
@@ -153,6 +154,37 @@ export function FollowToggleBtn() {
           backColor={'white'}
           onClick={onClick}>
           취소
+        </Button>
+      </>
+    )
+  }
+}
+
+
+export function ProfileFollowToggleBtn() {
+  const [isFollow, setIsFollow] = useState(false)
+  function onClick() {
+    isFollow === false ?
+      setIsFollow(true) :
+      setIsFollow(false);
+  }
+  if (!isFollow) {
+    return (
+      <Button width={120} height={34}
+        onClick={onClick} hover>
+        팔로우
+      </Button>
+    )
+  } else {
+    return (
+      <>
+        <Button
+          width={120}
+          height={34}
+          color={'#767676'}
+          backColor={'white'}
+          onClick={onClick}>
+          언팔로우
         </Button>
       </>
     )
