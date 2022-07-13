@@ -9,14 +9,15 @@ import { Link } from 'react-router-dom'
 export default function HomePage() {
   const textBtn = "펫 등록하기"
   const textDefault = "함께 놀 친구들을 찾아보세요! :)"
+  const url = '/post'
   return (
     <AllWrap>
       <header>
         <NavSearch text={"산책 피드"} />
       </header>
       <main>
-        <FollowCompo textBtn={textBtn} textDefault={textDefault} />
-        <Link to="/petpost">
+        <FollowCompo url={url} textBtn={textBtn} textDefault={textDefault} />
+        <Link to={url}>
           <AddBtn />
         </Link>
         <TabMenu />

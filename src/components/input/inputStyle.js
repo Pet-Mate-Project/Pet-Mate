@@ -29,7 +29,8 @@ color : #767676;
 
 export const SearchStyle = styled.input`
 padding: 8px 12px;
-width:316px;
+width:100%;
+margin:0 20px;
 background-color: #F2F2F2;
 border: none;
 border-radius: 32px;

@@ -1,13 +1,14 @@
 import React from 'react'
-import { NavTxtSearch } from '../../components/navBack/NavBack'
-import AccountSearchBar from '../../components/search/AccountSearchBar'
+import { NavBack, NavTxtSearch } from '../../components/navBack/NavBack'
 import TabMenu from '../../components/tabMenu/TabMenu'
 import { AllWrap } from '../../style/commonStyle'
 
 function AccountSearch () {
   return (
     <AllWrap>
-      <AccountSearchBar />
+      <NavBack>
+      </NavBack>
+      <NavTxtSearch placeholder={"계정 검색"}></NavTxtSearch>
       <TabMenu />
     </AllWrap>
   )

@@ -10,21 +10,17 @@ margin: 0 auto;
 position: fixed;
 top: 0;
 background:white;
+display:flex;
+justify-content: space-between;
 z-index:10;
 `
 
 export const Img = styled.img`
-  width:100%;
+  width:22px;
 `
 export const NavBtn = styled.button`
     cursor:pointer;
     padding:5px;
-    &:first-child{
-      float:left;
-    }
-    &:last-child{
-      float:right;  
-    }
 `
 export const NavTxt = styled.h1`
   padding:5px;
