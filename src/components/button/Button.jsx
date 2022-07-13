@@ -168,7 +168,7 @@ export function ProfileFollowToggleBtn() {
   if (!isFollow) {
     return (
       <Button width={120} height={34}
-        onClick={onClick} backColor={'#1D57C1'}>
+        onClick={onClick} hover>
         팔로우
       </Button>
     )
