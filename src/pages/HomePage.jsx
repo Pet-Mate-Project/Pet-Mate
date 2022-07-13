@@ -4,18 +4,21 @@ import { AllWrap } from '../style/commonStyle'
 import { FollowCompo } from '../components/followCompo/FollowCompo'
 import { AddBtn } from '../components/iconButton/IconButton'
 import TabMenu from '../components/tabMenu/TabMenu'
+import { Link } from 'react-router-dom'
 
 export default function HomePage() {
-  const textBtn = "친구 구하기"
+  const textBtn = "펫 등록하기"
   const textDefault = "함께 놀 친구들을 찾아보세요! :)"
   return (
     <AllWrap>
       <header>
-        <NavSearch text={"친구구해요"} />
+        <NavSearch text={"산책 피드"} />
       </header>
       <main>
         <FollowCompo textBtn={textBtn} textDefault={textDefault} />
-        <AddBtn />
+        <Link to="/petpost">
+          <AddBtn />
+        </Link>
         <TabMenu />
       </main>
     </AllWrap>

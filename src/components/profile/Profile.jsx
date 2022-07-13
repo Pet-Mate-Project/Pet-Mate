@@ -38,7 +38,7 @@ export function Profile({ userImg, setImg }) {
           <FileInput
             id="input-file"
             type="file"
-            accept='image/*'
+            accept='image/gif, image/jpeg, image/png, image/jpg'
             name='profileImg'
             onChange={onChange}
             ref={fileInput}

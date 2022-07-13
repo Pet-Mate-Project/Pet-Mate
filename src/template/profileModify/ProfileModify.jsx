@@ -4,7 +4,8 @@ import { ProfileSaveNav } from '../../components/navBack/NavBack';
 import { ImgUpload } from '../../pages/SignUpMain';
 import { ProfileSet } from '../profile/ProfileSet';
 import { useForm } from 'react-hook-form';
-import { AllWrap, PaddingMain } from '../../style/commonStyle';
+import { AllWrap } from '../../style/commonStyle';
+import { ProfileModifyMain } from './profileModifyStyle'
 
 function ProfileModify() {
   const [userName, setName] = useState("");
@@ -88,9 +89,9 @@ function ProfileModify() {
             message={message}
             disabled={isValid} />
         </header>
-        <PaddingMain>
+        <ProfileModifyMain>
           <ProfileSet userName={userName} setName={setName} userId={userId} setId={setId} userIntro={userIntro} setIntro={setIntro} message={message} userImg={userImg} setImg={setImg} register={register} IdCheck={IdCheck} errors={errors} />
-        </PaddingMain>
+        </ProfileModifyMain>
       </AllWrap>
     </>
   )
