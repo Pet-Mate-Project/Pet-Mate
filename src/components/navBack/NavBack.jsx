@@ -24,13 +24,13 @@ export function NavBack(props) {
 }
 
 //top-search-nav
-export function NavTxtSearch() {
+export function NavTxtSearch({placeholder}) {
   return (
     <NavWrapper>
       <NavBtn>
         <Img src={arrow} alt="" />
       </NavBtn>
-      <SearchInput />
+      <SearchInput placeholder={placeholder}/>
     </NavWrapper>
   )
 }
