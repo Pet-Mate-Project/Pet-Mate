@@ -31,6 +31,7 @@ function MyProfile(props) {
           height={34}
           color={'#767676'}
           backColor={'white'}
+          hover
         >프로필 수정
         </Button>
         <Button
@@ -38,7 +39,8 @@ function MyProfile(props) {
           height={34}
           color={'#767676'}
           backColor={'white'}
-        >연락하기
+          hover
+        >펫 등록
         </Button>
       </ButtonWrap>
     </>
