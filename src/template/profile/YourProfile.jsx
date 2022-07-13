@@ -1,10 +1,12 @@
 import React from 'react'
 import { ProfileImg } from '../../components/profile/profileStyle'
 import basicImg from '../../assets/basic-profile.svg'
-import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap } from './ProfileStyle'
-import { Button } from '../../components/button/buttonStyle'
+import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap, OnlyIconButton } from './ProfileStyle'
+import { ProfileFollowToggleBtn } from '../../components/button/Button'
+import chatIcon from '../../assets/icon-message.svg'
+import shareIcon from '../../assets/icon-share.svg'
 
-function MyProfile(props) {
+function YourProfile(props) {
   return (
     <>
       <Wrapper>
@@ -26,23 +28,20 @@ function MyProfile(props) {
         <IntroText>{props.intro}</IntroText>
       </ColumnWapper>
       <ButtonWrap>
-        <Button
-          width={120}
-          height={34}
-          color={'#767676'}
+        <OnlyIconButton icon={chatIcon} color={'#767676'}
           backColor={'white'}
-        >프로필 수정
-        </Button>
-        <Button
-          width={120}
-          height={34}
-          color={'#767676'}
+          width={34}
+          height={34}>
+        </OnlyIconButton>
+        <ProfileFollowToggleBtn />
+        <OnlyIconButton icon={shareIcon} color={'#767676'}
           backColor={'white'}
-        >연락하기
-        </Button>
+          width={34}
+          height={34}>
+        </OnlyIconButton>
       </ButtonWrap>
     </>
   )
 }
 
-export default MyProfile
+export default YourProfile
