@@ -3,6 +3,8 @@ import { FollowCompoWrapper, DefaultImg, DefaultTxt } from './followCompoStyle'
 import grayLogo from '../../assets/gray-logo.svg'
 import logo404 from '../../assets/404-logo.svg'
 import { MiddleBtn } from '../../components/button/Button'
+import { Link } from "react-router-dom";
+
 
 export function FollowCompo(props) {
   return (
@@ -11,7 +13,9 @@ export function FollowCompo(props) {
       <DefaultTxt>
         {props.textDefault}
       </DefaultTxt>
-      <MiddleBtn textBtn={props.textBtn} />
+      <Link to= {props.url}>
+        <MiddleBtn textBtn={props.textBtn} />
+      </Link>
     </FollowCompoWrapper>
   )
 }

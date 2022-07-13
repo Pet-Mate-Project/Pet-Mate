@@ -5,6 +5,7 @@ import vertical from '../../assets/icon-more-vertical.svg'
 import searchbar from '../../assets/icon-search.svg'
 import { SearchInput } from '../input/Input'
 import { SaveBtn,PostSaveBtn } from '../button/Button';
+import { Link } from "react-router-dom";
 
 // props가 있는 경우 chat-nav, 없는경우 top-basic-nav  
 // 사용예 (텍스트가 있는경우): <NavBack text={"코랑이"} /> 
@@ -62,9 +63,11 @@ export function ProfileSaveNav({ profileSave, disabled }) {
 export function PostSaveNav({ onClick, disabled }) {
   return (
     <NavWrapper>
-      <NavBtn>
-        <Img src={arrow} alt="" />
-      </NavBtn>
+      <Link to='/homepage'>
+        <NavBtn>
+          <Img src={arrow} alt="" />
+        </NavBtn>
+      </Link>
       <PostSaveBtn onClick={onClick} disabled={disabled} />
     </NavWrapper>
   )

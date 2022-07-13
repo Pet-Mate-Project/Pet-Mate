@@ -7,6 +7,8 @@ import InitPage from './pages/InitPage';
 import Login from './template/login/Login'
 import { AnimatePresence } from 'framer-motion';
 import SignUpMainPage from './pages/SignUpMain';
+import AddPost from './template/post/AddPost'
+import { NavBack,NavTxtSearch,NavSearch,ProfileSaveNav ,PostSaveNav} from './components/navBack/NavBack';
 
 function App() {
   return (
@@ -20,9 +22,10 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/join' element={<SignUpMainPage />}> </Route>
         <Route path='/homepage' element={<HomePage/>}></Route>
-        
+        <Route path='/post' element={<AddPost/>}></Route> 
       </Routes>
       <AnimatePresence />
+     
     </>
   )
 }
