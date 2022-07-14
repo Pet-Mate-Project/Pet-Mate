@@ -16,10 +16,9 @@ export const AllWrap = styled.div`
 
 export const ScrollMain = styled.main`
 height: 100%;
-width: 100%;
-overflow: scroll;
+overflow: auto;
 box-sizing: border-box;
-margin-top: 50px;
+padding: 50px 0;
 `
 
 export const PaddingMain = styled.main`
