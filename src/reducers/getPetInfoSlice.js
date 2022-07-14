@@ -1,6 +1,5 @@
 import {createSlice,createAsyncThunk,current } from "@reduxjs/toolkit";
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
 
 const initialState = {
   petData : [],
@@ -9,12 +8,8 @@ const initialState = {
 }
 
 
-let userInfo="";
-if (localStorage.getItem("userinfo")!==null){
-  userInfo = JSON.parse(localStorage.getItem("userinfo")).user ;
-}
-
-const token =userInfo.token;
+const userInfo = JSON.parse(localStorage.getItem("userinfo"))?.user ;
+const token =userInfo?.token;
 const config = {
   headers: {
     "Authorization" : `Bearer ${token}`,
