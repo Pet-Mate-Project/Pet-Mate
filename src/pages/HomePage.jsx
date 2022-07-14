@@ -7,6 +7,8 @@ import { useEffect } from 'react'
 import { selectAllPosts,AxiosPetInfo,getPostStatus } from '../reducers/getPetInfoSlice'
 import DefaultFeed from '../template/walkingFeed/DefaultFeed'
 import WalkingFeed from '../template/walkingFeed/WalkingFeed'
+import { AddBtn } from '../components/iconButton/IconButton'
+import { Link } from 'react-router-dom'
 
 export default function HomePage() {
 
@@ -24,12 +26,18 @@ export default function HomePage() {
     }
   },[dispatch])
 
+
+
+
   return (          
     <AllWrap>
       <header>
         <NavSearch text={"산책 피드"} />
       </header>
       {(postsStatus==='idle'&&posts?.length===0) ?<DefaultFeed/>:<WalkingFeed/> }
+      <Link to={'/post'}>
+        <AddBtn/>
+      </Link>
       <TabMenu />
     </AllWrap>
               
