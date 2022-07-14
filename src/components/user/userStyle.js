@@ -48,10 +48,6 @@ export const ChatListWrapper = styled(Wrapper)`
   padding: 0 16px;
   margin: 20px 0;
   cursor: pointer;
-
-  :first-of-type {
-    margin-top: 72px;
-  }
 `
 
 export const ChatDate = styled.p`
