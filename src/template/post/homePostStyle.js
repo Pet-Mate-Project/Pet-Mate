@@ -33,13 +33,6 @@ export const TitleTxt = styled.p`
   color: #002D7D;
 `
 
-export const PetInfoTxt = styled.p`
-  font-size: 13px;
-  line-height: 15px;
-  color: #404040;
-  margin-left: auto;
-`
-
 export const ContentTxt = styled.p`
   font-size: 14px;
   line-height: 17px;
