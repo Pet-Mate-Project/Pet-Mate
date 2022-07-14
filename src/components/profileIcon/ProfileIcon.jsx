@@ -1,6 +1,6 @@
 import React from 'react'
 import profileIcon from '../../assets/basic-profile.svg'
-import { IconStyle } from './profileIconStyle'
+import { IconStyle, ChatIconStyle } from './profileIconStyle'
 
 export function ProfileIconS() {
   return (
@@ -11,5 +11,11 @@ export function ProfileIconS() {
 export function ProfileIconM() {
   return (
     <IconStyle src={profileIcon} width={50} height={50} />
+  )
+}
+
+export function ChatListProfileIcon({visible}) {
+  return (
+    <ChatIconStyle visible={visible} />
   )
 }
