@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const PostStyle = styled.div`
+export const PostStyle = styled.li`
   width: 390px;
   margin: 0 auto;
   padding: 10px 34px;
