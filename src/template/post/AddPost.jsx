@@ -8,16 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {postAllCont,postActions} from '../../reducers/Reducer'
 import axios from 'axios';
 import { ImgUpload } from '../../pages/SignUpMain';
-import {useForm} from 'react-hook-form'
+import { AxiosUpload } from '../../reducers/Reducer'
 
 export default function AddPost() {
-  const dispatch = useDispatch();
-  //form state
-  const {
-    register,
-    formState: {isValid, errors},
-  } = useForm({mode : "onChange"});
 
+  // const dispatch = useDispatch();
   //미리보기 이미지 state
   const [showImg, setShowImg] = useState("")
   const fileInput = useRef(null)
@@ -44,7 +39,6 @@ export default function AddPost() {
 
   //버튼활성화
   useEffect(()=>{
-    console.log(Title.length);
     if(Title.length>=2&& petInfo!==""&& showImg!==""){
       setBtn(false)
     }
@@ -75,7 +69,6 @@ export default function AddPost() {
   async function PostSave(){
     const imgData = await ImgUpload(userImg);
     postData.product.itemImage = imgData
-    console.log("postData",postData);
     const URL = "https://mandarin.api.weniv.co.kr";
     const loginReqPath = "/product";
     const token = JSON.parse(localStorage.getItem("userinfo")).user.token;
@@ -86,7 +79,7 @@ export default function AddPost() {
       },
     });
     console.log("res : ",res);
-    dispatch(postActions.postAllCont(postData));
+    // dispatch(postActions.postAllCont(postData));
   }
   
   return (
@@ -97,7 +90,7 @@ export default function AddPost() {
       <PaddingMain>
         <ImgUploadBox onChange={onChange} src={showImg} fileref={fileInput} setImg={setImg} />
         <FormStyle>
-          <TitleInput Title={Title} setTitle={setTitle} register={register} />
+          <TitleInput Title={Title} setTitle={setTitle} />
           <PetInfoInput petInfo = {petInfo} setPetInfo={setPetInfo}/>
         </FormStyle>
       </PaddingMain>
