@@ -27,7 +27,6 @@ function App() {
         <Route path='/feedpage' element={<FeedPage />}></Route>
         <Route path='/profilepage' element={<MyProfilePage />}></Route>
         <Route path='/profilemodify' element={<ProfileModify />}></Route>
-        <Route path='/homepage' element={<HomePage />}></Route>
         <Route path='/post' element={<AddPost />}></Route>
       </Routes>
       <AnimatePresence />

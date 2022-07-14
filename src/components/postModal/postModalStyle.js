@@ -1,13 +1,49 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+
+const slideUp = keyframes`
+from {
+  transform: translateY(200px);
+}
+to{
+  transform: translateY(0px);
+}
+`
+
+const fadeIn = keyframes`
+from {
+  opacity: 0;
+}
+to{
+  opacity: 1;
+}
+`
+
+export const ModalOver = styled.div`
+box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 99;
+  animation: ${fadeIn} 1s;
+  `
 
 export const ModalWrapper = styled.div`
+background-color: white;
+position: fixed;
+bottom: 0;
+z-index: 10;
   width: 100%;
   padding-bottom: 10px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 20px 20px 0 0;
   box-sizing: border-box;
+  animation: ${slideUp} 1.3s;
 `
 
 export const TopSytle = styled.div`
+cursor: pointer;
   width: 50px;
   height: 4px;
   background: #DBDBDB;
