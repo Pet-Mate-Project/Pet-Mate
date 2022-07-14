@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const PostStyle = styled.li`
-  width: 390px;
+  width: 100%;
   margin: 0 auto;
   padding: 10px 34px;
   border-bottom: 6px solid #E7EFFF;
@@ -15,7 +15,7 @@ export const PostStyle = styled.li`
 
 export const PetImg = styled.img`
   width: 100%;
-  height: 210px;
+  height: 60%;
   border-radius: 10px;
   border: 1px solid #DBDBDB;
   margin-top: 8px;
