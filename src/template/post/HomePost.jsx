@@ -4,6 +4,7 @@ import { UserChat } from '../../components/user/User'
 import { selectAllPosts ,getPostStatus,AxiosPetInfo} from '../../reducers/getPetInfoSlice'
 import { useDispatch, useSelector } from 'react-redux';
 
+
 export default function HomePost() {
   const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts).product;
@@ -11,7 +12,7 @@ export default function HomePost() {
   console.log("템플릿",posts);
 
   return ( 
-    <>
+    <ul >
       {posts && posts.map((post)=>{
         return(   
           <PostStyle key={post.id}>
@@ -21,10 +22,10 @@ export default function HomePost() {
               <TitleTxt>{post.itemName}</TitleTxt>
             </TxtBox>
             <ContentTxt>{post.link}</ContentTxt>
-            <DateTxt>{post.updatedAt}</DateTxt>
+            <DateTxt>{post.updatedAt.substring(0,10)}</DateTxt>
           </PostStyle>
         )
       })}
-    </>
+    </ul>
   )
 }
