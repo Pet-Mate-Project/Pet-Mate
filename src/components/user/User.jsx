@@ -5,13 +5,13 @@ import { TextWrapper, UserId, UserName, Wrapper, MoreIcon, ChatPreview, ChatDate
 import moreIcon from '../../assets/icon-more-vertical-small.svg'
 
 
-export function User(props) {
+export function User({userName,userId,img}) {
   return (
     <Wrapper>
-      <ProfileIconS />
+      <ProfileIconS img={img} />
       <TextWrapper>
-        <UserName>{props.userName}</UserName>
-        <UserId>@ {props.userId}</UserId>
+        <UserName>{userName}</UserName>
+        <UserId>@ {userId}</UserId>
       </TextWrapper>
     </Wrapper>
   )
@@ -39,11 +39,11 @@ export function UserMore() {
   )
 }
 
-export function UserChat() {
+export function UserChat({userName,userId,img}) {
   return (
     <>
       <Wrapper between>
-        <User />
+        <User userName={userName} userId={userId} img={img}/>
         <ChatBtn />
       </Wrapper>
     </>

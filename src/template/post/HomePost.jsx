@@ -6,9 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 export default function HomePost() {
-  const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts).product;
-  const postsStatus = useSelector(getPostStatus);
   console.log("템플릿",posts);
 
   return ( 
@@ -16,7 +14,7 @@ export default function HomePost() {
       {posts && posts.map((post)=>{
         return(   
           <PostStyle key={post.id}>
-            <UserChat/>
+            <UserChat userName={post.author.username} userId={post.author.accountname} img={post.author.image}/>
             <PetImg src={"https://mandarin.api.weniv.co.kr/"+post.itemImage}></PetImg>
             <TxtBox>
               <TitleTxt>{post.itemName}</TitleTxt>
