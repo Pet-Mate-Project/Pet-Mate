@@ -11,6 +11,7 @@ import SignUpMainPage from './pages/SignUpMain';
 import MyProfilePage from './pages/MyProfilePage'
 import ProfileModify from './template/profileModify/ProfileModify'
 import AddPost from './template/post/AddPost';
+import ChatList from './template/chat/ChatList';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/profilepage' element={<MyProfilePage />}></Route>
         <Route path='/profilemodify' element={<ProfileModify />}></Route>
         <Route path='/post' element={<AddPost />}></Route>
+        <Route path='/chatpage' element={<ChatList />}></Route>
       </Routes>
       <AnimatePresence />
 

@@ -24,7 +24,7 @@ export function TabMenu() {
             icon={snsIcon}
             hoverIcon={snsIconFill}>피드</IconNameStyle>
         </Link>
-        <Link to='#'>
+        <Link to="/chatpage">
           <IconNameStyle
             icon={messageIcon}
             hoverIcon={messageIconFill}>채팅</IconNameStyle>
