@@ -1,10 +1,11 @@
 import React from 'react'
-import HomePost  from '../post/HomePost'
+import { ScrollMain } from '../../style/commonStyle'
+import HomePost from '../post/HomePost'
 
 export default function WalkingFeed() {
   return (
-    <main>
+    <ScrollMain>
       <HomePost />
-    </main>
+    </ScrollMain>
   )
 }

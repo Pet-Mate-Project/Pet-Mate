@@ -25,7 +25,7 @@ box-sizing: border-box;
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 99;
   animation: ${fadeIn} 1s;
   `
@@ -39,7 +39,7 @@ z-index: 10;
   padding-bottom: 10px;
   border-radius: 20px 20px 0 0;
   box-sizing: border-box;
-  animation: ${slideUp} 1.3s;
+  animation: ${slideUp} 1s;
 `
 
 export const TopSytle = styled.div`

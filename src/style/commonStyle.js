@@ -14,6 +14,14 @@ export const AllWrap = styled.div`
   max-height:  1200px;
 `
 
+export const ScrollMain = styled.main`
+height: 100%;
+width: 100%;
+overflow: scroll;
+box-sizing: border-box;
+margin-top: 50px;
+`
+
 export const PaddingMain = styled.main`
   padding : 30px 34px;
   `
