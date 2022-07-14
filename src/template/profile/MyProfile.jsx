@@ -37,7 +37,7 @@ function MyProfile(props) {
           >프로필 수정
           </Button>
         </Link>
-        <Link to="/petpost">
+        <Link to="/post">
           <Button
             width={120}
             height={34}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavWrapper, Img, NavBtn, NavTxt, FloatR } from './navBackStyle'
 import arrow from '../../assets/icon-arrow-left.svg'
 import vertical from '../../assets/icon-more-vertical.svg'
@@ -7,6 +7,7 @@ import { SearchInput } from '../input/Input'
 import { SaveBtn, PostSaveBtn } from '../button/Button';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import Modal from '../postModal/PostModal';
 
 // props가 있는 경우 chat-nav, 없는경우 top-basic-nav  
 // 사용예 (텍스트가 있는경우): <NavBack text={"코랑이"} /> 
@@ -15,16 +16,28 @@ export function NavBack(props) {
   const goBack = () => {
     navigate(-1);
   }
+  const list = ['설정 및 개인정보', '로그아웃'];
+  const [modal, setModal] = useState(false)
+
+  const toggleModal = () => {
+    modal === false ? setModal(true) : setModal(false)
+  }
+  const closeModal = () => {
+    setModal(false)
+  }
   return (
-    <NavWrapper>
-      <NavBtn onClick={goBack}>
-        <Img src={arrow} alt="" />
-      </NavBtn>
-      <NavTxt>{props.text}</NavTxt>
-      <NavBtn >
-        <Img src={vertical} alt="" />
-      </NavBtn>
-    </NavWrapper>
+    <header>
+      <NavWrapper>
+        <NavBtn onClick={goBack}>
+          <Img src={arrow} alt="" />
+        </NavBtn>
+        <NavTxt>{props.text}</NavTxt>
+        <NavBtn >
+          <Img src={vertical} alt="" onClick={toggleModal} />
+        </NavBtn>
+      </NavWrapper>
+      {modal === true && <Modal list={list} closeModal={closeModal} />}
+    </header>
   )
 }
 
