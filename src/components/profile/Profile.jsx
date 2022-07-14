@@ -4,14 +4,14 @@ import { Wrapper, FileUploader, ProfileImg, FileInput } from './profileStyle'
 export function Profile({ userImg, setImg }) {
   const fileInput = useRef(null)
   //화면에 보여주기용 이미지 상태관리
-  const [showImg, setShowImg] = useState("https://raw.githubusercontent.com/Pet-Mate-Project/Pet-Mate/9a1dd2c1758e84421b72fed7d132f5c12e66dc46/src/assets/basic-profile.png")
+  const [showImg, setShowImg] = useState("https://mandarin.api.weniv.co.kr/1657812669741.png")
   const onChange = (e) => {
     if (e.target.files[0]) {
       setShowImg(e.target.files[0])
       setImg(e.target.files[0])
       console.log(setImg)
     } else { //업로드 취소할 시
-      setShowImg("https://raw.githubusercontent.com/Pet-Mate-Project/Pet-Mate/9a1dd2c1758e84421b72fed7d132f5c12e66dc46/src/assets/basic-profile.png")
+      setShowImg("https://mandarin.api.weniv.co.kr/1657812669741.png")
       return
     }
     //화면에 프로필 사진 표시
@@ -38,7 +38,7 @@ export function Profile({ userImg, setImg }) {
           <FileInput
             id="input-file"
             type="file"
-            accept='image/gif, image/jpeg, image/png, image/jpg'
+            accept='image/jpeg, image/jpg'
             name='profileImg'
             onChange={onChange}
             ref={fileInput}

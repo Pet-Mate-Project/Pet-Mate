@@ -66,13 +66,13 @@ function ProfileModify() {
     console.log('클릭')
     console.log(userImg);
     const imgUploadData = await ImgUpload(userImg)
-    const token = JSON.parse(localStorage.getItem("userinfo")).user.token;
+    const user = JSON.parse(localStorage.getItem("userinfo")).user;
     console.log('img res', imgUploadData)
     userData.user.image = imgUploadData
     console.log(userData)
-    axios.put(url + '/user/accountnamevalid', userData, {
+    axios.put(url + '/user', userData, {
       headers: {
-        "Authorization": `Bearer ${token}`,
+        "Authorization": `Bearer ${user.token}`,
         "Content-type": "application/json"
       }
     })

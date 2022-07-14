@@ -15,7 +15,7 @@ export const PostStyle = styled.li`
 
 export const PetImg = styled.img`
   width: 100%;
-  height: 60%;
+  height: 210px;
   border-radius: 10px;
   border: 1px solid #DBDBDB;
   margin-top: 8px;

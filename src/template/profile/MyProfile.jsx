@@ -4,27 +4,49 @@ import basicImg from '../../assets/basic-profile.svg'
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap } from './ProfileStyle'
 import { Button } from '../../components/button/buttonStyle'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 function MyProfile(props) {
+  const url = "https://mandarin.api.weniv.co.kr";
+  const [userInfoList, setUserInfoList] = useState([])
+  const user = JSON.parse(localStorage.getItem("userinfo")).user;
+
+  useEffect(() => {
+    getUserInfo()
+  }, [])
+
+  console.log('UserInfoList', userInfoList)
+
+  function getUserInfo() {
+    axios.get(url + `/profile/${user.accountname}`, {
+      headers: {
+        "Authorization": `Bearer ${user.token}`,
+        "Content-type": "application/json"
+      }
+    }).then((res) => setUserInfoList(res.data.profile))
+  }
+
   return (
     <>
       <Wrapper>
         <ColumnWapper>
-          <FollowerCount>{props.follower}</FollowerCount>
+          <FollowerCount>{userInfoList.followerCount}</FollowerCount>
           <FollowerText>followers</FollowerText>
         </ColumnWapper>
         <ProfileImg
-          src={basicImg} alt='user-img'
+          src={url + `/${userInfoList.image}`} alt='user-img'
         />
         <ColumnWapper>
-          <FollowerCount>{props.following}</FollowerCount>
+          <FollowerCount>{userInfoList.followingCount}</FollowerCount>
           <FollowerText>followings</FollowerText>
         </ColumnWapper>
       </Wrapper>
       <ColumnWapper>
-        <NameText>{props.name}</NameText>
-        <IdText>@ {props.id}</IdText>
-        <IntroText>{props.intro}</IntroText>
+        <NameText>{userInfoList.username}</NameText>
+        <IdText>@ {userInfoList.accountname}</IdText>
+        <IntroText>{userInfoList.intro}</IntroText>
       </ColumnWapper>
       <ButtonWrap>
         <Link to="/profilemodify">
