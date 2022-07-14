@@ -8,7 +8,12 @@ const initialState = {
   error: null
 }
 
-const userInfo = JSON.parse(localStorage.getItem("userinfo")).user
+
+let userInfo="";
+if (localStorage.getItem("userinfo")!==null){
+  userInfo = JSON.parse(localStorage.getItem("userinfo")).user ;
+}
+
 const token =userInfo.token;
 const config = {
   headers: {
