@@ -4,15 +4,14 @@ import {AllWrap,PaddingMain,FormStyle} from '../../style/commonStyle'
 import {PostSaveNav} from '../../components/navBack/NavBack'
 import ImgUploadBox from '../../components/imgUploadBox/ImgUploadBox'
 import {TitleInput,PetInfoInput,PostIntroInput} from '../../components/input/Input'
-import { useDispatch, useSelector } from "react-redux";
-import {postAllCont,postActions} from '../../reducers/Reducer'
 import axios from 'axios';
+import { useDispatch } from "react-redux";
 import { ImgUpload } from '../../pages/SignUpMain';
-import { AxiosUpload } from '../../reducers/Reducer'
+import { AxiosPetInfo } from '../../reducers/getPetInfoSlice'
 
 export default function AddPost() {
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   //미리보기 이미지 state
   const [showImg, setShowImg] = useState("")
   const fileInput = useRef(null)
@@ -25,7 +24,6 @@ export default function AddPost() {
   const [petInfo,setPetInfo] = useState("")
   //버튼활성화
   const [btn,setBtn] = useState(true)
-
 
   //서버에 보낼 데이터
   let postData= {
@@ -71,15 +69,17 @@ export default function AddPost() {
     postData.product.itemImage = imgData
     const URL = "https://mandarin.api.weniv.co.kr";
     const loginReqPath = "/product";
-    const token = JSON.parse(localStorage.getItem("userinfo")).user.token;
+    const userinfo = JSON.parse(localStorage.getItem("userinfo")).user
     const res = await axios.post(URL+loginReqPath,postData,{
       headers: {
-        "Authorization" : `Bearer ${token}`,
+        "Authorization" : `Bearer ${userinfo.token}`,
         "Content-type" : "application/json"
       },
     });
     console.log("res : ",res);
-    // dispatch(postActions.postAllCont(postData));
+    // dispatch(postActions.postAllCont(postData)); (post 관련 dispatch라 보류)
+    console.log("URL",URL+loginReqPath+"/"+userinfo.accountname);
+    dispatch(AxiosPetInfo(URL+loginReqPath+"/"+userinfo.accountname))
   }
   
   return (
