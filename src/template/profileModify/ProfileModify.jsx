@@ -61,23 +61,22 @@ function ProfileModify() {
   }
 
   //프로필수정
-  //토큰값 부분 수정 필요
   async function profileSave() {
     console.log('클릭')
     console.log(userImg);
     const imgUploadData = await ImgUpload(userImg)
+    const token = JSON.parse(localStorage.getItem("userinfo")).user.token;
     console.log('img res', imgUploadData)
     userData.user.image = imgUploadData
     console.log(userData)
     axios.put(url + '/user/accountnamevalid', userData, {
       headers: {
-        "Authorization": "Bearer" + JSON.parse(localStorage.getItem("userinfo"))?.user?.token,
+        "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
       }
     })
       .then((res) => {
         console.log(res);
-        // setMessage(res.data.message);
       })
   }
 
