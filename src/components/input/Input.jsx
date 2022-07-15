@@ -3,12 +3,12 @@ import React from "react";
 import { LabelStyle, InputStyle, SearchStyle } from './inputStyle';
 
 //회원가입, login input 
-export function NameInput({ userName, setName, register }) {
+export function NameInput({ userName, setName, register, placeholder }) {
   return (
     <>
       <LabelStyle>사용자 이름
         <InputStyle
-          placeholder='2-10자 이내여야 합니다.'
+          placeholder={placeholder}
           type="text"
           name="userName"
           value={userName}
@@ -32,15 +32,16 @@ export function NameInput({ userName, setName, register }) {
   )
 }
 
-export function IdInput({ userId, setId, IdCheck, register }) {
+export function IdInput({ value, setId, IdCheck, register, placeholder, disabled }) {
   return (
     <>
       <LabelStyle>계정 ID
         <InputStyle
-          placeholder='영문, 숫자, 특수문자(.),(_)만 사용 가능합니다.'
+          disabled={disabled}
+          placeholder={placeholder}
           type="text"
           name="userId"
-          value={userId}
+          value={value}
           {...register("userId", {
             required: "*계정 ID는 필수 입력사항입니다.",
             pattern: {
@@ -56,12 +57,12 @@ export function IdInput({ userId, setId, IdCheck, register }) {
   )
 }
 
-export function IntroInput({ userIntro, setIntro }) {
+export function IntroInput({ userIntro, setIntro, placeholder }) {
   return (
     <>
       <LabelStyle>소개
         <InputStyle
-          placeholder='자신과 반려동물에 대해 소개해 주세요!'
+          placeholder={placeholder}
           type="text"
           name="userIntro"
           value={userIntro}
@@ -118,7 +119,7 @@ export function PasswordInput({ userPassword, setPassword, register }) {
 }
 
 // post에 필요한 input
-export function TitleInput({Title,setTitle}) {
+export function TitleInput({ Title, setTitle }) {
   return (
     <LabelStyle>제목
       <InputStyle
@@ -127,15 +128,15 @@ export function TitleInput({Title,setTitle}) {
         name="Title"
         value={Title}
         minLength="2"
-        maxLength = "15"
-        onChange={(e)=>{setTitle(e.target.value)}}
+        maxLength="15"
+        onChange={(e) => { setTitle(e.target.value) }}
       />
     </LabelStyle>
   );
 }
 
 
-export function PetInfoInput({petInfo,setPetInfo}) {
+export function PetInfoInput({ petInfo, setPetInfo }) {
   return (
     <LabelStyle>반려동물 정보
       <InputStyle
@@ -143,43 +144,13 @@ export function PetInfoInput({petInfo,setPetInfo}) {
         type="text"
         name="petInfo"
         value={petInfo}
-        onChange={(e)=>{setPetInfo(e.target.value)}}
+        onChange={(e) => { setPetInfo(e.target.value) }}
       />
     </LabelStyle>
   );
 }
 
-
-export function PostMeetTimeInput() {
-  return (
-    <LabelStyle>희망 시간
-      <InputStyle
-        placeholder='자신과 반려동물에 대해 소개해 주세요!'
-        type="datetime-local"
-        name="postMeetTime"
-      // value={postMeetTime}
-      />
-    </LabelStyle>
-  );
-}
-
-export function PostIntroInput({postIntro,setPostIntro}) {
-  return (
-    <LabelStyle>한마디
-      <InputStyle
-        placeholder='주의사항이나 남기고싶은 말을 입력해주세요!'
-        type="text"
-        name="wanttoSay"
-        value={postIntro}
-        onChange={(e)=>{
-          setPostIntro(e.target.value)
-        }}
-      />
-    </LabelStyle>
-  );
-}
-
-export function SearchInput({props, placeholder}) {
+export function SearchInput({ props, placeholder }) {
   return (
     <SearchStyle
       placeholder={placeholder}

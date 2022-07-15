@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import TabMenu from './TabMenu';
 
 export const TabMenuStyle = styled.nav`
 width: 100%;

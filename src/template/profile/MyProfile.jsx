@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
-function MyProfile(props) {
+function MyProfile() {
   const url = "https://mandarin.api.weniv.co.kr";
   const [userInfoList, setUserInfoList] = useState([])
   const user = JSON.parse(localStorage.getItem("userinfo")).user;
@@ -19,6 +19,7 @@ function MyProfile(props) {
 
   console.log('UserInfoList', userInfoList)
 
+  //사용자 정보 받아오는 함수
   function getUserInfo() {
     axios.get(url + `/profile/${user.accountname}`, {
       headers: {
