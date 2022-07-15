@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import TabMenu from './TabMenu';
 
 export const TabMenuStyle = styled.nav`
 width: 100%;
@@ -11,10 +13,10 @@ display : flex;
 justify-content: space-between;
 box-sizing: border-box;
 border-top: 1px solid #DBDBDB;
-padding: 12px 0 8px
+padding: 12px 0 8px;
 `
 
-export const IconNameStyle = styled.p`
+export const NavLinkStyle = styled(NavLink)`
 width: 80px;
 font-size: 10px;
 line-height: 12px;
@@ -43,4 +45,13 @@ text-align: center;
 :hover{
     color: #1D57C1;
   }
+&.active{
+  color: #1D57C1;
+::before{
+  ${(props) => {
+    return css`
+    background-image: url(${props.hoverIcon});
+    `
+  }}}
+}
 `
