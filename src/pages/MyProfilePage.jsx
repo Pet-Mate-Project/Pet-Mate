@@ -3,14 +3,15 @@ import { NavBack } from '../components/navBack/NavBack'
 import { AllWrap } from '../style/commonStyle'
 import MyProfile from '../template/profile/MyProfile'
 import TabMenu from '../components/tabMenu/TabMenu'
+import { PetPost } from '../template/profilePost/PetPost'
 
 
 function MyProfilePage() {
   return (
     <AllWrap>
       <NavBack />
-      <MyProfile>
-      </MyProfile>
+      <MyProfile />
+      <PetPost />
       {/* 작성된 포스팅이 있으면 친구구해요 + 게시글리스트 템플릿 추가 */}
       <TabMenu />
     </AllWrap>
