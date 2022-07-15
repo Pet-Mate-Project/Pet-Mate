@@ -3,7 +3,6 @@ import { IdInput, IntroInput, NameInput } from '../../components/input/Input'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 import Profile from '../../components/profile/Profile'
 import { FormStyle } from '../../style/commonStyle'
-import { InputStyle, LabelStyle } from '../../components/input/inputStyle'
 
 export function ProfileSet({ userName, setName, userId, setId, userIntro, setIntro, message, IdCheck, userImg, setImg, register, errors }) {
   return (

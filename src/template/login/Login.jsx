@@ -9,7 +9,6 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { AxiosPetInfo } from '../../reducers/getPetInfoSlice';
 import { useDispatch } from 'react-redux'
 
 
@@ -65,8 +64,8 @@ export default function Login() {
       localStorage.setItem("userinfo", JSON.stringify(res.data))
       navigate('/homepage');
     }
-  } 
-  
+  }
+
   //test값
   // hehe@test.com
   //123456

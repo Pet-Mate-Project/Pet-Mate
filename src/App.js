@@ -1,9 +1,8 @@
 import React from 'react';
 import GlobalStyles from './style/globalStyle';
-import { Route, Router, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import FeedPage from './pages/FeedPage';
-import Main from './template/main/Main';
 import InitPage from './pages/InitPage';
 import Login from './template/login/Login'
 import { AnimatePresence } from 'framer-motion';
