@@ -11,7 +11,6 @@ position: fixed;
 top: 0;
 background:white;
 display:flex;
-justify-content: space-between;
 z-index:10;
 `
 
@@ -26,7 +25,8 @@ export const NavTxt = styled.h1`
   padding:5px;
   font-size:18px;
   line-height:20px;
-  display:inline-block; 
+  display:inline-block;
+  margin-right: auto;
 `
 export const FloatR = styled.div`
   overflow:hidden;
