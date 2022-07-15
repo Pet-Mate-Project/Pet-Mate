@@ -8,18 +8,19 @@ const initialState = {
 }
 
 
-const userInfo = JSON.parse(localStorage.getItem("userinfo"))?.user ;
-const token =userInfo?.token;
-const config = {
-  headers: {
-    "Authorization" : `Bearer ${token}`,
-    "Content-type" : "application/json"
-  },
-}
+
 
 export const AxiosPetInfo = createAsyncThunk(
   'petinfo/axiosPetinfo',
   async(url) =>{
+    const userInfo = JSON.parse(localStorage.getItem("userinfo"))?.user ;
+    const token =userInfo?.token;
+    const config = {
+      headers: {
+        "Authorization" : `Bearer ${token}`,
+        "Content-type" : "application/json"
+      },
+    }
     const res = await axios(url,config);
     console.log("res.data.product : ",res.data.product);
     return res.data

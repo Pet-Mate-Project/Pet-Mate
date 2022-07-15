@@ -9,6 +9,8 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { AxiosPetInfo } from '../../reducers/getPetInfoSlice';
+import { useDispatch } from 'react-redux'
 
 
 export default function Login() {
@@ -18,6 +20,8 @@ export default function Login() {
   const [userInfo, setUserInfo] = useState('fasle')
   const { register, formState: { errors } } = useForm({ mode: "onChange" })
   const navigate = useNavigate()
+  const dispatch = useDispatch();
+
 
   //비밀번호 입력시 '이메일 또는 비밀번호가 일치하지 않습니다.' 메시지 숨김
   useEffect(() => {
@@ -59,16 +63,10 @@ export default function Login() {
     if (reqMsg !== '이메일 또는 비밀번호가 일치하지 않습니다.') {
       console.log("1");
       localStorage.setItem("userinfo", JSON.stringify(res.data))
-      console.log(JSON.parse(localStorage.getItem("userinfo")));
-      //토큰접근
-      console.log(JSON.parse(localStorage.getItem("userinfo")).user.token);
-
       navigate('/homepage');
-    }//if문
-
-
-  } // check함수
-
+    }
+  } 
+  
   //test값
   // hehe@test.com
   //123456
