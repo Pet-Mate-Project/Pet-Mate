@@ -5,6 +5,10 @@ export const LeftSpeechBubbleWrapper = styled.div`
   padding: 0 16px;
   margin: 10px 0;
   gap: 6px;
+
+  :first-of-type{
+    margin-top: 48px;
+  }
 `
 
 export const RightSpeechBubbleWrapper = styled(LeftSpeechBubbleWrapper)`
@@ -20,12 +24,12 @@ export const LeftChat = styled.span`
   border: 1px solid #C4C4C4;
   border-radius: 0px 10px 10px 10px;
   word-break: keep-all;
+  background-color: white;
 `
 
 export const RightChat = styled(LeftChat)`
   border-radius: 10px 0 10px 10px;
   margin-left: 0;
-  margin-right: 6px;
 `
 
 export const ChatTime = styled.strong`
