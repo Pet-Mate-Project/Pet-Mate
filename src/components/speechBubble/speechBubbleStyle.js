@@ -1,13 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const LeftSpeechBubbleWrapper = styled.div`
   display: flex;
   padding: 0 16px;
-  margin: 10px 0;
   gap: 6px;
 
-  :first-of-type{
-    margin-top: 48px;
+  :first-of-type {
+    margin-top: auto;
+  }
+
+  :last-of-type {
+    margin-bottom: 80px;
   }
 `
 
@@ -16,15 +19,20 @@ export const RightSpeechBubbleWrapper = styled(LeftSpeechBubbleWrapper)`
 `
 
 export const LeftChat = styled.span`
-  max-width: 55%;
-  padding: 12px;
-  margin-left: 6px;
-  font-size: 14px;
-  line-height: 17px;
-  border: 1px solid #C4C4C4;
-  border-radius: 0px 10px 10px 10px;
-  word-break: keep-all;
-  background-color: white;
+  ${(props) => {
+    if (props.children) {
+      return css`
+        max-width: 55%;
+        padding: 12px;
+        margin-left: 6px;
+        font-size: 14px;
+        line-height: 17px;
+        border: 1px solid #C4C4C4;
+        border-radius: 0px 10px 10px 10px;
+        word-break: keep-all;
+        background-color: white;
+    `}
+  }}
 `
 
 export const RightChat = styled(LeftChat)`
@@ -37,4 +45,17 @@ export const ChatTime = styled.strong`
   font-size: 10px;
   line-height: 12px;
   color: #404040;
+`
+
+export const ChatImage = styled.img`
+  display: none;
+  ${(props) => {
+    if (props.src) {
+      return css`
+        display: inline;
+        width: 200px;
+        border-radius: 10px;
+      `
+    }
+  }}
 `
