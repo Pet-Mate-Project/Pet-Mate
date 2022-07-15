@@ -8,13 +8,10 @@ const initialState = {
 }
 
 
-
-
 export const AxiosPetInfo = createAsyncThunk(
   'petinfo/axiosPetinfo',
   async(url) =>{
-    const userInfo = JSON.parse(localStorage.getItem("userinfo"))?.user ;
-    const token =userInfo?.token;
+    const token = JSON.parse(localStorage.getItem("token")) ;
     const config = {
       headers: {
         "Authorization" : `Bearer ${token}`,
