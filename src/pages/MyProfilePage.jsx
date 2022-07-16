@@ -3,18 +3,29 @@ import { NavBack } from '../components/navBack/NavBack'
 import { AllWrap } from '../style/commonStyle'
 import MyProfile from '../template/profile/MyProfile'
 import TabMenu from '../components/tabMenu/TabMenu'
-
+import { PetPost } from '../template/profilePost/PetPost'
+import { selectAllPosts } from '../reducers/getPetInfoSlice'
+import { useSelector } from 'react-redux';
 
 function MyProfilePage() {
+
+  const postLength = useSelector(selectAllPosts).product.length;
+
+  console.log('postLength', postLength)
+
   return (
     <AllWrap>
       <NavBack />
-      <MyProfile>
-      </MyProfile>
-      {/* 작성된 포스팅이 있으면 친구구해요 + 게시글리스트 템플릿 추가 */}
+      <MyProfile />
+      {/* 산책피드가 없는 경우 빈화면 */}
+      {
+        postLength === 0 ? " " : <PetPost />
+      }
+      {/* sns 포스트가 없는 경우 추가 */}
       <TabMenu />
     </AllWrap>
   )
+
 }
 
 export default MyProfilePage
