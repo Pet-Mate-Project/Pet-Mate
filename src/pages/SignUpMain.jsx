@@ -3,6 +3,7 @@ import axios from 'axios';
 import SignUp from '../template/signUp/SignUp';
 import ProfilePage from '../template/signUp/ProfilePage';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 export async function ImgUpload(userImg) {
 
@@ -29,7 +30,7 @@ export function SignUpMainPage() {
   const [next, setNext] = useState(false)
 
   const url = "https://mandarin.api.weniv.co.kr";
-
+  const navigator = useNavigate();
 
   //유효성 검사를 위한 react-hook-form 변수 선언
   const {
@@ -62,7 +63,10 @@ export function SignUpMainPage() {
     //회원가입 최종 전송
     axios.post(url + '/user', userData,
       { headers: { "Content-type": "application/json" } })
-      .then((res) => console.log('회원가입', res))
+      .then((res) => {
+        console.log('회원가입', res);
+        navigator('/login')
+      })
   }
 
 
@@ -113,12 +117,11 @@ export function SignUpMainPage() {
       })
         .then(
           (res) => {
-            console.log(res);
-            setMessage(res.data.message);
+            console.log('res', res);
+            setMessage(res.data.message)
           });
     }
   }
-
   //다음 버튼
   function nextClick() {
     setNext(true);
