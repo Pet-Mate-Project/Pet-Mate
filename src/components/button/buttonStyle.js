@@ -10,6 +10,7 @@ export const Button = styled.button`
     background-color: #7EACFF;
     border-radius: 44px;
     box-sizing: border-box;
+    margin-left: auto;
 
     ${(props) => {
     return css`
@@ -37,19 +38,11 @@ export const Button = styled.button`
         }
       `}
   }}
-
-  ${(props) => {
-    if (props.right){
-      return css`
-        float:right;
-    `}
-  } 
-}
-  `;
+`;
 
 //icon이 존재할경우 스타일
 export const IconButton = styled(Button)`
- ${(props) =>
+  ${(props) =>
     props.icon &&
     css`
       line-height:22px;
@@ -64,4 +57,8 @@ export const IconButton = styled(Button)`
         background: url(${props.icon}) no-repeat center;
       }
     `}
+`
+
+export const PostSaveBtnWrapper = styled.div`
+  margin-left: auto;
 `

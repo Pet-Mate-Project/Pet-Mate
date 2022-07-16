@@ -19,9 +19,11 @@ export const RightSpeechBubbleWrapper = styled(LeftSpeechBubbleWrapper)`
 `
 
 export const LeftChat = styled.span`
+  display: none;
   ${(props) => {
     if (props.children) {
       return css`
+        display: inline;
         max-width: 55%;
         padding: 12px;
         margin-left: 6px;
@@ -36,8 +38,11 @@ export const LeftChat = styled.span`
 `
 
 export const RightChat = styled(LeftChat)`
+  border: 1px solid transparent;
   border-radius: 10px 0 10px 10px;
   margin-left: 0;
+  color: white;
+  background-color: #1D57C1;
 `
 
 export const ChatTime = styled.strong`
