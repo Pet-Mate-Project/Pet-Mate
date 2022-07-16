@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, IconButton } from './buttonStyle';
+import { Button, IconButton, PostSaveBtnWrapper } from './buttonStyle';
 import iconEmail from '../../assets/icon-email.svg';
 import iconSign from '../../assets/icon-signup.svg';
 import { Link } from 'react-router-dom'
@@ -55,7 +55,7 @@ export function JoinBtn() {
 
 export function SaveBtn(props) {
   return (
-    <Button width={90} height={32} right={props} hover
+    <Button width={90} height={32} hover
       onClick={props.profileSave}
     >
       저장
@@ -67,7 +67,7 @@ export function PostSaveBtn({ disabled, onClick }) {
   console.log(disabled);
   if (disabled) {
     return (
-      <Button width={90} height={32} right
+      <Button width={90} height={32}
         disabled={disabled} >
         저장
       </Button>
@@ -76,13 +76,15 @@ export function PostSaveBtn({ disabled, onClick }) {
 
   else {
     return (
-      <Link to='/homepage'>
-        <Button width={90} height={32} right
-          onClick={onClick}
-          disabled={disabled} hover >
-          저장
-        </Button>
-      </Link>
+      <PostSaveBtnWrapper>
+        <Link to='/homepage'>
+          <Button width={90} height={32}
+            onClick={onClick}
+            disabled={disabled} hover >
+            저장
+          </Button>
+        </Link>
+      </PostSaveBtnWrapper>
     )
   }
 

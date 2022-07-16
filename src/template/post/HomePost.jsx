@@ -16,7 +16,7 @@ export default function HomePost() {
       return defaultImg;
     }
     else {
-      return post.author.image;
+      return "https://mandarin.api.weniv.co.kr/" + post.author.image;
     }
   }
   return (
