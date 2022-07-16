@@ -31,7 +31,7 @@ export default function HomePage() {
   return (          
     <AllWrap>
       <header>
-        <NavSearch text={"산책 피드"} />
+        <NavSearch text={"산책 피드"} url={"/search"}/>
       </header>
       {(postsStatus==='idle'&&posts?.length===0) ?<DefaultFeed/>:<WalkingFeed/> }
       <Link to={'/post'}>

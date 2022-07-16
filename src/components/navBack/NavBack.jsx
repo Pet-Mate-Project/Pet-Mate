@@ -63,9 +63,11 @@ export function NavSearch(props) {
   return (
     <NavWrapper>
       <NavTxt>{props.text}</NavTxt>
-      <NavBtn>
-        <Img src={searchbar} alt="" />
-      </NavBtn>
+      <Link to={props.url}>
+        <NavBtn>
+          <Img src={searchbar} alt="" />
+        </NavBtn>
+      </Link>
     </NavWrapper>
   )
 }

@@ -11,6 +11,7 @@ import MyProfilePage from './pages/MyProfilePage'
 import ProfileModify from './template/profileModify/ProfileModify'
 import AddPost from './template/post/AddPost';
 import ChatList from './template/chat/ChatList';
+import AccountSearch from './template/search/AccountSearch';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/profilemodify' element={<ProfileModify />}></Route>
         <Route path='/post' element={<AddPost />}></Route>
         <Route path='/chatpage' element={<ChatList />}></Route>
+        <Route path='/search' element={<AccountSearch />}></Route>
       </Routes>
       <AnimatePresence />
 
