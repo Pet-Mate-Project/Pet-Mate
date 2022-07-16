@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, IconButton } from './buttonStyle';
 import iconEmail from '../../assets/icon-email.svg';
 import iconSign from '../../assets/icon-signup.svg';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 //검증관련 버튼 
 export function NextBtn({ nextClick, disabled, message }) {
   if (message === '이미 가입된 이메일 주소 입니다.' || message === '' || !disabled) {
@@ -54,16 +54,10 @@ export function JoinBtn() {
 // -------------------------------------------------------
 
 export function SaveBtn(props) {
-  if (props.message === '이미 가입된 계정ID 입니다.' || props.message === '' || !props.disabled)
-    return (
-      <Button width={90} height={32} right={props} >
-        저장
-      </Button>
-    )
   return (
     <Button width={90} height={32} right={props} hover
       onClick={props.profileSave}
-      disabled={!props.disabled} >
+    >
       저장
     </Button>
   )
@@ -80,13 +74,13 @@ export function PostSaveBtn({ disabled, onClick }) {
     )
   }
 
-  else{
-    return(
+  else {
+    return (
       <Link to='/homepage'>
-        <Button width={90} height={32} right 
+        <Button width={90} height={32} right
           onClick={onClick}
           disabled={disabled} hover >
-      저장
+          저장
         </Button>
       </Link>
     )

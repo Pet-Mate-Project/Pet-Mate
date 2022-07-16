@@ -34,7 +34,6 @@ export function SignUpMainPage() {
   //유효성 검사를 위한 react-hook-form 변수 선언
   const {
     register,
-    handleSubmit,
     formState: { isValid, errors },
   } = useForm({ mode: "onChange" });
 

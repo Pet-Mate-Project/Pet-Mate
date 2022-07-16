@@ -1,4 +1,4 @@
-import styled,{ css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const InputStyle = styled.input`
 width: 100%;
@@ -17,8 +17,17 @@ padding-bottom: 5px;
 ::placeholder{
   color: #DBDBDB;
   font-size: 14px;
-
 }
+${(props) => {
+    if (props.nohover) {
+      return css`
+    :hover{
+      border-color:none;
+    }
+    `
+    }
+  }}
+
 `;
 
 export const LabelStyle = styled.label`
@@ -45,11 +54,10 @@ box-sizing: border-box;
 }
 
 ${(props) => {
-    if (props.right){
+    if (props.right) {
       return css`
       float:right;
   `}
-  } 
-}
-`
+  }}
+`;
 

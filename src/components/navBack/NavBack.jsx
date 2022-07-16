@@ -71,7 +71,7 @@ export function NavSearch(props) {
 }
 
 //top-upload-nav
-export function ProfileSaveNav({ profileSave, disabled }) {
+export function ProfileSaveNav({ profileSave }) {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -81,7 +81,7 @@ export function ProfileSaveNav({ profileSave, disabled }) {
       <NavBtn onClick={goBack}>
         <Img src={arrow} alt="" />
       </NavBtn>
-      <SaveBtn profileSave={profileSave} disabled={disabled} right />
+      <SaveBtn profileSave={profileSave} right />
     </NavWrapper>
   )
 }
