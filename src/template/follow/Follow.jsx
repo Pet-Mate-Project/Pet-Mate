@@ -3,7 +3,7 @@ import { NavBack } from '../../components/navBack/NavBack'
 import { UserFollow } from '../../components/user/User'
 import { FollowMain } from './followStyle'
 import TabMenu from '../../components/tabMenu/TabMenu'
-import { AllWrap } from '../../style/commonStyle'
+import { AllWrap, ScrollMain } from '../../style/commonStyle'
 
 function Follow() {
   return (
