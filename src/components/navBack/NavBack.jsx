@@ -83,7 +83,7 @@ export function ProfileSaveNav({ profileSave }) {
       <NavBtn onClick={goBack}>
         <Img src={arrow} alt="" />
       </NavBtn>
-      <SaveBtn profileSave={profileSave} right />
+      <SaveBtn profileSave={profileSave} />
     </NavWrapper>
   )
 }

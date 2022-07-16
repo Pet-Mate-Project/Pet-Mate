@@ -15,16 +15,16 @@ export function TabMenu() {
       <TabMenuStyle>
         <NavLinkStyle to="/homepage"
           icon={homeIcon}
-          hoverIcon={homeIconFill}>홈</NavLinkStyle>
+          hovericon={homeIconFill}>홈</NavLinkStyle>
         <NavLinkStyle to="/feedpage"
           icon={snsIcon}
-          hoverIcon={snsIconFill}>피드</NavLinkStyle>
+          hovericon={snsIconFill}>피드</NavLinkStyle>
         <NavLinkStyle to="/chatpage"
           icon={messageIcon}
-          hoverIcon={messageIconFill}>채팅</NavLinkStyle>
+          hovericon={messageIconFill}>채팅</NavLinkStyle>
         <NavLinkStyle to="/profilepage"
           icon={userIcon}
-          hoverIcon={userIconFill}>프로필</NavLinkStyle>
+          hovericon={userIconFill}>프로필</NavLinkStyle>
       </TabMenuStyle>
 
     </>
