@@ -16,7 +16,9 @@ function ProfileModify() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const [userInfoList, setUserInfoList] = useState([])
-  const user = JSON.parse(localStorage.getItem("userinfo")).user;
+  const token = JSON.parse(localStorage.getItem("token"));
+  const accountname = JSON.parse(localStorage.getItem("accountname"));
+
 
   const url = "https://mandarin.api.weniv.co.kr";
 
@@ -32,7 +34,7 @@ function ProfileModify() {
   let userData = {
     "user": {
       "username": userName,
-      "accountname": user.accountname,
+      "accountname": accountname,
       "intro": userIntro,
       "image": ""
     }
@@ -43,9 +45,9 @@ function ProfileModify() {
 
   //사용자 정보 받아오기
   function getUserInfo() {
-    axios.get(url + `/profile/${user.accountname}`, {
+    axios.get(url + `/profile/${accountname}`, {
       headers: {
-        "Authorization": `Bearer ${user.token}`,
+        "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
       }
     }).then((res) => setUserInfoList(res.data.profile))

@@ -4,7 +4,7 @@ import arrow from '../../assets/icon-arrow-left.svg'
 import vertical from '../../assets/icon-more-vertical.svg'
 import searchbar from '../../assets/icon-search.svg'
 import { SearchInput } from '../input/Input'
-import { SaveBtn, PostSaveBtn } from '../button/Button';
+import { SaveBtn, PostSaveBtn, UploadBtn } from '../button/Button';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import Modal from '../postModal/PostModal';
@@ -99,6 +99,21 @@ export function PostSaveNav({ onClick, disabled }) {
         <Img src={arrow} alt="" />
       </NavBtn>
       <PostSaveBtn onClick={onClick} disabled={disabled} />
+    </NavWrapper>
+  )
+}
+
+export function SnsUploadNav({ onClick, disabled }) {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  }
+  return (
+    <NavWrapper>
+      <NavBtn onClick={goBack}>
+        <Img src={arrow} alt="" />
+      </NavBtn>
+      <UploadBtn onClick={onClick} disabled={disabled} />
     </NavWrapper>
   )
 }
