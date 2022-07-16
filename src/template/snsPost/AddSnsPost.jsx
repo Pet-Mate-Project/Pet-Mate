@@ -1,16 +1,34 @@
 import React from 'react'
 import { SnsUploadNav } from '../../components/navBack/NavBack'
 import { AllWrap } from '../../style/commonStyle'
-import { useSelector } from 'react-redux'
-import { selectAllPosts } from '../../reducers/getPetInfoSlice'
+import { FileInput,FileUploader,TextInput,ImgBox,Img,TextLable } from './addSnsPostStyle'
+import { PaddingMain } from '../../style/commonStyle'
+
 export default function AddSnsPost() {
-  const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png"
   return (
-    // 구현중입니다. 파일구조 옮기기 위한 커밋.
-    <AllWrap>
-      <SnsUploadNav/>
-      <img src="defaultImg" alt="" />
-      <input type="text" />
+    <AllWrap>          
+      <header>
+        <SnsUploadNav/>
+      </header>
+      <PaddingMain>
+        <TextLable htmlFor="snspost" />
+        <TextInput name="snspost" id="snspost"  placeholder="게시글 입력하기 ..."/>
+        <ImgBox>
+          <Img/>
+          <Img/>
+          <Img/>
+        </ImgBox>
+        <FileUploader htmlFor="input-file">
+          <FileInput
+            id="input-file"
+            type="file"
+            accept='image/jpeg, image/jpg'
+            name='PostingImg'
+          // onChange={onChange}
+          // ref={fileInput}
+          />
+        </FileUploader>
+      </PaddingMain>
     </AllWrap>
   )
 }
