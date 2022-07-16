@@ -60,8 +60,8 @@ export default function Login() {
 
     //토큰값 (유저데이터)저장
     if (reqMsg !== '이메일 또는 비밀번호가 일치하지 않습니다.') {
-      console.log("1");
-      localStorage.setItem("userinfo", JSON.stringify(res.data))
+      localStorage.setItem("accountname", JSON.stringify(res.data.user.accountname))
+      localStorage.setItem("token", JSON.stringify(res.data.user.token))
       navigate('/homepage');
     }
   }

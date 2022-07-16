@@ -11,7 +11,9 @@ import { useEffect } from 'react'
 function MyProfile() {
   const url = "https://mandarin.api.weniv.co.kr";
   const [userInfoList, setUserInfoList] = useState([])
-  const user = JSON.parse(localStorage.getItem("userinfo")).user;
+  const token = JSON.parse(localStorage.getItem("token"));
+  const accountname = JSON.parse(localStorage.getItem("accountname"));
+
 
   useEffect(() => {
     getUserInfo()
@@ -21,9 +23,9 @@ function MyProfile() {
 
   //사용자 정보 받아오는 함수
   function getUserInfo() {
-    axios.get(url + `/profile/${user.accountname}`, {
+    axios.get(url + `/profile/${accountname}`, {
       headers: {
-        "Authorization": `Bearer ${user.token}`,
+        "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
       }
     }).then((res) => setUserInfoList(res.data.profile))

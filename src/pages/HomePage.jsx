@@ -15,8 +15,7 @@ export default function HomePage() {
   const dispatch = useDispatch();
   const postsStatus = useSelector(getPostStatus);
   const URL = "https://mandarin.api.weniv.co.kr";
-  const userInfo = JSON.parse(localStorage.getItem("userinfo")).user
-  const accountname = userInfo.accountname;
+  const accountname = JSON.parse(localStorage.getItem("accountname"))
   const loginReqPath = `/product/${accountname}/?limit=30`; //내게시글
   // const loginReqPath = `/product/?limit=100`;  // 전체게시글 100개
   const posts = useSelector(selectAllPosts).product;

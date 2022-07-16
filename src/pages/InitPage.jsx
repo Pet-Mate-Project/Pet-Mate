@@ -18,7 +18,7 @@ export default function InitPage() {
   }, []);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("userinfo"))?.user?.token) {
+    if (JSON.parse(localStorage.getItem("token"))) {
       navigate('/homepage');
     }
 

@@ -69,17 +69,18 @@ export default function AddPost() {
     postData.product.itemImage = imgData
     const URL = "https://mandarin.api.weniv.co.kr";
     const loginReqPath = "/product";
-    const userinfo = JSON.parse(localStorage.getItem("userinfo")).user
+    const token = JSON.parse(localStorage.getItem("token"))
+    const accountname = JSON.parse(localStorage.getItem("accountname"))
     const res = await axios.post(URL + loginReqPath, postData, {
       headers: {
-        "Authorization": `Bearer ${userinfo.token}`,
+        "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
       },
     });
     console.log("res : ", res);
     // dispatch(postActions.postAllCont(postData)); (post 관련 dispatch라 보류)
-    console.log("URL", URL + loginReqPath + "/" + userinfo.accountname);
-    dispatch(AxiosPetInfo(URL + loginReqPath + "/" + userinfo.accountname))
+    console.log("URL", URL + loginReqPath + "/" + accountname);
+    dispatch(AxiosPetInfo(URL + loginReqPath + "/" + accountname))
   }
 
   return (
