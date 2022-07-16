@@ -11,6 +11,7 @@ import MyProfilePage from './pages/MyProfilePage'
 import ProfileModify from './template/profileModify/ProfileModify'
 import AddPost from './template/post/AddPost';
 import ChatList from './template/chat/ChatList';
+import AccountSearch from './template/search/AccountSearch';
 import Follow from './template/follow/Follow';
 import ChatRoom from './template/chat/ChatRoom';
 
@@ -31,6 +32,7 @@ function App() {
         <Route path='/profilemodify' element={<ProfileModify />}></Route>
         <Route path='/post' element={<AddPost />}></Route>
         <Route path='/chatpage' element={<ChatList />}></Route>
+        <Route path='/search' element={<AccountSearch />}></Route>
         <Route path='/follow' element={<Follow />}></Route>
         <Route path='/chatroom' element={<ChatRoom />}></Route>
       </Routes>
