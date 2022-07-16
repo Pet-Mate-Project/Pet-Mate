@@ -37,7 +37,7 @@ text-align: center;
   :hover::before {
     ${(props) => {
     return css`
-    background-image: url(${props.hoverIcon});
+    background-image: url(${props.hovericon});
     `
   }}
 }
@@ -49,7 +49,7 @@ text-align: center;
 ::before{
   ${(props) => {
     return css`
-    background-image: url(${props.hoverIcon});
+    background-image: url(${props.hovericon});
     `
   }}}
 }
