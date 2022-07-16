@@ -16,7 +16,19 @@ export const ScrollMain = styled.main`
 height: 100%;
 overflow: auto;
 box-sizing: border-box;
-padding: 50px 0;
+padding: 50px 5px;
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar-track {
+    background-color: none;
+
+}
+::-webkit-scrollbar-thumb {
+    background-color: #EdEded;
+    border-radius: 10px;
+
+}
 `
 
 export const PaddingMain = styled.main`
