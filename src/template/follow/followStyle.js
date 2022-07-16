@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { ScrollMain } from '../../style/commonStyle';
 
-export const FollowMain = styled.main`
-padding: 20px 16px 0;
+export const FollowMain = styled(ScrollMain)`
+padding: 0 16px;
 display: flex;
 flex-direction: column;
 gap: 16px;

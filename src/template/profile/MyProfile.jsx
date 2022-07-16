@@ -35,14 +35,18 @@ function MyProfile() {
     <>
       <Wrapper>
         <ColumnWapper>
-          <FollowerCount>{userInfoList.followerCount}</FollowerCount>
+          <Link to="/follow">
+            <FollowerCount>{userInfoList.followerCount}</FollowerCount>
+          </Link>
           <FollowerText>followers</FollowerText>
         </ColumnWapper>
         <ProfileImg
           src={url + `/${userInfoList.image}`} alt='user-img'
         />
         <ColumnWapper>
-          <FollowerCount>{userInfoList.followingCount}</FollowerCount>
+          <Link to="/follow">
+            <FollowerCount>{userInfoList.followingCount}</FollowerCount>
+          </Link>
           <FollowerText>followings</FollowerText>
         </ColumnWapper>
       </Wrapper>
