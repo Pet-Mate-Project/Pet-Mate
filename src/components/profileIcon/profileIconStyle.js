@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import profileIcon from '../../assets/basic-profile.svg'
 
 export const IconStyle = styled.img`
+border-radius: 50%;
 ${(props) => {
     return css`
     width: ${props.width}px;
