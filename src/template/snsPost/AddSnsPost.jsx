@@ -14,7 +14,6 @@ export default function AddSnsPost() {
   const [postImg,setPostImg] = useState([]);
   const [uploadBtn,SetuploadBtn] =useState(true);
 
-  console.log("이미지state값",showImg);
   //이미지미리보기
   const handleAddImg = (e) => {
     let fileURLs = [...showImg];
