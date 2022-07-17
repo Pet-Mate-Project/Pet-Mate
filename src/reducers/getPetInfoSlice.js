@@ -47,13 +47,8 @@ export const petInfoSlice = createSlice({
   },
 })
 
-
-console.log("petInfoSlice",petInfoSlice);
 export const selectAllPosts = (state) =>state.getPetInfo.petData;
-
 export const getPostsError = (state) => state.getPetInfo.error;
-
 export const getPostStatus = (state) => state.getPetInfo.status;
-
 export default  petInfoSlice.reducer;
 export const postActions = petInfoSlice.actions;

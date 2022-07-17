@@ -4,6 +4,7 @@ import { AllWrap } from '../style/commonStyle'
 import { FollowCompo } from '../components/followCompo/FollowCompo'
 import { AddBtn } from '../components/iconButton/IconButton'
 import TabMenu from '../components/tabMenu/TabMenu'
+import { Link } from 'react-router-dom'
 
 export default function FeedPage() {
   const textBtn = "검색하기"
@@ -17,7 +18,9 @@ export default function FeedPage() {
       </header>
       <main>
         <FollowCompo textBtn={textBtn} textDefault={textDefault} url={url}/>
-        <AddBtn />
+        <Link to ='/snspost'>
+          <AddBtn />
+        </Link>
         <TabMenu />
       </main>
     </AllWrap>

@@ -14,7 +14,7 @@ import ChatList from './template/chat/ChatList';
 import AccountSearch from './template/search/AccountSearch';
 import Follow from './template/follow/Follow';
 import ChatRoom from './template/chat/ChatRoom';
-
+import AddSnsPost from './template/snsPost/AddSnsPost';
 function App() {
   return (
     <>
@@ -31,6 +31,7 @@ function App() {
         <Route path='/profilepage' element={<MyProfilePage />}></Route>
         <Route path='/profilemodify' element={<ProfileModify />}></Route>
         <Route path='/post' element={<AddPost />}></Route>
+        <Route path='/snspost' element={<AddSnsPost/>}></Route>
         <Route path='/chatpage' element={<ChatList />}></Route>
         <Route path='/search' element={<AccountSearch />}></Route>
         <Route path='/follow' element={<Follow />}></Route>
