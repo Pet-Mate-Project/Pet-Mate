@@ -103,7 +103,7 @@ export function PostSaveNav({ onClick, disabled }) {
   )
 }
 
-export function SnsUploadNav({ onClick, disabled }) {
+export function SnsUploadNav({ disabled ,onClick}) {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);

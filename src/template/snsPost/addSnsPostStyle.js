@@ -64,6 +64,8 @@ export const Img = styled.img`
 export const DeleteBtn = styled.button`
 
   cursor: pointer;
+  position:absolute;
+  top: 1;
   width:20px;
   height:20px;
   background: url(${(deleteBtn)});
