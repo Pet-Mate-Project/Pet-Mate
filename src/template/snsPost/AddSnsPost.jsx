@@ -1,7 +1,7 @@
 import React from 'react'
 import { SnsUploadNav } from '../../components/navBack/NavBack'
 import { AllWrap } from '../../style/commonStyle'
-import { FileInput,FileUploader,TextInput,ImgBox,Img,TextLable } from './addSnsPostStyle'
+import { FileInput,FileUploader,TextInput,ImgBox,Img,TextLable,DeleteBtn,ImgWrapper } from './addSnsPostStyle'
 import { PaddingMain } from '../../style/commonStyle'
 import { useState, useRef, useEffect } from 'react'
 import { useDispatch } from "react-redux";
@@ -45,11 +45,14 @@ export default function AddSnsPost() {
       <PaddingMain>
         <TextLable htmlFor="snspost" />
         <TextInput name="snspost" id="snspost"  placeholder="게시글 입력하기 ..."/>
-        <ImgBox>
-          {showImg.map((image,id)=>(
-            <Img key={id} src={image} />
+        <ImgWrapper>
+          {showImg.map((image,id)=>(    
+            <ImgBox key={id} >
+              <Img key={id} src={image} />
+              <DeleteBtn onClick={()=>handleDeleteImg(id)}/>
+            </ImgBox>
           ))}
-        </ImgBox>
+        </ImgWrapper>
         <FileUploader htmlFor="input-file">
           <FileInput
             id="input-file"

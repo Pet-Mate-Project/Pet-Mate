@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import blueImg from '../../assets/upload-file.svg'
-
+import deleteBtn from '../../assets/delete-btn.svg'
 export const TextLable = styled.label`
     display:none;
 `
@@ -31,7 +31,7 @@ export const FileInput = styled.input`
 display: none;
 `
 
-export const ImgBox = styled.div`
+export const ImgWrapper = styled.div`
   box-sizing:border-box;
   width:100%;
   height:300px;
@@ -45,15 +45,27 @@ export const ImgBox = styled.div`
   margin-top: 25px; 
   `
 
+export const ImgBox = styled.div`
+  /* position:absolute; */
+  /* border:1px solid black */
+`
+
 export const Img = styled.img`
   margin:5px;
   width:200px;
   height:130px;
   border-radius:10px;
-  background-color:lightblue;
-
   @media screen and (max-width:380px){
     width:150px;
     height:90px;
   }
+`
+
+export const DeleteBtn = styled.button`
+
+  cursor: pointer;
+  width:20px;
+  height:20px;
+  background: url(${(deleteBtn)});
+  background-repeat: no-repeat;
 `
