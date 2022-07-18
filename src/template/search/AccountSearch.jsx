@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+import { CorrectMessageStyle } from '../../components/errorMessage/errorStyle'
 import { NavTxtSearch } from '../../components/navBack/NavBack'
 import TabMenu from '../../components/tabMenu/TabMenu'
 import { User } from '../../components/user/User'
@@ -31,7 +32,7 @@ function AccountSearch() {
       }
       search()
     }
-    console.log(keyword)
+    // console.log(keyword)
   }, [keyword]);
   
   // console.log(searchResult)
@@ -47,6 +48,8 @@ function AccountSearch() {
           return <User key={user._id} userName={user.username} userId={user.accountname} />
         })}
         
+        {searchResult.length === 0 && <CorrectMessageStyle>검색된 결과가 없습니다.</CorrectMessageStyle>}
+        {/* 검색된 계정이 0개면 렌더링 */}
       </FollowMain>
       <TabMenu />
     </AllWrap>
