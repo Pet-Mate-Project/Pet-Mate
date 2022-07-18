@@ -6,8 +6,11 @@ import { PaddingMain } from '../../style/commonStyle'
 import { useState, useRef, useEffect } from 'react'
 import { ImgUpload } from '../../pages/SignUpMain'
 import axios from 'axios'
+import { useDispatch } from "react-redux";
+import { AxiosPost } from '../../reducers/getPostSlice'
 
 export default function AddSnsPost() { 
+  const dispatch = useDispatch();
   const [content,setContent] = useState("");
   const fileInput = useRef(null)
   const [showImg, setShowImg] = useState([]);
@@ -25,6 +28,7 @@ export default function AddSnsPost() {
       fileURLs.push(currentImgURL);
       files.push(fileArr[i]);  
     }
+    
     if(fileURLs.length>3){
       alert("사진은 최대 3장까지 업로드 가능합니다.");
       fileURLs = fileURLs.slice(0,3); 
@@ -33,6 +37,8 @@ export default function AddSnsPost() {
     setPostImg(files);
     setShowImg(fileURLs);
   }
+
+  //삭제함수
   const handleDeleteImg =(id)=>{
     setShowImg(showImg.filter((_,index)=>index!==id));
     setPostImg(postImg.filter((_,index)=>index!==id));
@@ -68,6 +74,7 @@ export default function AddSnsPost() {
       },
     });
     console.log("게시글post요청결과",res);
+    dispatch(AxiosPost(URL + loginReqPath + "/" + accountname+"/userpost"))
   }
 
   useEffect(()=>{
