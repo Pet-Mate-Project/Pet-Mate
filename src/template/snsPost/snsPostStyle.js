@@ -5,7 +5,7 @@ export const WrapperArticle = styled.article`
 width: 100%;
 `
 
-export const WrapSection = styled.section`
+export const WrapSection = styled.div`
 padding-left: 45px;
 `
 

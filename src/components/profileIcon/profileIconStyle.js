@@ -3,6 +3,7 @@ import profileIcon from '../../assets/basic-profile.svg'
 import { palette } from '../../style/globalColor'
 
 export const IconStyle = styled.img`
+border-radius: 50%;
 ${(props) => {
     return css`
     width: ${props.width}px;

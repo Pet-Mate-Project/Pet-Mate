@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { palette } from './globalColor'
 
 export const AllWrap = styled.div`
   position: absolute;
@@ -16,7 +17,19 @@ export const ScrollMain = styled.main`
 height: 100%;
 overflow: auto;
 box-sizing: border-box;
-padding: 50px 0;
+padding: 50px 5px;
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar-track {
+    background-color: none;
+
+}
+::-webkit-scrollbar-thumb {
+    background-color: ${palette.veryLigntGray};
+    border-radius: 10px;
+
+}
 `
 
 export const PaddingMain = styled.main`

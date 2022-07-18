@@ -67,7 +67,6 @@ export function SaveBtn(props) {
 }
 
 export function PostSaveBtn({ disabled, onClick }) {
-  console.log(disabled);
   if (disabled) {
     return (
       <Button width={90} height={32}
@@ -93,12 +92,26 @@ export function PostSaveBtn({ disabled, onClick }) {
 
 }
 
-export function UploadBtn() {
-  return (
-    <Button width={90} height={32} hover>
-      업로드
-    </Button>
-  )
+export function UploadBtn({disabled,onClick}) {
+  if(disabled){
+    return (
+      <Button width={90} height={32}
+        disabled={disabled} >
+        업로드
+      </Button>
+    )
+  }
+  else{
+    return (
+      <PostSaveBtnWrapper>
+        <Link to ='/feedpage'>
+          <Button onClick={onClick} width={90} height={32} hover>
+        업로드
+          </Button>
+        </Link>
+      </PostSaveBtnWrapper>
+    )
+  }
 }
 
 //중간사이즈(120x44) 버튼

@@ -7,12 +7,20 @@ export const AnimalWrapper = styled.article`
   box-sizing:border-box;
   width: 140px;
   height: 132px;
+  @media screen and (min-width:450px) {
+    width: 180px;
+  height: 150px;
+  }
 `
 
 export const Img = styled.img`
   border-radius:10px;
   width: 140px;
   height: 90px;
+  @media screen and (min-width:450px) {
+    width: 180px;
+  height: 110px;
+  }
 `
 
 export const Txt = styled.p`
