@@ -2,7 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { AlertOver, AlertWrapper, DeleteTxt, DeleteAlertBtn, BtnTxt, RedTxt } from './deleteStyle'
 
-export function DeleteAlert({ mainTxt, rightBtnTxt, closeAlert }) {
+export function DeleteAlert({ mainTxt, rightBtnTxt, closeAlert  }) {
+  const removeInfo = () =>{
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("accountname");
+  }
   return (
     <AlertOver>
       <AlertWrapper>
@@ -15,7 +19,7 @@ export function DeleteAlert({ mainTxt, rightBtnTxt, closeAlert }) {
         {
           rightBtnTxt === '로그아웃' ? 
             <Link to='/login'>
-              <DeleteAlertBtn>
+              <DeleteAlertBtn onClick={removeInfo()}>
                 <RedTxt>{rightBtnTxt}</RedTxt>
               </DeleteAlertBtn>
             </Link>
