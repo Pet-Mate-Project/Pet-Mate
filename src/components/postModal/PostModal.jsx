@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ModalList, ModalWrapper, TopSytle, ModalOver } from './postModalStyle'
 
 export default function Modal({ list, closeModal }) {
@@ -14,13 +15,15 @@ export default function Modal({ list, closeModal }) {
         <TopSytle onClick={closeModal}></TopSytle>
         <ul>
           {
-            list.map((listName, index) => (
-              <ModalList key={index} listName={listName}>{listName}</ModalList>
+            Object.keys(list).map((listName, index) => (
+              <Link to={list[listName]} key={index}>
+                <ModalList key={index} listName={listName}>{listName}</ModalList>
+              </Link>
             ))
           }
         </ul>
       </ModalWrapper>
-    </ModalOver>
+    </ModalOver >
   )
 
 }

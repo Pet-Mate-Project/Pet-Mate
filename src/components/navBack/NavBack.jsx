@@ -16,7 +16,14 @@ export function NavBack(props) {
   const goBack = () => {
     navigate(-1);
   }
-  const list = ['설정 및 개인정보', '로그아웃'];
+
+  // const [list, setList] = useState([]);
+  let list = [];
+  if (props.text === undefined || props.text === 'Followers') {
+    list = { '설정 및 개인정보': '', '로그아웃': '/login' };
+  } else {
+    list = { '채팅방 나가기': '/chatpage', '신고하기': '' };
+  }
   const [modal, setModal] = useState(false)
 
   const toggleModal = () => {
@@ -103,7 +110,7 @@ export function PostSaveNav({ onClick, disabled }) {
   )
 }
 
-export function SnsUploadNav({ disabled ,onClick}) {
+export function SnsUploadNav({ disabled, onClick }) {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
