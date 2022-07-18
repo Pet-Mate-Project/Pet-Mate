@@ -19,8 +19,12 @@ export function NavBack(props) {
 
   // const [list, setList] = useState([]);
   let list = [];
-  if (props.text === undefined || props.text === 'Followers') {
-    list = { '설정 및 개인정보': '', '로그아웃': '/login' };
+  const alertTxt = [];
+
+  if (props.text === undefined) {
+    list = { '설정 및 개인정보': '/profilemodify', '로그아웃': '' };
+    alertTxt[0] = '로그아웃하시겠어요?';
+    alertTxt[1] = '로그아웃';
   } else {
     list = { '채팅방 나가기': '/chatpage', '신고하기': '' };
   }
@@ -32,6 +36,7 @@ export function NavBack(props) {
   const closeModal = () => {
     setModal(false)
   }
+
   return (
     <header>
       <NavWrapper>
@@ -43,7 +48,7 @@ export function NavBack(props) {
           <Img src={vertical} alt="" onClick={toggleModal} />
         </NavBtn>
       </NavWrapper>
-      {modal === true && <Modal list={list} closeModal={closeModal} />}
+      {modal === true && <Modal list={list} closeModal={closeModal} alertTxt={alertTxt} />}
     </header>
   )
 }
