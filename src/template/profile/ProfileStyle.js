@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { palette } from '../../style/globalColor'
 
 export const Wrapper = styled.div`
-margin-top:70px;
+margin-top: 20px;
 margin-bottom: 28px;
 display: flex;
 justify-content: space-evenly;

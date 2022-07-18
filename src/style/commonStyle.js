@@ -11,6 +11,7 @@ export const AllWrap = styled.div`
   height:100%;
   max-width: 600px;
   max-height:  1200px;
+overflow: hidden;
 `
 
 export const ScrollMain = styled.main`
@@ -28,7 +29,6 @@ padding: 50px 5px;
 ::-webkit-scrollbar-thumb {
     background-color: ${palette.veryLigntGray};
     border-radius: 10px;
-
 }
 `
 
