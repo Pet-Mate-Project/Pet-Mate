@@ -1,7 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { palette } from '../../style/globalColor';
 
 export const NavWrapper = styled.nav`
-border-bottom:1px solid #DBDBDB; 
+border-bottom:1px solid ${palette.lightGray}; 
 box-sizing:border-box;
 width: 100%;
 height: 48px;
@@ -9,7 +10,7 @@ padding : 8px 11px;
 margin: 0 auto;
 position: fixed;
 top: 0;
-background:white;
+background:${palette.white};
 display:flex;
 z-index:10;
 `

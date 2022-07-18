@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { palette } from './globalColor'
 
 export const AllWrap = styled.div`
   position: absolute;
@@ -25,7 +26,7 @@ padding: 50px 5px;
 
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #EdEded;
+    background-color: ${palette.veryLigntGray};
     border-radius: 10px;
 
 }

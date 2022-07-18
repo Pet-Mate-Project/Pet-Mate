@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import profileIcon from '../../assets/basic-profile.svg'
+import { palette } from '../../style/globalColor'
 
 export const IconStyle = styled.img`
 border-radius: 50%;
@@ -27,7 +28,7 @@ export const ChatIconStyle = styled.div`
       width: 12px;
       height: 12px;
       border-radius: 100%;
-      background: #FFBF5E;
+      background: ${palette.subColor};
       }`
     }
   }}

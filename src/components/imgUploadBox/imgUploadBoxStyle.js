@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import imgUpload from '../../assets/icon-img-gray.svg'
+import { palette } from '../../style/globalColor';
 
 export const ImgUploadWrapper = styled.div`
   position: relative;
@@ -13,16 +14,16 @@ export const ImgUploadWrapper = styled.div`
 `
 
 export const TitleTxt = styled.p`
-  color: #767676;
+  color: ${palette.darkGray};
   font-size: 12px;
   margin-bottom:18px;
-` 
+`
 
 export const ImgRegist = styled.img`
   box-sizing:border-box;
   display: block;
-  border: 0.5px solid #DBDBDB;
-  background-color: #F2F2F2;
+  border: 0.5px solid ${palette.lightGray};
+  background-color: ${palette.veryLigntGray};
   object-fit: cover;
   border-radius: 10px;
   width: 100%;

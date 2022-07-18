@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { palette } from '../../style/globalColor';
 
 export const TabMenuStyle = styled.nav`
 width: 100%;
@@ -11,7 +12,7 @@ transform: translate(-50%, 0);
 display : flex;
 justify-content: space-between;
 box-sizing: border-box;
-border-top: 1px solid #DBDBDB;
+border-top: 1px solid ${palette.lightGray};
 padding: 12px 0 8px;
 `
 
@@ -19,7 +20,7 @@ export const NavLinkStyle = styled(NavLink)`
 width: 80px;
 font-size: 10px;
 line-height: 12px;
-color: #767676;
+color: ${palette.darkGray};
 text-align: center;
 ::before {
   content: '';
@@ -42,10 +43,10 @@ text-align: center;
   }}
 }
 :hover{
-    color: #1D57C1;
+    color: ${palette.mainColor};
   }
 &.active{
-  color: #1D57C1;
+  color: ${palette.mainColor};
 ::before{
   ${(props) => {
     return css`

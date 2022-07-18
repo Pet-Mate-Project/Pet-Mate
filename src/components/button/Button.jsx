@@ -3,6 +3,9 @@ import { Button, IconButton, PostSaveBtnWrapper } from './buttonStyle';
 import iconEmail from '../../assets/icon-email.svg';
 import iconSign from '../../assets/icon-signup.svg';
 import { Link } from 'react-router-dom'
+import { palette } from '../../style/globalColor';
+
+
 //검증관련 버튼 
 export function NextBtn({ nextClick, disabled, message }) {
   if (message === '이미 가입된 이메일 주소 입니다.' || message === '' || !disabled) {
@@ -127,8 +130,8 @@ export function ChatBtn() {
     <Button
       width={90}
       height={32}
-      color={'#1D57C1'}
-      backColor={'white'}
+      color={palette.mainColor}
+      backColor={palette.white}
       hover
     >
       연락하기
@@ -159,7 +162,7 @@ export function FollowToggleBtn() {
         <Button
           width={56}
           height={28}
-          color={'#767676'}
+          color={palette.middleGray}
           backColor={'white'}
           onClick={onClick}>
           취소
@@ -190,8 +193,8 @@ export function ProfileFollowToggleBtn() {
         <Button
           width={120}
           height={34}
-          color={'#767676'}
-          backColor={'white'}
+          color={palette.middleGray}
+          backColor={palette.white}
           onClick={onClick}>
           언팔로우
         </Button>

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { palette } from '../../style/globalColor';
 
 export const Button = styled.button`
     position: relative;
@@ -7,7 +8,7 @@ export const Button = styled.button`
     text-align: center;
     color : white;
     cursor:pointer;
-    background-color: #7EACFF;
+    background-color: ${palette.subColor};
     border-radius: 44px;
     box-sizing: border-box;
     margin-left: auto;
@@ -33,7 +34,7 @@ export const Button = styled.button`
     if (props.hover) {
       return css`
         :hover{
-          background-color: #1D57C1;
+          background-color: ${palette.mainColor};
           color : white;
         }
       `}

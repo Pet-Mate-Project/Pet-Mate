@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { palette } from '../../style/globalColor';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -24,14 +25,14 @@ export const TextWrapper = styled.div`
 export const UserName = styled.p`
   font-size: 14px;
   line-height: 17px;
-  color: #404040;
+  color: ${palette.textDark};
   margin: 0;
 `
 
 export const UserId = styled.p`
   font-size: 12px;
   line-height: 14px;
-  color: #767676;
+  color: ${palette.darkGray};
   margin: 0;
 `
 
@@ -53,7 +54,7 @@ export const ChatListWrapper = styled(Wrapper)`
 export const ChatDate = styled.p`
   font-size: 10px;
   line-height: 12px;
-  color: #DBDBDB;
+  color: ${palette.lightGray};
   padding: 6px 0;
   margin: auto 0 0 auto;
 `

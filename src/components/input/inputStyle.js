@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { palette } from '../../style/globalColor';
 
 export const InputStyle = styled.input`
 width: 100%;
@@ -6,16 +7,16 @@ margin-top: 10px;
 display: block;
 background-color: white;
 border: none; 
-border-bottom: 1px solid #DBDBDB;
+border-bottom: 1px solid ${palette.lightGray};
 padding-bottom: 5px;
 :hover{
-  border-color:  #1D57C1;
+  border-color:  ${palette.mainColor};
 }  
 :focus{
-  outline-color: #1D57C1;
+  outline-color: ${palette.mainColor};
 }
 ::placeholder{
-  color: #DBDBDB;
+  color: ${palette.lightGray};
   font-size: 14px;
 }
 ${(props) => {
@@ -33,24 +34,24 @@ ${(props) => {
 export const LabelStyle = styled.label`
 display: block;
 font-size: 12px;
-color : #767676;
+color : ${palette.darkGray};
 `;
 
 export const SearchStyle = styled.input`
 padding: 8px 12px;
 width:100%;
 margin:0 20px;
-background-color: #F2F2F2;
+background-color: ${palette.veryLigntGray};
 border: none;
 border-radius: 32px;
 font-size: 14px;
 box-sizing: border-box;
 ::placeholder{
-  color: #C4C4C4;
+  color: ${palette.middleGray};
   font-size: 14px;
 }
 :focus{
-  outline-color: #1D57C1;
+  outline-color: ${palette.mainColor};
 }
 
 ${(props) => {

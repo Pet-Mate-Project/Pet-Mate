@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { palette } from '../../style/globalColor';
 
 export const LeftSpeechBubbleWrapper = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ export const LeftChat = styled.span`
         margin-left: 6px;
         font-size: 14px;
         line-height: 17px;
-        border: 1px solid #C4C4C4;
+        border: 1px solid ${palette.middleGray};
         border-radius: 0px 10px 10px 10px;
         word-break: keep-all;
         background-color: white;
@@ -42,14 +43,14 @@ export const RightChat = styled(LeftChat)`
   border-radius: 10px 0 10px 10px;
   margin-left: 0;
   color: white;
-  background-color: #1D57C1;
+  background-color: ${palette.mainColor};
 `
 
 export const ChatTime = styled.strong`
   margin-top: auto;
   font-size: 10px;
   line-height: 12px;
-  color: #404040;
+  color: ${palette.textDark};
 `
 
 export const ChatImage = styled.img`

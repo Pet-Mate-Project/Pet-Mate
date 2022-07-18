@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { palette } from '../../style/globalColor'
 
 export const Wrapper = styled.div`
 margin-top:70px;
@@ -22,7 +23,7 @@ margin-bottom: 7px;
 `
 export const FollowerText = styled.p`
 font-size: 8px;
-color: #767676;
+color: ${palette.darkGray};
 `
 export const NameText = styled.p`
 font-weight: 600;
@@ -33,14 +34,14 @@ margin-bottom: 6px;
 export const IdText = styled.p`
 font-size: 12px;
 line-height: 14px;
-color: #767676;
+color: ${palette.darkGray};
 `
 export const IntroText = styled.p`
 font-size: 14px;
 line-height: 17px;
-color: #767676;
+color: ${palette.darkGray};
 margin-top: 12px;
-color: #767676;
+color: ${palette.darkGray};
 `
 export const ButtonWrap = styled.div`
 display: flex;
@@ -55,7 +56,7 @@ width: 34px;
 height: 34px;
 cursor : pointer;
 background-color: white;
-border: 1px solid #767676;
+border: 1px solid ${palette.darkGray};
 border-radius: 50%;
 box-sizing: border-box;
 ${(props) =>
