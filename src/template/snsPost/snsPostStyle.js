@@ -4,7 +4,7 @@ export const WrapperArticle = styled.article`
 width: 100%;
 `
 
-export const WrapSection = styled.section`
+export const WrapSection = styled.div`
 padding-left: 45px;
 `
 
@@ -36,7 +36,7 @@ export const IconImg = styled.img`
 background-color: none;
 width: 20px;
 height: 20px;
-border: tr a nsparent;
+border: transparent;
 vertical-align: -5px;
 margin: 0 6px 0px 15px;
 :first-child{
