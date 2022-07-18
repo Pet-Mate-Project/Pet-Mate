@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-
+import styled from 'styled-components';
+import { palette } from '../../style/globalColor';
 
 export const FollowCompoWrapper = styled.div`
   padding:180px 0 220px 0;
@@ -8,10 +8,9 @@ export const FollowCompoWrapper = styled.div`
   margin:0 auto;
   text-align:center;
 `
-export const DefaultTxt =styled.p`
+export const DefaultTxt = styled.p`
   font-size: 14px;
   margin-bottom:20px;
-  color: #767676;
+  color: ${palette.darkGray};
 `
 
- 

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { palette } from '../../style/globalColor';
 
 
 export const SectionAllWrap = styled.section`
 padding: 20px 0px 20px 16px;
 box-sizing: border-box;
-border-top:4px solid #E7EFFF;
+border-top:4px solid ${palette.lineColor};
 border-bottom: 4px solid #E7EFFF;
 `
 

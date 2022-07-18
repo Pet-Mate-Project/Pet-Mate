@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
+import { palette } from '../../style/globalColor';
 
 const slideUp = keyframes`
 from {
@@ -46,7 +47,7 @@ export const TopSytle = styled.div`
 cursor: pointer;
   width: 50px;
   height: 4px;
-  background: #DBDBDB;
+  background: ${palette.lightGray};
   margin: 16px auto;
 `
 
@@ -55,21 +56,21 @@ export const ModalList = styled.li`
   cursor: pointer;
 
   :hover {
-    color: #002D7D;
+    color: ${palette.textPoint};
   }
 
   ${(props) => {
     if (props.listName === '삭제' || props.listName === '로그아웃') {
       return css`
         :hover {
-          color: #FF2F7A;
+          color: ${palette.textRedPoint};
         }
       `
     } else if (props.listName === '신고하기') {
       return css`
-        color: #FF2F7A;
+        color: ${palette.textRedPoint};
         :hover {
-          color: #FF2F7A;
+          color: ${palette.textRedPoint};
           font-weight: 600;
         }
       `

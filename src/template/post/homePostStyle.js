@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { palette } from '../../style/globalColor';
 
 
 export const PostStyle = styled.li`
   width: 100%;
   margin: 0 auto;
   padding: 10px 34px;
-  border-bottom: 6px solid #E7EFFF;
+  border-bottom: 6px solid ${palette.lineColor};
   box-sizing: border-box;
 
   :last-child {
@@ -17,7 +18,7 @@ export const PetImg = styled.img`
   width: 100%;
   height: 210px;
   border-radius: 10px;
-  border: 1px solid #DBDBDB;
+  border: 1px solid ${palette.lightGray};
   margin-top: 8px;
   object-fit: cover;  
 `
@@ -30,7 +31,7 @@ export const TxtBox = styled.div`
 export const TitleTxt = styled.p`
   font-size: 20px;
   line-height: 21px;
-  color: #002D7D;
+  color: ${palette.textPoint};
 `
 
 export const ContentTxt = styled.p`
@@ -41,6 +42,6 @@ export const ContentTxt = styled.p`
 
 export const DateTxt = styled.p`
   font-size: 10px;
-  color: #767676;
+  color: ${palette.darkGray};
   margin: 10px 0;
 `

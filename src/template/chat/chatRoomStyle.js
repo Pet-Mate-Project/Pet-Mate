@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { palette } from '../../style/globalColor';
 
 export const ChatRoomWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #D7E7FF;
+  background: ${palette.lineColor};
 `
 
 export const ChatInputWrapper = styled.div`
@@ -32,11 +33,11 @@ export const ChatButton = styled.button`
   width: 40px;
   font-size: 14px;
   line-height: 17px;
-  color: #C4C4C4;
+  color: ${palette.middleGray};
   text-align: right;
   margin-left: auto;
 
   :hover {
-    color: #1D57C1;
+    color: ${palette.mainColor};
   }
 `

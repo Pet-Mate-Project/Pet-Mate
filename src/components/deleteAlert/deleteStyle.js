@@ -1,9 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { palette } from '../../style/globalColor';
 
-export const AlertWrapper =styled.div`
+export const AlertWrapper = styled.div`
   box-sizing:border-box;
   border-radius:10px;
-  border: 1px solid #DBDBDB;
+  border: 1px solid ${palette.lightGray};
   width:252px;
   height:110px;
 `
@@ -18,7 +19,7 @@ export const BtnTxt = styled.strong`
   text-align:center;
 `
 export const RedTxt = styled(BtnTxt)`
-  color: #FF2F7A;
+  color: ${palette.textRedPoint};
 `
 
 export const DeleteAlertBtn = styled.button`
@@ -26,8 +27,8 @@ export const DeleteAlertBtn = styled.button`
   cursor: pointer;
   width: 125px;
   height: 46px;
-  border-top: 1px solid #DBDBDB;
+  border-top: 1px solid ${palette.lightGray};
   &:last-child{
-    border-left: 1px solid #DBDBDB;
+    border-left: 1px solid ${palette.lightGray};
   }
 `
