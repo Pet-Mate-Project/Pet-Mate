@@ -1,6 +1,6 @@
 import React from 'react';
 import GlobalStyles from './style/globalStyle';
-import { Route, Routes,Navigate,useNavigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import FeedPage from './pages/FeedPage';
 import InitPage from './pages/InitPage';
@@ -15,34 +15,30 @@ import AccountSearch from './template/search/AccountSearch';
 import Follow from './template/follow/Follow';
 import ChatRoom from './template/chat/ChatRoom';
 import AddSnsPost from './template/snsPost/AddSnsPost';
-import NotFound from './pages/NotFoundPage';
-
 function App() {
-  const token =!!localStorage.getItem("token");
-  console.log(token);
   return (
     <>
       <GlobalStyles />
       <AnimatePresence />
       <Routes>
-        {/* public page */}
         <Route path='/' element={<InitPage />}></Route>
-        <Route path='/login' element={token?<Navigate to ='/homepage'/> :<Login />}></Route>
-        <Route path='/join' element={token?<Navigate to ='/homepage'/> :<SignUpMainPage />}> </Route>
-        {/* private page */}
-        <Route path='/homepage' element={token? <HomePage/> : <Navigate to ='/'/>}> </Route>
-        <Route path='/feedpage' element={token ? <FeedPage /> : <Navigate to ='/'/>}></Route>
-        <Route path='/profilepage' element={token ?<MyProfilePage /> : <Navigate to ='/'/>}></Route>
-        <Route path='/profilemodify' element={token? <ProfileModify /> :<Navigate to ='/'/>}></Route>
-        <Route path='/post' element={token? <AddPost />:<Navigate to ='/'/>}></Route>
-        <Route path='/snspost' element={token? <AddSnsPost/>:<Navigate to ='/'/>}></Route>
-        <Route path='/chatpage' element={token? <ChatList />:<Navigate to ='/'/>}></Route>
-        <Route path='/search' element={token? <AccountSearch />:<Navigate to ='/'/>}></Route>
-        <Route path='/follow' element={token? <Follow />:<Navigate to ='/'/>}></Route>
-        <Route path='/chatroom' element={token? <ChatRoom />:<Navigate to ='/'/>}></Route>
-        <Route path="/*" element={<NotFound/>}></Route>
+        {/* 굳이 URL을 바꿀 필요가 없을것 같음. */}
+        {/* <Route path='/main' element={<Main/>}> </Route> */}
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/join' element={<SignUpMainPage />}> </Route>
+        <Route path='/homepage' element={<HomePage />}></Route>
+        <Route path='/feedpage' element={<FeedPage />}></Route>
+        <Route path='/profilepage' element={<MyProfilePage />}></Route>
+        <Route path='/profilemodify' element={<ProfileModify />}></Route>
+        <Route path='/post' element={<AddPost />}></Route>
+        <Route path='/snspost' element={<AddSnsPost/>}></Route>
+        <Route path='/chatpage' element={<ChatList />}></Route>
+        <Route path='/search' element={<AccountSearch />}></Route>
+        <Route path='/follow' element={<Follow />}></Route>
+        <Route path='/chatroom' element={<ChatRoom />}></Route>
       </Routes>
       <AnimatePresence />
+
     </>
   )
 }
