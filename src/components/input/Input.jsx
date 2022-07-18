@@ -150,13 +150,14 @@ export function PetInfoInput({ petInfo, setPetInfo }) {
   );
 }
 
-export function SearchInput({ props, placeholder }) {
+export function SearchInput({ props, placeholder, onChange }) {
   return (
     <SearchStyle
       placeholder={placeholder}
       type="search"
       name="search"
       right={props}
+      onChange={onChange}
     // value={search}
     />
   );

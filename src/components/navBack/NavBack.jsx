@@ -42,7 +42,7 @@ export function NavBack(props) {
 }
 
 //top-search-nav
-export function NavTxtSearch({ placeholder }) {
+export function NavTxtSearch({ placeholder, onChange }) {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -52,7 +52,7 @@ export function NavTxtSearch({ placeholder }) {
       <NavBtn onClick={goBack}>
         <Img src={arrow} alt="" />
       </NavBtn>
-      <SearchInput placeholder={placeholder} />
+      <SearchInput placeholder={placeholder} onChange={onChange} />
     </NavWrapper>
   )
 }
