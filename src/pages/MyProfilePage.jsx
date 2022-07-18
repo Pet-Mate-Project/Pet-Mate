@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { NavBack } from '../components/navBack/NavBack'
-import { AllWrap } from '../style/commonStyle'
+import { AllWrap, ScrollMain } from '../style/commonStyle'
 import MyProfile from '../template/profile/MyProfile'
 import TabMenu from '../components/tabMenu/TabMenu'
 import { PetPost } from '../template/profilePost/PetPost'
@@ -30,14 +30,16 @@ function MyProfilePage() {
   return (
     <AllWrap>
       <NavBack />
-      <MyProfile />
-      {/* 산책피드가 없는 경우 빈화면 */}
-      {
-        postLength === 0 ? " " : <PetPost />
-      }
-      {
-        snsPostLength === 0 ? " " : <MyProfileSnsPost />
-      }
+      <ScrollMain>
+        <MyProfile />
+        {/* 산책피드가 없는 경우 빈화면 */}
+        {
+          postLength === 0 ? " " : <PetPost />
+        }
+        {
+          snsPostLength === 0 ? " " : <MyProfileSnsPost />
+        }
+      </ScrollMain>
       <TabMenu />
     </AllWrap>
   )

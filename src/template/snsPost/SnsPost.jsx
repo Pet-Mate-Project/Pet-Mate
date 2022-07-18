@@ -1,7 +1,6 @@
 import React from 'react'
 import { UserMore } from '../../components/user/User.jsx'
-import { IconWrap, PostImg, PostText, WrapperArticle, WrapSection, IconImg, DateText } from './snsPostStyle'
-import image from '../../assets/basic-profile.svg'
+import { IconWrap, PostImg, PostText, WrapSection, IconImg, DateText } from './snsPostStyle'
 import heartIcon from '../../assets/icon-heart.svg'
 import messageIcon from '../../assets/icon-message.svg'
 import { useSelector } from 'react-redux';
@@ -29,7 +28,7 @@ export function SnsPost() {
         images = images.split(",")
         console.log(images);
         return (
-          <li key={post.id} style={{ margin: "30px 0" }}>
+          <li key={post.id} style={{ padding: "16px" }}>
             <UserMore userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} />
             <WrapSection>
               <PostText>{post.content}</PostText>
@@ -77,7 +76,7 @@ export function MySnsPost() {
         images = images.split(",")
         console.log(images);
         return (
-          <li key={post.id} style={{ margin: "30px 0" }}>
+          <li key={post.id} style={{ padding: "16px" }}>
             <UserMore userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} />
             <WrapSection>
               <PostText>{post.content}</PostText>

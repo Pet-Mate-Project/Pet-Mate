@@ -7,7 +7,7 @@ import albumOn from '../../assets/icon-post-album-on.svg'
 import { MySnsPost } from '../snsPost/SnsPost'
 
 function MyProfileSnsPost() {
-  const [isList, setIsList] = useState(false)
+  const [isList, setIsList] = useState(true)
 
   function listClick() {
     isList === false &&
@@ -37,6 +37,7 @@ function MyProfileSnsPost() {
             <ShowBtnStyle showIcon={albumOn}
               onClick={albumClick} />
           </ShowWrap>
+          <MySnsPost />
         </section>
       }
     </>
