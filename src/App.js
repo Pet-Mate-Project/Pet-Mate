@@ -1,6 +1,6 @@
 import React from 'react';
 import GlobalStyles from './style/globalStyle';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes,useNavigate,Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import FeedPage from './pages/FeedPage';
 import InitPage from './pages/InitPage';
@@ -15,27 +15,32 @@ import AccountSearch from './template/search/AccountSearch';
 import Follow from './template/follow/Follow';
 import ChatRoom from './template/chat/ChatRoom';
 import AddSnsPost from './template/snsPost/AddSnsPost';
+import NotFound from './pages/NotFoundPage';
+import { PrivateRoute ,PublicRoute } from './Route';
+
 function App() {
+  const token =!!localStorage.getItem("token");
+  console.log(token);
   return (
     <>
       <GlobalStyles />
       <AnimatePresence />
       <Routes>
         <Route path='/' element={<InitPage />}></Route>
-        {/* 굳이 URL을 바꿀 필요가 없을것 같음. */}
-        {/* <Route path='/main' element={<Main/>}> </Route> */}
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/join' element={<SignUpMainPage />}> </Route>
-        <Route path='/homepage' element={<HomePage />}></Route>
-        <Route path='/feedpage' element={<FeedPage />}></Route>
-        <Route path='/profilepage' element={<MyProfilePage />}></Route>
-        <Route path='/profilemodify' element={<ProfileModify />}></Route>
-        <Route path='/post' element={<AddPost />}></Route>
-        <Route path='/snspost' element={<AddSnsPost/>}></Route>
-        <Route path='/chatpage' element={<ChatList />}></Route>
-        <Route path='/search' element={<AccountSearch />}></Route>
-        <Route path='/follow' element={<Follow />}></Route>
-        <Route path='/chatroom' element={<ChatRoom />}></Route>
+        <Route path='/login' element={<PublicRoute><Login /></PublicRoute>}></Route>
+        <Route path='/join' element={<PublicRoute><SignUpMainPage /></PublicRoute>}> </Route>
+        {/* private page */}
+        <Route path='/homepage' element={<PrivateRoute><HomePage /></PrivateRoute>}></Route>
+        <Route path='/feedpage' element={<PrivateRoute><FeedPage /></PrivateRoute>}></Route>
+        <Route path='/profilepage' element={<PrivateRoute><MyProfilePage /></PrivateRoute>}></Route>
+        <Route path='/profilemodify' element={<PrivateRoute><ProfileModify /></PrivateRoute>}></Route>
+        <Route path='/post' element={<PrivateRoute><AddPost /></PrivateRoute>}></Route>
+        <Route path='/snspost' element={<PrivateRoute><AddSnsPost/></PrivateRoute>}></Route>
+        <Route path='/chatpage' element={<PrivateRoute><ChatList /></PrivateRoute>}></Route>
+        <Route path='/search' element={<PrivateRoute><AccountSearch /></PrivateRoute>}></Route>
+        <Route path='/follow' element={<PrivateRoute><Follow /></PrivateRoute>}></Route>
+        <Route path='/chatroom' element={<PrivateRoute><ChatRoom /></PrivateRoute>}></Route>
+        <Route path="/*" element={<NotFound/>}></Route>
       </Routes>
       <AnimatePresence />
 
