@@ -3,8 +3,7 @@ import { FollowCompoWrapper, DefaultImg, DefaultTxt } from './followCompoStyle'
 import grayLogo from '../../assets/gray-logo.svg'
 import logo404 from '../../assets/404-logo.svg'
 import { MiddleBtn } from '../../components/button/Button'
-import { Link } from "react-router-dom";
-
+import { Link,useNavigate } from "react-router-dom";
 
 export function FollowCompo(props) {
   return (
@@ -21,13 +20,14 @@ export function FollowCompo(props) {
 }
 
 export function NotFoundCompo() {
+  const navigate = useNavigate();
   return (
     <FollowCompoWrapper>
       <img src={logo404} />
       <DefaultTxt>
         페이지를 찾을 수 없습니다. :(
       </DefaultTxt>
-      <MiddleBtn textBtn={'이전 페이지'} />
+      <MiddleBtn textBtn={'이전 페이지'} onClickFt={()=>navigate(-1)}/>
     </FollowCompoWrapper>
   )
 }
