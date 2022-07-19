@@ -8,49 +8,85 @@ import shareIcon from '../../assets/icon-share.svg'
 import axios from 'axios'
 
 function YourProfile({ userId }) {
-
   const url = "https://mandarin.api.weniv.co.kr";
-  const [userInfoList, setUserInfoList] = useState([])
   const token = JSON.parse(localStorage.getItem("token"));
   const accountname = userId;
+  const [yourInfoList, setYourInfoList] = useState([]);
+  const [isFollow, setIsFollow] = useState(false);
 
+  function onClick() {
+    if (!isFollow) {
+      setIsFollow(true);
+      postUserFollow();
+    } else {
+      setIsFollow(false);
+      deleteUserFollow();
+    }
+  }
 
   useEffect(() => {
-    getUserInfo()
+    getYourInfo();
   }, [])
 
-  console.log('UserInfoList', userInfoList)
-
-
-
-  //사용자 정보 받아오는 함수
-  function getUserInfo() {
-    axios.get(url + `/profile/${accountname}`, {
+  // your정보 받아오는 함수
+  async function getYourInfo() {
+    await axios.get(url + `/profile/${accountname}`, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
       }
-    }).then((res) => setUserInfoList(res.data.profile))
+    }).then((res) => {
+      setYourInfoList(res.data.profile);
+      setIsFollow(res.data.profile.isfollow);
+    })
   }
+
+  const data = {};
+  // 팔로우 정보 받아오는 함수
+  async function postUserFollow() {
+    await axios.post(url + `/profile/${accountname}/follow`, data, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-type": "application/json"
+      },
+    }).then((res) => {
+      setYourInfoList(res.data.profile);
+      setIsFollow(res.data.profile.isfollow);
+    })
+  }
+
+  // 언팔로우 정보 받아오는 함수
+  async function deleteUserFollow() {
+    await axios.delete(url + `/profile/${accountname}/unfollow`, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-type": "application/json"
+      },
+    }).then((res) => {
+      setYourInfoList(res.data.profile);
+      setIsFollow(res.data.profile.isfollow);
+    })
+  }
+
   return (
     <>
       <Wrapper>
         <ColumnWapper>
-          <FollowerCount>{userInfoList.followerCount}</FollowerCount>
+          <FollowerCount>{yourInfoList.followerCount}</FollowerCount>
           <FollowerText>followers</FollowerText>
         </ColumnWapper>
         <ProfileImg
-          src={url + `/${userInfoList.image}`} alt='user-img'
+          src={url + `/${yourInfoList.image}`} alt='user-img'
         />
         <ColumnWapper>
-          <FollowerCount>{userInfoList.followingCount}</FollowerCount>
+          <FollowerCount>{yourInfoList.followingCount}</FollowerCount>
           <FollowerText>followings</FollowerText>
         </ColumnWapper>
       </Wrapper>
       <ColumnWapper>
-        <NameText>{userInfoList.username}</NameText>
-        <IdText>@ {userInfoList.accountname}</IdText>
-        <IntroText>{userInfoList.intro}</IntroText>
+        <NameText>{yourInfoList.username}</NameText>
+        <IdText>@ {yourInfoList.accountname}</IdText>
+        <IntroText>{yourInfoList.intro}</IntroText>
       </ColumnWapper>
       <ButtonWrap>
         <OnlyIconButton icon={chatIcon} color={'#767676'}
@@ -58,7 +94,7 @@ function YourProfile({ userId }) {
           width={34}
           height={34}>
         </OnlyIconButton>
-        <ProfileFollowToggleBtn />
+        <ProfileFollowToggleBtn onClick={onClick} isFollow={isFollow} />
         <OnlyIconButton icon={shareIcon} color={'#767676'}
           backColor={'white'}
           width={34}
