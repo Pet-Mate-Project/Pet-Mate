@@ -1,7 +1,7 @@
 import React from 'react'
 import { IdInput, IntroInput, NameInput } from '../../components/input/Input'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
-import Profile from '../../components/profile/Profile'
+import { Profile, ProfileModifyShow } from '../../components/profile/Profile'
 import { FormStyle } from '../../style/commonStyle'
 
 export function ProfileSet({ userName, setName, userId, setId, userIntro, setIntro, message, IdCheck, userImg, setImg, register, errors }) {
@@ -35,27 +35,26 @@ export function ProfileSet({ userName, setName, userId, setId, userIntro, setInt
 }
 
 
-export function ProfileModifySet({ userName, setName, userIntro, setIntro, IdCheck, userImg, setImg, register, errors, userInfoList }) {
+export function ProfileModifySet({ userName, setName, userIntro, setIntro, IdCheck, userImg, setImg, register, errors, userInfoList, userId, setId }) {
   return (
     <>
-      <Profile
+      <ProfileModifyShow
+        userInfoList={userInfoList}
         userImg={userImg}
         setImg={setImg} />
       <FormStyle>
         <NameInput
-          placeholder={userInfoList.username}
           userName={userName}
           setName={setName}
           register={register} />
         {errors.userName && <SignUpErrorMessage message={errors.userName.message} />}
         <IdInput
           disabled={true}
-          placeholder={userInfoList.accountname}
-          value={userInfoList.accountname || ""}
+          userId={userId}
+          setId={setId}
           IdCheck={IdCheck}
           register={register} />
         <IntroInput
-          placeholder={userInfoList.intro}
           userIntro={userIntro}
           setIntro={setIntro} />
       </FormStyle>
