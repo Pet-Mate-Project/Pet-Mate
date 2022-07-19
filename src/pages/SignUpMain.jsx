@@ -6,11 +6,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 export async function ImgUpload(userImg) {
-
+  
   let formData = new FormData()
   formData.append('image', userImg)
-  // console.log('userimage', userImg)
-
   const res = await axios.post('https://mandarin.api.weniv.co.kr/image/uploadfile', formData)
   return res.data.filename
 }
@@ -38,10 +36,7 @@ export function SignUpMainPage() {
     formState: { isValid, errors },
   } = useForm({ mode: "onChange" });
 
-
-  //이미지 업로드 함수 실행
-  ImgUpload(userImg)
-
+  ImgUpload(userImg)  //이미지 업로드 함수 실행
   //유저 데이터 저장
   let userData = {
     "user": {
@@ -68,7 +63,6 @@ export function SignUpMainPage() {
         navigator('/login')
       })
   }
-
 
   //이메일 검증시 메세지 출력을 위한 부분
   useEffect(() => {
