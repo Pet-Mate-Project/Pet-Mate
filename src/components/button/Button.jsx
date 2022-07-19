@@ -92,8 +92,8 @@ export function PostSaveBtn({ disabled, onClick }) {
 
 }
 
-export function UploadBtn({disabled,onClick}) {
-  if(disabled){
+export function UploadBtn({ disabled, onClick }) {
+  if (disabled) {
     return (
       <Button width={90} height={32}
         disabled={disabled} >
@@ -101,12 +101,12 @@ export function UploadBtn({disabled,onClick}) {
       </Button>
     )
   }
-  else{
+  else {
     return (
       <PostSaveBtnWrapper>
-        <Link to ='/feedpage'>
+        <Link to='/feedpage'>
           <Button onClick={onClick} width={90} height={32} hover>
-        업로드
+            업로드
           </Button>
         </Link>
       </PostSaveBtnWrapper>
@@ -173,13 +173,7 @@ export function FollowToggleBtn() {
 }
 
 
-export function ProfileFollowToggleBtn() {
-  const [isFollow, setIsFollow] = useState(false)
-  function onClick() {
-    isFollow === false ?
-      setIsFollow(true) :
-      setIsFollow(false);
-  }
+export function ProfileFollowToggleBtn({ onClick, isFollow }) {
   if (!isFollow) {
     return (
       <Button width={120} height={34}
