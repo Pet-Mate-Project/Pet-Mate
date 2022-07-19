@@ -12,18 +12,12 @@ import { AxiosPetInfo } from '../../reducers/getPetInfoSlice'
 export default function AddPost() {
 
   const dispatch = useDispatch();
-  //미리보기 이미지 state
-  const [showImg, setShowImg] = useState("")
-  const fileInput = useRef(null)
-
-  //서버에 보낼 file객체
-  const [userImg, setImg] = useState("");
-
-  //input 데이터
+  const [showImg, setShowImg] = useState("")   //미리보기 이미지 state
+  const fileInput = useRef(null)    //서버에 보낼 file객체
+  const [userImg, setImg] = useState("");    //input 데이터
   const [Title, setTitle] = useState("")
   const [petInfo, setPetInfo] = useState("")
-  //버튼활성화
-  const [btn, setBtn] = useState(true)
+  const [btn, setBtn] = useState(true)    //버튼활성화
 
   //서버에 보낼 데이터
   let postData = {
@@ -65,22 +59,26 @@ export default function AddPost() {
 
   // 게시글 서버에 보내기
   async function PostSave() {
-    const imgData = await ImgUpload(userImg);
-    postData.product.itemImage = imgData
-    const URL = "https://mandarin.api.weniv.co.kr";
-    const loginReqPath = "/product";
-    const token = JSON.parse(localStorage.getItem("token"))
-    const accountname = JSON.parse(localStorage.getItem("accountname"))
-    const res = await axios.post(URL + loginReqPath, postData, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-type": "application/json"
-      },
-    });
-    console.log("res : ", res);
-    // dispatch(postActions.postAllCont(postData)); (post 관련 dispatch라 보류)
-    console.log("URL", URL + loginReqPath + "/" + accountname);
-    dispatch(AxiosPetInfo(URL + loginReqPath + "/" + accountname))
+    try{
+      const imgData = await ImgUpload(userImg);
+      postData.product.itemImage = imgData
+      const URL = "https://mandarin.api.weniv.co.kr";
+      const loginReqPath = "/product";
+      const token = JSON.parse(localStorage.getItem("token"))
+      const accountname = JSON.parse(localStorage.getItem("accountname"))
+      const res = await axios.post(URL + loginReqPath, postData, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-type": "application/json"
+        },
+      });
+      console.log("res : ", res);
+      console.log("URL", URL + loginReqPath + "/" + accountname);
+      dispatch(AxiosPetInfo(URL + loginReqPath + "/" + accountname))
+    }
+    catch(error){
+      console.log(error);
+    }
   }
 
   return (

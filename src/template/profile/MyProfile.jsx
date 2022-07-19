@@ -23,12 +23,17 @@ function MyProfile() {
 
   //사용자 정보 받아오는 함수
   function getUserInfo() {
-    axios.get(url + `/profile/${accountname}`, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-type": "application/json"
-      }
-    }).then((res) => setUserInfoList(res.data.profile))
+    try{
+      axios.get(url + `/profile/${accountname}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-type": "application/json"
+        }
+      }).then((res) => setUserInfoList(res.data.profile))
+    }
+    catch(error){
+      console.log(error);
+    }
   }
 
   return (

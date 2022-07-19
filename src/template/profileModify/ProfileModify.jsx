@@ -63,22 +63,25 @@ function ProfileModify() {
 
   //프로필수정
   async function profileSave() {
-    console.log('클릭')
-    console.log(userImg);
-    const imgUploadData = await ImgUpload(userImg)
-    const token = JSON.parse(localStorage.getItem("token"));
+    try {
+      console.log(userImg);
+      const imgUploadData = await ImgUpload(userImg)
+      const token = JSON.parse(localStorage.getItem("token"));
+      console.log('img res', imgUploadData)
+      userData.user.image = imgUploadData
+      const res = await axios.put(url + '/user', userData, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-type": "application/json"
+        }
+      })
+      console.log(res);
+      navigate(`/profilepage`);
+    }
+    catch (error) {
+      console.log(error);
+    }
 
-    console.log('img res', imgUploadData)
-    userData.user.image = imgUploadData
-    // console.log(userData)
-    const res = await axios.put(url + '/user', userData, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-type": "application/json"
-      }
-    })
-    console.log(res);
-    navigate(`/profilepage`);
   }
 
   return (

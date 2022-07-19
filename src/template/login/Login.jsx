@@ -30,45 +30,43 @@ export default function Login() {
 
   // 서버에서 데이터 검증 후 확인
   async function loginCheck() {
-    const URL = 'https://mandarin.api.weniv.co.kr';
-    const loginReqPath = '/user/login/';
 
-    //Axios 단축메소드 사용
-    console.log(`이메일| ${userEmail} 비밀번호|${userPassword}`);
-    const res = await axios.post(URL + loginReqPath, {
-      // body 값
-      user: { email: `${userEmail}`, password: `${userPassword}` },
-
-      //요청헤더
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    console.log(res);
-    const reqMsg = res.data.message; // res 메시지
-    console.log(reqMsg);
-
-    //에러메시지 전달
-    if (reqMsg === '이메일 또는 비밀번호가 일치하지 않습니다.') {
-      setErrMsg('true'); //에러가 발생한 경우 TRUE
-      setUserInfo('false');
-    } else {
-      setErrMsg('false');
-      setUserInfo('true');
+    try{
+      const URL = 'https://mandarin.api.weniv.co.kr';
+      const loginReqPath = '/user/login/';
+      //Axios 단축메소드 사용
+      console.log(`이메일| ${userEmail} 비밀번호|${userPassword}`);
+      const res = await axios.post(URL + loginReqPath, {
+        // body 값
+        user: { email: `${userEmail}`, password: `${userPassword}` },
+        //요청헤더
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(res);
+      const reqMsg = res.data.message; // res 메시지
+  
+      if (reqMsg === '이메일 또는 비밀번호가 일치하지 않습니다.') {
+        setErrMsg('true'); //에러가 발생한 경우 TRUE
+        setUserInfo('false');
+      } else {
+        setErrMsg('false');
+        setUserInfo('true');
+      }
+      //토큰값 (유저데이터)저장
+      if (reqMsg !== '이메일 또는 비밀번호가 일치하지 않습니다.') {
+        localStorage.setItem("accountname", JSON.stringify(res.data.user.accountname))
+        localStorage.setItem("token", JSON.stringify(res.data.user.token))
+        navigate('/homepage');
+      }
+    } 
+    catch(error){
+      console.log(error);
     }
-
-    //토큰값 (유저데이터)저장
-    if (reqMsg !== '이메일 또는 비밀번호가 일치하지 않습니다.') {
-      localStorage.setItem("accountname", JSON.stringify(res.data.user.accountname))
-      localStorage.setItem("token", JSON.stringify(res.data.user.token))
-      navigate('/homepage');
-    }
+   
   }
 
-  //test값
-  // hehe@test.com
-  //123456
   return (
     <AllWrap>
       <PaddingMain>

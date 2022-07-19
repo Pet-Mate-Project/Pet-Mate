@@ -4,8 +4,18 @@ import { NextBtn } from '../../components/button/Button'
 import { AllWrap, FormStyle, PaddingMain, Title } from '../../style/commonStyle'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 
-
-function SignUp({ disabled, nextClick, userEmail, setEmail, userPassword, setPassword, message, emailCheck, register, errors }) {
+function SignUp({ 
+  disabled,
+  nextClick, 
+  userEmail, 
+  setEmail,
+  userPassword, 
+  setPassword, 
+  message,
+  emailCheck,
+  register, 
+  errors 
+}) {
   return (
     <AllWrap>
       <PaddingMain>
