@@ -28,14 +28,10 @@ function AccountSearch() {
           }
         });
         setSearchResult(response.data)
-        // console.log(searchReqPath)
       }
       search()
     }
-    // console.log(keyword)
   }, [keyword]);
-  
-  // console.log(searchResult)
 
   return (
     <AllWrap>
@@ -47,9 +43,8 @@ function AccountSearch() {
         {searchResult.map((user) => {
           return <User key={user._id} userName={user.username} userId={user.accountname} />
         })}
-        
-        {searchResult.length === 0 && <CorrectMessageStyle>검색된 결과가 없습니다.</CorrectMessageStyle>}
-        {/* 검색된 계정이 0개면 렌더링 */}
+        {searchResult.length === 0 && keyword.length >= 1 && <CorrectMessageStyle>검색된 결과가 없습니다.</CorrectMessageStyle>}
+        {/* 검색된 계정이 0개, 입력된 keyword가 1개 이상이면 출력 */}
       </FollowMain>
       <TabMenu />
     </AllWrap>
