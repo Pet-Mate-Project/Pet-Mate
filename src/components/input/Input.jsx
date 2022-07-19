@@ -32,7 +32,7 @@ export function NameInput({ userName, setName, register, placeholder }) {
   )
 }
 
-export function IdInput({ value, setId, IdCheck, register, placeholder, disabled }) {
+export function IdInput({ value, setId, IdCheck, register, placeholder, disabled, userId }) {
   return (
     <>
       <LabelStyle>계정 ID
@@ -41,7 +41,7 @@ export function IdInput({ value, setId, IdCheck, register, placeholder, disabled
           placeholder={placeholder}
           type="text"
           name="userId"
-          value={value}
+          value={userId}
           {...register("userId", {
             required: "*계정 ID는 필수 입력사항입니다.",
             pattern: {

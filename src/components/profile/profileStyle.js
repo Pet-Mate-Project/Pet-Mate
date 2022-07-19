@@ -23,6 +23,7 @@ export const ProfileImg = styled.img`
 width: 120px;
 height: 120px;
 border-radius: 50%;
+object-fit: cover;
 `
 
 export const FileInput = styled.input`

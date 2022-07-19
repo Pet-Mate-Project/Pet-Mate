@@ -9,18 +9,38 @@ import { ProfileModifyMain } from './profileModifyStyle'
 import { useNavigate } from 'react-router-dom'
 
 function ProfileModify() {
+
   const [userName, setName] = useState("");
   const [userId, setId] = useState("");
   const [userIntro, setIntro] = useState("");
-  const [userImg, setImg] = useState('https://raw.githubusercontent.com/Pet-Mate-Project/Pet-Mate/9a1dd2c1758e84421b72fed7d132f5c12e66dc46/src/assets/basic-profile.png');
+  const [userImg, setImg] = useState("");
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const [userInfoList, setUserInfoList] = useState([])
   const token = JSON.parse(localStorage.getItem("token"));
   const accountname = JSON.parse(localStorage.getItem("accountname"));
-
-
   const url = "https://mandarin.api.weniv.co.kr";
+
+  useEffect(() => {
+    getUserInfo()
+  }, [])
+
+  //사용자 정보 받아오기
+  function getUserInfo() {
+    axios.get(url + `/profile/${accountname}`, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-type": "application/json"
+      }
+    }).then((res) => {
+      setImg(res.data.profile.image);
+      setName(res.data.profile.username);
+      setIntro(res.data.profile.intro);
+      setId(res.data.profile.accountname);
+      setUserInfoList(res.data.profile)
+    })
+  }
+
 
   //유효성 검사를 위한 react-hook-form 변수 선언
   const {
@@ -34,24 +54,12 @@ function ProfileModify() {
   let userData = {
     "user": {
       "username": userName,
-      "accountname": accountname,
+      "accountname": userId,
       "intro": userIntro,
       "image": ""
     }
   }
-  useEffect(() => {
-    getUserInfo()
-  }, [])
 
-  //사용자 정보 받아오기
-  function getUserInfo() {
-    axios.get(url + `/profile/${accountname}`, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-type": "application/json"
-      }
-    }).then((res) => setUserInfoList(res.data.profile))
-  }
 
   //프로필수정
   async function profileSave() {
