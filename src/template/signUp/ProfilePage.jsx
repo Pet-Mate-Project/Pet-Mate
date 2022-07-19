@@ -4,7 +4,21 @@ import { PaddingMain, Title, AllWrap } from '../../style/commonStyle'
 import { StartBtn } from '../../components/button/Button'
 import { ProfileSet } from '../profile/ProfileSet'
 
-function ProfilePage({ userName, setName, userId, setId, userIntro, setIntro, message, IdCheck, userImg, setImg, disabled, signUp, register, errors }) {
+function ProfilePage({ 
+  userName,
+  setName,
+  userId,
+  setId, 
+  userIntro, 
+  setIntro,
+  message,
+  IdCheck, 
+  userImg, 
+  setImg,
+  disabled, 
+  signUp, 
+  register, 
+  errors }) {
   return (
     <AllWrap>
       <PaddingMain>
