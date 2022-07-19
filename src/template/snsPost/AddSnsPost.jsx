@@ -67,14 +67,20 @@ export default function AddSnsPost() {
     const token = JSON.parse(localStorage.getItem("token"))
     const accountname = JSON.parse(localStorage.getItem("accountname"))
     //axios post요청 
-    const res = await axios.post(URL + loginReqPath, data, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-type": "application/json"
-      },
-    });
-    console.log("게시글post요청결과",res);
-    dispatch(AxiosPost(URL + loginReqPath + "/" + accountname+"/userpost"))
+
+    try{
+      const res = await axios.post(URL + loginReqPath, data, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-type": "application/json"
+        },
+      });
+      console.log("게시글post요청결과",res);
+      dispatch(AxiosPost(URL + loginReqPath + "/" + accountname+"/userpost"))
+    }
+    catch(error){
+      console.log(error);
+    }
   }
 
   useEffect(()=>{

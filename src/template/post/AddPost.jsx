@@ -65,22 +65,28 @@ export default function AddPost() {
 
   // 게시글 서버에 보내기
   async function PostSave() {
-    const imgData = await ImgUpload(userImg);
-    postData.product.itemImage = imgData
-    const URL = "https://mandarin.api.weniv.co.kr";
-    const loginReqPath = "/product";
-    const token = JSON.parse(localStorage.getItem("token"))
-    const accountname = JSON.parse(localStorage.getItem("accountname"))
-    const res = await axios.post(URL + loginReqPath, postData, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-type": "application/json"
-      },
-    });
-    console.log("res : ", res);
-    // dispatch(postActions.postAllCont(postData)); (post 관련 dispatch라 보류)
-    console.log("URL", URL + loginReqPath + "/" + accountname);
-    dispatch(AxiosPetInfo(URL + loginReqPath + "/" + accountname))
+    try{
+      const imgData = await ImgUpload(userImg);
+      postData.product.itemImage = imgData
+      const URL = "https://mandarin.api.weniv.co.kr";
+      const loginReqPath = "/product";
+      const token = JSON.parse(localStorage.getItem("token"))
+      const accountname = JSON.parse(localStorage.getItem("accountname"))
+      const res = await axios.post(URL + loginReqPath, postData, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-type": "application/json"
+        },
+      });
+      console.log("res : ", res);
+      // dispatch(postActions.postAllCont(postData)); (post 관련 dispatch라 보류)
+      console.log("URL", URL + loginReqPath + "/" + accountname);
+      dispatch(AxiosPetInfo(URL + loginReqPath + "/" + accountname))
+    }
+    catch(error){
+      console.log(error);
+    }
+   
   }
 
   return (
