@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import getPetInfoReducer from './reducers/getPetInfoSlice'
 import getPostReducer from "./reducers/getPostSlice";
+import deletePostReducer from './reducers/deletePostSlice'
 
 //추후고려
 // const userToken = localStorage.getItem("userInfo")
@@ -15,6 +16,7 @@ export const store = configureStore({
   reducer:{
     // initialState,
     getPetInfo:getPetInfoReducer,
-    getPost:getPostReducer
+    getPost:getPostReducer,
+    deletePost:deletePostReducer,
   },
 })
