@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import Reducer from './reducers/Reducer'
 import getPetInfoReducer from './reducers/getPetInfoSlice'
 import getPostReducer from "./reducers/getPostSlice";
 
