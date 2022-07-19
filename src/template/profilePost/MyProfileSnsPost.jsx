@@ -5,6 +5,7 @@ import listOn from '../../assets/icon-post-list-on.svg'
 import albumOff from '../../assets/icon-post-album-off.svg'
 import albumOn from '../../assets/icon-post-album-on.svg'
 import { MySnsPost } from '../snsPost/SnsPost'
+import SnsAlbum from './SnsAlbum'
 
 function MyProfileSnsPost() {
   const [isList, setIsList] = useState(true)
@@ -37,7 +38,7 @@ function MyProfileSnsPost() {
             <ShowBtnStyle showIcon={albumOn}
               onClick={albumClick} />
           </ShowWrap>
-          <MySnsPost />
+          <SnsAlbum />
         </section>
       }
     </>
