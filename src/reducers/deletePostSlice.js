@@ -36,9 +36,6 @@ export const deletePost = createSlice({
       console.log("삭제 할 게시글 종류",action.payload);
       state.type = action.payload;
     },
-    clickType (state,action) {
-      state.click = action.payload;
-    }
   },
   extraReducers: (builder) => {
     builder
