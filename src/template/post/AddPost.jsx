@@ -12,18 +12,12 @@ import { AxiosPetInfo } from '../../reducers/getPetInfoSlice'
 export default function AddPost() {
 
   const dispatch = useDispatch();
-  //미리보기 이미지 state
-  const [showImg, setShowImg] = useState("")
-  const fileInput = useRef(null)
-
-  //서버에 보낼 file객체
-  const [userImg, setImg] = useState("");
-
-  //input 데이터
+  const [showImg, setShowImg] = useState("")   //미리보기 이미지 state
+  const fileInput = useRef(null)    //서버에 보낼 file객체
+  const [userImg, setImg] = useState("");    //input 데이터
   const [Title, setTitle] = useState("")
   const [petInfo, setPetInfo] = useState("")
-  //버튼활성화
-  const [btn, setBtn] = useState(true)
+  const [btn, setBtn] = useState(true)    //버튼활성화
 
   //서버에 보낼 데이터
   let postData = {
@@ -79,14 +73,12 @@ export default function AddPost() {
         },
       });
       console.log("res : ", res);
-      // dispatch(postActions.postAllCont(postData)); (post 관련 dispatch라 보류)
       console.log("URL", URL + loginReqPath + "/" + accountname);
       dispatch(AxiosPetInfo(URL + loginReqPath + "/" + accountname))
     }
     catch(error){
       console.log(error);
     }
-   
   }
 
   return (

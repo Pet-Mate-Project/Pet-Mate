@@ -17,6 +17,5 @@ export const store = configureStore({
     // initialState,
     getPetInfo:getPetInfoReducer,
     getPost:getPostReducer
-    // uploadPost:Reducer, 보류
   },
 })
