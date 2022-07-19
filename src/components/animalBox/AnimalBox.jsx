@@ -3,12 +3,13 @@ import { AnimalWrapper, TitleTxt, TimeTxt, Img } from './animalStyle'
 
 //사용법
 // <AnimalBox src={} title={"아랑이랑 산책하실 분"} time={"6월 27일 오후 8시"}/>
-export function AnimalBox(props) {
+export function AnimalBox({src,title,time,onClick}) {
+
   return (
-    <AnimalWrapper>
-      <Img src={props.src} />
-      <TitleTxt>{props.title}</TitleTxt>
-      <TimeTxt>{props.time}</TimeTxt>
+    <AnimalWrapper onClick={onClick}>
+      <Img src={src} />
+      <TitleTxt>{title}</TitleTxt>
+      <TimeTxt>{time}</TimeTxt>
     </AnimalWrapper>
   )
 }
