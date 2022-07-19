@@ -1,6 +1,6 @@
 import React from 'react';
 import GlobalStyles from './style/globalStyle';
-import { Route, Routes,useNavigate,Navigate } from 'react-router-dom'
+import { Route, Routes, useNavigate, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import FeedPage from './pages/FeedPage';
 import InitPage from './pages/InitPage';
@@ -16,10 +16,11 @@ import Follow from './template/follow/Follow';
 import ChatRoom from './template/chat/ChatRoom';
 import AddSnsPost from './template/snsPost/AddSnsPost';
 import NotFound from './pages/NotFoundPage';
-import { PrivateRoute ,PublicRoute } from './Route';
+import { PrivateRoute, PublicRoute } from './Route';
+import YourProfilePage from './pages/YourProfilePage';
 
 function App() {
-  const token =!!localStorage.getItem("token");
+  const token = !!localStorage.getItem("token");
   console.log(token);
   return (
     <>
@@ -35,12 +36,13 @@ function App() {
         <Route path='/profilepage' element={<PrivateRoute><MyProfilePage /></PrivateRoute>}></Route>
         <Route path='/profilemodify' element={<PrivateRoute><ProfileModify /></PrivateRoute>}></Route>
         <Route path='/post' element={<PrivateRoute><AddPost /></PrivateRoute>}></Route>
-        <Route path='/snspost' element={<PrivateRoute><AddSnsPost/></PrivateRoute>}></Route>
+        <Route path='/snspost' element={<PrivateRoute><AddSnsPost /></PrivateRoute>}></Route>
         <Route path='/chatpage' element={<PrivateRoute><ChatList /></PrivateRoute>}></Route>
         <Route path='/search' element={<PrivateRoute><AccountSearch /></PrivateRoute>}></Route>
         <Route path='/follow' element={<PrivateRoute><Follow /></PrivateRoute>}></Route>
         <Route path='/chatroom' element={<PrivateRoute><ChatRoom /></PrivateRoute>}></Route>
-        <Route path="/*" element={<NotFound/>}></Route>
+        <Route path='/userprofile' element={<PrivateRoute><YourProfilePage /></PrivateRoute>}></Route>
+        <Route path="/*" element={<NotFound />}></Route>
       </Routes>
       <AnimatePresence />
 

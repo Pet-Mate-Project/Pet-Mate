@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectAllPosts, AxiosPetInfo, getPostStatus } from '../reducers/getPetInfoSlice'
 import MyProfileSnsPost from '../template/profilePost/MyProfileSnsPost'
 import { selectAllSnsPosts } from '../reducers/getPostSlice';
+import { AxiosPost } from '../reducers/getPostSlice'
 
 function MyProfilePage() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function MyProfilePage() {
   useEffect(() => {
     if (postsStatus === 'idle') {
       dispatch(AxiosPetInfo(URL + loginReqPath))
+      dispatch(AxiosPost(URL+"/post/"+accountname+"/userpost"))
     }
   }, [dispatch])
 

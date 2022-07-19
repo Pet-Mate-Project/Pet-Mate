@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavWrapper, Img, NavBtn, NavTxt, FloatR } from './navBackStyle'
+import { NavWrapper, Img, NavBtn, NavTxt } from './navBackStyle'
 import arrow from '../../assets/icon-arrow-left.svg'
 import vertical from '../../assets/icon-more-vertical.svg'
 import searchbar from '../../assets/icon-search.svg'
@@ -17,21 +17,22 @@ export function NavBack(props) {
     navigate(-1);
   }
 
-  // const [list, setList] = useState([]);
   let list = [];
-  const alertTxt = [];
+  let alertTxt = [];
 
   if (props.text === undefined) {
     list = { '설정 및 개인정보': '/profilemodify', '로그아웃': '' };
-    alertTxt[0] = '로그아웃하시겠어요?';
-    alertTxt[1] = '로그아웃';
-  } else {
+    //취솜말고 나머지애들
+    alertTxt = ['로그아웃하시겠어요?','로그아웃'];
+  }
+  else {
     list = { '채팅방 나가기': '/chatpage', '신고하기': '' };
   }
   const [modal, setModal] = useState(false)
 
   const toggleModal = () => {
-    modal === false ? setModal(true) : setModal(false)
+    setModal(modal => !modal)
+    console.log(modal);
   }
   const closeModal = () => {
     setModal(false)
