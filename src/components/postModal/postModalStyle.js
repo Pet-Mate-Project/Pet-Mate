@@ -40,7 +40,7 @@ z-index: 10;
   padding-bottom: 10px;
   border-radius: 20px 20px 0 0;
   box-sizing: border-box;
-  animation: ${slideUp} 1s;
+  animation: ${slideUp} 0.3s;
 `
 
 export const TopSytle = styled.div`
