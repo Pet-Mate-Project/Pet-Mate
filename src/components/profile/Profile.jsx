@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { Wrapper, FileUploader, ProfileImg, FileInput } from './profileStyle'
 
-export function Profile({ setImg, userInfoList }) {
+export function Profile({ setImg }) {
   const fileInput = useRef(null)
   //화면에 보여주기용 이미지 상태관리
   const [showImg, setShowImg] = useState("https://mandarin.api.weniv.co.kr/1657812669741.png")
