@@ -4,6 +4,7 @@ import { AlertOver, AlertWrapper, DeleteTxt, DeleteAlertBtn, BtnTxt, RedTxt } fr
 import { useSelector, useDispatch } from 'react-redux'
 import { DeleteType, AxiosDeletePost, DeleteId ,selectDeleteMsg } from '../../reducers/deletePostSlice'
 import { AxiosPetInfo } from '../../reducers/getPetInfoSlice';
+import {AxiosPost} from '../../reducers/getPostSlice'
 
 export function DeleteAlert({ mainTxt, rightBtnTxt, closeAlert,setModal }) {
   const dispatch = useDispatch();
@@ -23,9 +24,8 @@ export function DeleteAlert({ mainTxt, rightBtnTxt, closeAlert,setModal }) {
     const URL = "https://mandarin.api.weniv.co.kr";
     const loginReqPath = `/${postType}/${Id}`;  //타입 : sns인지 pet인지
     dispatch(AxiosDeletePost(URL+loginReqPath))
-      .then( 
-        () => dispatch(AxiosPetInfo(URL + `/product/${accountname}`))
-      )
+      .then(  () => postType==='product'&&dispatch(AxiosPetInfo(URL + `/product/${accountname}`)))
+      .then( ()=> postType==='post'&&dispatch((AxiosPost(URL + `/post/${accountname}/userpost`))));
     setModal(false);
   } 
   
