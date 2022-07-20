@@ -4,7 +4,7 @@ import listOff from '../../assets/icon-post-list-off.svg'
 import listOn from '../../assets/icon-post-list-on.svg'
 import albumOff from '../../assets/icon-post-album-off.svg'
 import albumOn from '../../assets/icon-post-album-on.svg'
-import { MySnsPost } from '../snsPost/SnsPost'
+import { SnsPost } from '../snsPost/SnsPost'
 import SnsAlbum from './SnsAlbum'
 
 function MyProfileSnsPost() {
@@ -29,7 +29,7 @@ function MyProfileSnsPost() {
             <ShowBtnStyle showIcon={albumOff}
               onClick={albumClick} />
           </ShowWrap>
-          <MySnsPost />
+          <SnsPost />
         </section>
         :
         <section>

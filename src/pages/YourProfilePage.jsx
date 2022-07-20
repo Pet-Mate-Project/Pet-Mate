@@ -15,8 +15,6 @@ function YourProfilePage() {
   const location = useLocation();
   const accountname = location.state?.userId;
   const URL = "https://mandarin.api.weniv.co.kr";
-  const token = JSON.parse(localStorage.getItem("token"));
-
   const dispatch = useDispatch();
   const postsStatus = useSelector(getPostStatus);
   //펫등록 게시글 수 
@@ -26,6 +24,7 @@ function YourProfilePage() {
 
   useEffect(() => {
     if (postsStatus === 'idle') {
+      console.log("여기서 dispatch?ㅇㅇ");
       dispatch(AxiosPetInfo(URL + "/product/" + accountname))
       dispatch(AxiosPost(URL + "/post/" + accountname + "/userpost"))
     }
