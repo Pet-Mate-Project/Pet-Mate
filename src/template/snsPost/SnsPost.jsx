@@ -56,7 +56,6 @@ export function SnsPost() {
 
 export function MySnsPost() {
   const snsPosts = useSelector(selectAllSnsPosts).post;
-  console.log(snsPosts);
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
   const marketImg = "http://146.56.183.55:5050/Ellipse.png";
 
@@ -74,14 +73,13 @@ export function MySnsPost() {
       {snsPosts && snsPosts.map((post) => {
         let images = post.image
         images = images.split(",")
-        console.log(images);
+        // console.log(images);
         return (
           <li key={post.id} style={{ padding: "16px" }}>
             <UserMore userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} />
             <WrapSection>
               <PostText>{post.content}</PostText>
               {images.map((image) => {
-                console.log("https://mandarin.api.weniv.co.kr/" + image);
                 return (
                   <>
                     <PostImg src={"https://mandarin.api.weniv.co.kr/" + image} />
