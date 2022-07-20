@@ -28,8 +28,10 @@ export default function ModifyPost() {
   //선택한 게시글id
   const detailPostData = useSelector(selectDetailPosts).product ; //선택한 게시글
   console.log("선택한 게시글",detailPostData);
+  const preImg = detailPostData?.itemImage;
+  const preTitle = detailPostData?.itemName;
+  const prepetInfo =detailPostData?.link;
 
-  
   const URL = "https://mandarin.api.weniv.co.kr";
   const [showImg, setShowImg] = useState("")   //미리보기 이미지 state
   const fileInput = useRef(null)    //서버에 보낼 file객체
@@ -38,26 +40,46 @@ export default function ModifyPost() {
   const [petInfo, setPetInfo] = useState("")
   const [btn, setBtn] = useState(true)    //버튼활성화
 
- 
   //서버에 보낼 데이터
   let postData = {
     "product": {
-      "itemName": Title,
+      "itemName": Title?.length===0?preTitle : Title ,
       "price": 9999999,
-      "link": petInfo,
+      "link": petInfo?.length===0?prepetInfo:petInfo,
       "itemImage": ""
     },
   }
 
-  //버튼활성화
+  useEffect(()=>{
+    setTitle("")
+    setPetInfo("")
+  },[dispatch])
+
   useEffect(() => {
-    if (Title?.length >= 2 && petInfo !== "" && showImg !== "") {
-      setBtn(false)
+    console.log("이전길이|",preTitle?.length);
+    console.log("이전타이틀|",preTitle);
+    console.log("이전펫정보|",prepetInfo);
+
+    console.log("현재길이|",Title?.length );
+    console.log("현재타이틀|",Title );
+    console.log("현재정보|",petInfo );
+
+    if((Title?.length >= 2 && prepetInfo!==0)){
+      setBtn(false); 
     }
-    else {
-      setBtn(true)
+    else if(Title?.length >= 2 && petInfo!==0){
+      setBtn(false); 
     }
-  }, [Title, petInfo, showImg])
+    else if (preTitle?.length>=2 && petInfo!==0){
+      setBtn(false);
+    }
+    else if ( preTitle?.length>=2 &&prepetInfo!==0 ){
+      setBtn(false);
+    }
+    else{
+      setBtn(true);
+    }
+  },[Title, petInfo, showImg, preImg,preTitle,prepetInfo])
 
   //이미지미리보기
   const onChange = (e) => {
@@ -79,10 +101,10 @@ export default function ModifyPost() {
 
 
   // 게시글 서버에 보내기
-  async function PostSave() {
+  async function PostSave() { 
     try{
       const imgData = await ImgUpload(userImg);
-      postData.product.itemImage = imgData
+      postData.product.itemImage = imgData;
       const loginReqPath = `/product/${selectId}`;
       const token = JSON.parse(localStorage.getItem("token"))
       const accountname = JSON.parse(localStorage.getItem("accountname"))
@@ -107,10 +129,10 @@ export default function ModifyPost() {
         <PostSaveNav onClick={PostSave} disabled={btn} link={"/profilepage"}/>
       </header>
       <PaddingMain>
-        <ImgUploadBox onChange={onChange} src={showImg} fileref={fileInput} defaultImg={URL+"/"+detailPostData?.itemImage}  />
+        <ImgUploadBox onChange={onChange} src={showImg} fileref={fileInput} defaultImg={URL+"/"+preImg}  />
         <FormStyle>
-          <TitleInput Title={Title} setTitle={setTitle}  defaultValue={detailPostData?.itemName} />
-          <PetInfoInput petInfo={petInfo} setPetInfo={setPetInfo} defaultValue={detailPostData?.link} />
+          <TitleInput Title={Title} setTitle={setTitle}  defaultValue={preTitle} />
+          <PetInfoInput petInfo={petInfo} setPetInfo={setPetInfo} defaultValue={prepetInfo} />
         </FormStyle>
       </PaddingMain>
     </AllWrap>
