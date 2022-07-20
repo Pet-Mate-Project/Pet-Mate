@@ -10,7 +10,6 @@ import {useLocation} from 'react-router-dom'
 export function PetPost() {
   const location = useLocation();
   const name = location.state?.userId;
-  const myname = JSON.parse(localStorage.getItem("accountname"));
   const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts).product;
   const list = {'삭제':'','수정':'/','산책피드로 가기':'/homepage'};
@@ -26,10 +25,7 @@ export function PetPost() {
     dispatch(deleteActions.deleteId(petId));
     setModal(modal => !modal)
   }
-  // console.log(name);
-  // console.log(myname);
  
-
   return (
     <SectionAllWrap>
       <MiniPostTitle>산책가까?</MiniPostTitle>
