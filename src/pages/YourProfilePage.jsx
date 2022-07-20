@@ -24,7 +24,6 @@ function YourProfilePage() {
 
   useEffect(() => {
     if (postsStatus === 'idle') {
-      console.log("여기서 dispatch?ㅇㅇ");
       dispatch(AxiosPetInfo(URL + "/product/" + accountname))
       dispatch(AxiosPost(URL + "/post/" + accountname + "/userpost"))
     }
