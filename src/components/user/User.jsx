@@ -4,6 +4,7 @@ import { ChatBtn, FollowToggleBtn } from '../button/Button.jsx'
 import { ChatListProfileIcon, ProfileIconS } from '../profileIcon/ProfileIcon.jsx'
 import { TextWrapper, UserId, UserName, Wrapper, MoreIcon, ChatPreview, ChatDate, ChatListWrapper } from './userStyle.js'
 import moreIcon from '../../assets/icon-more-vertical-small.svg'
+import { Link } from 'react-router-dom'
 
 
 export function User({ userName, userId, img }) {
@@ -93,7 +94,9 @@ export function UserMore({ userName, userId, img, onClick }) {
   return (
     <>
       <Wrapper between>
-        <User userName={userName} userId={userId} img={img} />
+        <Link to='/userprofile' state={{ userId: userId }}>
+          <User userName={userName} userId={userId} img={img} />
+        </Link>
         <MoreIcon src={moreIcon} onClick={onClick} />
       </Wrapper>
     </>

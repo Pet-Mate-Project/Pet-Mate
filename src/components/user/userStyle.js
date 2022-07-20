@@ -20,6 +20,7 @@ export const TextWrapper = styled.div`
   flex-direction: column;
   gap: 5px;
   margin: 6px;
+  cursor: pointer;
 `
 
 export const UserName = styled.p`
