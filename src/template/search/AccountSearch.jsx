@@ -33,7 +33,7 @@ function AccountSearch() {
       search()
     }
   }, [keyword]);
-  
+
   return (
     <AllWrap>
       <header>
@@ -42,6 +42,7 @@ function AccountSearch() {
 
       <FollowMain>
         {searchResult.map((user) => {
+          console.log(user.image)
           return <Link key={user._id} to='/userprofile' state={{ userId: user.accountname }}>
             <User userName={user.username} userId={user.accountname} img={`https://mandarin.api.weniv.co.kr/${user.image}`} />
           </Link>

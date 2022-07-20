@@ -9,33 +9,40 @@ import { selectAllPosts, AxiosPetInfo, getPostStatus } from '../reducers/getPetI
 import MyProfileSnsPost from '../template/profilePost/MyProfileSnsPost'
 import { selectAllSnsPosts } from '../reducers/getPostSlice';
 import { useLocation } from 'react-router-dom';
+import { AxiosPost } from '../reducers/getPostSlice'
 
 function YourProfilePage() {
   const location = useLocation();
-  const userId = location.state?.userId;
-  const dispatch = useDispatch();
-  // const postsStatus = useSelector(getPostStatus);
-  // //펫등록 게시글 수 
-  // const postLength = useSelector(selectAllPosts).product?.length;
-  // //sns게시글 수
-  // const snsPostLength = useSelector(selectAllSnsPosts).post?.length;
-
+  const accountname = location.state?.userId;
   const URL = "https://mandarin.api.weniv.co.kr";
-  // const accountname = JSON.parse(localStorage.getItem("accountname"))
-  const loginReqPath = `/product/${userId}/?limit=30`; //내게시글
+  const token = JSON.parse(localStorage.getItem("token"));
 
-  // useEffect(() => {
-  //   if (postsStatus === 'idle') {
-  //     dispatch(AxiosPetInfo(URL + loginReqPath))
-  //   }
-  // }, [dispatch])
+  const dispatch = useDispatch();
+  const postsStatus = useSelector(getPostStatus);
+  //펫등록 게시글 수 
+  const postLength = useSelector(selectAllPosts).product?.length;
+  //sns게시글 수
+  const snsPostLength = useSelector(selectAllSnsPosts).post?.length;
+
+  useEffect(() => {
+    if (postsStatus === 'idle') {
+      dispatch(AxiosPetInfo(URL + "/product/" + accountname))
+      dispatch(AxiosPost(URL + "/post/" + accountname + "/userpost"))
+    }
+  }, [dispatch])
 
   return (
     <AllWrap>
       <NavBack />
       <ScrollMain>
-        <YourProfile userId={userId} />
+        <YourProfile userId={accountname} />
         {/* 산책피드가 없는 경우 빈화면 */}
+        {
+          postLength === 0 ? " " : <PetPost />
+        }
+        {
+          snsPostLength === 0 ? " " : <MyProfileSnsPost />
+        }
       </ScrollMain>
       <TabMenu />
     </AllWrap>
