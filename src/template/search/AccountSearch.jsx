@@ -44,7 +44,7 @@ function AccountSearch() {
         {searchResult.map((user) => {
           console.log(user.image)
           return <Link key={user._id} to='/userprofile' state={{ userId: user.accountname }}>
-            <User img={`https://mandarin.api.weniv.co.kr/${user.image}`} userName={user.username} userId={user.accountname} />
+            <User userName={user.username} userId={user.accountname} img={`https://mandarin.api.weniv.co.kr/${user.image}`} />
           </Link>
         })}
         {searchResult.length === 0 && keyword.length >= 1 && <CorrectMessageStyle>검색된 결과가 없습니다.</CorrectMessageStyle>}
