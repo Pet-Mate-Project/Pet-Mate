@@ -2,10 +2,11 @@ import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { Wrapper, FileUploader, ProfileImg, FileInput } from './profileStyle'
 
-export function Profile({ setImg }) {
+export function Profile({ setImg, userInfoList }) {
   const fileInput = useRef(null)
   //화면에 보여주기용 이미지 상태관리
   const [showImg, setShowImg] = useState("https://mandarin.api.weniv.co.kr/1657812669741.png")
+
   const onChange = (e) => {
     if (e.target.files[0]) {
       setShowImg(e.target.files[0])
@@ -54,11 +55,12 @@ export function ProfileModifyShow({ setImg, userInfoList }) {
   const fileInput = useRef(null)
   const url = "https://mandarin.api.weniv.co.kr";
   //화면에 보여주기용 이미지 상태관리
+  const userInfoUrl = `${url}/${userInfoList.image}`;
+  const [showImg, setShowImg] = useState('');
 
-  const userInfo = userInfoList.image;
-  // const [showImg, setShowImg] = useState(`${url}/${userInfo}`);
-  const [showImg, setShowImg] = useState("https://mandarin.api.weniv.co.kr/1657812669741.png");
-  console.log('list', userInfoList)
+  useEffect(() => {
+    setShowImg(userInfoUrl);
+  }, [userInfoUrl]);
 
   const onChange = (e) => {
     if (e.target.files[0]) {
@@ -79,7 +81,6 @@ export function ProfileModifyShow({ setImg, userInfoList }) {
     }
     reader.readAsDataURL(e.target.files[0])
   }
-
 
   return (
     <>
