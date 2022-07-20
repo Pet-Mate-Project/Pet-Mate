@@ -1,11 +1,10 @@
 import React,{useState} from 'react'
 import { AnimalBox } from '../../components/animalBox/AnimalBox'
-import { selectAllPosts,AxiosPetInfo } from '../../reducers/getPetInfoSlice'
+import { selectAllPosts } from '../../reducers/getPetInfoSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { MiniPostTitle, MiniPostWrap, SectionAllWrap } from './petPostStyle'
 import Modal from '../../components/postModal/PostModal';
 import { deleteActions } from '../../reducers/deletePostSlice'
-import { useEffect } from 'react'
 
 export function PetPost() {
   const dispatch = useDispatch();
