@@ -12,7 +12,8 @@ import ProfileModify from './template/profileModify/ProfileModify'
 import AddPost from './template/post/AddPost';
 import ChatList from './template/chat/ChatList';
 import AccountSearch from './template/search/AccountSearch';
-import Follow from './template/follow/Follow';
+import MyFollow from './template/follow/MyFollow';
+import YourFollow from './template/follow/YourFollow';
 import ChatRoom from './template/chat/ChatRoom';
 import AddSnsPost from './template/snsPost/AddSnsPost';
 import NotFound from './pages/NotFoundPage';
@@ -39,13 +40,13 @@ function App() {
         <Route path='/snspost' element={<PrivateRoute><AddSnsPost /></PrivateRoute>}></Route>
         <Route path='/chatpage' element={<PrivateRoute><ChatList /></PrivateRoute>}></Route>
         <Route path='/search' element={<PrivateRoute><AccountSearch /></PrivateRoute>}></Route>
-        <Route path='/follow' element={<PrivateRoute><Follow /></PrivateRoute>}></Route>
+        <Route path='/myfollow' element={<PrivateRoute><MyFollow /></PrivateRoute>}></Route>
+        <Route path='/yourfollow' element={<PrivateRoute><YourFollow /></PrivateRoute>}></Route>
         <Route path='/chatroom' element={<PrivateRoute><ChatRoom /></PrivateRoute>}></Route>
         <Route path='/userprofile' element={<PrivateRoute><YourProfilePage /></PrivateRoute>}></Route>
         <Route path="/*" element={<NotFound />}></Route>
       </Routes>
       <AnimatePresence />
-
     </>
   )
 }

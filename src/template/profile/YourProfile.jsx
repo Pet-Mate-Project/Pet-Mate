@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { ProfileImg } from '../../components/profile/profileStyle'
 import basicImg from '../../assets/basic-profile.svg'
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap, OnlyIconButton } from './ProfileStyle'
@@ -72,15 +73,19 @@ function YourProfile({ userId }) {
     <>
       <Wrapper>
         <ColumnWapper>
-          <FollowerCount>{yourInfoList.followerCount}</FollowerCount>
-          <FollowerText>followers</FollowerText>
+          <Link to="/yourfollow" state={{ text: 'followers', userId: accountname }}>
+            <FollowerCount>{yourInfoList.followerCount}</FollowerCount>
+            <FollowerText>followers</FollowerText>
+          </Link>
         </ColumnWapper>
         <ProfileImg
           src={url + `/${yourInfoList.image}`} alt='user-img'
         />
         <ColumnWapper>
-          <FollowerCount>{yourInfoList.followingCount}</FollowerCount>
-          <FollowerText>followings</FollowerText>
+          <Link to="/yourfollow" state={{ text: 'followings', userId: accountname }}>
+            <FollowerCount>{yourInfoList.followingCount}</FollowerCount>
+            <FollowerText>followings</FollowerText>
+          </Link>
         </ColumnWapper>
       </Wrapper>
       <ColumnWapper>
