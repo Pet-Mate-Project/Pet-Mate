@@ -32,7 +32,7 @@ export function NameInput({ userName, setName, register, placeholder }) {
   )
 }
 
-export function IdInput({ value, setId, IdCheck, register, placeholder, disabled, userId }) {
+export function IdInput({ setId, IdCheck, register, placeholder, disabled, userId }) {
   return (
     <>
       <LabelStyle>계정 ID
