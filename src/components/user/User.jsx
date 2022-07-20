@@ -28,12 +28,12 @@ export function UserFollow({ userName, userId }) {
   )
 }
 
-export function UserMore({userName,userId,img}) {
+export function UserMore({userName,userId,img,onClick}) {
   return (
     <>
       <Wrapper between>
         <User userName={userName} userId={userId} img={img} />
-        <MoreIcon src={moreIcon} />
+        <MoreIcon src={moreIcon} onClick={onClick}/>
       </Wrapper>
     </>
   )

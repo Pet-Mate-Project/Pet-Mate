@@ -4,7 +4,7 @@ import { selectAllPosts } from '../../reducers/getPetInfoSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { MiniPostTitle, MiniPostWrap, SectionAllWrap } from './petPostStyle'
 import Modal from '../../components/postModal/PostModal';
-import { deleteActions,getDeleteStatus } from '../../reducers/deletePostSlice'
+import { deleteActions } from '../../reducers/deletePostSlice'
 
 export function PetPost() {
   const dispatch = useDispatch();

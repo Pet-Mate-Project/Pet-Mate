@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DeleteAlert } from '../deleteAlert/DeleteAlert'
 import { ModalList, ModalWrapper, TopSytle, ModalOver } from './postModalStyle'
-import { useSelector,useDispatch } from 'react-redux/es/exports'
-import { getDeleteStatus,deleteActions,clickType } from '../../reducers/deletePostSlice'
 export default function Modal({ list, closeModal, alertTxt, setModal }) {
 
   // 테스트를 위해 넣어둔 값. 나중에 지울 부분입니다.
@@ -11,11 +9,6 @@ export default function Modal({ list, closeModal, alertTxt, setModal }) {
   // const list2 = ['채팅방 나가기', '신고하기'];
   // const list3 = ['설정 및 개인정보', '로그아웃'];
 
-  const dispatch = useDispatch();
-  // const status = useSelector(getDeleteStatus); // sucess일경우 모달 닫음
-  // console.log(status);
-  // const clickState =useSelector(clickType);
-  // console.log(clickState);
   const [alert, setAlert] = useState(false)
   const showAlert = () => {
     setAlert(alert=>!alert);
@@ -27,17 +20,6 @@ export default function Modal({ list, closeModal, alertTxt, setModal }) {
     setAlert(false)
   }
 
-
-  // setAlert(true)
-
-  // useEffect(()=>{
-  //   console.log("😅",clickState);
-  //   if(clickState ===true){
-  //     dispatch(deleteActions.click(false)) //그후 false
-  //     setAlert(true); 
-  //   }
-  // },[])
- 
   return (
     <ModalOver>
       <ModalWrapper>
@@ -55,5 +37,4 @@ export default function Modal({ list, closeModal, alertTxt, setModal }) {
       {alert === true && <DeleteAlert mainTxt={alertTxt[0]} rightBtnTxt={alertTxt[1]} closeAlert={closeAlert} setModal={setModal}></DeleteAlert>}
     </ModalOver >
   )
- 
 }
