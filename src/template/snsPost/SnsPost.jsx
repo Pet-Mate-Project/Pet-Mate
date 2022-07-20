@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { UserMore } from '../../components/user/User.jsx'
 import { IconWrap, PostImg, PostText, WrapSection, IconImg, DateText } from './snsPostStyle'
 import heartIcon from '../../assets/icon-heart.svg'
@@ -10,7 +10,7 @@ import Modal from '../../components/postModal/PostModal';
 
 
 export function SnsPost() {
-  const snsPosts = useSelector(selectAllSnsPosts).post;
+  const snsPosts = useSelector(selectAllSnsPosts).posts;
   console.log(snsPosts);
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
   const marketImg = "http://146.56.183.55:5050/Ellipse.png";
@@ -74,8 +74,8 @@ export function MySnsPost() {
   }
 
   //모달
-  const list = {'삭제':'','수정':'/'};
-  const alertTxt=['삭제하시겠어요?','삭제'];
+  const list = { '삭제': '', '수정': '/' };
+  const alertTxt = ['삭제하시겠어요?', '삭제'];
   const [modal, setModal] = useState(false);
 
   const closeModal = () => {
@@ -87,18 +87,18 @@ export function MySnsPost() {
     dispatch(deleteActions.deleteId(snsId));
     setModal(modal => !modal)
   }
-  
+
   return (
     <>
-      { 
-        modal=== true && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />}
+      {
+        modal === true && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />}
       <ul>
         {snsPosts && snsPosts.map((post) => {
           let images = post.image
           images = images.split(",")
           return (
             <li key={post.id} style={{ padding: "16px" }}>
-              <UserMore userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} onClick={()=> handleId(post.id)}/>
+              <UserMore userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} onClick={() => handleId(post.id)} />
               <WrapSection>
                 <PostText>{post.content}</PostText>
                 {images.map((image) => {

@@ -15,13 +15,12 @@ export default function FeedPage() {
   const dispatch = useDispatch();
   const postsStatus = useSelector(getSnsPostStatus);
   const URL = "https://mandarin.api.weniv.co.kr";
-  const accountname = JSON.parse(localStorage.getItem("accountname"))
-  const loginReqPath = `/post/${accountname}/userpost`; //내sns게시글
-  const posts = useSelector(selectAllSnsPosts).post;
+  const posts = useSelector(selectAllSnsPosts).posts;
+  const postsLength = posts?.length
 
   useEffect(() => {
     if (postsStatus === 'idle') {
-      dispatch(AxiosPost(URL + loginReqPath))
+      dispatch(AxiosPost(URL + "/post/feed"))
     }
   }, [dispatch])
 
@@ -30,7 +29,9 @@ export default function FeedPage() {
       <header>
         <NavSearch text={"Pet Story"} url={url} />
       </header>
-      {(posts?.length === 0) ? <DefaultSnsFeed /> : <SnsFeed />}
+      {console.log('희진', postsLength)}
+      {(postsLength === 0) ? <DefaultSnsFeed /> : <SnsFeed />}
+      <SnsFeed />
       <Link to='/snspost'>
         <AddBtn />
       </Link>
