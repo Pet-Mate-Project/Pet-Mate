@@ -9,7 +9,7 @@ import { deleteActions } from '../../reducers/deletePostSlice'
 export function PetPost() {
   const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts).product;
-  const list = {'삭제':'','수정':'/','산책피드로 가기':'/homepage'};
+  const list = {'삭제':'','수정':'/postmodify','산책피드로 가기':'/homepage'};
   const alertTxt=['삭제하시겠어요?','삭제'];
   const [modal, setModal] = useState(false);
 

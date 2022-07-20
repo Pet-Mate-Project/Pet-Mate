@@ -84,7 +84,7 @@ export default function AddPost() {
   return (
     <AllWrap>
       <header>
-        <PostSaveNav onClick={PostSave} disabled={btn} />
+        <PostSaveNav onClick={PostSave} disabled={btn} link={"/homepage"} />
       </header>
       <PaddingMain>
         <ImgUploadBox onChange={onChange} src={showImg} fileref={fileInput} setImg={setImg} />

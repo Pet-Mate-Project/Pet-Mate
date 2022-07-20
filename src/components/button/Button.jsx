@@ -66,7 +66,7 @@ export function SaveBtn(props) {
   )
 }
 
-export function PostSaveBtn({ disabled, onClick }) {
+export function PostSaveBtn({ disabled, onClick,link }) {
   if (disabled) {
     return (
       <Button width={90} height={32}
@@ -79,7 +79,7 @@ export function PostSaveBtn({ disabled, onClick }) {
   else {
     return (
       <PostSaveBtnWrapper>
-        <Link to='/homepage'>
+        <Link to={link}>
           <Button width={90} height={32}
             onClick={onClick}
             disabled={disabled} hover >
@@ -89,7 +89,6 @@ export function PostSaveBtn({ disabled, onClick }) {
       </PostSaveBtnWrapper>
     )
   }
-
 }
 
 export function UploadBtn({ disabled, onClick }) {
