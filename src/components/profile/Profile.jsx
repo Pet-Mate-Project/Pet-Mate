@@ -16,6 +16,19 @@ export function Profile({ setImg }) {
       setShowImg("https://mandarin.api.weniv.co.kr/1657812669741.png")
       return
     }
+
+    if (e.target.files && e.target.files[0]) {
+      //10mb로 최대용량 지정
+      let maxSize = 10 * 1024 * 1024;
+      let fileSize = e.target.files[0].size;
+
+      if (fileSize > maxSize) {
+        alert("첨부파일 사이즈는 10MB 이내로 등록 가능합니다.");
+        setShowImg("https://mandarin.api.weniv.co.kr/1657812669741.png")
+        return false;
+      }
+    }
+
     //화면에 프로필 사진 표시
     // 파일리더
     const reader = new FileReader();
@@ -70,6 +83,18 @@ export function ProfileModifyShow({ setImg, userInfoList }) {
     } else { //업로드 취소할 시
       setShowImg("https://mandarin.api.weniv.co.kr/1657812669741.png")
       return
+    }
+
+    if (e.target.files && e.target.files[0]) {
+      //10mb로 최대용량 지정
+      let maxSize = 10 * 1024 * 1024;
+      let fileSize = e.target.files[0].size;
+
+      if (fileSize > maxSize) {
+        alert("첨부파일 사이즈는 10MB 이내로 등록 가능합니다.");
+        setShowImg(userInfoUrl)
+        return false;
+      }
     }
     //화면에 프로필 사진 표시
     // 파일리더
