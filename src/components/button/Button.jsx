@@ -142,13 +142,7 @@ export function ChatBtn() {
 // -------------------------------------------------------
 //토글버튼
 
-export function FollowToggleBtn() {
-  const [isFollow, setIsFollow] = useState(false)
-  function onClick() {
-    isFollow === false ?
-      setIsFollow(true) :
-      setIsFollow(false);
-  }
+export function FollowToggleBtn({ onClick, isFollow }) {
   if (!isFollow) {
     return (
       <Button width={56} height={28}
