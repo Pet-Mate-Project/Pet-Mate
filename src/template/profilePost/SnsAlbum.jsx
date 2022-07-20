@@ -10,9 +10,11 @@ export function SnsAlbum() {
   return (
     <AlbumWrap>
       {snsPosts && snsPosts.map((post) => {
+        let postimg = post.image.split(",")
+        console.log(postimg)
         return (
           <AlbumImage key={post.id}
-            src={"https://mandarin.api.weniv.co.kr/" + post.image}
+            src={"https://mandarin.api.weniv.co.kr/" + postimg[0]}
           />
         )
       })}
