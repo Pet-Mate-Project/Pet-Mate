@@ -101,7 +101,7 @@ export function ProfileSaveNav({ profileSave }) {
   )
 }
 
-export function PostSaveNav({ onClick, disabled }) {
+export function PostSaveNav({ onClick, disabled,link }) {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -111,10 +111,11 @@ export function PostSaveNav({ onClick, disabled }) {
       <NavBtn onClick={goBack}>
         <Img src={arrow} alt="" />
       </NavBtn>
-      <PostSaveBtn onClick={onClick} disabled={disabled} />
+      <PostSaveBtn onClick={onClick} disabled={disabled} link={link} />
     </NavWrapper>
   )
 }
+
 
 export function SnsUploadNav({ disabled, onClick }) {
   const navigate = useNavigate();

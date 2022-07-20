@@ -119,32 +119,35 @@ export function PasswordInput({ userPassword, setPassword, register }) {
 }
 
 // post에 필요한 input
-export function TitleInput({ Title, setTitle }) {
+export function TitleInput({ Title, setTitle,defaultValue }) {
   return (
     <LabelStyle>제목
       <InputStyle
         placeholder='2-15자 이내여야 합니다.'
         type="text"
         name="Title"
-        value={Title}
         minLength="2"
         maxLength="15"
         onChange={(e) => { setTitle(e.target.value) }}
+        defaultValue={ defaultValue}
+        // Title!=="" ? Title :
       />
     </LabelStyle>
   );
 }
 
 
-export function PetInfoInput({ petInfo, setPetInfo }) {
+export function PetInfoInput({ petInfo, setPetInfo,defaultValue }) {
   return (
     <LabelStyle>반려동물 정보
       <InputStyle
         placeholder='종류 / 나이 / 성별 / 주의사항을 작성해주세요.'
         type="text"
         name="petInfo"
-        value={petInfo}
+        // value={petInfo}
         onChange={(e) => { setPetInfo(e.target.value) }}
+        defaultValue={ defaultValue}
+        // petInfo!==""? petInfo :
       />
     </LabelStyle>
   );
