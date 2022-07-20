@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+import { CorrectMessageStyle } from '../../components/errorMessage/errorStyle'
 import { NavTxtSearch } from '../../components/navBack/NavBack'
 import TabMenu from '../../components/tabMenu/TabMenu'
 import { User } from '../../components/user/User'
@@ -28,15 +29,11 @@ function AccountSearch() {
           }
         });
         setSearchResult(response.data)
-        // console.log(searchReqPath)
       }
       search()
     }
-    console.log(keyword)
   }, [keyword]);
-
-  // console.log(searchResult)
-
+  
   return (
     <AllWrap>
       <header>
@@ -49,7 +46,8 @@ function AccountSearch() {
             <User userName={user.username} userId={user.accountname} />
           </Link>
         })}
-
+        {searchResult.length === 0 && keyword.length >= 1 && <CorrectMessageStyle>검색된 결과가 없습니다.</CorrectMessageStyle>}
+        {/* 검색된 계정이 0개, 입력된 keyword가 1개 이상이면 출력 */}
       </FollowMain>
       <TabMenu />
     </AllWrap>
