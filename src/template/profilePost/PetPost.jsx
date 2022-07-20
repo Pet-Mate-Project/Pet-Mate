@@ -1,15 +1,16 @@
 import React,{useState} from 'react'
 import { AnimalBox } from '../../components/animalBox/AnimalBox'
-import { selectAllPosts } from '../../reducers/getPetInfoSlice'
+import { selectAllPosts,AxiosPetInfo } from '../../reducers/getPetInfoSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { MiniPostTitle, MiniPostWrap, SectionAllWrap } from './petPostStyle'
 import Modal from '../../components/postModal/PostModal';
 import { deleteActions } from '../../reducers/deletePostSlice'
+import { useEffect } from 'react'
 
 export function PetPost() {
   const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts).product;
-  const list = {'삭제':'','수정':'/','산책피드로 가기':'/homepage'};
+  const list = {'삭제':'','수정':'/postmodify','산책피드로 가기':'/homepage'};
   const alertTxt=['삭제하시겠어요?','삭제'];
   const [modal, setModal] = useState(false);
 
