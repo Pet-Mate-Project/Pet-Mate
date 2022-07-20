@@ -18,6 +18,7 @@ import AddSnsPost from './template/snsPost/AddSnsPost';
 import NotFound from './pages/NotFoundPage';
 import { PrivateRoute, PublicRoute } from './Route';
 import YourProfilePage from './pages/YourProfilePage';
+import ModifyPost from './template/postModify/PostModify';
 
 function App() {
   const token = !!localStorage.getItem("token");
@@ -36,6 +37,7 @@ function App() {
         <Route path='/profilepage' element={<PrivateRoute><MyProfilePage /></PrivateRoute>}></Route>
         <Route path='/profilemodify' element={<PrivateRoute><ProfileModify /></PrivateRoute>}></Route>
         <Route path='/post' element={<PrivateRoute><AddPost /></PrivateRoute>}></Route>
+        <Route path='/postmodify' element={<PrivateRoute>< ModifyPost/></PrivateRoute>}></Route>
         <Route path='/snspost' element={<PrivateRoute><AddSnsPost /></PrivateRoute>}></Route>
         <Route path='/chatpage' element={<PrivateRoute><ChatList /></PrivateRoute>}></Route>
         <Route path='/search' element={<PrivateRoute><AccountSearch /></PrivateRoute>}></Route>
