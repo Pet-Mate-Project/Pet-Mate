@@ -65,11 +65,9 @@ export default function ModifyPost() {
     console.log("현재정보|",petInfo );
 
     if((Title?.length===1)){ //이전값에서 값을 바꿧으면서, 길이가 1이면 비활성화
-      alert("제목을 2자 이상 입력해주세요.")
       setBtn(true); 
     }
     else if (petInfo?.length===1){
-      alert("반려동물 정보을 2자 이상 입력해주세요.")
       setBtn(true); 
     }
     else{
