@@ -36,6 +36,9 @@ export default function AddSnsPost() {
     }
     setPostImg(files);
     setShowImg(fileURLs);
+    console.log("서버",files);
+    console.log("미리보기",fileURLs);
+
   }
 
   //삭제함수
@@ -103,6 +106,7 @@ export default function AddSnsPost() {
         <ImgWrapper>
           {showImg.map((image,id)=>(    
             <ImgBox key={id} >
+              {console.log(image)}
               <Img key={id} src={image} />
               <DeleteBtn onClick={()=>handleDeleteImg(id)}/>
             </ImgBox>
