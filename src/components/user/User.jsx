@@ -8,9 +8,16 @@ import { Link } from 'react-router-dom'
 
 
 export function User({ userName, userId, img }) {
+  // console.log(img);
   return (
     <Wrapper>
-      <ProfileIconS img={img} />
+      {
+        img.search('https://mandarin.api.weniv.co.kr/') === -1
+          ?
+          <ProfileIconS img={`https://mandarin.api.weniv.co.kr/${img}`} />
+          :
+          <ProfileIconS img={img} />
+      }
       <TextWrapper>
         <UserName>{userName}</UserName>
         <UserId>@ {userId}</UserId>
