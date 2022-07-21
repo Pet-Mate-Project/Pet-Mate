@@ -37,9 +37,7 @@ export function FllowSnsPost() {  //내가 팔로우한 사람들 게시글 (피
               <PostText>{post.content}</PostText>
               {images.map((image) => {
                 return (
-                  <>
-                    <PostImg src={"https://mandarin.api.weniv.co.kr/" + image} />
-                  </>
+                  <PostImg key={Math.random() * 100} src={"https://mandarin.api.weniv.co.kr/" + image} />
                 )
               })}
               <IconWrap>
@@ -105,9 +103,7 @@ export function MySnsPost() {  // 내 sns게시글
                 <PostText>{post.content}</PostText>
                 {images.map((image) => {
                   return (
-                    <>
-                      <PostImg src={"https://mandarin.api.weniv.co.kr/" + image} />
-                    </>
+                    <PostImg key={Math.random() * 100}  src={"https://mandarin.api.weniv.co.kr/" + image} />
                   )
                 })}
                 <IconWrap>

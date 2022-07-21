@@ -1,11 +1,6 @@
 import React from 'react'
 import { ContentTxt, DateTxt, PetImg, PetInfoTxt, PostStyle, TitleTxt, TxtBox } from './homePostStyle'
 import { UserChat } from '../../components/user/User'
-import { selectAllPosts } from '../../reducers/getPetInfoSlice'
-import { useSelector } from 'react-redux';
-import { selectAllFollowers } from '../../reducers/getFollowSlice'
-
-
 
 export default function HomePost({ followpost }) {
   console.log("템플릿", followpost);
@@ -23,8 +18,8 @@ export default function HomePost({ followpost }) {
   return (
     <ul >
       {followpost && followpost.map((post) => {
-        return (
-          <PostStyle key={post.id}>
+        return(
+          <PostStyle key={post._id}>
             <UserChat userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} />
             <PetImg src={"https://mandarin.api.weniv.co.kr/" + post.itemImage}></PetImg>
             <TxtBox>
