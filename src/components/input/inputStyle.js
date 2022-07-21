@@ -1,7 +1,15 @@
 import styled, { css } from 'styled-components';
 import { palette } from '../../style/globalColor';
 
-export const InputStyle = styled.input`
+export const InputStyle = styled.textarea`
+${(props)=>{
+    if(props.petInfo){
+      return css`
+      height : 50px;
+    `
+    }
+  }}
+resize: none;
 width: 100%;
 margin-top: 10px;
 display: block;
