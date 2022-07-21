@@ -22,8 +22,17 @@ export default function AddSnsPost() {
     let fileURLs = [...showImg];
     let files = [...postImg];
     let fileArr = e.target.files;
+    //크기제한
+    let maxSize = 10 * 1024 * 1024;
+    let TotalfileSize = 0;
     //여러이미지 push
     for(let i=0;i<fileArr.length;i++){
+      console.log(fileArr[i].size);
+      TotalfileSize += fileArr[i].size;
+      if (TotalfileSize > maxSize) {
+        alert("첨부파일의 총 사이즈는 10MB 이내로 등록 가능합니다.");
+        return
+      }
       const currentImgURL = URL.createObjectURL(fileArr[i]);
       fileURLs.push(currentImgURL);
       files.push(fileArr[i]);  

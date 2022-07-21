@@ -41,6 +41,12 @@ export default function AddPost() {
 
   //이미지미리보기
   const onChange = (e) => {
+    let maxSize = 10 * 1024 * 1024;
+    let fileSize = e.target.files[0].size;
+    if (fileSize > maxSize) {
+      alert("첨부파일 사이즈는 10MB 이내로 등록 가능합니다.");
+      return
+    }
     if (e.target.files[0]) {
       setShowImg(e.target.files[0])
       setImg(e.target.files[0])
