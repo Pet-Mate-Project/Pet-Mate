@@ -81,7 +81,9 @@ export function UserFollow({ userName, userId, img }) {
   return (
     <>
       <Wrapper between>
-        <User img={img} userName={userName} userId={userId} />
+        <Link to='/userprofile' state={{ userId: userId }}>
+          <User img={img} userName={userName} userId={userId} />
+        </Link>
         {
           userId !== MyId && <FollowToggleBtn onClick={onClick} isFollow={isFollow} />
         }
