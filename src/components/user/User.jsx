@@ -51,8 +51,6 @@ export function UserFollow({ userName, userId, img }) {
     })
   }
 
-  getYourInfo();
-
   const data = {};
   // 팔로우 정보 받아오는 함수
   async function postUserFollow() {
@@ -81,9 +79,18 @@ export function UserFollow({ userName, userId, img }) {
   return (
     <>
       <Wrapper between>
-        <Link to='/userprofile' state={{ userId: userId }}>
-          <User img={img} userName={userName} userId={userId} />
-        </Link>
+        {
+          userId === MyId &&
+          <Link to='/profilepage'>
+            <User userName={userName} userId={userId} img={img} />
+          </Link>
+        }
+        {
+          userId !== MyId &&
+          <Link to='/userprofile' state={{ userId: userId }}>
+            <User userName={userName} userId={userId} img={img} />
+          </Link>
+        }
         {
           userId !== MyId && <FollowToggleBtn onClick={onClick} isFollow={isFollow} />
         }
@@ -93,12 +100,23 @@ export function UserFollow({ userName, userId, img }) {
 }
 
 export function UserMore({ userName, userId, img, onClick }) {
+  const MyId = JSON.parse(localStorage.getItem("accountname"));
+
   return (
     <>
       <Wrapper between>
-        <Link to='/userprofile' state={{ userId: userId }}>
-          <User userName={userName} userId={userId} img={img} />
-        </Link>
+        {
+          userId === MyId &&
+          <Link to='/profilepage'>
+            <User userName={userName} userId={userId} img={img} />
+          </Link>
+        }
+        {
+          userId !== MyId &&
+          <Link to='/userprofile' state={{ userId: userId }}>
+            <User userName={userName} userId={userId} img={img} />
+          </Link>
+        }
         <MoreIcon src={moreIcon} onClick={onClick} />
       </Wrapper>
     </>
