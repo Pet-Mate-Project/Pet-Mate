@@ -120,7 +120,6 @@ export function PasswordInput({ userPassword, setPassword, register }) {
 
 // post에 필요한 input
 export function TitleInput({ Title, setTitle,defaultValue }) {
-  console.log(defaultValue);
   return (
     <LabelStyle>제목
       <InputStyle
@@ -139,10 +138,10 @@ export function TitleInput({ Title, setTitle,defaultValue }) {
 
 
 export function PetInfoInput({ petInfo, setPetInfo,defaultValue }) {
-  console.log(defaultValue);
   return (
     <LabelStyle>반려동물 정보
       <InputStyle
+        petInfo
         key={defaultValue}
         placeholder='종류 / 나이 / 성별 / 주의사항을 작성해주세요.'
         type="text"
