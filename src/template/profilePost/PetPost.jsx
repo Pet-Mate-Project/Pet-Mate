@@ -33,11 +33,10 @@ export function PetPost() {
         (modal=== true )&&(name ===undefined)&&<Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />}
       <MiniPostWrap>
         {posts && posts.map((post) => {
-          return (<>
+          return (
             <AnimalBox key={post.id}
               src={`https://mandarin.api.weniv.co.kr/${post.itemImage}`}
               title={post.itemName} time={post.updatedAt.substring(0, 10)} onClick={() => handleId(post.id)} />
-          </>
           )
         }
         )}

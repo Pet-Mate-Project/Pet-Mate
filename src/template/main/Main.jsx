@@ -11,7 +11,7 @@ function Main({ loading, visible }) {
     <>
       {
         (loading === 'false') &&
-        <AllWrap>
+        <AllWrap  key={Math.random() * 100} >
           <PaddingMain>
             <LogoStyle />
             <Gap>
