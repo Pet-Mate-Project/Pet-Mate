@@ -17,7 +17,6 @@ export default function HomePage() {
   const postsStatus = useSelector(getPostStatus);
   const URL = "https://mandarin.api.weniv.co.kr";
   const myAccountname = JSON.parse(localStorage.getItem("accountname"))
-
   const posts = useSelector(selectAllPosts).product;
   const follower = useSelector(selectAllFollowers);
 
@@ -34,32 +33,22 @@ export default function HomePage() {
   }, [dispatch])
 
 
-  const followerId = []
+  const followerId = [myAccountname]
 
   for (let i = 0; i < follower?.length; i++) {
     followerId.push(follower[i].accountname)
   }
 
-
-  const followpost = [];
-
-  for (let i = 0; i < followerId?.length; i++) {
-    for (let j = 0; j < posts?.length; j++) {
-      if (posts[j].author.accountname === followerId[i]) {
-        followpost.push(posts[j])
-      }
-    }
-  }
-
-  console.log('fp', followpost)
-
+  // console.log('followerid', followerId)
+  let followpost = posts?.filter(e => followerId.includes(e.author.accountname));
+  // console.log('followpost', followpost)
 
   return (
     <AllWrap>
       <header>
         <NavSearch text={"산책 피드"} url={"/search"} />
       </header>
-      {(postsStatus === 'idle' && posts?.length === 0) ? <DefaultFeed /> : <WalkingFeed followpost={followpost} />}
+      {(postsStatus === 'idle' && followpost?.length === 0) ? <DefaultFeed /> : <WalkingFeed followpost={followpost} />}
       <Link to={'/post'}>
         <AddBtn />
       </Link>

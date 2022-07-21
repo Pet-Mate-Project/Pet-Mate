@@ -8,8 +8,6 @@ import { selectAllFollowers } from '../../reducers/getFollowSlice'
 
 
 export default function HomePost({ followpost }) {
-  // const posts = useSelector(selectAllPosts).product;
-  const follower = useSelector(selectAllFollowers);
   console.log("템플릿", followpost);
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png"
   const marketImg = "http://146.56.183.55:5050/Ellipse.png"
