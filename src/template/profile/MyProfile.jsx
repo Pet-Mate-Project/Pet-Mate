@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ProfileImg } from '../../components/profile/profileStyle'
 import basicImg from '../../assets/basic-profile.svg'
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap } from './ProfileStyle'
 import { Button } from '../../components/button/buttonStyle'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { useState } from 'react'
-import { useEffect } from 'react'
 
 function MyProfile() {
   const url = "https://mandarin.api.weniv.co.kr";
@@ -23,7 +21,7 @@ function MyProfile() {
 
   //사용자 정보 받아오는 함수
   function getUserInfo() {
-    try{
+    try {
       axios.get(url + `/profile/${accountname}`, {
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -31,7 +29,7 @@ function MyProfile() {
         }
       }).then((res) => setUserInfoList(res.data.profile))
     }
-    catch(error){
+    catch (error) {
       console.log(error);
     }
   }
@@ -40,7 +38,7 @@ function MyProfile() {
     <>
       <Wrapper>
         <ColumnWapper>
-          <Link to="/follow">
+          <Link to="/myfollow" state={{ text: 'followers' }}>
             <FollowerCount>{userInfoList.followerCount}</FollowerCount>
           </Link>
           <FollowerText>followers</FollowerText>
@@ -49,7 +47,7 @@ function MyProfile() {
           src={url + `/${userInfoList.image}`} alt='user-img'
         />
         <ColumnWapper>
-          <Link to="/follow">
+          <Link to="/myfollow" state={{ text: 'followings' }}>
             <FollowerCount>{userInfoList.followingCount}</FollowerCount>
           </Link>
           <FollowerText>followings</FollowerText>

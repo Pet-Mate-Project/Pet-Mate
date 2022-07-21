@@ -66,7 +66,7 @@ export function SaveBtn(props) {
   )
 }
 
-export function PostSaveBtn({ disabled, onClick }) {
+export function PostSaveBtn({ disabled, onClick,link }) {
   if (disabled) {
     return (
       <Button width={90} height={32}
@@ -79,7 +79,7 @@ export function PostSaveBtn({ disabled, onClick }) {
   else {
     return (
       <PostSaveBtnWrapper>
-        <Link to='/homepage'>
+        <Link to={link}>
           <Button width={90} height={32}
             onClick={onClick}
             disabled={disabled} hover >
@@ -89,7 +89,6 @@ export function PostSaveBtn({ disabled, onClick }) {
       </PostSaveBtnWrapper>
     )
   }
-
 }
 
 export function UploadBtn({ disabled, onClick }) {
@@ -104,7 +103,7 @@ export function UploadBtn({ disabled, onClick }) {
   else {
     return (
       <PostSaveBtnWrapper>
-        <Link to='/feedpage'>
+        <Link to='/profilepage'>
           <Button onClick={onClick} width={90} height={32} hover>
             업로드
           </Button>
@@ -142,13 +141,7 @@ export function ChatBtn() {
 // -------------------------------------------------------
 //토글버튼
 
-export function FollowToggleBtn() {
-  const [isFollow, setIsFollow] = useState(false)
-  function onClick() {
-    isFollow === false ?
-      setIsFollow(true) :
-      setIsFollow(false);
-  }
+export function FollowToggleBtn({ onClick, isFollow }) {
   if (!isFollow) {
     return (
       <Button width={56} height={28}

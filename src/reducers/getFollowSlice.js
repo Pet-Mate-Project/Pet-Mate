@@ -51,8 +51,8 @@ export const followInfoSlice = createSlice({
 console.log("followInfoSlice", followInfoSlice);
 
 export const selectAllFollowers = (state) => state.getFollow.followData;
-export const getPostsError = (state) => state.getFollow.error;
-export const getPostStatus = (state) => state.getFollow.status;
+export const getFollowError = (state) => state.getFollow.error;
+export const getFollowStatus = (state) => state.getFollow.status;
 
 export default followInfoSlice.reducer;
 export const followActions = followInfoSlice.actions;
