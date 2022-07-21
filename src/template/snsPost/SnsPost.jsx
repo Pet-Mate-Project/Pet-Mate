@@ -7,13 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAllSnsPosts } from '../../reducers/getPostSlice.js'
 import { deleteActions } from '../../reducers/deletePostSlice'
 import Modal from '../../components/postModal/PostModal';
-import { useLocation } from 'react-router-dom';
 
 
 export function SnsPost() {
-  const location = useLocation();
-  const accountname = location.state?.userId;
-  const snsPosts = (accountname===undefined) ?  useSelector(selectAllSnsPosts).posts :  useSelector(selectAllSnsPosts).post; 
+  const snsPosts = useSelector(selectAllSnsPosts).posts;
+  console.log(snsPosts);
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
   const marketImg = "http://146.56.183.55:5050/Ellipse.png";
 
@@ -46,8 +44,8 @@ export function SnsPost() {
                 )
               })}
               <IconWrap>
-                <IconImg src={heartIcon} />
-                <IconImg src={messageIcon} />
+                <IconImg src={heartIcon} />38
+                <IconImg src={messageIcon} />55
               </IconWrap>
               <DateText>{post.updatedAt.substring(0, 10)}</DateText>
             </WrapSection>
@@ -61,8 +59,7 @@ export function SnsPost() {
 
 export function MySnsPost() {
   const dispatch = useDispatch();
-  const snsPosts = useSelector(selectAllSnsPosts).post; //내게시글 접근
-
+  const snsPosts = useSelector(selectAllSnsPosts).post;
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
   const marketImg = "http://146.56.183.55:5050/Ellipse.png";
 

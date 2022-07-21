@@ -15,6 +15,8 @@ function YourProfilePage() {
   const location = useLocation();
   const accountname = location.state?.userId;
   const URL = "https://mandarin.api.weniv.co.kr";
+  const token = JSON.parse(localStorage.getItem("token"));
+
   const dispatch = useDispatch();
   const postsStatus = useSelector(getPostStatus);
   //펫등록 게시글 수 
