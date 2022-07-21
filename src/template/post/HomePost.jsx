@@ -3,11 +3,12 @@ import { ContentTxt, DateTxt, PetImg, PetInfoTxt, PostStyle, TitleTxt, TxtBox } 
 import { UserChat } from '../../components/user/User'
 import { selectAllPosts } from '../../reducers/getPetInfoSlice'
 import { useSelector } from 'react-redux';
+import { selectAllFollowers } from '../../reducers/getFollowSlice'
 
 
-export default function HomePost() {
-  const posts = useSelector(selectAllPosts).product;
-  console.log("템플릿", posts);
+
+export default function HomePost({ followpost }) {
+  console.log("템플릿", followpost);
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png"
   const marketImg = "http://146.56.183.55:5050/Ellipse.png"
 
@@ -21,7 +22,7 @@ export default function HomePost() {
   }
   return (
     <ul >
-      {posts && posts.map((post) => {
+      {followpost && followpost.map((post) => {
         return (
           <PostStyle key={post.id}>
             <UserChat userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} />
