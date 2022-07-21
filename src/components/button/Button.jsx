@@ -103,7 +103,7 @@ export function UploadBtn({ disabled, onClick }) {
   else {
     return (
       <PostSaveBtnWrapper>
-        <Link to='/feedpage'>
+        <Link to='/profilepage'>
           <Button onClick={onClick} width={90} height={32} hover>
             업로드
           </Button>
