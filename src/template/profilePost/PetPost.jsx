@@ -22,7 +22,7 @@ export function PetPost() {
   //id값을 store에 저장하는 오는 함수
   const handleId = (petId)=>{
     dispatch(deleteActions.checkType("product"));
-    dispatch(deleteActions.deleteId(petId));
+    dispatch(deleteActions.selectId(petId));
     setModal(modal => !modal)
   }
 

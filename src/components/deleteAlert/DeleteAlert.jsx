@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { AlertOver, AlertWrapper, DeleteTxt, DeleteAlertBtn, BtnTxt, RedTxt } from './deleteStyle'
 import { useSelector, useDispatch } from 'react-redux'
-import { DeleteType, AxiosDeletePost, DeleteId ,selectDeleteMsg } from '../../reducers/deletePostSlice'
+import { DeleteType, AxiosDeletePost, SelectId ,selectDeleteMsg } from '../../reducers/deletePostSlice'
 import { AxiosPetInfo } from '../../reducers/getPetInfoSlice';
 import {AxiosPost} from '../../reducers/getPostSlice'
 
 export function DeleteAlert({ mainTxt, rightBtnTxt, closeAlert,setModal }) {
   const dispatch = useDispatch();
   const postType = useSelector(DeleteType);
-  const Id = useSelector(DeleteId);
+  const Id = useSelector(SelectId);
   const reqMsg = useSelector(selectDeleteMsg);
   console.log(reqMsg);
   const accountname = JSON.parse(localStorage.getItem("accountname"))

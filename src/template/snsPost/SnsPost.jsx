@@ -76,7 +76,7 @@ export function MySnsPost() {  // 내 sns게시글
   }
 
   //모달
-  const list = { '삭제': '', '수정': '/' };
+  const list = { '삭제': '', '수정': '/snspostmodify' };
   const alertTxt = ['삭제하시겠어요?', '삭제'];
   const [modal, setModal] = useState(false);
 
@@ -86,7 +86,7 @@ export function MySnsPost() {  // 내 sns게시글
 
   const handleId = (snsId) => {
     dispatch(deleteActions.checkType("post"));
-    dispatch(deleteActions.deleteId(snsId));
+    dispatch(deleteActions.selectId(snsId));
     setModal(modal => !modal)
   }
 

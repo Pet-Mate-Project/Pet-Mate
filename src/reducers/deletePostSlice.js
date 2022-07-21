@@ -28,7 +28,7 @@ export const deletePost = createSlice({
   name : "deletePost",
   initialState,
   reducers:{
-    deleteId (state,action) {
+    selectId (state,action) {
       console.log("클릭한 id",action.payload);
       state.id = action.payload; 
     },
@@ -55,7 +55,7 @@ export const deletePost = createSlice({
 
 export const selectDeleteMsg = (state) =>state.deletePost.resMeg;
 export const getDeleteStatus = (state) => state.deletePost.status;
-export const DeleteId = (state) => state.deletePost.id;
+export const SelectId = (state) => state.deletePost.id;
 export const DeleteType = (state) => state.deletePost.type;
 export default  deletePost.reducer;
 export const deleteActions = deletePost.actions;
