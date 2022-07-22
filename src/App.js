@@ -30,6 +30,7 @@ function App() {
       <GlobalStyles />
       <AnimatePresence />
       <Routes>
+        {/* public page */}
         <Route path='/' element={<InitPage />}></Route>
         <Route path='/login' element={<PublicRoute><Login /></PublicRoute>}></Route>
         <Route path='/join' element={<PublicRoute><SignUpMainPage /></PublicRoute>}> </Route>
