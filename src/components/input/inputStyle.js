@@ -28,8 +28,37 @@ ${(props) => {
     `
     }
   }}
-
 `;
+
+export const TextAreaStyle = styled.textarea`
+height: 50px;
+resize: none;
+width: 100%;
+margin-top: 10px;
+display: block;
+background-color: white;
+border: none; 
+border-bottom: 1px solid ${palette.lightGray};
+padding-bottom: 5px;
+:hover{
+  border-color:  ${palette.mainColor};
+}  
+:focus{
+  outline-color: ${palette.mainColor};
+}
+::placeholder{
+  color: ${palette.lightGray};
+  font-size: 14px;
+}
+${(props) => {
+    if (props.nohover) {
+      return css`
+    :hover{
+      border-color:none;
+    }
+    `
+    }
+  }}`;
 
 export const LabelStyle = styled.label`
 display: block;

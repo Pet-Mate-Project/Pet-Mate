@@ -20,11 +20,11 @@ function MyProfilePage() {
 
   const URL = "https://mandarin.api.weniv.co.kr";
   const accountname = JSON.parse(localStorage.getItem("accountname"))
-  const loginReqPath = `/product/${accountname}/?limit=30`; //내게시글
+  const ReqPath = `/product/${accountname}/?limit=30`; //내게시글
 
   useEffect(() => {
     if (postsStatus === 'idle') {
-      dispatch(AxiosPetInfo(URL + loginReqPath))
+      dispatch(AxiosPetInfo(URL + ReqPath))
       dispatch(AxiosPost(URL+"/post/"+accountname+"/userpost"))
     }
   }, [dispatch])

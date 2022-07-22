@@ -95,17 +95,17 @@ export default function ModifyPost() {
     try{
       const imgData = await ImgUpload(userImg);
       postData.product.itemImage = imgData;
-      const loginReqPath = `/product/${selectId}`;
+      const ReqPath = `/product/${selectId}`;
       const token = JSON.parse(localStorage.getItem("token"))
       const accountname = JSON.parse(localStorage.getItem("accountname"))
-      const res = await axios.put(URL + loginReqPath, postData, {
+      const res = await axios.put(URL + ReqPath, postData, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-type": "application/json"
         },
       });
       console.log("res : ", res);
-      console.log("URL", URL + loginReqPath);
+      console.log("URL", URL + ReqPath);
       dispatch(AxiosPetInfo(URL + "/product/" + accountname))
     }
     catch(error){

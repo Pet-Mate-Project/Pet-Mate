@@ -69,18 +69,18 @@ export default function AddPost() {
       const imgData = await ImgUpload(userImg);
       postData.product.itemImage = imgData
       const URL = "https://mandarin.api.weniv.co.kr";
-      const loginReqPath = "/product";
+      const ReqPath = "/product";
       const token = JSON.parse(localStorage.getItem("token"))
       const accountname = JSON.parse(localStorage.getItem("accountname"))
-      const res = await axios.post(URL + loginReqPath, postData, {
+      const res = await axios.post(URL + ReqPath, postData, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-type": "application/json"
         },
       });
       console.log("res : ", res);
-      console.log("URL", URL + loginReqPath + "/" + accountname);
-      dispatch(AxiosPetInfo(URL + loginReqPath + "/" + accountname))
+      console.log("URL", URL + ReqPath + "/" + accountname);
+      dispatch(AxiosPetInfo(URL + ReqPath + "/" + accountname))
     }
     catch(error){
       console.log(error);

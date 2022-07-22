@@ -84,13 +84,13 @@ export default function ModifySnsPost() {
   
     // 요청URL
     const URL = "https://mandarin.api.weniv.co.kr";
-    const REQPATH = `/post/${selectId}`;
+    const ReqPath = `/post/${selectId}`;
     //header값
     const token = JSON.parse(localStorage.getItem("token"))
     const accountname = JSON.parse(localStorage.getItem("accountname"))
     //axios post요청 
     try{
-      const res = await axios.put(URL + REQPATH, data, {
+      const res = await axios.put(URL + ReqPath, data, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-type": "application/json"

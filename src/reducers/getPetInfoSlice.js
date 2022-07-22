@@ -37,7 +37,7 @@ export const petInfoSlice = createSlice({
       })
       .addCase(AxiosPetInfo.fulfilled, (state, action) => {
         console.log("성공",action);
-        state.status = 'idle';
+        state.status = 'success';
         state.petData = action.payload;
       })
       .addCase(AxiosPetInfo.rejected,(state,action) => {

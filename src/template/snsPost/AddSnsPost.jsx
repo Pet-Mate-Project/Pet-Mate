@@ -74,21 +74,21 @@ export default function AddSnsPost() {
     data.post.content= content;
     // 요청URL
     const URL = "https://mandarin.api.weniv.co.kr";
-    const loginReqPath = "/post";
+    const ReqPath = "/post";
     //header값
     const token = JSON.parse(localStorage.getItem("token"))
     const accountname = JSON.parse(localStorage.getItem("accountname"))
     //axios post요청 
 
     try{
-      const res = await axios.post(URL + loginReqPath, data, {
+      const res = await axios.post(URL + ReqPath, data, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-type": "application/json"
         },
       });
       console.log("게시글post요청결과",res);
-      dispatch(AxiosPost(URL + loginReqPath + "/" + accountname+"/userpost"))
+      dispatch(AxiosPost(URL + ReqPath + "/" + accountname+"/userpost"))
     }
     catch(error){
       console.log(error);
