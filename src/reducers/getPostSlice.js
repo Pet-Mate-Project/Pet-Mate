@@ -37,7 +37,7 @@ export const postInfoSlice = createSlice({
       })
       .addCase(AxiosPost.fulfilled, (state, action) => {
         console.log("성공",action);
-        state.status = 'idle';
+        state.status = 'success';
         state.postData = action.payload;
         console.log(current(state));
       })
