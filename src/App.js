@@ -23,8 +23,6 @@ import ModifyPost from './template/postModify/PostModify';
 import ModifySnsPost from './template/snsPostModify/SnsPostModify';
 
 function App() {
-  const token = !!localStorage.getItem("token");
-  console.log(token);
   return (
     <>
       <GlobalStyles />

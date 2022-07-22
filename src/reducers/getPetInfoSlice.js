@@ -19,7 +19,7 @@ export const AxiosPetInfo = createAsyncThunk(
       },
     }
     const res = await axios(url,config);
-    console.log("res.data.product : ",res.data.product);
+    console.log("👺res.data : ",res.data);
     return res.data
   }
 )
@@ -36,7 +36,7 @@ export const petInfoSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(AxiosPetInfo.fulfilled, (state, action) => {
-        console.log("성공",action);
+        console.log("나의 펫데이터 성공👺",action);
         state.status = 'success';
         state.petData = action.payload;
       })
