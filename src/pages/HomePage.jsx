@@ -22,13 +22,13 @@ export default function HomePage() {
 
   console.log(posts)
 
-  const loginReqPath = `/product/?limit=2000`;
+  const ReqPath = `/product/?limit=2000`;
   // 제한을 없애고싶은데 일단 2000으로 해놨습니다.
 
   useEffect(() => {
     if (postsStatus === 'idle') {
       dispatch(AxiosFollow(`${URL}/profile/${myAccountname}/following`))
-      dispatch(AxiosPetInfo(URL + loginReqPath))
+      dispatch(AxiosPetInfo(URL + ReqPath))
     }
   }, [dispatch])
 

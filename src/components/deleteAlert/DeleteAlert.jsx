@@ -22,8 +22,8 @@ export function DeleteAlert({ mainTxt, rightBtnTxt, closeAlert,setModal }) {
 
   function handleDeleteBtn() {
     const URL = "https://mandarin.api.weniv.co.kr";
-    const loginReqPath = `/${postType}/${Id}`;  //타입 : sns인지 pet인지
-    dispatch(AxiosDeletePost(URL+loginReqPath))
+    const ReqPath = `/${postType}/${Id}`;  //타입 : sns인지 pet인지
+    dispatch(AxiosDeletePost(URL+ReqPath))
       .then(  () => postType==='product'&&dispatch(AxiosPetInfo(URL + `/product/${accountname}`)))
       .then( ()=> postType==='post'&&dispatch((AxiosPost(URL + `/post/${accountname}/userpost`))));
     setModal(false);
