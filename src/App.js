@@ -9,7 +9,7 @@ import { AnimatePresence } from 'framer-motion';
 import SignUpMainPage from './pages/SignUpMain';
 import MyProfilePage from './pages/MyProfilePage'
 import ProfileModify from './template/profileModify/ProfileModify'
-import AddPost from './template/post/AddPost';
+import AddPost from './template/homePost/AddPost';
 import ChatList from './template/chat/ChatList';
 import AccountSearch from './template/search/AccountSearch';
 import MyFollow from './template/follow/MyFollow';
