@@ -6,7 +6,7 @@ import { deleteActions } from '../../reducers/deletePostSlice'
 import Modal from '../../components/postModal/PostModal';
 import FeedPost from '../../components/post/FeedPost'
 
-export function FllowSnsPost() {  //내가 팔로우한 사람들 게시글 (피드쪽)
+export function FollowSnsPost() {  //내가 팔로우한 사람들 게시글 (피드쪽)
   const snsPosts = useSelector(selectAllSnsPosts).posts;
   console.log(snsPosts);
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
