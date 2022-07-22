@@ -1,6 +1,6 @@
 import React from "react";
 // import styled from "styled-components";
-import { LabelStyle, InputStyle, SearchStyle } from './inputStyle';
+import { LabelStyle, InputStyle, SearchStyle, TextAreaStyle } from './inputStyle';
 
 //회원가입, login input 
 export function NameInput({ userName, setName, register, placeholder }) {
@@ -137,12 +137,11 @@ export function TitleInput({ Title, setTitle,defaultValue }) {
   );
 }
 
-
 export function PetInfoInput({ petInfo, setPetInfo,defaultValue }) {
   console.log(defaultValue);
   return (
     <LabelStyle>반려동물 정보
-      <InputStyle
+      <TextAreaStyle
         key={defaultValue}
         placeholder='종류 / 나이 / 성별 / 주의사항을 작성해주세요.'
         type="text"
