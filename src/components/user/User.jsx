@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom'
 
 
 export function User({ userName, userId, img }) {
-  // console.log(img);
   return (
     <Wrapper>
       {
@@ -87,16 +86,15 @@ export function UserFollow({ userName, userId, img }) {
     <>
       <Wrapper between>
         {
-          userId === MyId &&
-          <Link to='/profilepage'>
-            <User userName={userName} userId={userId} img={img} />
-          </Link>
-        }
-        {
-          userId !== MyId &&
-          <Link to='/userprofile' state={{ userId: userId }}>
-            <User userName={userName} userId={userId} img={img} />
-          </Link>
+          userId === MyId
+            ?
+            <Link to='/profilepage'>
+              <User userName={userName} userId={userId} img={img} />
+            </Link>
+            :
+            <Link to='/userprofile' state={{ userId: userId }}>
+              <User userName={userName} userId={userId} img={img} />
+            </Link>
         }
         {
           userId !== MyId && <FollowToggleBtn onClick={onClick} isFollow={isFollow} />
@@ -113,16 +111,15 @@ export function UserMore({ userName, userId, img, onClick }) {
     <>
       <Wrapper between>
         {
-          userId === MyId &&
-          <Link to='/profilepage'>
-            <User userName={userName} userId={userId} img={img} />
-          </Link>
-        }
-        {
-          userId !== MyId &&
-          <Link to='/userprofile' state={{ userId: userId }}>
-            <User userName={userName} userId={userId} img={img} />
-          </Link>
+          userId === MyId
+            ?
+            <Link to='/profilepage'>
+              <User userName={userName} userId={userId} img={img} />
+            </Link>
+            :
+            <Link to='/userprofile' state={{ userId: userId }}>
+              <User userName={userName} userId={userId} img={img} />
+            </Link>
         }
         <MoreIcon src={moreIcon} onClick={onClick} />
       </Wrapper>
@@ -131,10 +128,21 @@ export function UserMore({ userName, userId, img, onClick }) {
 }
 
 export function UserChat({ userName, userId, img }) {
+  const MyId = JSON.parse(localStorage.getItem("accountname"));
   return (
     <>
       <Wrapper between>
-        <User userName={userName} userId={userId} img={img} />
+        {
+          userId === MyId
+            ?
+            <Link to='/profilepage'>
+              <User userName={userName} userId={userId} img={img} />
+            </Link>
+            :
+            <Link to='/userprofile' state={{ userId: userId }}>
+              <User userName={userName} userId={userId} img={img} />
+            </Link>
+        }
         <ChatBtn />
       </Wrapper>
     </>
