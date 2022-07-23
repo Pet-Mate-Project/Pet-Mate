@@ -34,13 +34,16 @@ export default function ModifySnsPost() {
   const [showImg, setShowImg] = useState([]);
   const [postImg,setPostImg] = useState([]);
   const [uploadBtn,SetuploadBtn] =useState(true);
+
+  console.log(preContent);
   //서버에 전송할 데이터
   let data ={
     "post": {
-      "content": content?.length===0 ? preContent : content ,
+      "content": "", 
       "image": showImg?.length===0 ? preImg : showImg
     }
   }
+
   //이미지미리보기
   const handleAddImg = (e) => {
     let fileURLs = [...showImg];
@@ -66,9 +69,12 @@ export default function ModifySnsPost() {
     setShowImg(showImg.filter((_,index)=>index!==id));
     setPostImg(postImg.filter((_,index)=>index!==id));
   };
+  
+ 
 
   //업로드버튼 클릭시 실행 함수
   async function handlePostSns (){
+   
     let imgList=[];
     for(let i=0; i<showImg.length ; i++){
       if(showImg[i].slice(0,4)!=="blob" ){ //이미 서버로 보낸 사진
@@ -80,16 +86,12 @@ export default function ModifySnsPost() {
       imgList.push(img); 
     }
     data.post.image= imgList.join(",");
-    data.post.content= content;
-  
-    // 요청URL
-    const URL = "https://mandarin.api.weniv.co.kr";
-    const ReqPath = `/post/${selectId}`;
-    //header값
-    const token = JSON.parse(localStorage.getItem("token"))
-    const accountname = JSON.parse(localStorage.getItem("accountname"))
-    //axios post요청 
+    data.post.content = content?.length===0 ? preContent : content
     try{
+      const URL = "https://mandarin.api.weniv.co.kr";
+      const ReqPath = `/post/${selectId}`;
+      const token = JSON.parse(localStorage.getItem("token"))
+      const accountname = JSON.parse(localStorage.getItem("accountname"))
       const res = await axios.put(URL + ReqPath, data, {
         headers: {
           "Authorization": `Bearer ${token}`,
