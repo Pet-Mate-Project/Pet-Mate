@@ -9,7 +9,6 @@ import { AllWrap } from '../../style/commonStyle'
 import { FollowMain } from '../follow/followStyle'
 import { Link } from 'react-router-dom'
 
-
 function AccountSearch() {
   const [searchResult, setSearchResult] = useState([])
   const [keyword, setKeyword] = useState('')
@@ -37,15 +36,29 @@ function AccountSearch() {
   return (
     <AllWrap>
       <header>
-        <NavTxtSearch placeholder={"계정 검색"} onChange={(e) => setKeyword(e.target.value)} ></NavTxtSearch>
+        <NavTxtSearch 
+          placeholder={"계정 검색"} 
+          onChange={(e) => setKeyword(e.target.value)} >
+        </NavTxtSearch>
       </header>
 
       <FollowMain>
         {searchResult.map((user) => {
           console.log(user.image)
-          return <Link key={user._id} to='/userprofile' state={{ userId: user.accountname }}>
-            <User userName={user.username} userId={user.accountname} img={`https://mandarin.api.weniv.co.kr/${user.image}`} />
-          </Link>
+
+          return (
+            <Link 
+              key={user._id}
+              to='/userprofile' 
+              state={{ userId: user.accountname }}>
+              <User 
+                userName={user.username} 
+                userId={user.accountname} 
+                img={`https://mandarin.api.weniv.co.kr/${user.image}`} 
+                keyword={keyword}
+              />
+            </Link>
+          )
         })}
         {searchResult.length === 0 && keyword.length >= 1 && <CorrectMessageStyle>검색된 결과가 없습니다.</CorrectMessageStyle>}
         {/* 검색된 계정이 0개, 입력된 keyword가 1개 이상이면 출력 */}
