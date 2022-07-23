@@ -34,13 +34,15 @@ export default function ModifySnsPost() {
   const [showImg, setShowImg] = useState([]);
   const [postImg,setPostImg] = useState([]);
   const [uploadBtn,SetuploadBtn] =useState(true);
+
   //서버에 전송할 데이터
   let data ={
     "post": {
-      "content": content?.length===0 ? preContent : content ,
+      "content": "", 
       "image": showImg?.length===0 ? preImg : showImg
     }
   }
+
   //이미지미리보기
   const handleAddImg = (e) => {
     let fileURLs = [...showImg];
@@ -66,7 +68,12 @@ export default function ModifySnsPost() {
     setShowImg(showImg.filter((_,index)=>index!==id));
     setPostImg(postImg.filter((_,index)=>index!==id));
   };
+  
+ 
 
+
+
+  
   //업로드버튼 클릭시 실행 함수
   async function handlePostSns (){
     let imgList=[];
@@ -79,17 +86,19 @@ export default function ModifySnsPost() {
       const img = await ImgUpload(postImg[i])
       imgList.push(img); 
     }
+
+    //이미지 갯수검사
+    if(imgList.length===0){
+      SetuploadBtn(true)
+    }
+
     data.post.image= imgList.join(",");
-    data.post.content= content;
-  
-    // 요청URL
-    const URL = "https://mandarin.api.weniv.co.kr";
-    const ReqPath = `/post/${selectId}`;
-    //header값
-    const token = JSON.parse(localStorage.getItem("token"))
-    const accountname = JSON.parse(localStorage.getItem("accountname"))
-    //axios post요청 
+    data.post.content = content?.length===0 ? preContent : content
     try{
+      const URL = "https://mandarin.api.weniv.co.kr";
+      const ReqPath = `/post/${selectId}`;
+      const token = JSON.parse(localStorage.getItem("token"))
+      const accountname = JSON.parse(localStorage.getItem("accountname"))
       const res = await axios.put(URL + ReqPath, data, {
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -105,13 +114,13 @@ export default function ModifySnsPost() {
   }
 
   useEffect(()=>{
-    if( content.length===1 ){  //2자이상 입력시 버튼 활성화
+    if( content.length===1 || (showImg?.length===0)){  //2자이상 입력시 버튼 활성화
       SetuploadBtn(true)
     }
     else{
       SetuploadBtn(false)
     }
-  },[content,postImg])
+  },[content,showImg])
 
   //미리보기 이미지 배열로 만들기
   function sliceImg(preImg){
@@ -130,12 +139,10 @@ export default function ModifySnsPost() {
         <ImgWrapper>
           {
             showImg?.map((image,id)=>(
-              <>
-                <ImgBox key={id} >
-                  <Img key={id} src={ image.slice(0,4)!=="blob" === true ? URL+"/"+ image: image}  />  
-                  <DeleteBtn onClick={()=>handleDeleteImg(id)}/>
-                </ImgBox>
-              </>
+              <ImgBox key={id} >
+                <Img key={id} src={ image.slice(0,4)!=="blob" === true ? URL+"/"+ image: image}  />  
+                <DeleteBtn onClick={()=>handleDeleteImg(id)}/>
+              </ImgBox>
             ))
           }  
         </ImgWrapper>

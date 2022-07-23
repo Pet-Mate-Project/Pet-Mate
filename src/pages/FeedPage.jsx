@@ -17,11 +17,8 @@ export default function FeedPage() {
   const URL = "https://mandarin.api.weniv.co.kr";
   const posts = useSelector(selectAllSnsPosts).posts;
   const postsLength = posts?.length
-
   useEffect(() => {
-    if (postsStatus === 'idle') {
-      dispatch(AxiosPost(URL + "/post/feed"))
-    }
+    dispatch(AxiosPost(URL + "/post/feed"))
   }, [dispatch])
 
   return (
