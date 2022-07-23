@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContentTxt, DateTxt, PetImg, PetInfoTxt, PostStyle, TitleTxt, TxtBox } from './homePostStyle'
+import { ContentTxt, DateTxt, PetImg, PetInfoTxt, PostStyle, TextWrap, TitleTxt, TxtBox, WrapPost } from './homePostStyle'
 import { UserChat } from '../../components/user/User'
 
 export default function HomePost({ followpost }) {
@@ -18,15 +18,17 @@ export default function HomePost({ followpost }) {
   return (
     <ul >
       {followpost && followpost.map((post) => {
-        return(
+        return (
           <PostStyle key={post._id}>
             <UserChat userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} />
-            <PetImg src={"https://mandarin.api.weniv.co.kr/" + post.itemImage}></PetImg>
-            <TxtBox>
-              <TitleTxt>{post.itemName}</TitleTxt>
-            </TxtBox>
-            <ContentTxt>{post.link}</ContentTxt>
-            <DateTxt>{post.updatedAt.substring(0, 10)}</DateTxt>
+            <WrapPost>
+              <PetImg src={"https://mandarin.api.weniv.co.kr/" + post.itemImage}></PetImg>
+              <TextWrap>
+                <TitleTxt>{post.itemName}</TitleTxt>
+                <ContentTxt>{post.link}</ContentTxt>
+                <DateTxt>{post.updatedAt.substring(0, 10)}</DateTxt>
+              </TextWrap>
+            </WrapPost>
           </PostStyle>
         )
       })}
