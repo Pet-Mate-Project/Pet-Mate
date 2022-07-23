@@ -23,10 +23,8 @@ function MyProfilePage() {
   const ReqPath = `/product/${accountname}/?limit=30`; //내게시글
 
   useEffect(() => {
-    if (postsStatus === 'idle') {
-      dispatch(AxiosPetInfo(URL + ReqPath))
-      dispatch(AxiosPost(URL+"/post/"+accountname+"/userpost"))
-    }
+    dispatch(AxiosPetInfo(URL + ReqPath))
+    dispatch(AxiosPost(URL+"/post/"+accountname+"/userpost")) 
   }, [dispatch])
 
   return (
