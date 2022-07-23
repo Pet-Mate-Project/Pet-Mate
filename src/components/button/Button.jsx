@@ -66,7 +66,7 @@ export function SaveBtn(props) {
   )
 }
 
-export function PostSaveBtn({ disabled, onClick,link }) {
+export function PostSaveBtn({ disabled, onClick, link }) {
   if (disabled) {
     return (
       <Button width={90} height={32}
@@ -127,7 +127,7 @@ export function MiddleBtn({ textBtn, onClickFt }) {
 export function ChatBtn() {
   return (<>
     <Button
-      width={90}
+      width={80}
       height={32}
       color={palette.mainColor}
       backColor={palette.white}
