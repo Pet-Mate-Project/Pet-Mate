@@ -139,10 +139,10 @@ export default function ModifySnsPost() {
         <ImgWrapper>
           {
             showImg?.map((image,id)=>(
-              <ImgBox key={id} >
+              <div key={id} >
                 <Img key={id} src={ image.slice(0,4)!=="blob" === true ? URL+"/"+ image: image}  />  
                 <DeleteBtn onClick={()=>handleDeleteImg(id)}/>
-              </ImgBox>
+              </div>
             ))
           }  
         </ImgWrapper>
