@@ -6,8 +6,8 @@ import { TextWrapper, UserId, UserName, Wrapper, MoreIcon, ChatPreview, ChatDate
 import moreIcon from '../../assets/icon-more-vertical-small.svg'
 import { Link } from 'react-router-dom'
 
+export function User({ userName, userId, img, keyword}) {
 
-export function User({ userName, userId, img }) {
   return (
     <Wrapper>
       {
@@ -18,7 +18,18 @@ export function User({ userName, userId, img }) {
           <ProfileIconS img={img} />
       }
       <TextWrapper>
-        <UserName>{userName}</UserName>
+        {/* 입력한 결괏값이랑 일치하는 문자 색상 변경 */}
+        {
+          userName.includes(keyword)
+            ? 
+            <>
+              <UserName style={{color: "#1D57C1"}}>{keyword}</UserName>
+            </>
+            : 
+            <>
+              <UserName>{userName}</UserName>
+            </>
+        }
         <UserId>@ {userId}</UserId>
       </TextWrapper>
     </Wrapper>
