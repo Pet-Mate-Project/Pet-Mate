@@ -39,7 +39,7 @@ export function User({ userName, userId, img, keyword}) {
 export function UserFollow({ userName, userId, img }) {
   const url = "https://mandarin.api.weniv.co.kr";
   const token = JSON.parse(localStorage.getItem("token"));
-  const [isFollow, setIsFollow] = useState(false);
+  const [isFollow, setIsFollow] = useState();
   const MyId = JSON.parse(localStorage.getItem("accountname"));
 
   function onClick() {
@@ -108,7 +108,7 @@ export function UserFollow({ userName, userId, img }) {
             </Link>
         }
         {
-          userId !== MyId && <FollowToggleBtn onClick={onClick} isFollow={isFollow} />
+          userId !== MyId && isFollow !== undefined && <FollowToggleBtn onClick={onClick} isFollow={isFollow} />
         }
       </Wrapper>
     </>
