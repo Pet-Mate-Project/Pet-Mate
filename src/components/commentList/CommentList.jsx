@@ -1,17 +1,23 @@
 import React from 'react'
 import { ProfileIconS } from '../profileIcon/ProfileIcon'
-import { CommentWrpper,Name, WritingTime ,Content } from './commentListStlye';
+import dot from '../../assets/icon-more-vertical.svg'
+import { CommentWrpper, Name, WritingTime, Content, UserMore } from './commentListStlye';
 import UserImg from '../../assets/basic-profile.svg'
 
-export default function CommentList() {
+export default function CommentList({ content,time,author,src }) {
+  const URL = "https://mandarin.api.weniv.co.kr/";
+
   return (
-    <div style={{margin:"0 16px"}}>
+    <li style={{margin:"20px 16px"}}>
       <CommentWrpper >
-        <ProfileIconS img ={UserImg}/>
-        <Name>방울방울</Name>
-        <WritingTime>· 5분 전</WritingTime>
+        <ProfileIconS img ={URL+src}/>
+        <Name>{author}</Name>
+        <WritingTime>· {time}</WritingTime>
+        <button style={{marginLeft: "auto"}}>
+          <UserMore src={dot} />
+        </button>
       </CommentWrpper>
-      <Content>아랑아 안녕~</Content>
-    </div>
+      <Content>{content}</Content>
+    </li>
   )
 }

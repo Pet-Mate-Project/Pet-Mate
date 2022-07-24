@@ -23,3 +23,10 @@ export const Content = styled.p`
   font-size: 14px;
   margin-left: 52px;
 `
+
+export const UserMore = styled.img`
+  cursor: pointer;
+  float: right;
+  width:24px;
+  height: 24px;
+`
