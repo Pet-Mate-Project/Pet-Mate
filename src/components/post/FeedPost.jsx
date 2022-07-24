@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { deleteActions } from '../../reducers/deletePostSlice'
 import { UserMore } from '../user/User.jsx'
 import { WrapSection, PostText, PostImg, DateText, IconWrap, IconImg } from './feedPostStyle'
-import heartIcon from '../../assets/icon-heart.svg'
+import emptyheartIcon from '../../assets/icon-heart.svg'
+import heartIcon from '../../assets/icon-heart-fill.svg'
 import messageIcon from '../../assets/icon-message.svg'
 import Modal from '../../components/postModal/PostModal';
 import { useDispatch } from 'react-redux';
@@ -17,6 +18,7 @@ export default function FeedPost({ post }) {
   const MyId = JSON.parse(localStorage.getItem("accountname"));
   const url = "https://mandarin.api.weniv.co.kr";
   const images = post.image.split(",");
+  const [like,setLike] = useState(false);
 
   function imgCheck(post) {
     if (post.author.image === marketImg) {
@@ -42,6 +44,11 @@ export default function FeedPost({ post }) {
     setModal(modal => !modal)
   }
 
+  const hadlesetLike = ()=>{
+    setLike(like=>!like);
+    
+  } 
+
   return (
     <>
       {
@@ -60,8 +67,12 @@ export default function FeedPost({ post }) {
             )
           })}
           <IconWrap>
-            <IconImg src={heartIcon} />
-            <IconImg src={messageIcon} />
+            <button onClick={hadlesetLike}>
+              <IconImg src={like? heartIcon :emptyheartIcon} />
+            </button>
+            <button>
+              <IconImg src={messageIcon} />
+            </button>
           </IconWrap>
           <DateText>{post.updatedAt.substring(0, 10)}</DateText>
         </Link>
