@@ -23,10 +23,8 @@ function YourProfilePage() {
   const snsPostLength = useSelector(selectAllSnsPosts).post?.length;
 
   useEffect(() => {
-    if (postsStatus === 'idle') {
-      dispatch(AxiosPetInfo(URL + "/product/" + accountname))
-      dispatch(AxiosPost(URL + "/post/" + accountname + "/userpost"))
-    }
+    dispatch(AxiosPetInfo(URL + "/product/" + accountname))
+    dispatch(AxiosPost(URL + "/post/" + accountname + "/userpost"))
   }, [dispatch])
 
   return (

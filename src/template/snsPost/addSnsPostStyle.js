@@ -45,12 +45,19 @@ export const ImgWrapper = styled.div`
   margin-top: 25px; 
   `
 
-export const ImgBox = styled.div`
-  /* position:absolute; */
-  /* border:1px solid black */
+export const SingleImg = styled.img`
+  width: 400px;
+  height:300px;
+  border-radius:10px;
+  object-fit: cover;
+  @media screen and (max-width:380px){
+    width:150px;
+    height:90px;
+  }
 `
 
 export const Img = styled.img`
+  object-fit: cover;
   margin:5px;
   width:200px;
   height:130px;
@@ -62,7 +69,6 @@ export const Img = styled.img`
 `
 
 export const DeleteBtn = styled.button`
-
   cursor: pointer;
   position:absolute;
   top: 1;
