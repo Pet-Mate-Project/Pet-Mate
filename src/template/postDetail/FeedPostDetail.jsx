@@ -43,7 +43,7 @@ export default function FeedPostDetail() {
       <ScrollMain>
         <DetailWrapper>
           {
-            postDetail.id === currentPostId && <FeedPost post={postDetail} />
+            postDetail?.id === currentPostId && <FeedPost post={postDetail} />
           }
         </DetailWrapper>
       </ScrollMain>

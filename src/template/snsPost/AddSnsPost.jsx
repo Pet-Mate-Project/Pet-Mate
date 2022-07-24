@@ -1,7 +1,7 @@
 import React from 'react'
 import { SnsUploadNav } from '../../components/navBack/NavBack'
 import { AllWrap } from '../../style/commonStyle'
-import { FileInput,FileUploader,TextInput,ImgBox,Img,TextLable,DeleteBtn,ImgWrapper } from './addSnsPostStyle'
+import { FileInput,FileUploader,TextInput,SingleImg,Img,TextLable,DeleteBtn,ImgWrapper } from './addSnsPostStyle'
 import { PaddingMain } from '../../style/commonStyle'
 import { useState, useRef, useEffect } from 'react'
 import { ImgUpload } from '../../pages/SignUpMain'
@@ -113,13 +113,26 @@ export default function AddSnsPost() {
         <TextLable htmlFor="snspost" />
         <TextInput name="snspost" id="snspost"  placeholder="게시글 입력하기 ..." value={content} onChange={(e)=>{setContent(e.target.value)}}/>
         <ImgWrapper>
-          {showImg.map((image,id)=>(    
-            <ImgBox key={id} >
-              {console.log(image)}
-              <Img key={id} src={image} />
-              <DeleteBtn onClick={()=>handleDeleteImg(id)}/>
-            </ImgBox>
-          ))}
+
+          {
+            showImg.length===1 ?
+              showImg.map((image,id)=>(    
+                <div key={id} >
+                  {console.log(image)}
+                  <SingleImg key={id} src={image} />
+                  <DeleteBtn onClick={()=>handleDeleteImg(id)}/>
+                </div>
+              ))
+              :
+              showImg.map((image,id)=>(    
+                <div key={id} >
+                  {console.log(image)}
+                  <Img key={id} src={image} />
+                  <DeleteBtn onClick={()=>handleDeleteImg(id)}/>
+                </div>
+              ))
+          }
+
         </ImgWrapper>
         <FileUploader htmlFor="input-file">
           <FileInput
