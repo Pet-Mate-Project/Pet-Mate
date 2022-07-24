@@ -2,9 +2,9 @@ import { configureStore  } from "@reduxjs/toolkit";
 import getPetInfoReducer from './reducers/getPetInfoSlice'
 import getPostReducer from "./reducers/getPostSlice";
 import deletePostReducer from './reducers/deletePostSlice'
-import getFollowSlice from './reducers/getFollowSlice';
+import getFollowReducer from './reducers/getFollowSlice';
 import getdetailReducer from './reducers/getPostDetailSlice'
-import getAllPetInfoSlice from './reducers/getAllpetInfoSlice'
+import getAllPetInfoReducer from './reducers/getAllpetInfoSlice'
 
 //추후고려
 // const userToken = localStorage.getItem("userInfo")
@@ -21,9 +21,9 @@ export const store = configureStore({
     getPetInfo: getPetInfoReducer,
     getPost: getPostReducer,
     deletePost: deletePostReducer,
-    getFollow: getFollowSlice,
+    getFollow: getFollowReducer,
     DetailInfo: getdetailReducer,
-    getAllPetInfo: getAllPetInfoSlice,
+    getAllPetInfo: getAllPetInfoReducer,
    
   },
 })
