@@ -1,12 +1,13 @@
 import React ,{useState} from 'react'
 import { ProfileIconS } from '../profileIcon/ProfileIcon'
 import { CommentBtnStyled, CommentTextStyle, Wrapper } from './commentStyle'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { SelectId } from '../../reducers/deletePostSlice'
+import { AxiosCommentList } from '../../reducers/getCommentSlice'
 
 export default function Comment({ img }) {
-
+  const dispatch = useDispatch();
   const currentPostId = useSelector(SelectId);
   const [content,Setcontent] = useState("");
   const token = JSON.parse(localStorage.getItem("token"));
@@ -34,18 +35,17 @@ export default function Comment({ img }) {
     }
   }
 
-
   const handleSubmit = () => {
     postComment() 
+    dispatch(AxiosCommentList(URL+`/post/${currentPostId}/comments`)) 
     Setcontent("");
-    console.log("버튼");
   }
 
   const handleKeyPress = (e) => {
     if(e.key==='Enter'){
       postComment() 
+      dispatch(AxiosCommentList(URL+`/post/${currentPostId}/comments`)) 
       Setcontent("");
-      console.log("엔터");
     }
   }
 
