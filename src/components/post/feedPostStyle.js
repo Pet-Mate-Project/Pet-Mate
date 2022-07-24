@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { palette } from '../../style/globalColor';
 
-export const WrapperArticle = styled.article`
-width: 100%;
-`
+// export const WrapperArticle = styled.article`
+// width: 100%;
+// `
 
 export const WrapSection = styled.div`
 padding-left: 45px;
@@ -29,8 +29,8 @@ object-fit: cover;
 
 export const IconWrap = styled.div`
 text-align: left;
-display: inline-block;
-margin: 14px 0;
+display: block;
+padding: 14px 0;
 `
 
 export const IconImg = styled.img`
