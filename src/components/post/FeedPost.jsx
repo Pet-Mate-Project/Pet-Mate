@@ -49,6 +49,7 @@ export default function FeedPost({ post }) {
       }
       <UserMore userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} onClick={() => handleId(post.id)} />
       <WrapSection onClick={() => {
+        dispatch(deleteActions.selectId(post.id));
         dispatch(AxiosDetail(url + `/post/${post.id}`));
       }}>
         <Link to='/postdetail'>

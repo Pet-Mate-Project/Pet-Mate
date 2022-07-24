@@ -7,6 +7,7 @@ import FeedPost from '../../components/post/FeedPost'
 import { DetailWrapper } from './FeedPostDetailStyle';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDetailPosts } from '../../reducers/getPostDetailSlice';
+import { SelectId } from '../../reducers/deletePostSlice'
 
 export default function FeedPostDetail() {
   const [userInfoList, setUserInfoList] = useState([]);
@@ -14,7 +15,7 @@ export default function FeedPostDetail() {
   const token = JSON.parse(localStorage.getItem("token"));
   const accountname = JSON.parse(localStorage.getItem("accountname"));
   const postDetail = useSelector(selectDetailPosts).post;
-  console.log(postDetail);
+  const currentPostId = useSelector(SelectId);
   
   useEffect(() => {
     getUserInfo();
@@ -42,7 +43,7 @@ export default function FeedPostDetail() {
       <ScrollMain>
         <DetailWrapper>
           {
-            postDetail && <FeedPost post={postDetail} />
+            postDetail.id === currentPostId && <FeedPost post={postDetail} />
           }
         </DetailWrapper>
       </ScrollMain>
