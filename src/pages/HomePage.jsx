@@ -10,6 +10,8 @@ import WalkingFeed from '../template/walkingFeed/WalkingFeed'
 import { AddBtn } from '../components/iconButton/IconButton'
 import { Link } from 'react-router-dom'
 import { AxiosFollow, selectAllFollowers } from '../reducers/getFollowSlice'
+import PacmanLoader from 'react-spinners/PacmanLoader';
+import { palette } from '../style/globalColor'
 
 export default function HomePage() {
 
@@ -47,12 +49,21 @@ export default function HomePage() {
       <header>
         <NavSearch text={"산책 피드"} url={"/search"} />
       </header>
-      {(postsStatus === 'idle' && followpost?.length === 0) ? <DefaultFeed /> : <WalkingFeed followpost={followpost} />}
+      {
+        postsStatus === 'loading' ? 
+          <div style={{   position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",}}>
+            <PacmanLoader color={palette.mainColor} width={100} height ={100} /></div> :
+          followpost?.length === 0 ? <DefaultFeed /> : 
+            <WalkingFeed followpost={followpost}  />
+      }
       <Link to={'/post'}>
         <AddBtn />
       </Link>
       <TabMenu />
     </AllWrap>
-
   )
 }
+
