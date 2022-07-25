@@ -18,8 +18,12 @@ export const ContentWrapper = styled.div`
 
 export const PetImg = styled.img`
   width: 100%;
+  height: 230px;
   margin-top: 14px;
+  border: 1px solid ${palette.lightGray};
   border-radius: 10px;
+  box-sizing: border-box;
+  object-fit: cover;
 
   @media screen and (min-width:500px) {
     margin-top: 20px;
