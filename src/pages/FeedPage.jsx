@@ -26,7 +26,6 @@ export default function FeedPage() {
       <header>
         <NavSearch text={"Pet Story"} url={url} />
       </header>
-      {console.log('희진', postsLength)}
       {(postsLength === 0) ? <DefaultSnsFeed /> : <SnsFeed />}
       <SnsFeed />
       <Link to='/snspost'>
