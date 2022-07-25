@@ -5,7 +5,7 @@ import { AddBtn } from '../components/iconButton/IconButton'
 import TabMenu from '../components/tabMenu/TabMenu'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { AxiosPost, selectAllSnsPosts, getSnsPostStatus } from '../reducers/getPostSlice';
+import { AxiosFeedPost, selectFeedPosts, getFeedStatus } from '../reducers/getFeedPostSlice'
 import { useEffect } from 'react'
 import DefaultSnsFeed from '../template/snsFeed/DefaultSnsFeed'
 import SnsFeed from '../template/snsFeed/SnsFeed'
@@ -13,20 +13,23 @@ export default function FeedPage() {
 
   const url = "/search"
   const dispatch = useDispatch();
-  const postsStatus = useSelector(getSnsPostStatus);
   const URL = "https://mandarin.api.weniv.co.kr";
-  const posts = useSelector(selectAllSnsPosts).posts;
-  const postsLength = posts?.length
+  const status = useSelector(getFeedStatus);
+
   useEffect(() => {
-    dispatch(AxiosPost(URL + "/post/feed"))
-  }, [dispatch])
+    if(status ==='idle'){
+      dispatch(AxiosFeedPost(URL + "/post/feed"))
+    }
+  }, [status])
+
+  const posts = useSelector(selectFeedPosts)?.posts;
+  const postsLength = posts?.length
 
   return (
     <AllWrap>
       <header>
         <NavSearch text={"Pet Story"} url={url} />
       </header>
-      {console.log('희진', postsLength)}
       {(postsLength === 0) ? <DefaultSnsFeed /> : <SnsFeed />}
       <SnsFeed />
       <Link to='/snspost'>
