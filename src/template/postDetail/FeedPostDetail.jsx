@@ -10,12 +10,10 @@ import { selectDetailPosts,AxiosDetail } from '../../reducers/getPostDetailSlice
 import CommentList from '../../components/commentList/CommentList'
 import { AxiosCommentList, getCommentList } from '../../reducers/getCommentSlice'
 import { useLocation } from "react-router-dom"
-import queryString from "query-string";
 
 export default function FeedPostDetail() {
   const UserIdPath = useLocation();
   const UserId = UserIdPath.pathname.slice(12,);
-
   const [userInfoList, setUserInfoList] = useState([]);
   const URL = "https://mandarin.api.weniv.co.kr";
   const token = JSON.parse(localStorage.getItem("token"));
@@ -30,8 +28,7 @@ export default function FeedPostDetail() {
     dispatch(AxiosDetail(URL+`/post/${UserId}`))
   }, [])
 
-  console.log(commentList);
-
+  
   function getUserInfo() {
     try {
       axios.get(URL + `/profile/${accountname}`, {
