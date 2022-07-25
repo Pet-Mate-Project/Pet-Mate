@@ -10,6 +10,7 @@ import Modal from '../../components/postModal/PostModal';
 import { useDispatch } from 'react-redux';
 import { AxiosDetail } from '../../reducers/getPostDetailSlice';
 import axios from 'axios'
+import { useEffect } from 'react'
 
 
 export default function FeedPost({ post }) {
@@ -20,7 +21,8 @@ export default function FeedPost({ post }) {
   const token = JSON.parse(localStorage.getItem("token"));
   const url = "https://mandarin.api.weniv.co.kr";
   const images = post.image.split(",");
-  const [isLike, setIsLike] = useState(false);
+  const [isLike, setIsLike] = useState(post.hearted);
+  const [heartCount, setheartCount] = useState(post.heartCount);
 
   //좋아요
   async function postLike() {
@@ -30,8 +32,9 @@ export default function FeedPost({ post }) {
         "Content-type": "application/json"
       }
     }).then(res => {
-      console.log('💗res', res.data.post.hearted)
+      console.log('💗res', res.data.post)
       setIsLike(res.data.post.hearted)
+      setheartCount(res.data.post.heartCount)
     })
   }
 
@@ -43,8 +46,9 @@ export default function FeedPost({ post }) {
         "Content-type": "application/json"
       }
     }).then(res => {
-      console.log('💔res', res.data.post.hearted)
+      console.log('💔res', res.data.post)
       setIsLike(res.data.post.hearted)
+      setheartCount(res.data.post.heartCount)
     })
   }
 
@@ -77,10 +81,8 @@ export default function FeedPost({ post }) {
   const handlesetLike = () => {
     if (!isLike) {
       postLike();
-      // setIsLike(true);
     } else {
       postLikeCancle();
-      // setIsLike(false);
     }
   }
 
@@ -95,25 +97,25 @@ export default function FeedPost({ post }) {
         dispatch(deleteActions.selectId(post.id));
         dispatch(AxiosDetail(url + `/post/${post.id}`));
       }}>
-        <Link to='/postdetail'>
+        <Link to='/postdetail' state={{ isLike: isLike, heartCount: heartCount }}>
           <PostText>{post.content}</PostText>
           {images.map((image) => {
             return (
               <PostImg key={Math.random() * 100} src={"https://mandarin.api.weniv.co.kr/" + image} />
             )
           })}
-          <IconWrap>
-            <button onClick={handlesetLike}>
-              <IconImg src={isLike ? heartIcon : emptyheartIcon} />
-              {post.heartCount}
-            </button>
-            <button style={{ marginLeft: "6px" }}>
-              <IconImg src={messageIcon} />
-              {post.commentCount}
-            </button>
-          </IconWrap>
-          <DateText>{post.updatedAt.substring(0, 10)}</DateText>
         </Link>
+        <IconWrap>
+          <button onClick={handlesetLike}>
+            <IconImg src={isLike ? heartIcon : emptyheartIcon} />
+            {heartCount}
+          </button>
+          <button style={{ marginLeft: "6px" }}>
+            <IconImg src={messageIcon} />
+            {post.commentCount}
+          </button>
+        </IconWrap>
+        <DateText>{post.updatedAt.substring(0, 10)}</DateText>
       </WrapSection>
     </>
   )
