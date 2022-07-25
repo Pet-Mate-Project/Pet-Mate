@@ -12,3 +12,9 @@ color: ${palette.textPoint};
 font-weight: 400;
 font-size: 12px;
 `
+export const SearchMessageStyle = styled.p`
+margin-top: 15px;
+color: ${palette.textPoint};
+font-weight: 400;
+font-size: 14px;
+`
