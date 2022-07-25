@@ -6,6 +6,7 @@ import getFollowReducer from './reducers/getFollowSlice';
 import getdetailReducer from './reducers/getPostDetailSlice'
 import getAllPetInfoReducer from './reducers/getAllpetInfoSlice'
 import getCommentReducer from "./reducers/getCommentSlice";
+import getFeedPostReducer from "./reducers/getFeedPostSlice";
 //추후고려
 // const userToken = localStorage.getItem("userInfo")
 //   ? JSON.parse(localStorage.getItem("userinfo")).user.token
@@ -25,5 +26,6 @@ export const store = configureStore({
     DetailInfo: getdetailReducer,
     getAllPetInfo: getAllPetInfoReducer,
     getCommentList: getCommentReducer,
+    getFeedPost : getFeedPostReducer,
   },
 })

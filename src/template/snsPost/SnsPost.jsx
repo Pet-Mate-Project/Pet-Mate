@@ -1,10 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { selectAllSnsPosts } from '../../reducers/getPostSlice.js'
+import { selectFeedPosts } from '../../reducers/getFeedPostSlice'
+import { selectAllSnsPosts } from '../../reducers/getPostSlice'
 import FeedPost from '../../components/post/FeedPost'
+import {useLocation} from 'react-router-dom'
 
 export function SnsPost() { 
-  const followSnsPosts = useSelector(selectAllSnsPosts).posts;
+  const location = useLocation();
+  const name = location.pathname;
+  console.log(name);
+  const followSnsPosts = useSelector(selectFeedPosts).posts;
   const mySnsPosts = useSelector(selectAllSnsPosts).post;
   console.log('followSnsPosts', followSnsPosts);
   console.log('mySnsPosts', mySnsPosts);
@@ -12,7 +17,7 @@ export function SnsPost() {
   return (
     <ul>
       {/* 내가 팔로우한 사람들 SNS 게시글 */}
-      {followSnsPosts && followSnsPosts.map((post) => {
+      { name==="/feedpage" &&followSnsPosts && followSnsPosts.map((post) => {
         return (
           <li key={post.id} style={{ padding: "16px" }}>
             <FeedPost post={post} />
