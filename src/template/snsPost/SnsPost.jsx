@@ -11,9 +11,7 @@ export function SnsPost() {
   console.log(name);
   const followSnsPosts = useSelector(selectFeedPosts).posts;
   const mySnsPosts = useSelector(selectAllSnsPosts).post;
-  console.log('followSnsPosts', followSnsPosts);
-  console.log('mySnsPosts', mySnsPosts);
-
+  
   return (
     <ul>
       {/* 내가 팔로우한 사람들 SNS 게시글 */}
@@ -24,8 +22,9 @@ export function SnsPost() {
           </li>
         )
       })}
+
       {/* 내 SNS 게시글 */}
-      {mySnsPosts && mySnsPosts.map((post) => {
+      {name==="/profilepage" && mySnsPosts &&mySnsPosts.map((post) => {
         return (
           <li key={post.id} style={{ padding: "16px" }}>
             <FeedPost post={post} />
