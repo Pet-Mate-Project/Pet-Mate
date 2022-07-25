@@ -10,7 +10,6 @@ import Modal from '../../components/postModal/PostModal';
 import { useDispatch } from 'react-redux';
 import { AxiosDetail } from '../../reducers/getPostDetailSlice';
 import axios from 'axios'
-import { useEffect } from 'react'
 
 
 export default function FeedPost({ post }) {
@@ -97,7 +96,7 @@ export default function FeedPost({ post }) {
         dispatch(deleteActions.selectId(post.id));
         dispatch(AxiosDetail(url + `/post/${post.id}`));
       }}>
-        <Link to='/postdetail' state={{ isLike: isLike, heartCount: heartCount }}>
+        <Link to='/postdetail'>
           <PostText>{post.content}</PostText>
           {images.map((image) => {
             return (
