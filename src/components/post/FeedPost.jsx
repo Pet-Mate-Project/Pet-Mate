@@ -9,6 +9,7 @@ import messageIcon from '../../assets/icon-message.svg'
 import Modal from '../../components/postModal/PostModal';
 import { useDispatch } from 'react-redux';
 import { AxiosDetail } from '../../reducers/getPostDetailSlice';
+import axios from 'axios'
 
 
 export default function FeedPost({ post }) {
@@ -16,10 +17,38 @@ export default function FeedPost({ post }) {
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
   const marketImg = "http://146.56.183.55:5050/Ellipse.png";
   const MyId = JSON.parse(localStorage.getItem("accountname"));
+  const token = JSON.parse(localStorage.getItem("token"));
   const url = "https://mandarin.api.weniv.co.kr";
   const images = post.image.split(",");
-  const [like,setLike] = useState(false);
+  const [isLike, setIsLike] = useState(false);
 
+  //좋아요
+  async function postLike() {
+    await axios.post(`${url}/post/${post.id}/heart`, [], {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-type": "application/json"
+      }
+    }).then(res => {
+      console.log('💗res', res.data.post.hearted)
+      setIsLike(res.data.post.hearted)
+    })
+  }
+
+  //좋아요 취소
+  async function postLikeCancle() {
+    await axios.delete(`${url}/post/${post.id}/unheart`, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-type": "application/json"
+      }
+    }).then(res => {
+      console.log('💔res', res.data.post.hearted)
+      setIsLike(res.data.post.hearted)
+    })
+  }
+
+  //기본이미지체크
   function imgCheck(post) {
     if (post.author.image === marketImg) {
       return defaultImg;
@@ -44,9 +73,17 @@ export default function FeedPost({ post }) {
     setModal(modal => !modal)
   }
 
-  const hadlesetLike = ()=>{
-    setLike(like=>!like);
-  } 
+  // 좋아요 버튼 함수
+  const handlesetLike = () => {
+    if (!isLike) {
+      postLike();
+      // setIsLike(true);
+    } else {
+      postLikeCancle();
+      // setIsLike(false);
+    }
+  }
+
 
   return (
     <>
@@ -66,8 +103,8 @@ export default function FeedPost({ post }) {
             )
           })}
           <IconWrap>
-            <button onClick={hadlesetLike}>
-              <IconImg src={like? heartIcon :emptyheartIcon} />
+            <button onClick={handlesetLike}>
+              <IconImg src={isLike ? heartIcon : emptyheartIcon} />
             </button>
             <button>
               <IconImg src={messageIcon} />
