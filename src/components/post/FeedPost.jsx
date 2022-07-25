@@ -105,9 +105,11 @@ export default function FeedPost({ post }) {
           <IconWrap>
             <button onClick={handlesetLike}>
               <IconImg src={isLike ? heartIcon : emptyheartIcon} />
+              {post.heartCount}
             </button>
-            <button>
+            <button style={{ marginLeft: "6px" }}>
               <IconImg src={messageIcon} />
+              {post.commentCount}
             </button>
           </IconWrap>
           <DateText>{post.updatedAt.substring(0, 10)}</DateText>
