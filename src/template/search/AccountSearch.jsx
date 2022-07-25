@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { CorrectMessageStyle } from '../../components/errorMessage/errorStyle'
+import { SearchMessageStyle } from '../../components/errorMessage/errorStyle'
 import { NavTxtSearch } from '../../components/navBack/NavBack'
 import TabMenu from '../../components/tabMenu/TabMenu'
 import { User } from '../../components/user/User'
@@ -43,25 +43,31 @@ function AccountSearch() {
       </header>
 
       <FollowMain>
-        {searchResult.map((user) => {
-          console.log(user.image)
-
-          return (
-            <Link 
-              key={user._id}
-              to='/userprofile' 
-              state={{ userId: user.accountname }}>
-              <User 
-                userName={user.username} 
-                userId={user.accountname} 
-                img={`https://mandarin.api.weniv.co.kr/${user.image}`} 
-                keyword={keyword}
-              />
-            </Link>
-          )
-        })}
-        {searchResult.length === 0 && keyword.length >= 1 && <CorrectMessageStyle>검색된 결과가 없습니다.</CorrectMessageStyle>}
+        {keyword.length === 0
+          ? 
+          // 입력된 keyword가 0이면 메시지 출력
+          <SearchMessageStyle>사용자 계정 또는 이름을 입력해 주세요.</SearchMessageStyle>
+          :
+          // 입력된 keyword가 있으면 결괏값 출력
+          searchResult.map((user) => {
+            console.log(user.image)
+            return (
+              <Link 
+                key={user._id}
+                to='/userprofile' 
+                state={{ userId: user.accountname }}>
+                <User 
+                  userName={user.username} 
+                  userId={user.accountname} 
+                  img={`https://mandarin.api.weniv.co.kr/${user.image}`} 
+                  keyword={keyword}
+                />
+              </Link>
+            )
+          })
+        }
         {/* 검색된 계정이 0개, 입력된 keyword가 1개 이상이면 출력 */}
+        {searchResult.length === 0 && keyword.length >= 1 && <SearchMessageStyle>검색된 결과가 없습니다.</SearchMessageStyle>}
       </FollowMain>
       <TabMenu />
     </AllWrap>
