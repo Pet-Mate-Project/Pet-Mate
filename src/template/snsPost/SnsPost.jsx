@@ -24,7 +24,7 @@ export function SnsPost() {
       })}
 
       {/* 내 SNS 게시글 */}
-      {name === "/profilepage" || name === "/userprofile" && mySnsPosts && mySnsPosts.map((post) => {
+      {(name === "/profilepage" || name === "/userprofile") && mySnsPosts && mySnsPosts.map((post) => {
         return (
           <li key={post.id} style={{ padding: "16px" }}>
             <FeedPost post={post} />
