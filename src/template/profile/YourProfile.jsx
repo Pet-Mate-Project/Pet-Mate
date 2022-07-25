@@ -13,7 +13,7 @@ function YourProfile({ userId }) {
   const token = JSON.parse(localStorage.getItem("token"));
   const accountname = userId;
   const [yourInfoList, setYourInfoList] = useState([]);
-  const [isFollow, setIsFollow] = useState(false);
+  const [isFollow, setIsFollow] = useState();
 
   function onClick() {
     if (!isFollow) {
@@ -99,7 +99,9 @@ function YourProfile({ userId }) {
           width={34}
           height={34}>
         </OnlyIconButton>
-        <ProfileFollowToggleBtn onClick={onClick} isFollow={isFollow} />
+        {
+          isFollow !== undefined && <ProfileFollowToggleBtn onClick={onClick} isFollow={isFollow} />
+        }
         <OnlyIconButton icon={shareIcon} color={'#767676'}
           backColor={'white'}
           width={34}
