@@ -85,18 +85,22 @@ export default function FeedPost({ post }) {
     }
   }
 
-
+  const handleOnClick = (postId) => {
+    dispatch(deleteActions.selectId(postId));
+    dispatch(AxiosDetail(url + `/post/${postId}`))
+  }
+ 
   return (
     <>
       {
         (modal === true) && (post.author.accountname === MyId) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
       }
+
       <UserMore userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} onClick={() => handleId(post.id)} />
-      <WrapSection onClick={() => {
-        dispatch(deleteActions.selectId(post.id));
-        dispatch(AxiosDetail(url + `/post/${post.id}`));
-      }}>
-        <Link to='/postdetail'>
+
+      <WrapSection onClick={() => {handleOnClick(post.id)}}>
+
+        <Link to= {'/postdetail/'+ post.id} >
           <PostText>{post.content}</PostText>
           {images.map((image) => {
             return (
