@@ -89,7 +89,7 @@ export default function FeedPost({ post }) {
     dispatch(deleteActions.selectId(postId));
     dispatch(AxiosDetail(url + `/post/${postId}`))
   }
- 
+
   return (
     <>
       {
@@ -98,9 +98,9 @@ export default function FeedPost({ post }) {
 
       <UserMore userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} onClick={() => handleId(post.id)} />
 
-      <WrapSection onClick={() => {handleOnClick(post.id)}}>
+      <WrapSection onClick={() => { handleOnClick(post.id) }}>
 
-        <Link to= {'/postdetail/'+ post.id} >
+        <Link to={'/snspostdetail/' + post.id} >
           <PostText>{post.content}</PostText>
           {images.map((image) => {
             return (
