@@ -2,6 +2,8 @@ import React from 'react'
 import { ProfileIconS } from '../profileIcon/ProfileIcon'
 import dot from '../../assets/icon-more-vertical.svg'
 import { CommentWrpper, Name, WritingTime, Content, UserMore } from './commentListStlye';
+import moment from 'moment';
+import "moment/locale/ko";
 import UserImg from '../../assets/basic-profile.svg'
 
 export default function CommentList({ content,time,author,src }) {
@@ -12,7 +14,7 @@ export default function CommentList({ content,time,author,src }) {
       <CommentWrpper >
         <ProfileIconS img ={URL+src}/>
         <Name>{author}</Name>
-        <WritingTime>· {time}</WritingTime>
+        <WritingTime>· {moment(time).fromNow()}</WritingTime>
         <button style={{marginLeft: "auto"}}>
           <UserMore src={dot} />
         </button>
