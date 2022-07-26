@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import GlobalStyles from './style/globalStyle';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage';
@@ -40,11 +41,11 @@ function App() {
         <Route path='/profilepage' element={<PrivateRoute><MyProfilePage /></PrivateRoute>}></Route>
         <Route path='/profilemodify' element={<PrivateRoute><ProfileModify /></PrivateRoute>}></Route>
         <Route path='/post' element={<PrivateRoute><AddPost /></PrivateRoute>}></Route>
-        <Route path='/postmodify' element={<PrivateRoute>< ModifyPost/></PrivateRoute>}></Route>
+        <Route path='/postmodify' element={<PrivateRoute>< ModifyPost /></PrivateRoute>}></Route>
         <Route path='/snspost' element={<PrivateRoute><AddSnsPost /></PrivateRoute>}></Route>
-        <Route path='/snspostmodify' element={<PrivateRoute><ModifySnsPost/></PrivateRoute>}></Route>
-        <Route path='/snspostdetail/:id' element={<PrivateRoute><FeedPostDetail/></PrivateRoute>}></Route>
-        <Route path='/walkingpostdetail/:id' element={<PrivateRoute><WalkingPostDetail/></PrivateRoute>}></Route>
+        <Route path='/snspostmodify' element={<PrivateRoute><ModifySnsPost /></PrivateRoute>}></Route>
+        <Route path='/snspostdetail/:id' element={<PrivateRoute><FeedPostDetail /></PrivateRoute>}></Route>
+        <Route path='/walkingpostdetail/:id' element={<PrivateRoute><WalkingPostDetail /></PrivateRoute>}></Route>
         <Route path='/chatpage' element={<PrivateRoute><ChatList /></PrivateRoute>}></Route>
         <Route path='/search' element={<PrivateRoute><AccountSearch /></PrivateRoute>}></Route>
         <Route path='/myfollow' element={<PrivateRoute><MyFollow /></PrivateRoute>}></Route>
