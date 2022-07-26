@@ -57,9 +57,6 @@ export function PetPost() {
             )
           })
         }
-        {
-
-        }
       </MiniPostWrap>
     </SectionAllWrap>
   )
