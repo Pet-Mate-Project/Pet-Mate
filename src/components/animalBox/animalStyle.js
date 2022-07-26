@@ -17,6 +17,7 @@ export const Img = styled.img`
   border-radius:10px;
   width: 140px;
   height: 90px;
+  object-fit: cover;
   @media screen and (min-width:450px) {
     width: 180px;
   height: 110px;

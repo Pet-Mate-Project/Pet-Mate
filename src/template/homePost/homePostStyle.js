@@ -4,10 +4,10 @@ import { palette } from '../../style/globalColor';
 
 export const PostStyle = styled.li`
   width: 100%;
-  height: 200px;
+  height: 205px;
   margin: 0 auto;
   padding: 10px;
-  border-bottom: 6px solid ${palette.lineColor};
+  border-bottom: 4px solid ${palette.lineColor};
   box-sizing: border-box;
 
   :last-child {
@@ -52,7 +52,7 @@ export const DateTxt = styled.p`
 export const WrapPost = styled.div`
 display: flex;
 flex-direction: row;
-margin-top:5px
+margin-top:5px;
 `
 
 export const TextWrap = styled.div`

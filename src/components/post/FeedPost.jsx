@@ -116,7 +116,7 @@ export default function FeedPost({ post }) {
           })}
         </Link>
         <IconWrap>
-          <button onClick={handlesetLike}>
+          <button onClick={handlesetLike} style={{ cursor: 'pointer' }}>
             <IconImg src={isLike ? heartIcon : emptyheartIcon} />
             {heartCount}
           </button>

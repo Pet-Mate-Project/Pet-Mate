@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
+import { palette } from './globalColor';
 
 const GlobalStyles = createGlobalStyle`
+* {
+	font-family: 'SUIT-Medium';
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -29,6 +33,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	font-family: 'SUIT-Medium';
+
 }
 ol, ul ,li{
 	list-style: none;
@@ -47,7 +53,7 @@ table {
 }
 a {
   text-decoration: none;
-	:link,:visited { color: black;}
+	color: black;
 }
 button{
 	all: unset; 
