@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useLayoutEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import axios from 'axios'
 import { AllWrap, ScrollMain } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
@@ -8,7 +8,7 @@ import { DetailWrapper } from './FeedPostDetailStyle'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectDetailPosts, AxiosDetail } from '../../reducers/getPostDetailSlice'
 import CommentList from '../../components/commentList/CommentList'
-import { AxiosCommentList, getCommentList, getCommentStatus,commentAction   } from '../../reducers/getCommentSlice'
+import { AxiosCommentList, getCommentList, getCommentStatus, commentAction } from '../../reducers/getCommentSlice'
 import { useLocation } from "react-router-dom"
 import Modal from '../../components/postModal/PostModal';
 import { selectCommentAuthor } from '../../reducers/getCommentSlice'
@@ -26,21 +26,23 @@ export default function FeedPostDetail() {
   const commentStatus = useSelector(getCommentStatus); //상태
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
-  const commnetAuthor = useSelector(selectCommentAuthor); 
+  const commnetAuthor = useSelector(selectCommentAuthor);
 
 
   useLayoutEffect(() => {
     getUserInfo();
-    dispatch(AxiosDetail(URL+`/post/${UserId}`))
-    dispatch(AxiosCommentList(URL+`/post/${UserId}/comments?limit=50`)) 
+    dispatch(AxiosDetail(URL + `/post/${UserId}`))
+    dispatch(AxiosCommentList(URL + `/post/${UserId}/comments?limit=50`))
   }, [])
 
-  useEffect(()=>{
-    if(commentStatus==='loading'){
+
+  useLayoutEffect(() => {
+    if (commentStatus === 'loading') {
       dispatch(AxiosDetail(URL + `/post/${UserId}`))
-      dispatch(AxiosCommentList(URL+`/post/${UserId}/comments?limit=50`)) 
+      // dispatch(AxiosCommentList(URL + `/post/${UserId}/comments?limit=50`))
     }
-  },[commentStatus])
+  }, [commentStatus])
+
 
   function getUserInfo() {
     try {
@@ -56,7 +58,7 @@ export default function FeedPostDetail() {
     }
   }
 
-  const handleonClick = (postId,postAuthor) => {
+  const handleonClick = (postId, postAuthor) => {
     dispatch(commentAction.selectCommentId(postId))
     dispatch(commentAction.selectCommentAuthor(postAuthor))
     setModal(modal => !modal)
@@ -65,24 +67,24 @@ export default function FeedPostDetail() {
   //모달
   let list = [];
   let alertTxt = [];
-  if(accountname===commnetAuthor){
+  if (accountname === commnetAuthor) {
     list = { '삭제': '' };
     alertTxt = ['삭제하시겠어요?', '삭제'];
   }
-  else{
+  else {
     list = { '신고하기': '' };
   }
   const closeModal = () => {
     setModal(false)
   }
-  
+
   return (
     <AllWrap>
       <header>
         <NavBack />
       </header>
       {
-        (modal===true)&& <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal}  />
+        (modal === true) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
       }
       <ScrollMain>
         <DetailWrapper>
@@ -92,9 +94,9 @@ export default function FeedPostDetail() {
         </DetailWrapper>
         <ul>
           {
-            commentList?.map((comment) => {
+            postDetail?.id === UserId && commentList?.map((comment) => {
               return (
-                <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} src={comment.author.image} onClick={()=> handleonClick(comment.id,comment.author.accountname)}  setModal ={setModal} modal ={modal} />
+                <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} src={comment.author.image} onClick={() => handleonClick(comment.id, comment.author.accountname)} setModal={setModal} modal={modal} />
               )
             })
           }
