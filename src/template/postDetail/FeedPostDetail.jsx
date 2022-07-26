@@ -10,6 +10,9 @@ import { selectDetailPosts, AxiosDetail } from '../../reducers/getPostDetailSlic
 import CommentList from '../../components/commentList/CommentList'
 import { AxiosCommentList, getCommentList, getCommentStatus,commentAction   } from '../../reducers/getCommentSlice'
 import { useLocation } from "react-router-dom"
+import Modal from '../../components/postModal/PostModal';
+import { selectCommentAuthor } from '../../reducers/getCommentSlice'
+
 
 export default function FeedPostDetail() {
   const UserIdPath = useLocation();
@@ -23,6 +26,7 @@ export default function FeedPostDetail() {
   const commentStatus = useSelector(getCommentStatus); //상태
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
+  const commnetAuthor = useSelector(selectCommentAuthor); 
 
 
   useLayoutEffect(() => {
@@ -58,11 +62,28 @@ export default function FeedPostDetail() {
     setModal(modal => !modal)
   }
 
+  //모달
+  let list = [];
+  let alertTxt = [];
+  if(accountname===commnetAuthor){
+    list = { '삭제': '' };
+    alertTxt = ['삭제하시겠어요?', '삭제'];
+  }
+  else{
+    list = { '신고하기': '' };
+  }
+  const closeModal = () => {
+    setModal(false)
+  }
+  
   return (
     <AllWrap>
       <header>
         <NavBack />
       </header>
+      {
+        (modal===true)&& <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal}  />
+      }
       <ScrollMain>
         <DetailWrapper>
           {

@@ -11,25 +11,26 @@ export const AllWrap = styled.div`
   height:100%;
   max-width: 600px;
   max-height:  1200px;
-overflow: hidden;
+  overflow: hidden;
+  box-shadow: 0 0 10px ${palette.lightGray};
 `
 
 export const ScrollMain = styled.main`
-height: 100%;
-overflow: auto;
-box-sizing: border-box;
-padding: 50px 5px;
-::-webkit-scrollbar {
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 50px 5px;
+  ::-webkit-scrollbar {
     width: 7px;
-}
-::-webkit-scrollbar-track {
+    display: none;
+  }
+  ::-webkit-scrollbar-track {
     background-color: none;
-
-}
-::-webkit-scrollbar-thumb {
+  }
+  ::-webkit-scrollbar-thumb {
     background-color: ${palette.veryLigntGray};
     border-radius: 10px;
-}
+  }
 `
 
 export const PaddingMain = styled.main`
@@ -37,8 +38,8 @@ export const PaddingMain = styled.main`
   `
 
 export const Title = styled.h1`
-font-size: 24px;
-text-align: center;
+  font-size: 24px;
+  text-align: center;
 `
 
 export const FormStyle = styled.div`
