@@ -8,7 +8,7 @@ import { DetailWrapper } from './FeedPostDetailStyle'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectDetailPosts, AxiosDetail } from '../../reducers/getPostDetailSlice'
 import CommentList from '../../components/commentList/CommentList'
-import { AxiosCommentList, getCommentList, getCommentStatus } from '../../reducers/getCommentSlice'
+import { AxiosCommentList, getCommentList, getCommentStatus,commentAction   } from '../../reducers/getCommentSlice'
 import { useLocation } from "react-router-dom"
 
 export default function FeedPostDetail() {
@@ -22,6 +22,7 @@ export default function FeedPostDetail() {
   const commentList = useSelector(getCommentList).comments; //댓글리스트
   const commentStatus = useSelector(getCommentStatus); //상태
   const dispatch = useDispatch();
+  const [modal, setModal] = useState(false);
 
 
   useLayoutEffect(() => {
@@ -51,6 +52,12 @@ export default function FeedPostDetail() {
     }
   }
 
+  const handleonClick = (postId,postAuthor) => {
+    dispatch(commentAction.selectCommentId(postId))
+    dispatch(commentAction.selectCommentAuthor(postAuthor))
+    setModal(modal => !modal)
+  }
+
   return (
     <AllWrap>
       <header>
@@ -66,7 +73,7 @@ export default function FeedPostDetail() {
           {
             commentList?.map((comment) => {
               return (
-                <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} src={comment.author.image} />
+                <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} src={comment.author.image} onClick={()=> handleonClick(comment.id,comment.author.accountname)}  setModal ={setModal} modal ={modal} />
               )
             })
           }

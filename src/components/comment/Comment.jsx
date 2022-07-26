@@ -49,7 +49,6 @@ export default function Comment({ img }) {
     }
   }
 
-  console.log(content);
   return (
     <>
       <Wrapper>
