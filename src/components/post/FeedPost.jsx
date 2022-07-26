@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { deleteActions } from '../../reducers/deletePostSlice'
 import { UserMore } from '../user/User.jsx'
 import { WrapSection, PostText, PostImg, DateText, IconWrap, IconImg } from './feedPostStyle'
@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { AxiosDetail } from '../../reducers/getPostDetailSlice';
 import axios from 'axios'
 import { useEffect } from 'react'
+
 
 
 export default function FeedPost({ post }) {
@@ -91,9 +92,13 @@ export default function FeedPost({ post }) {
     }
   }
 
+  const location = useLocation();
   const handleOnClick = (postId) => {
-    dispatch(deleteActions.selectId(postId));
-    dispatch(AxiosDetail(url + `/post/${postId}`))
+    const path = location.pathname;
+    if(path==='/feedpage'){
+      dispatch(deleteActions.selectId(postId));
+      dispatch(AxiosDetail(url + `/post/${postId}`))
+    }
   }
 
   return (
