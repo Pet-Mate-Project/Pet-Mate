@@ -10,7 +10,6 @@ const initialState = {
 export const AxiosCommentList = createAsyncThunk(
   'getComment/AxiosCommentList',
   async(url) =>{
-    console.log("zzzz |URL",url);
     const token = JSON.parse(localStorage.getItem("token")) ;
     const config = {
       headers: {
