@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import { AxiosFollow, selectAllFollowers } from '../reducers/getFollowSlice'
 import PacmanLoader from 'react-spinners/PacmanLoader';
 import { palette } from '../style/globalColor'
+import { getPostStatus } from '../reducers/getPetInfoSlice'
 
 export default function HomePage() {
 
@@ -21,19 +22,28 @@ export default function HomePage() {
   const myAccountname = JSON.parse(localStorage.getItem("accountname"))
   const posts = useSelector(getAllPetPost).product;
   const follower = useSelector(selectAllFollowers);
+  const MypetStatus = useSelector(getPostStatus);
 
+  console.log("MypetStatus",MypetStatus);
   console.log("status💄",postsStatus);
   console.log("posts💍",posts)
 
   const ReqPath = `/product/?limit=2000`;
   // 제한을 없애고싶은데 일단 2000으로 해놨습니다.
 
+  //다른탭에서 이동했을경우
   useEffect(() => {
-    if (postsStatus === "idle") {
-      dispatch(AxiosAllPetInfo(URL + ReqPath))
-      dispatch(AxiosFollow(`${URL}/profile/${myAccountname}/following`))
-    }
-  }, [dispatch,posts])
+    dispatch(AxiosAllPetInfo(URL + ReqPath))
+    dispatch(AxiosFollow(`${URL}/profile/${myAccountname}/following`))
+  }, [])
+
+  //초기화면 렌더링
+  // useEffect(() => {
+  //   if (postsStatus === "idle") {
+  //     dispatch(AxiosAllPetInfo(URL + ReqPath))
+  //     dispatch(AxiosFollow(`${URL}/profile/${myAccountname}/following`))
+  //   }
+  // }, [postsStatus,posts,MypetStatus])
 
 
   const followerId = [myAccountname]
