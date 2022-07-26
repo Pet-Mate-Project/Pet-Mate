@@ -3,6 +3,8 @@ import axios from 'axios';
 
 const initialState = {
   comment : [],
+  commentId : "" ,
+  commentAuthor:"",
   status : "idle",
   error: null
 }
@@ -27,6 +29,14 @@ export const CommentListSlice = createSlice({
   name : "getCommentList",
   initialState,
   reducers:{
+    selectCommentId(state,action){
+      console.log("댓글아디",action.payload);
+      state.commentId = action.payload;
+    },
+    selectCommentAuthor(state,action){
+      console.log("댓글작성자",action.payload);
+      state.commentAuthor = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -46,8 +56,11 @@ export const CommentListSlice = createSlice({
   },
 })
 
+export const selectCommentAuthor = (state) => state.getCommentList.commentAuthor;
+export const selectCommentId = (state) => state.getCommentList.commentId;
 export const getCommentList = (state) => state.getCommentList.comment;
 export const getCommentError = (state) => state.getCommentList.error;
 export const getCommentStatus = (state) => state.getCommentList.status;
+export const commentAction = CommentListSlice.actions;
 export default  CommentListSlice.reducer;
 
