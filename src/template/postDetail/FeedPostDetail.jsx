@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useLayoutEffect } from 'react'
 import axios from 'axios'
 import { AllWrap, ScrollMain } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
@@ -8,7 +8,7 @@ import { DetailWrapper } from './FeedPostDetailStyle'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectDetailPosts, AxiosDetail } from '../../reducers/getPostDetailSlice'
 import CommentList from '../../components/commentList/CommentList'
-import { AxiosCommentList, getCommentList } from '../../reducers/getCommentSlice'
+import { AxiosCommentList, getCommentList, getCommentStatus } from '../../reducers/getCommentSlice'
 import { useLocation } from "react-router-dom"
 
 export default function FeedPostDetail() {
@@ -20,14 +20,22 @@ export default function FeedPostDetail() {
   const accountname = JSON.parse(localStorage.getItem("accountname"));
   const postDetail = useSelector(selectDetailPosts).post;
   const commentList = useSelector(getCommentList).comments; //댓글리스트
+  const commentStatus = useSelector(getCommentStatus); //상태
   const dispatch = useDispatch();
 
-  useEffect(() => {
+
+  useLayoutEffect(() => {
     getUserInfo();
-    dispatch(AxiosCommentList(URL + `/post/${UserId}/comments`))
-    dispatch(AxiosDetail(URL + `/post/${UserId}`))
+    dispatch(AxiosDetail(URL+`/post/${UserId}`))
+    dispatch(AxiosCommentList(URL+`/post/${UserId}/comments?limit=50`)) 
   }, [])
 
+  useEffect(()=>{
+    if(commentStatus==='loading'){
+      dispatch(AxiosDetail(URL + `/post/${UserId}`))
+      dispatch(AxiosCommentList(URL+`/post/${UserId}/comments?limit=50`)) 
+    }
+  },[commentStatus])
 
   function getUserInfo() {
     try {

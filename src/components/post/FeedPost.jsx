@@ -10,6 +10,7 @@ import Modal from '../../components/postModal/PostModal';
 import { useDispatch } from 'react-redux';
 import { AxiosDetail } from '../../reducers/getPostDetailSlice';
 import axios from 'axios'
+import { useEffect } from 'react'
 
 
 export default function FeedPost({ post }) {
@@ -20,8 +21,13 @@ export default function FeedPost({ post }) {
   const token = JSON.parse(localStorage.getItem("token"));
   const url = "https://mandarin.api.weniv.co.kr";
   const images = post.image.split(",");
-  const [isLike, setIsLike] = useState(post.hearted);
-  const [heartCount, setheartCount] = useState(post.heartCount);
+  const [isLike, setIsLike] = useState("");
+  const [heartCount, setheartCount] = useState("");
+
+  useEffect(() => {
+    setIsLike(post.hearted)
+    setheartCount(post.heartCount)
+  }, [post])
 
   //좋아요
   async function postLike() {
@@ -99,6 +105,7 @@ export default function FeedPost({ post }) {
       <UserMore userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} onClick={() => handleId(post.id)} />
 
       <WrapSection onClick={() => { handleOnClick(post.id) }}>
+
 
         <Link to={'/snspostdetail/' + post.id} >
           <PostText>{post.content}</PostText>
