@@ -6,14 +6,14 @@ import Comment from '../../components/comment/Comment'
 import FeedPost from '../../components/post/FeedPost'
 import { DetailWrapper } from './FeedPostDetailStyle'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectDetailPosts,AxiosDetail } from '../../reducers/getPostDetailSlice'
+import { selectDetailPosts, AxiosDetail } from '../../reducers/getPostDetailSlice'
 import CommentList from '../../components/commentList/CommentList'
 import { AxiosCommentList, getCommentList, getCommentStatus } from '../../reducers/getCommentSlice'
 import { useLocation } from "react-router-dom"
 
 export default function FeedPostDetail() {
   const UserIdPath = useLocation();
-  const UserId = UserIdPath.pathname.slice(12,);
+  const UserId = UserIdPath.pathname.slice(15,);
   const [userInfoList, setUserInfoList] = useState([]);
   const URL = "https://mandarin.api.weniv.co.kr";
   const token = JSON.parse(localStorage.getItem("token"));
@@ -22,6 +22,7 @@ export default function FeedPostDetail() {
   const commentList = useSelector(getCommentList).comments; //댓글리스트
   const commentStatus = useSelector(getCommentStatus); //상태
   const dispatch = useDispatch();
+
 
   useLayoutEffect(() => {
     getUserInfo();
@@ -63,9 +64,9 @@ export default function FeedPostDetail() {
         </DetailWrapper>
         <ul>
           {
-            commentList?.map((comment)=>{
-              return(
-                <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname}   src = {comment.author.image} />
+            commentList?.map((comment) => {
+              return (
+                <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} src={comment.author.image} />
               )
             })
           }

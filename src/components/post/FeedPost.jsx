@@ -106,7 +106,8 @@ export default function FeedPost({ post }) {
 
       <WrapSection onClick={() => { handleOnClick(post.id) }}>
 
-        <Link to={'/postdetail/' + post.id} >
+
+        <Link to={'/snspostdetail/' + post.id} >
           <PostText>{post.content}</PostText>
           {images.map((image) => {
             return (

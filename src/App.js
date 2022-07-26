@@ -22,6 +22,7 @@ import YourProfilePage from './pages/YourProfilePage';
 import ModifyPost from './template/postModify/PostModify';
 import ModifySnsPost from './template/snsPostModify/SnsPostModify';
 import FeedPostDetail from './template/postDetail/FeedPostDetail';
+import WalkingPostDetail from './template/postDetail/WalkingPostDetail';
 
 function App() {
   return (
@@ -42,7 +43,8 @@ function App() {
         <Route path='/postmodify' element={<PrivateRoute>< ModifyPost/></PrivateRoute>}></Route>
         <Route path='/snspost' element={<PrivateRoute><AddSnsPost /></PrivateRoute>}></Route>
         <Route path='/snspostmodify' element={<PrivateRoute><ModifySnsPost/></PrivateRoute>}></Route>
-        <Route path='/postdetail/:id' element={<PrivateRoute><FeedPostDetail/></PrivateRoute>}></Route>
+        <Route path='/snspostdetail/:id' element={<PrivateRoute><FeedPostDetail/></PrivateRoute>}></Route>
+        <Route path='/walkingpostdetail/:id' element={<PrivateRoute><WalkingPostDetail/></PrivateRoute>}></Route>
         <Route path='/chatpage' element={<PrivateRoute><ChatList /></PrivateRoute>}></Route>
         <Route path='/search' element={<PrivateRoute><AccountSearch /></PrivateRoute>}></Route>
         <Route path='/myfollow' element={<PrivateRoute><MyFollow /></PrivateRoute>}></Route>
