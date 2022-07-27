@@ -35,6 +35,7 @@ export default function FeedPostDetail() {
     dispatch(AxiosCommentList(URL + `/post/${UserId}/comments?limit=50`))
   }, [])
 
+  console.log('댓리스트', commentList)
 
   useLayoutEffect(() => {
     if (commentStatus === 'loading') {
@@ -87,11 +88,12 @@ export default function FeedPostDetail() {
         (modal === true) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
       }
       <ScrollMain>
-        <DetailWrapper>
-          {
-            postDetail?.id === UserId && <FeedPost post={postDetail} />
-          }
-        </DetailWrapper>
+        {
+          postDetail?.id === UserId && <DetailWrapper>
+            <FeedPost post={postDetail} />
+          </DetailWrapper>
+        }
+
         <ul>
           {
             postDetail?.id === UserId && commentList?.map((comment) => {
