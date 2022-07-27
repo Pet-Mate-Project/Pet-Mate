@@ -65,7 +65,7 @@ export default function AddPost() {
 
   // 게시글 서버에 보내기
   async function PostSave() {
-    try{
+    try {
       const imgData = await ImgUpload(userImg);
       postData.product.itemImage = imgData
       const URL = "https://mandarin.api.weniv.co.kr";
@@ -82,7 +82,7 @@ export default function AddPost() {
       console.log("URL", URL + ReqPath + "/" + accountname);
       dispatch(AxiosPetInfo(URL + ReqPath + "/" + accountname))
     }
-    catch(error){
+    catch (error) {
       console.log(error);
     }
   }

@@ -35,6 +35,22 @@ export const ImgRegist = styled.img`
   }
 `
 
+export const BeforeRegist = styled.div`
+  box-sizing:border-box;
+  display: block;
+  border: 0.5px solid ${palette.lightGray};
+  background-color: ${palette.veryLigntGray};
+  object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+  height:300px; 
+   //모바일 환경에서는 사진 크기 고정
+  @media screen  and (max-width:420px ){
+    width:100%;
+    height: 236px; 
+  }
+`
+
 export const FileUploader = styled.label`
 background: url(${(imgUpload)});
 background-repeat: no-repeat;

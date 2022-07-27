@@ -3,24 +3,25 @@ import { EmailInput, PasswordInput } from '../../components/input/Input'
 import { NextBtn } from '../../components/button/Button'
 import { AllWrap, FormStyle, PaddingMain, Title } from '../../style/commonStyle'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
+import { LoginFormStyle } from '../login/loginStyle.js';
 
-function SignUp({ 
+function SignUp({
   disabled,
-  nextClick, 
-  userEmail, 
+  nextClick,
+  userEmail,
   setEmail,
-  userPassword, 
-  setPassword, 
+  userPassword,
+  setPassword,
   message,
   emailCheck,
-  register, 
-  errors 
+  register,
+  errors
 }) {
   return (
     <AllWrap>
       <PaddingMain>
         <Title>이메일로 회원가입</Title>
-        <FormStyle>
+        <LoginFormStyle>
           <EmailInput
             userEmail={userEmail}
             setEmail={setEmail}
@@ -35,7 +36,7 @@ function SignUp({
             register={register}
           ></PasswordInput>
           {errors.password && <SignUpErrorMessage message={errors.password.message} />}
-        </FormStyle>
+        </LoginFormStyle>
         <NextBtn
           nextClick={nextClick}
           disabled={disabled}

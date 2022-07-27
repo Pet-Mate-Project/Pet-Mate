@@ -64,6 +64,9 @@ export default function AddSnsPost() {
   }
 
   async function handlePostSns() {
+    // 요청URL
+    const URL = "https://mandarin.api.weniv.co.kr";
+    const ReqPath = "/post";
     //사진 filename 가져오기
     let imgList = [];
     for (let i = 0; i < postImg?.length; i++) {
@@ -72,9 +75,6 @@ export default function AddSnsPost() {
     }
     data.post.image = imgList.join(",");
     data.post.content = content;
-    // 요청URL
-    const URL = "https://mandarin.api.weniv.co.kr";
-    const ReqPath = "/post";
     //header값
     const token = JSON.parse(localStorage.getItem("token"))
     const accountname = JSON.parse(localStorage.getItem("accountname"))

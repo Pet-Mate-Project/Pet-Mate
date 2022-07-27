@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { palette } from '../../style/globalColor';
-
+import { FormStyle } from '../../style/commonStyle';
 
 export const SignUpLink = styled.button`
   display: block;
@@ -8,4 +8,13 @@ export const SignUpLink = styled.button`
   font-size: 12px;
   color: ${palette.darkGray};
   cursor: pointer;
+
+  @media screen and (min-width:450px) {
+    font-size: 15px;
+  }
+`
+
+export const LoginFormStyle = styled(FormStyle)`
+  gap: 15px;
+  margin: 40px 0;
 `
