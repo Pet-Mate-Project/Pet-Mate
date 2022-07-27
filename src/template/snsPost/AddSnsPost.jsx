@@ -1,7 +1,7 @@
 import React from 'react'
 import { SnsUploadNav } from '../../components/navBack/NavBack'
 import { AllWrap } from '../../style/commonStyle'
-import { FileInput,FileUploader,TextInput,SingleImg,Img,TextLable,DeleteBtn,ImgWrapper } from './addSnsPostStyle'
+import { FileInput, FileUploader, TextInput, SingleImg, Img, TextLable, DeleteBtn, ImgWrapper } from './addSnsPostStyle'
 import { PaddingMain } from '../../style/commonStyle'
 import { useState, useRef, useEffect } from 'react'
 import { ImgUpload } from '../../pages/SignUpMain'
@@ -9,13 +9,13 @@ import axios from 'axios'
 import { useDispatch } from "react-redux";
 import { AxiosPost } from '../../reducers/getPostSlice'
 
-export default function AddSnsPost() { 
+export default function AddSnsPost() {
   const dispatch = useDispatch();
-  const [content,setContent] = useState("");
+  const [content, setContent] = useState("");
   const fileInput = useRef(null)
   const [showImg, setShowImg] = useState([]);
-  const [postImg,setPostImg] = useState([]);
-  const [uploadBtn,SetuploadBtn] =useState(true);
+  const [postImg, setPostImg] = useState([]);
+  const [uploadBtn, SetuploadBtn] = useState(true);
 
   //이미지미리보기
   const handleAddImg = (e) => {
@@ -26,7 +26,7 @@ export default function AddSnsPost() {
     let maxSize = 10 * 1024 * 1024;
     let TotalfileSize = 0;
     //여러이미지 push
-    for(let i=0;i<fileArr.length;i++){
+    for (let i = 0; i < fileArr.length; i++) {
       console.log(fileArr[i].size);
       TotalfileSize += fileArr[i].size;
       if (TotalfileSize > maxSize) {
@@ -35,43 +35,43 @@ export default function AddSnsPost() {
       }
       const currentImgURL = URL.createObjectURL(fileArr[i]);
       fileURLs.push(currentImgURL);
-      files.push(fileArr[i]);  
+      files.push(fileArr[i]);
     }
-    
-    if(fileURLs.length>3){
+
+    if (fileURLs.length > 3) {
       alert("사진은 최대 3장까지 업로드 가능합니다.");
-      fileURLs = fileURLs.slice(0,3); 
-      files = files.slice(0,3);
+      fileURLs = fileURLs.slice(0, 3);
+      files = files.slice(0, 3);
     }
     setPostImg(files);
     setShowImg(fileURLs);
-    console.log("서버",files);
-    console.log("미리보기",fileURLs);
+    console.log("서버", files);
+    console.log("미리보기", fileURLs);
 
   }
 
   //삭제함수
-  const handleDeleteImg =(id)=>{
-    setShowImg(showImg.filter((_,index)=>index!==id));
-    setPostImg(postImg.filter((_,index)=>index!==id));
+  const handleDeleteImg = (id) => {
+    setShowImg(showImg.filter((_, index) => index !== id));
+    setPostImg(postImg.filter((_, index) => index !== id));
   };
 
-  let data ={
+  let data = {
     "post": {
       "content": "",
       "image": ""
     }
   }
 
-  async function handlePostSns (){
+  async function handlePostSns() {
     //사진 filename 가져오기
-    let imgList=[];
-    for(let i =0;i<postImg?.length;i++){
+    let imgList = [];
+    for (let i = 0; i < postImg?.length; i++) {
       const img = await ImgUpload(postImg[i])
-      imgList.push(img); 
+      imgList.push(img);
     }
-    data.post.image= imgList.join(",");
-    data.post.content= content;
+    data.post.image = imgList.join(",");
+    data.post.content = content;
     // 요청URL
     const URL = "https://mandarin.api.weniv.co.kr";
     const ReqPath = "/post";
@@ -80,55 +80,55 @@ export default function AddSnsPost() {
     const accountname = JSON.parse(localStorage.getItem("accountname"))
     //axios post요청 
 
-    try{
+    try {
       const res = await axios.post(URL + ReqPath, data, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-type": "application/json"
         },
       });
-      console.log("게시글post요청결과",res);
-      dispatch(AxiosPost(URL + ReqPath + "/" + accountname+"/userpost"))
+      console.log("게시글post요청결과", res);
+      dispatch(AxiosPost(URL + ReqPath + "/" + accountname + "/userpost"))
     }
-    catch(error){
+    catch (error) {
       console.log(error);
     }
   }
 
-  useEffect(()=>{
-    if(content.length>0 && postImg.length>0){
+  useEffect(() => {
+    if (content.length > 0 && postImg.length > 0) {
       SetuploadBtn(false)
     }
-    else{
+    else {
       SetuploadBtn(true)
     }
-  },[content,postImg])
+  }, [content, postImg])
 
   return (
-    <AllWrap>          
+    <AllWrap>
       <header>
-        <SnsUploadNav onClick={handlePostSns} disabled={uploadBtn}/>
+        <SnsUploadNav onClick={handlePostSns} disabled={uploadBtn} />
       </header>
       <PaddingMain>
         <TextLable htmlFor="snspost" />
-        <TextInput name="snspost" id="snspost"  placeholder="게시글 입력하기 ..." value={content} onChange={(e)=>{setContent(e.target.value)}}/>
+        <TextInput name="snspost" id="snspost" placeholder="게시글 입력하기 ..." value={content} onChange={(e) => { setContent(e.target.value) }} />
         <ImgWrapper>
 
           {
-            showImg.length===1 ?
-              showImg.map((image,id)=>(    
+            showImg.length === 1 ?
+              showImg.map((image, id) => (
                 <div key={id} >
                   {console.log(image)}
                   <SingleImg key={id} src={image} />
-                  <DeleteBtn onClick={()=>handleDeleteImg(id)}/>
+                  <DeleteBtn onClick={() => handleDeleteImg(id)} />
                 </div>
               ))
               :
-              showImg.map((image,id)=>(    
+              showImg.map((image, id) => (
                 <div key={id} >
                   {console.log(image)}
                   <Img key={id} src={image} />
-                  <DeleteBtn onClick={()=>handleDeleteImg(id)}/>
+                  <DeleteBtn onClick={() => handleDeleteImg(id)} />
                 </div>
               ))
           }
@@ -140,7 +140,7 @@ export default function AddSnsPost() {
             name='PostingImg'
             type="file"
             multiple
-            accept='image/jpeg, image/jpg'
+            accept='.jpg, .gif, .png, .jpeg, .bmp, .tif, .heic'
             onChange={handleAddImg}
             ref={fileInput}
           />
@@ -149,4 +149,3 @@ export default function AddSnsPost() {
     </AllWrap>
   )
 }
- 
