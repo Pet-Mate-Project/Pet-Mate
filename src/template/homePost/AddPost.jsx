@@ -67,7 +67,7 @@ export default function AddPost() {
   async function PostSave() {
     try {
       const imgData = await ImgUpload(userImg);
-      postData.product.itemImage = URL + '/' + imgData
+      postData.product.itemImage = imgData
       const URL = "https://mandarin.api.weniv.co.kr";
       const ReqPath = "/product";
       const token = JSON.parse(localStorage.getItem("token"))
