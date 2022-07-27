@@ -3,6 +3,7 @@ import { IdInput, IntroInput, NameInput } from '../../components/input/Input'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 import { Profile, ProfileModifyShow } from '../../components/profile/Profile'
 import { FormStyle } from '../../style/commonStyle'
+import { LoginFormStyle } from '../login/loginStyle.js';
 
 export function ProfileSet({ userName, setName, userId, setId, userIntro, setIntro, message, IdCheck, userImg, setImg, register, errors }) {
   return (
@@ -10,7 +11,7 @@ export function ProfileSet({ userName, setName, userId, setId, userIntro, setInt
       <Profile
         userImg={userImg}
         setImg={setImg} />
-      <FormStyle>
+      <LoginFormStyle>
         <NameInput
           placeholder={'2-10자 이내여야 합니다.'}
           userName={userName}
@@ -29,7 +30,7 @@ export function ProfileSet({ userName, setName, userId, setId, userIntro, setInt
           placeholder={'자신과 반려동물에 대해 소개해 주세요!'}
           userIntro={userIntro}
           setIntro={setIntro} />
-      </FormStyle>
+      </LoginFormStyle>
     </>
   )
 }

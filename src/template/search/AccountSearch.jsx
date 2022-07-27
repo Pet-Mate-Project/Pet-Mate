@@ -59,7 +59,7 @@ function AccountSearch() {
                 <User 
                   userName={user.username} 
                   userId={user.accountname} 
-                  img={`https://mandarin.api.weniv.co.kr/${user.image}`} 
+                  img={user.image} 
                   keyword={keyword}
                 />
               </Link>
