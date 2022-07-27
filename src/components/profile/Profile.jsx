@@ -53,7 +53,7 @@ export function Profile({ setImg }) {
           <FileInput
             id="input-file"
             type="file"
-            accept='image/jpeg, image/jpg'
+            accept='.jpg, .gif, .png, .jpeg, .bmp, .tif, .heic'
             name='profileImg'
             onChange={onChange}
             ref={fileInput}
@@ -119,7 +119,7 @@ export function ProfileModifyShow({ setImg, userInfoList }) {
           <FileInput
             id="input-file"
             type="file"
-            accept="image/*"
+            accept='.jpg, .gif, .png, .jpeg, .bmp, .tif, .heic'
             name='profileImg'
             onChange={onChange}
             ref={fileInput}

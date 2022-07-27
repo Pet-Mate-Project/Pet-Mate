@@ -4,13 +4,13 @@ import { IconStyle, ChatIconStyle } from './profileIconStyle'
 
 export function ProfileIconS({ img }) {
   return (
-    <IconStyle src={img} width={40} height={40} alt="기본 프로필사진" />
+    <IconStyle src={img} width={40} height={40} alt="프로필사진" />
   )
 }
 
-export function ProfileIconM() {
+export function ProfileIconM({ img }) {
   return (
-    <IconStyle src={profileIcon} width={50} height={50} alt="기본 프로필사진" />
+    <IconStyle src={ img } width={50} height={50} alt="프로필사진" />
   )
 }
 

@@ -35,17 +35,12 @@ export default function FeedPostDetail() {
     dispatch(AxiosCommentList(URL + `/post/${PostId}/comments?limit=50`))
   }, [])
 
-  console.log('댓리스트😎', commentList)
-  console.log('😎', commentStatus)
-  
-
   useLayoutEffect(() => {
     if (commentStatus === 'loading') {
       dispatch(AxiosDetail(URL + `/post/${PostId}`))
       dispatch(AxiosCommentList(URL + `/post/${PostId}/comments?limit=50`))
     }
   }, [commentStatus])
-
 
   function getUserInfo() {
     try {
@@ -80,8 +75,7 @@ export default function FeedPostDetail() {
   const closeModal = () => {
     setModal(false)
   }
-  console.log(postDetail?.id ) 
-  console.log(PostId) 
+
   return (
     <AllWrap>
       <header>
