@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { deleteActions } from '../../reducers/deletePostSlice'
 import { UserMore } from '../user/User.jsx'
@@ -10,18 +10,13 @@ import Modal from '../../components/postModal/PostModal';
 import { useDispatch } from 'react-redux';
 import { AxiosDetail } from '../../reducers/getPostDetailSlice';
 import axios from 'axios'
-import { useEffect } from 'react'
-
-
 
 export default function FeedPost({ post }) {
   const dispatch = useDispatch();
-  const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
-  const marketImg = "http://146.56.183.55:5050/Ellipse.png";
   const MyId = JSON.parse(localStorage.getItem("accountname"));
   const token = JSON.parse(localStorage.getItem("token"));
-  const url = "https://mandarin.api.weniv.co.kr";
-  const images = post.image.split(",");
+  const URL = "https://mandarin.api.weniv.co.kr";
+  const images = post.image?.split(",");
   const [isLike, setIsLike] = useState("");
   const [heartCount, setheartCount] = useState("");
 
@@ -32,7 +27,7 @@ export default function FeedPost({ post }) {
 
   //좋아요
   async function postLike() {
-    await axios.post(`${url}/post/${post.id}/heart`, [], {
+    await axios.post(`${URL}/post/${post.id}/heart`, [], {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
@@ -46,7 +41,7 @@ export default function FeedPost({ post }) {
 
   //좋아요 취소
   async function postLikeCancle() {
-    await axios.delete(`${url}/post/${post.id}/unheart`, {
+    await axios.delete(`${URL}/post/${post.id}/unheart`, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
@@ -56,16 +51,6 @@ export default function FeedPost({ post }) {
       setIsLike(res.data.post.hearted)
       setheartCount(res.data.post.heartCount)
     })
-  }
-
-  //기본이미지체크
-  function imgCheck(post) {
-    if (post.author.image === marketImg) {
-      return defaultImg;
-    }
-    else {
-      return "https://mandarin.api.weniv.co.kr/" + post.author.image;
-    }
   }
 
   //모달
@@ -91,13 +76,13 @@ export default function FeedPost({ post }) {
       postLikeCancle();
     }
   }
-
+  
   const location = useLocation();
   const handleOnClick = (postId) => {
     const path = location.pathname;
-    if(path==='/feedpage'){
+    if (path === '/feedpage') {
       dispatch(deleteActions.selectId(postId));
-      dispatch(AxiosDetail(url + `/post/${postId}`))
+      dispatch(AxiosDetail(URL + `/post/${postId}`))
     }
   }
 
@@ -107,17 +92,24 @@ export default function FeedPost({ post }) {
         (modal === true) && (post.author.accountname === MyId) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
       }
 
-      <UserMore userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} onClick={() => handleId(post.id)} />
+      <UserMore userName={post.author.username} userId={post.author.accountname} img={post.author.image} onClick={() => handleId(post.id)} />
 
       <WrapSection onClick={() => { handleOnClick(post.id) }}>
-
         <Link to={'/snspostdetail/' + post.id} >
           <PostText>{post.content}</PostText>
-          {images.map((image) => {
-            return (
-              <PostImg key={Math.random() * 100} src={"https://mandarin.api.weniv.co.kr/" + image} alt="게시글 이미지" />
-            )
-          })}
+          {
+            images?.map((image) => {
+              if (image) {
+                return (
+                  (image?.search(URL) !== -1 || image?.search('base64') !== -1 || image?.search('.svg') !== -1)
+                    ?
+                    <PostImg key={Math.random() * 100} src={image} alt="게시글 이미지"  />
+                    :
+                    <PostImg key={Math.random() * 100} src={`${URL}/${image}`} alt="게시글 이미지" />
+                )
+              }
+            })
+          }
         </Link>
         <IconWrap>
           <button onClick={handlesetLike} style={{ cursor: 'pointer' }}>

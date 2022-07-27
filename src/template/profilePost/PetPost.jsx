@@ -10,6 +10,7 @@ import { SelectId } from '../../reducers/deletePostSlice'
 import { Link } from 'react-router-dom'
 
 export function PetPost() {
+  const URL = "https://mandarin.api.weniv.co.kr";
   const location = useLocation();
   const name = location.state?.userId;
   const dispatch = useDispatch();
@@ -30,14 +31,19 @@ export function PetPost() {
     setModal(modal => !modal);
   }
 
+  function imgCheck(img) {
+    if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1) {
+      return img;
+    } else if (img?.search(URL) === -1) {
+      return `${URL}/${img}`;
+    }
+  }
+
   return (
     <SectionAllWrap>
       <MiniPostTitle>산책가까?</MiniPostTitle>
       {
         (modal === true) && (name === undefined) && (list['상세페이지로 가기'] = `/walkingpostdetail/${postId}`) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
-      }
-      {
-        (modal === true) && (name !== undefined)
       }
       <MiniPostWrap>
         {
@@ -46,13 +52,13 @@ export function PetPost() {
               name === undefined
                 ?
                 <AnimalBox key={post.id}
-                  src={`https://mandarin.api.weniv.co.kr/${post.itemImage}`}
+                  src={imgCheck(post.itemImage)}
                   title={post.itemName} time={post.updatedAt.substring(0, 10)} onClick={() => handleId(post.id)} />
                 :
-                <Link to={'/walkingpostdetail/' + post.id}>
-                  <AnimalBox key={post.id}
-                    src={`https://mandarin.api.weniv.co.kr/${post.itemImage}`}
-                    title={post.itemName} time={post.updatedAt.substring(0, 10)} onClick={() => handleId(post.id)}  />
+                <Link to={'/walkingpostdetail/' + post.id} key={post.id}>
+                  <AnimalBox
+                    src={imgCheck(post.itemImage)}
+                    title={post.itemName} time={post.updatedAt.substring(0, 10)} onClick={() => handleId(post.id)} />
                 </Link>
             )
           })
