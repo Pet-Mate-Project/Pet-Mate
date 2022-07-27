@@ -35,7 +35,6 @@ export default function Login() {
       const URL = 'https://mandarin.api.weniv.co.kr';
       const loginReqPath = '/user/login/';
       //Axios 단축메소드 사용
-      console.log(`이메일| ${userEmail} 비밀번호|${userPassword}`);
       const res = await axios.post(URL + loginReqPath, {
         // body 값
         user: { email: `${userEmail}`, password: `${userPassword}` },
@@ -55,7 +54,7 @@ export default function Login() {
         setUserInfo('true');
       }
       //토큰값 (유저데이터)저장
-      if (reqMsg !== '이메일 또는 비밀번호가 일치하지 않습니다.') {
+      if (!!reqMsg === false) {
         localStorage.setItem("accountname", JSON.stringify(res.data.user.accountname))
         localStorage.setItem("token", JSON.stringify(res.data.user.token))
         navigate('/homepage');
@@ -64,7 +63,6 @@ export default function Login() {
     catch(error){
       console.log(error);
     }
-   
   }
 
   return (
