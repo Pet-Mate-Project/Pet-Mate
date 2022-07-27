@@ -73,8 +73,7 @@ export default function AddSnsPost() {
       const img = await ImgUpload(postImg[i])
       imgList.push(img);
     }
-    data.post.image = URL + '/' + imgList.join(",");
-    console.log('datapostimg🤍', data.post.image)
+    data.post.image = imgList.join(",");
     data.post.content = content;
     //header값
     const token = JSON.parse(localStorage.getItem("token"))
