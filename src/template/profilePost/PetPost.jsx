@@ -38,7 +38,6 @@ export function PetPost() {
       return `${URL}/${img}`;
     }
   }
-  console.log("산책가까 부분");
 
   return (
     <SectionAllWrap>

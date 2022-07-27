@@ -44,8 +44,6 @@ export const MoreIcon = styled.img`
   float: right;
   cursor: pointer;
 `
-export const MemoMoreIcon = memo(MoreIcon)
-
 // 채팅 목록 리스트 스타일 컴포넌트
 
 export const ChatListWrapper = styled(Wrapper)`

@@ -1,4 +1,4 @@
-import React, { useState, useEffect,memo } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { ChatBtn, FollowToggleBtn } from '../button/Button.jsx'
 import { ChatListProfileIcon, ProfileIconS } from '../profileIcon/ProfileIcon.jsx'
@@ -21,7 +21,6 @@ export function User({ userName, userId, img, keyword }) {
       return `${URL}/${img}`
     }
   }
-  console.log(" User가 호출되었어요!");
 
   return (
     <Wrapper>
@@ -40,8 +39,6 @@ export function User({ userName, userId, img, keyword }) {
     </Wrapper>
   )
 }
-
-export const MemoizedUser = memo(User);
 
 export function UserFollow({ userName, userId, img }) {
   const url = "https://mandarin.api.weniv.co.kr";
@@ -107,11 +104,11 @@ export function UserFollow({ userName, userId, img }) {
           userId === MyId
             ?
             <Link to='/profilepage'>
-              <MemoizedUser userName={userName} userId={userId} img={img} />
+              <User userName={userName} userId={userId} img={img} />
             </Link>
             :
             <Link to='/userprofile' state={{ userId: userId }}>
-              <MemoizedUser userName={userName} userId={userId} img={img} />
+              <User userName={userName} userId={userId} img={img} />
             </Link>
         }
         {
@@ -132,11 +129,11 @@ export function UserMore({ userName, userId, img, onClick }) {
           userId === MyId
             ?
             <Link to='/profilepage'>
-              <MemoizedUser userName={userName} userId={userId} img={img} alt="내 프로필"/>
+              <User userName={userName} userId={userId} img={img} alt="내 프로필"/>
             </Link>
             :
             <Link to='/userprofile' state={{ userId: userId }}>
-              <MemoizedUser userName={userName} userId={userId} img={img} alt="유저 프로필"/>
+              <User userName={userName} userId={userId} img={img} alt="유저 프로필"/>
             </Link>
         }
         <MoreIcon src={moreIcon} onClick={onClick} alt="게시글 설정"/>
@@ -144,8 +141,6 @@ export function UserMore({ userName, userId, img, onClick }) {
     </>
   )
 }
-
-export const MemoUserMore = memo(UserMore);
 
 export function UserChat({ userName, userId, img }) {
   const MyId = JSON.parse(localStorage.getItem("accountname"));
@@ -168,7 +163,6 @@ export function UserChat({ userName, userId, img }) {
     </>
   )
 }
-
 
 export function UserChatList(props) {
   return (
