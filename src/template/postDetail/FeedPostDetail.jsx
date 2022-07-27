@@ -40,7 +40,7 @@ export default function FeedPostDetail() {
   useLayoutEffect(() => {
     if (commentStatus === 'loading') {
       dispatch(AxiosDetail(URL + `/post/${UserId}`))
-      // dispatch(AxiosCommentList(URL + `/post/${UserId}/comments?limit=50`))
+      dispatch(AxiosCommentList(URL + `/post/${UserId}/comments?limit=50`))
     }
   }, [commentStatus])
 
