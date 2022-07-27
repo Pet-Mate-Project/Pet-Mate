@@ -118,15 +118,25 @@ export function PasswordInput({ userPassword, setPassword, register }) {
   );
 }
 
-export function PasswordConfirmInput({ userConfirmPassword, setConfirmPassword, Confirmregister }) {
+export function PasswordConfirmInput({ userPassword, userConfirmPassword, setConfirmPassword, register }) {
   return (
     <LabelStyle>비밀번호 확인
       <InputStyle
-        placeholder='비밀번호를 확인해 주세요.'
+        placeholder='비밀번호를 재입력 해주세요.'
         type="password"
         name="userConfirmPassword"
         value={userConfirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
+        userPassword={userPassword}
+        {...register("userConfirmPassword", {
+          required: "*비밀번호가 일치하지 않습니다.",
+          validate: {
+            passwordCheck: (value) => {
+              return value === userPassword || '비밀번호 불일치'
+            },
+            
+          },
+          onChange: (e) => setConfirmPassword(e.target.value)
+        })}
       />
     </LabelStyle>
   );
