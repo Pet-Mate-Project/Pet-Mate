@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 export async function ImgUpload(userImg) {
-  
+
   let formData = new FormData()
   formData.append('image', userImg)
   const res = await axios.post('https://mandarin.api.weniv.co.kr/image/uploadfile', formData)
@@ -21,7 +21,7 @@ export function SignUpMainPage() {
   const [userEmail, setEmail] = useState("");
   const [userPassword, setPassword] = useState("");
   //넣어주는 이미지 
-  const [userImg, setImg] = useState('https://raw.githubusercontent.com/Pet-Mate-Project/Pet-Mate/9a1dd2c1758e84421b72fed7d132f5c12e66dc46/src/assets/basic-profile.png');
+  const [userImg, setImg] = useState('https://mandarin.api.weniv.co.kr/1657812669741.png');
   //에러 출력 메세지
   const [message, setMessage] = useState('');
   //다음 버튼 상태관리
@@ -48,13 +48,13 @@ export function SignUpMainPage() {
       "image": ""
     }
   }
-
+  console.log('유저이미지', userImg)
   //회원가입
   async function signUp() {
     const imgUploadData = await ImgUpload(userImg)
     console.log('img res', imgUploadData)
     //유저데이터 변수의 이미지에 저장 
-    userData.user.image = imgUploadData
+    userData.user.image = `${url}/${imgUploadData}`
     //회원가입 최종 전송
     axios.post(url + '/user', userData,
       { headers: { "Content-type": "application/json" } })
