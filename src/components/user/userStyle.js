@@ -33,7 +33,7 @@ export const UserName = styled.p`
 export const UserId = styled.p`
   font-size: 12px;
   line-height: 14px;
-  color: ${palette.darkGray};
+  color: ${palette.textDark};
   margin: 0;
 `
 
@@ -56,7 +56,7 @@ export const ChatListWrapper = styled(Wrapper)`
 export const ChatDate = styled.p`
   font-size: 10px;
   line-height: 12px;
-  color: ${palette.lightGray};
+  color: ${palette.textDark};
   padding: 6px 0;
   margin: auto 0 0 auto;
 `

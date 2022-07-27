@@ -7,7 +7,7 @@ export function AnimalBox({src,title,time,onClick}) {
 
   return (
     <AnimalWrapper onClick={onClick}>
-      <Img src={src} />
+      <Img src={src}  alt="펫 이미지" />
       <TitleTxt>{title}</TitleTxt>
       <TimeTxt>{time}</TimeTxt>
     </AnimalWrapper>

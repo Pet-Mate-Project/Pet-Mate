@@ -42,11 +42,11 @@ export function NavBack(props) {
     <header>
       <NavWrapper>
         <NavBtn onClick={goBack}>
-          <Img src={arrow} alt="" />
+          <Img src={arrow} alt="뒤로가기 버튼" />
         </NavBtn>
         <NavTxt>{props.text}</NavTxt>
         <NavBtn >
-          <Img src={vertical} alt="" onClick={toggleModal} />
+          <Img src={vertical} alt="설정 및 로그아웃 버튼" onClick={toggleModal} />
         </NavBtn>
       </NavWrapper>
       {modal === true && <Modal list={list} closeModal={closeModal} alertTxt={alertTxt} />}
@@ -78,7 +78,7 @@ export function NavSearch(props) {
       <NavTxt>{props.text}</NavTxt>
       <Link to={props.url}>
         <NavBtn>
-          <Img src={searchbar} alt="" />
+          <Img src={searchbar} alt="유저 검색" />
         </NavBtn>
       </Link>
     </NavWrapper>

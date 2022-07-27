@@ -103,9 +103,9 @@ export default function FeedPost({ post }) {
                 return (
                   (image?.search(URL) !== -1 || image?.search('base64') !== -1 || image?.search('.svg') !== -1)
                     ?
-                    <PostImg key={Math.random() * 100} src={image} />
+                    <PostImg key={Math.random() * 100} src={image} alt="게시글 이미지"  />
                     :
-                    <PostImg key={Math.random() * 100} src={`${URL}/${image}`} />
+                    <PostImg key={Math.random() * 100} src={`${URL}/${image}`} alt="게시글 이미지" />
                 )
               }
             })
@@ -113,11 +113,11 @@ export default function FeedPost({ post }) {
         </Link>
         <IconWrap>
           <button onClick={handlesetLike} style={{ cursor: 'pointer' }}>
-            <IconImg src={isLike ? heartIcon : emptyheartIcon} />
+            <IconImg src={isLike ? heartIcon : emptyheartIcon} alt={"좋아요 버튼"}/>
             {heartCount}
           </button>
           <button style={{ marginLeft: "6px" }}>
-            <IconImg src={messageIcon} />
+            <IconImg src={messageIcon} alt={"댓글 버튼"}/>
             {post.commentCount}
           </button>
         </IconWrap>
