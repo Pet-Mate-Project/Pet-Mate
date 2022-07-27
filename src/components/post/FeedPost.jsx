@@ -68,6 +68,7 @@ export default function FeedPost({ post }) {
     setModal(modal => !modal)
   }
 
+
   // 좋아요 버튼 함수
   const handlesetLike = () => {
     if (!isLike) {
@@ -76,11 +77,12 @@ export default function FeedPost({ post }) {
       postLikeCancle();
     }
   }
-  
+
+
   const location = useLocation();
   const handleOnClick = (postId) => {
     const path = location.pathname;
-    if (path === '/feedpage') {
+    if (path === '/feedpage' || path === '/profilepage') {
       dispatch(deleteActions.selectId(postId));
       dispatch(AxiosDetail(URL + `/post/${postId}`))
     }
@@ -103,7 +105,7 @@ export default function FeedPost({ post }) {
                 return (
                   (image?.search(URL) !== -1 || image?.search('base64') !== -1 || image?.search('.svg') !== -1)
                     ?
-                    <PostImg key={Math.random() * 100} src={image} alt="게시글 이미지"  />
+                    <PostImg key={Math.random() * 100} src={image} alt="게시글 이미지" />
                     :
                     <PostImg key={Math.random() * 100} src={`${URL}/${image}`} alt="게시글 이미지" />
                 )
@@ -113,11 +115,11 @@ export default function FeedPost({ post }) {
         </Link>
         <IconWrap>
           <button onClick={handlesetLike} style={{ cursor: 'pointer' }}>
-            <IconImg src={isLike ? heartIcon : emptyheartIcon} alt={"좋아요 버튼"}/>
+            <IconImg src={isLike ? heartIcon : emptyheartIcon} alt={"좋아요 버튼"} />
             {heartCount}
           </button>
           <button style={{ marginLeft: "6px" }}>
-            <IconImg src={messageIcon} alt={"댓글 버튼"}/>
+            <IconImg src={messageIcon} alt={"댓글 버튼"} />
             {post.commentCount}
           </button>
         </IconWrap>
