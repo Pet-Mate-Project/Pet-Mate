@@ -21,7 +21,7 @@ function YourFollower() {
   }, []);
   
   async function getFollowerList() {
-    await axios.get(url + `/profile/${accountname}/follower`, {
+    await axios.get(url + `/profile/${accountname}/follower?limit=1000`, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
@@ -32,7 +32,7 @@ function YourFollower() {
   }
 
   async function getFollowingList() {
-    await axios.get(url + `/profile/${accountname}/following`, {
+    await axios.get(url + `/profile/${accountname}/following?limit=1000`, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"

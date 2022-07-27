@@ -1,7 +1,8 @@
 import React from 'react'
-import {FileUploader,FileInput,ImgRegist,TitleTxt ,ImgUploadWrapper , BeforeRegist } from './imgUploadBoxStyle'
 
-export default function ImgUploadBox({onChange,fileref,src,defaultImg} ) {
+import { FileUploader, FileInput, ImgRegist, TitleTxt, ImgUploadWrapper } from './imgUploadBoxStyle'
+
+export default function ImgUploadBox({ onChange, fileref, src, defaultImg }) {
  
   return (
     <>
@@ -14,7 +15,7 @@ export default function ImgUploadBox({onChange,fileref,src,defaultImg} ) {
           <FileInput
             id="input-file"
             type="file"
-            accept='image/*'
+            accept='.jpg, .gif, .png, .jpeg, .bmp, .tif, .heic'
             name='profileImg'
             onChange={onChange}
             ref={fileref}
