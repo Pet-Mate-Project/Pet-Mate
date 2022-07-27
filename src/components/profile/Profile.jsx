@@ -119,7 +119,7 @@ export function ProfileModifyShow({ setImg, userInfoList }) {
           <FileInput
             id="input-file"
             type="file"
-            accept=".jpg,.png"
+            accept="image/*"
             name='profileImg'
             onChange={onChange}
             ref={fileInput}

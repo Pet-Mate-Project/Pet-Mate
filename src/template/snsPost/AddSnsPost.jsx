@@ -140,7 +140,7 @@ export default function AddSnsPost() {
             name='PostingImg'
             type="file"
             multiple
-            accept='image/jpeg, image/jpg'
+            accept='image/*'
             onChange={handleAddImg}
             ref={fileInput}
           />
