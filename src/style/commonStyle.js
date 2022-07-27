@@ -19,7 +19,7 @@ export const ScrollMain = styled.main`
   height: 100%;
   overflow: auto;
   box-sizing: border-box;
-  padding: 50px 5px;
+  padding: 48px 5px 61px;
   ::-webkit-scrollbar {
     width: 7px;
     display: none;
@@ -35,11 +35,14 @@ export const ScrollMain = styled.main`
 
 export const PaddingMain = styled.main`
   padding : 30px 34px;
-  `
+`
 
 export const Title = styled.h1`
   font-size: 24px;
   text-align: center;
+  @media screen and (min-width:450px) {
+    font-size: 30px;
+  }
 `
 
 export const FormStyle = styled.div`
@@ -48,7 +51,7 @@ export const FormStyle = styled.div`
   gap: 40px;
   margin: 30px 0;
   //모바일 환경일경우
-  @media screen  and (max-width:420px) {
+  @media screen and (max-width:420px) {
     gap: 16px; 
   }
 `

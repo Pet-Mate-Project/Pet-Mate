@@ -2,9 +2,13 @@ import styled from 'styled-components';
 import { ScrollMain } from '../../style/commonStyle';
 
 export const FollowMain = styled(ScrollMain)`
-padding-left: 16px;
-padding-right: 16px;
-display: flex;
-flex-direction: column;
-gap: 16px;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 19px 73px;
+  gap: 16px;
+  box-sizing: border-box;
+
+  @media screen and (min-width:450px) {
+    gap: 20px;
+  }
 `

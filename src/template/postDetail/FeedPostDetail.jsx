@@ -16,7 +16,7 @@ import { selectCommentAuthor } from '../../reducers/getCommentSlice'
 
 export default function FeedPostDetail() {
   const UserIdPath = useLocation();
-  const UserId = UserIdPath.pathname.slice(15,);
+  const PostId = UserIdPath.pathname.slice(15,);
   const [userInfoList, setUserInfoList] = useState([]);
   const URL = "https://mandarin.api.weniv.co.kr";
   const token = JSON.parse(localStorage.getItem("token"));
@@ -31,14 +31,14 @@ export default function FeedPostDetail() {
 
   useLayoutEffect(() => {
     getUserInfo();
-    dispatch(AxiosDetail(URL + `/post/${UserId}`))
-    dispatch(AxiosCommentList(URL + `/post/${UserId}/comments?limit=50`))
+    dispatch(AxiosDetail(URL + `/post/${PostId}`))
+    dispatch(AxiosCommentList(URL + `/post/${PostId}/comments?limit=50`))
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (commentStatus === 'loading') {
-      dispatch(AxiosDetail(URL + `/post/${UserId}`))
-      dispatch(AxiosCommentList(URL + `/post/${UserId}/comments?limit=50`))
+      dispatch(AxiosDetail(URL + `/post/${PostId}`))
+      dispatch(AxiosCommentList(URL + `/post/${PostId}/comments?limit=50`))
     }
   }, [commentStatus])
 
@@ -61,7 +61,7 @@ export default function FeedPostDetail() {
     dispatch(commentAction.selectCommentAuthor(postAuthor))
     setModal(modal => !modal)
   }
-  console.log('postDetail', postDetail);
+
   //모달
   let list = [];
   let alertTxt = [];
@@ -85,14 +85,16 @@ export default function FeedPostDetail() {
         (modal === true) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
       }
       <ScrollMain>
-        <DetailWrapper>
-          {
-            postDetail?.id === UserId && <FeedPost post={postDetail} />
-          }
-        </DetailWrapper>
+        {
+          postDetail?.id === PostId && <DetailWrapper>
+            <FeedPost post={postDetail} />
+          </DetailWrapper>
+        }
+          
+
         <ul>
           {
-            commentList?.map((comment) => {
+            commentStatus==="success"&&  commentList?.map((comment) => {
               return (
                 <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} img={comment.author.image} onClick={() => handleonClick(comment.id, comment.author.accountname)} setModal={setModal} modal={modal} />
               )

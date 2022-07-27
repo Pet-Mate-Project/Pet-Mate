@@ -31,10 +31,6 @@ export function SnsPost() {
           </li>
         )
       })}
-
-
-
     </ul>
   )
 }
-

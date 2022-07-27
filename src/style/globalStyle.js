@@ -34,7 +34,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	font-family: 'SUIT-Medium';
-
+	background-color: ${palette.lineColor};
 }
 ol, ul ,li{
 	list-style: none;
@@ -59,7 +59,5 @@ button{
 	all: unset; 
 }
 `;
-
-
 
 export default GlobalStyles;
