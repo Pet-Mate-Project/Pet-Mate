@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { palette } from '../../style/globalColor';
+import {memo} from 'react'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -43,7 +44,7 @@ export const MoreIcon = styled.img`
   float: right;
   cursor: pointer;
 `
-
+export const MemoMoreIcon = memo(MoreIcon)
 
 // 채팅 목록 리스트 스타일 컴포넌트
 
