@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 function MyProfile() {
-  const url = "https://mandarin.api.weniv.co.kr";
+  const URL = "https://mandarin.api.weniv.co.kr";
+  const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
+  const marketImg = "http://146.56.183.55:5050/Ellipse.png";
   const [userInfoList, setUserInfoList] = useState([])
   const token = JSON.parse(localStorage.getItem("token"));
   const accountname = JSON.parse(localStorage.getItem("accountname"));
-
 
   useEffect(() => {
     getUserInfo()
@@ -22,7 +23,7 @@ function MyProfile() {
   //사용자 정보 받아오는 함수
   function getUserInfo() {
     try {
-      axios.get(url + `/profile/${accountname}`, {
+      axios.get(URL + `/profile/${accountname}`, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-type": "application/json"
@@ -31,6 +32,17 @@ function MyProfile() {
     }
     catch (error) {
       console.log(error);
+    }
+  }
+
+  //기본이미지체크
+  function imgCheck(img) {
+    if (img === marketImg) {
+      return defaultImg;
+    } else if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1) {
+      return img;
+    } else if (img?.search(URL) === -1) {
+      return `${URL}/${img}`
     }
   }
 
@@ -43,9 +55,7 @@ function MyProfile() {
           </Link>
           <FollowerText>followers</FollowerText>
         </ColumnWapper>
-        <ProfileImg
-          src={url + `/${userInfoList.image}`} alt='user-img'
-        />
+        <ProfileImg src={imgCheck(userInfoList.image)} />
         <ColumnWapper>
           <Link to="/myfollow" state={{ text: 'followings' }}>
             <FollowerCount>{userInfoList.followingCount}</FollowerCount>
