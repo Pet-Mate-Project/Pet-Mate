@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { deleteActions } from '../../reducers/deletePostSlice'
 import { UserMore } from '../user/User.jsx'
@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { AxiosDetail } from '../../reducers/getPostDetailSlice';
 import axios from 'axios'
 
-export default function FeedPost({ post }) {
+function FeedPost({ post }) {
   const dispatch = useDispatch();
   const MyId = JSON.parse(localStorage.getItem("accountname"));
   const token = JSON.parse(localStorage.getItem("token"));
@@ -87,13 +87,13 @@ export default function FeedPost({ post }) {
       dispatch(AxiosDetail(URL + `/post/${postId}`))
     }
   }
-
+  let keyVal = 1;
+  
   return (
     <>
       {
         (modal === true) && (post.author.accountname === MyId) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
       }
-
       <UserMore userName={post.author.username} userId={post.author.accountname} img={post.author.image} onClick={() => handleId(post.id)} />
 
       <WrapSection onClick={() => { handleOnClick(post.id) }}>
@@ -105,9 +105,10 @@ export default function FeedPost({ post }) {
                 return (
                   (image?.search(URL) !== -1 || image?.search('base64') !== -1 || image?.search('.svg') !== -1)
                     ?
-                    <PostImg key={Math.random() * 100} src={image} alt="게시글 이미지" />
+
+                    <PostImg key ={keyVal++} src={image} alt="게시글 이미지"  />
                     :
-                    <PostImg key={Math.random() * 100} src={`${URL}/${image}`} alt="게시글 이미지" />
+                    <PostImg  key ={keyVal++} src={`${URL}/${image}`} alt="게시글 이미지" />
                 )
               }
             })
@@ -128,3 +129,5 @@ export default function FeedPost({ post }) {
     </>
   )
 }
+
+export default memo(FeedPost);
