@@ -19,9 +19,6 @@ function SignUp({
   errors 
 }) {
 
-  // console.log(`userPassword ${userPassword}`)
-  // console.log(`userConfirmPassword ${userConfirmPassword}`)
-
   return (
     <AllWrap>
       <PaddingMain>
@@ -40,13 +37,13 @@ function SignUp({
             setPassword={setPassword}
             register={register}
           ></PasswordInput>
+          {errors.password && <SignUpErrorMessage message={errors.password.message} />}
           <PasswordConfirmInput
             userPassword={userPassword}
             userConfirmPassword={userConfirmPassword}
             setConfirmPassword={setConfirmPassword}
             register={register}
           ></PasswordConfirmInput>
-          {errors.password && <SignUpErrorMessage message={errors.password.message} />}
           {errors.userConfirmPassword && <SignUpErrorMessage message={errors.userConfirmPassword.message} />}
         </FormStyle>
         <NextBtn

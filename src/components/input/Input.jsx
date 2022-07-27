@@ -13,7 +13,7 @@ export function NameInput({ userName, setName, register, placeholder }) {
           name="userName"
           value={userName}
           {...register("userName", {
-            required: "*이름은 필수 입력사항입니다.",
+            required: "*이름은 필수 입력 사항입니다.",
             minLength: {
               value: 2,
               message: "*이름은 2-10자 이내여야 합니다."
@@ -43,7 +43,7 @@ export function IdInput({ setId, IdCheck, register, placeholder, disabled, userI
           name="userId"
           value={userId}
           {...register("userId", {
-            required: "*계정 ID는 필수 입력사항입니다.",
+            required: "*계정 ID는 필수 입력 사항입니다.",
             pattern: {
               value: /^[_A-Za-z0-9.]*$/,
               message: "*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다."
@@ -78,12 +78,12 @@ export function EmailInput({ userEmail, setEmail, emailCheck, register }) {
   return (
     <LabelStyle>이메일
       <InputStyle
-        placeholder='이메일 주소를 입력해주세요.'
+        placeholder='이메일 주소를 입력해 주세요.'
         type="email"
         name="userEmail"
         value={userEmail}
         {...register("email", {
-          required: "*이메일은 필수 입력사항입니다.",
+          required: "*이메일은 필수 입력 사항입니다.",
           pattern: {
             value: /\S+@\S+\.\S+/,
             message: "*올바르지 않은 이메일 형식입니다."
@@ -101,12 +101,12 @@ export function PasswordInput({ userPassword, setPassword, register }) {
   return (
     <LabelStyle>비밀번호
       <InputStyle
-        placeholder='비밀번호를 설정해주세요.'
+        placeholder='비밀번호를 설정해 주세요.'
         type="password"
         name="userPassword"
         value={userPassword}
         {...register("password", {
-          required: "*비밀번호는 필수 입력사항입니다.",
+          required: "*비밀번호는 필수 입력 사항입니다.",
           minLength: {
             value: 6,
             message: "*비밀번호는 6자 이상이어야 합니다."
@@ -128,12 +128,11 @@ export function PasswordConfirmInput({ userPassword, userConfirmPassword, setCon
         value={userConfirmPassword}
         userPassword={userPassword}
         {...register("userConfirmPassword", {
-          required: "*비밀번호가 일치하지 않습니다.",
+          required: "*비밀번호를 확인해 주세요.",
           validate: {
             passwordCheck: (value) => {
-              return value === userPassword || '비밀번호 불일치'
-            },
-            
+              return value === userPassword || '*비밀번호가 일치하지 않습니다.'
+            }
           },
           onChange: (e) => setConfirmPassword(e.target.value)
         })}
@@ -167,7 +166,7 @@ export function PetInfoInput({ petInfo, setPetInfo,defaultValue }) {
     <LabelStyle>반려동물 정보
       <TextAreaStyle
         key={defaultValue}
-        placeholder='종류 / 나이 / 성별 / 주의사항을 작성해주세요.'
+        placeholder='종류 / 나이 / 성별 / 주의사항을 작성해 주세요.'
         type="text"
         name="petInfo"
         onChange={(e) => { setPetInfo(e.target.value) }}
