@@ -25,18 +25,26 @@ function MyProfileSnsPost() {
       {isList === true ?
         <section>
           <ShowWrap>
-            <ShowBtnStyle showIcon={listOn} onClick={listClick} />
-            <ShowBtnStyle showIcon={albumOff}
-              onClick={albumClick} />
+            <button>
+              <ShowBtnStyle src={listOn} onClick={listClick} alt="리스트형 게시글 버튼" />
+            </button>
+            <button>
+              <ShowBtnStyle src={albumOff}
+                onClick={albumClick} alt="앨범형 게시글 버튼" />
+            </button>
           </ShowWrap>
           <SnsPost />
         </section>
         :
         <section>
           <ShowWrap>
-            <ShowBtnStyle showIcon={listOff} onClick={listClick} />
-            <ShowBtnStyle showIcon={albumOn}
-              onClick={albumClick} />
+            <button>
+              <ShowBtnStyle src={listOff} onClick={listClick} alt="리스트형 게시글 버튼" />
+            </button>
+            <button>
+              <ShowBtnStyle src={albumOn}
+                onClick={albumClick} alt= "앨범형 게시글 버튼" />
+            </button>
           </ShowWrap>
           <SnsAlbum />
         </section>

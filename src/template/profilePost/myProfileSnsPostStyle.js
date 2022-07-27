@@ -9,15 +9,9 @@ border-bottom: solid 4px ${palette.lineColor};
 `
 
 
-export const ShowBtnStyle = styled.button`
+export const ShowBtnStyle = styled.img`
 width: 26px;
 height: 26px;
 margin-right: 16px;
 cursor: pointer;
-${(props) => {
-    return css`
-  background-image:url(${props.showIcon});
-  `
-  }}
-
 `

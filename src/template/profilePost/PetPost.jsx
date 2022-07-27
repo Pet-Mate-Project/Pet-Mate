@@ -52,7 +52,7 @@ export function PetPost() {
                 <Link to={'/walkingpostdetail/' + post.id}>
                   <AnimalBox key={post.id}
                     src={`https://mandarin.api.weniv.co.kr/${post.itemImage}`}
-                    title={post.itemName} time={post.updatedAt.substring(0, 10)} onClick={() => handleId(post.id)} />
+                    title={post.itemName} time={post.updatedAt.substring(0, 10)} onClick={() => handleId(post.id)}  />
                 </Link>
             )
           })

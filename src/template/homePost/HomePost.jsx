@@ -36,7 +36,7 @@ export default function HomePost({ followpost }) {
             <UserChat userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} />
             <Link to={'/walkingpostdetail/' + post._id} onClick={() => { handleOnClick(post._id) }}>
               <WrapPost>
-                <PetImg src={URL + "/" + post.itemImage}></PetImg>
+                <PetImg src={URL + "/" + post.itemImage} alt="펫이미지"></PetImg>
                 <TextWrap>
                   <TitleTxt>{post.itemName}</TitleTxt>
                   <ContentTxt>{post.link}</ContentTxt>

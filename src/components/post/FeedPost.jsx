@@ -111,22 +111,21 @@ export default function FeedPost({ post }) {
 
       <WrapSection onClick={() => { handleOnClick(post.id) }}>
 
-
         <Link to={'/snspostdetail/' + post.id} >
           <PostText>{post.content}</PostText>
           {images.map((image) => {
             return (
-              <PostImg key={Math.random() * 100} src={"https://mandarin.api.weniv.co.kr/" + image} />
+              <PostImg key={Math.random() * 100} src={"https://mandarin.api.weniv.co.kr/" + image} alt="게시글 이미지" />
             )
           })}
         </Link>
         <IconWrap>
           <button onClick={handlesetLike} style={{ cursor: 'pointer' }}>
-            <IconImg src={isLike ? heartIcon : emptyheartIcon} />
+            <IconImg src={isLike ? heartIcon : emptyheartIcon} alt={"좋아요 버튼"}/>
             {heartCount}
           </button>
           <button style={{ marginLeft: "6px" }}>
-            <IconImg src={messageIcon} />
+            <IconImg src={messageIcon} alt={"댓글 버튼"}/>
             {post.commentCount}
           </button>
         </IconWrap>

@@ -125,14 +125,14 @@ export function UserMore({ userName, userId, img, onClick }) {
           userId === MyId
             ?
             <Link to='/profilepage'>
-              <User userName={userName} userId={userId} img={img} />
+              <User userName={userName} userId={userId} img={img} alt="내 프로필"/>
             </Link>
             :
             <Link to='/userprofile' state={{ userId: userId }}>
-              <User userName={userName} userId={userId} img={img} />
+              <User userName={userName} userId={userId} img={img} alt="유저 프로필"/>
             </Link>
         }
-        <MoreIcon src={moreIcon} onClick={onClick} />
+        <MoreIcon src={moreIcon} onClick={onClick} alt="게시글 설정"/>
       </Wrapper>
     </>
   )
