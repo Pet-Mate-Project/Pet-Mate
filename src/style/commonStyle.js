@@ -19,7 +19,7 @@ export const ScrollMain = styled.main`
   height: 100%;
   overflow: auto;
   box-sizing: border-box;
-  padding: 50px 5px;
+  padding: 48px 5px 61px;
   ::-webkit-scrollbar {
     width: 7px;
     display: none;
