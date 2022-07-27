@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
 import Start from '../template/main/Start'
 import Main from '../template/main/Main'
-import { AxiosVerifyToken, getTokenVerifyStatus } from '../reducers/verifyTokenSlice'
-import { useDispatch,useSelector } from 'react-redux'
 
 export default function InitPage() {
-
-  const VerifyToken = useSelector(getTokenVerifyStatus).status;
   const [loading, setLoding] = useState('false'); //token상태에 따른 리다이렉팅페이지 관리
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
   // 랜더링 될때 slash화면 로딩
   useEffect(() => {
     setLoding('true');
@@ -21,24 +17,17 @@ export default function InitPage() {
     return () => clearTimeout(LodingTimer);
   }, []);
 
-
   useEffect(() => {
-    if(VerifyToken==='idle'){
-      const URL = "https://mandarin.api.weniv.co.kr";
-      dispatch(AxiosVerifyToken( URL+'/user/checktoken'))
-    }
-    //토큰값검증
-    if ( VerifyToken===true ) { 
+    if (JSON.parse(localStorage.getItem("token"))) {
       navigate('/homepage');
     }
-    else{
-      navigate('/login'); 
-    }
-  }, [dispatch,VerifyToken])
+
+  }, [navigate])
   return (
     <>
       <Start loading={loading} />
       <Main loading={loading} />
+
     </>
   );
 }
