@@ -118,6 +118,20 @@ export function PasswordInput({ userPassword, setPassword, register }) {
   );
 }
 
+export function PasswordConfirmInput({ userConfirmPassword, setConfirmPassword, Confirmregister }) {
+  return (
+    <LabelStyle>비밀번호 확인
+      <InputStyle
+        placeholder='비밀번호를 확인해 주세요.'
+        type="password"
+        name="userConfirmPassword"
+        value={userConfirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+      />
+    </LabelStyle>
+  );
+}
+
 // post에 필요한 input
 export function TitleInput({ Title, setTitle,defaultValue }) {
   console.log(defaultValue);

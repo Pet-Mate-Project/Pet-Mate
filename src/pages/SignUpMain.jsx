@@ -20,6 +20,7 @@ export function SignUpMainPage() {
   const [userIntro, setIntro] = useState("");
   const [userEmail, setEmail] = useState("");
   const [userPassword, setPassword] = useState("");
+  const [userConfirmPassword, setConfirmPassword] = useState("");
   //넣어주는 이미지 
   const [userImg, setImg] = useState('https://raw.githubusercontent.com/Pet-Mate-Project/Pet-Mate/9a1dd2c1758e84421b72fed7d132f5c12e66dc46/src/assets/basic-profile.png');
   //에러 출력 메세지
@@ -132,6 +133,8 @@ export function SignUpMainPage() {
           disabled={isValid}
           userPassword={userPassword}
           setPassword={setPassword}
+          userConfirmPassword={userConfirmPassword}
+          setConfirmPassword={setConfirmPassword}
           emailCheck={emailCheck}
           message={message}
           register={register}

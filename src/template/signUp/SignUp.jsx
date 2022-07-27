@@ -1,5 +1,5 @@
 import React from 'react'
-import { EmailInput, PasswordInput } from '../../components/input/Input'
+import { EmailInput, PasswordConfirmInput, PasswordInput } from '../../components/input/Input'
 import { NextBtn } from '../../components/button/Button'
 import { AllWrap, FormStyle, PaddingMain, Title } from '../../style/commonStyle'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
@@ -10,12 +10,16 @@ function SignUp({
   userEmail, 
   setEmail,
   userPassword, 
-  setPassword, 
+  setPassword,
+  userConfirmPassword,
+  setConfirmPassword,
   message,
   emailCheck,
   register, 
   errors 
 }) {
+  console.log(`userPassword ${userPassword}`)
+  console.log(`userConfirmPassword ${userConfirmPassword}`)
   return (
     <AllWrap>
       <PaddingMain>
@@ -34,6 +38,10 @@ function SignUp({
             setPassword={setPassword}
             register={register}
           ></PasswordInput>
+          <PasswordConfirmInput
+            userConfirmPassword={userConfirmPassword}
+            setConfirmPassword={setConfirmPassword}
+          ></PasswordConfirmInput>
           {errors.password && <SignUpErrorMessage message={errors.password.message} />}
         </FormStyle>
         <NextBtn
