@@ -9,7 +9,9 @@ import shareIcon from '../../assets/icon-share.svg'
 import axios from 'axios'
 
 function YourProfile({ userId }) {
-  const url = "https://mandarin.api.weniv.co.kr";
+  const URL = "https://mandarin.api.weniv.co.kr";
+  const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
+  const marketImg = "http://146.56.183.55:5050/Ellipse.png";
   const token = JSON.parse(localStorage.getItem("token"));
   const accountname = userId;
   const [yourInfoList, setYourInfoList] = useState([]);
@@ -31,7 +33,7 @@ function YourProfile({ userId }) {
 
   // your정보 받아오는 함수
   async function getYourInfo() {
-    await axios.get(url + `/profile/${accountname}`, {
+    await axios.get(URL + `/profile/${accountname}`, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
@@ -45,7 +47,7 @@ function YourProfile({ userId }) {
   const data = {};
   // 팔로우 정보 받아오는 함수
   async function postUserFollow() {
-    await axios.post(url + `/profile/${accountname}/follow`, data, {
+    await axios.post(URL + `/profile/${accountname}/follow`, data, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
@@ -58,7 +60,7 @@ function YourProfile({ userId }) {
 
   // 언팔로우 정보 받아오는 함수
   async function deleteUserFollow() {
-    await axios.delete(url + `/profile/${accountname}/unfollow`, {
+    await axios.delete(URL + `/profile/${accountname}/unfollow`, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
@@ -67,6 +69,17 @@ function YourProfile({ userId }) {
       setYourInfoList(res.data.profile);
       setIsFollow(res.data.profile.isfollow);
     })
+  }
+
+  //기본이미지체크
+  function imgCheck(img) {
+    if (img === marketImg) {
+      return defaultImg;
+    } else if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1) {
+      return img;
+    } else if (img?.search(URL) === -1) {
+      return `${URL}/${img}`
+    }
   }
 
   return (
@@ -78,9 +91,7 @@ function YourProfile({ userId }) {
             <FollowerText>followers</FollowerText>
           </Link>
         </ColumnWapper>
-        <ProfileImg
-          src={url + `/${yourInfoList.image}`} alt='user-img'
-        />
+        <ProfileImg src={imgCheck(yourInfoList.image)} />
         <ColumnWapper>
           <Link to="/yourfollow" state={{ text: 'followings', userId: accountname }}>
             <FollowerCount>{yourInfoList.followingCount}</FollowerCount>

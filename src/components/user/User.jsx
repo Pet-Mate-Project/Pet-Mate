@@ -6,29 +6,33 @@ import { TextWrapper, UserId, UserName, Wrapper, MoreIcon, ChatPreview, ChatDate
 import moreIcon from '../../assets/icon-more-vertical-small.svg'
 import { Link } from 'react-router-dom'
 
-export function User({ userName, userId, img, keyword}) {
+export function User({ userName, userId, img, keyword }) {
+  const URL = 'https://mandarin.api.weniv.co.kr'
+  const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
+  const marketImg = "http://146.56.183.55:5050/Ellipse.png";
+
+  //기본이미지체크
+  function imgCheck(img) {
+    if (img === marketImg) {
+      return defaultImg;
+    } else if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1 || img?.search('.svg') !== -1 )  {
+      return img;
+    } else if (img?.search(URL) === -1) {
+      return `${URL}/${img}`
+    }
+  }
 
   return (
     <Wrapper>
-      {
-        img.search('https://mandarin.api.weniv.co.kr/') === -1
-          ?
-          <ProfileIconS img={`https://mandarin.api.weniv.co.kr/${img}`} />
-          :
-          <ProfileIconS img={img} />
-      }
+      <ProfileIconS img={imgCheck(img)} />
       <TextWrapper>
         {/* 입력한 결괏값이랑 일치하는 문자 색상 변경 */}
         {
           userName.includes(keyword)
-            ? 
-            <>
-              <UserName style={{color: "#1D57C1"}}>{keyword}</UserName>
-            </>
-            : 
-            <>
-              <UserName>{userName}</UserName>
-            </>
+            ?
+            <UserName style={{ color: "#1D57C1" }}>{keyword}</UserName>
+            :
+            <UserName>{userName}</UserName>
         }
         <UserId>@ {userId}</UserId>
       </TextWrapper>
@@ -125,14 +129,14 @@ export function UserMore({ userName, userId, img, onClick }) {
           userId === MyId
             ?
             <Link to='/profilepage'>
-              <User userName={userName} userId={userId} img={img} />
+              <User userName={userName} userId={userId} img={img} alt="내 프로필"/>
             </Link>
             :
             <Link to='/userprofile' state={{ userId: userId }}>
-              <User userName={userName} userId={userId} img={img} />
+              <User userName={userName} userId={userId} img={img} alt="유저 프로필"/>
             </Link>
         }
-        <MoreIcon src={moreIcon} onClick={onClick} />
+        <MoreIcon src={moreIcon} onClick={onClick} alt="게시글 설정"/>
       </Wrapper>
     </>
   )

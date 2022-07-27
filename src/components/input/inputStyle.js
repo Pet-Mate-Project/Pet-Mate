@@ -4,6 +4,7 @@ import { palette } from '../../style/globalColor';
 export const InputStyle = styled.input`
 width: 100%;
 margin-top: 10px;
+padding-left: 4px;
 display: block;
 background-color: white;
 border: none; 
@@ -35,6 +36,7 @@ height: 50px;
 resize: none;
 width: 100%;
 margin-top: 10px;
+padding-left: 4px;
 display: block;
 background-color: white;
 border: none; 

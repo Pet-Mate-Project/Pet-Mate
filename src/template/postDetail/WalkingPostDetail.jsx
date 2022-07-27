@@ -12,8 +12,7 @@ import { Button } from '../../components/button/buttonStyle'
 export default function WalkingPostDetail() {
   const dispatch = useDispatch();
   const URL = "https://mandarin.api.weniv.co.kr";
-  const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png"
-  const marketImg = "http://146.56.183.55:5050/Ellipse.png"
+
   const postDetail = useSelector(selectWalkingPostDetail)?.product;
   const UserIdPath = useLocation();
   const UserId = UserIdPath.pathname.slice(19,);
@@ -21,15 +20,6 @@ export default function WalkingPostDetail() {
   useEffect(() => {
     dispatch(AxiosWalkingPostDetail(URL + `/product/detail/${UserId}`))
   }, [])
-
-  function imgCheck(postDetail) {
-    if (postDetail.author.image === marketImg) {
-      return defaultImg;
-    }
-    else {
-      return URL + "/" + postDetail.author.image;
-    }
-  }
 
   return (
     <AllWrap>
@@ -40,9 +30,16 @@ export default function WalkingPostDetail() {
         postDetail?.id === UserId &&
         <ScrollMain>
           <PostDetailWrapper>
-            <UserFollow userName={postDetail.author.username} userId={postDetail.author.accountname} img={imgCheck(postDetail)} />
+            <UserFollow userName={postDetail.author.username} userId={postDetail.author.accountname} img={postDetail.author.image} />
             <ContentWrapper>
-              <PetImg src={URL + "/" + postDetail.itemImage}></PetImg>
+              {
+                postDetail.itemImage &&
+                  (postDetail.itemImage?.search(URL) !== -1 || postDetail.itemImage?.search('base64') !== -1 || postDetail.itemImage?.search('.svg') !== -1)
+                  ?
+                  <PetImg src={postDetail.itemImage} />
+                  :
+                  <PetImg src={`${URL}/${postDetail.itemImage}`} />
+              }
               <TitleTxt>{postDetail.itemName}</TitleTxt>
               <ContentTxt>{postDetail.link}</ContentTxt>
               <DateTxt>{postDetail.updatedAt.substring(0, 10)}</DateTxt>

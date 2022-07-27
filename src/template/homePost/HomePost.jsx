@@ -4,25 +4,12 @@ import { UserChat } from '../../components/user/User'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AxiosWalkingPostDetail } from '../../reducers/getPostDetailSlice';
-import { deleteActions } from '../../reducers/deletePostSlice'
-
 
 export default function HomePost({ followpost }) {
   const dispatch = useDispatch();
   console.log("템플릿", followpost);
-  const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png"
-  const marketImg = "http://146.56.183.55:5050/Ellipse.png"
   const URL = "https://mandarin.api.weniv.co.kr";
   // const UserId = UserIdPath.pathname.slice(15,);
-
-  function imgCheck(post) {
-    if (post.author.image === marketImg) {
-      return defaultImg;
-    }
-    else {
-      return URL + "/" + post.author.image;
-    }
-  }
 
   const handleOnClick = (postId) => {
     dispatch(AxiosWalkingPostDetail(URL + `/product/detail/${postId}`));
@@ -33,10 +20,17 @@ export default function HomePost({ followpost }) {
       {followpost && followpost.map((post) => {
         return (
           <PostStyle key={post._id} >
-            <UserChat userName={post.author.username} userId={post.author.accountname} img={imgCheck(post)} />
+            <UserChat userName={post.author.username} userId={post.author.accountname} img={post.author.image} />
             <Link to={'/walkingpostdetail/' + post._id} onClick={() => { handleOnClick(post._id) }}>
               <WrapPost>
-                <PetImg src={URL + "/" + post.itemImage}></PetImg>
+                {
+                  post.itemImage &&
+                    (post.itemImage?.search(URL) !== -1 || post.itemImage?.search('base64') !== -1 || post.itemImage?.search('.svg') !== -1)
+                    ?
+                    <PetImg src={post.itemImage} alt="펫이미지"/>
+                    :
+                    <PetImg src={`${URL}/${post.itemImage}`} alt="펫이미지"/>
+                }
                 <TextWrap>
                   <TitleTxt>{post.itemName}</TitleTxt>
                   <ContentTxt>{post.link}</ContentTxt>

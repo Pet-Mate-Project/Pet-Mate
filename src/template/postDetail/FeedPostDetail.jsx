@@ -64,7 +64,7 @@ export default function FeedPostDetail() {
     dispatch(commentAction.selectCommentAuthor(postAuthor))
     setModal(modal => !modal)
   }
-
+  console.log('postDetail', postDetail);
   //모달
   let list = [];
   let alertTxt = [];
@@ -98,7 +98,7 @@ export default function FeedPostDetail() {
           {
             postDetail?.id === UserId && commentList?.map((comment) => {
               return (
-                <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} src={comment.author.image} onClick={() => handleonClick(comment.id, comment.author.accountname)} setModal={setModal} modal={modal} />
+                <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} img={comment.author.image} onClick={() => handleonClick(comment.id, comment.author.accountname)} setModal={setModal} modal={modal} />
               )
             })
           }
