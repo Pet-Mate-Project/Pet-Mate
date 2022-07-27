@@ -35,12 +35,15 @@ export default function FeedPostDetail() {
     dispatch(AxiosCommentList(URL + `/post/${UserId}/comments?limit=50`))
   }, [])
 
-  useEffect(() => {
+  console.log('댓리스트', commentList)
+
+  useLayoutEffect(() => {
     if (commentStatus === 'loading') {
       dispatch(AxiosDetail(URL + `/post/${UserId}`))
-      dispatch(AxiosCommentList(URL + `/post/${UserId}/comments?limit=50`))
+      // dispatch(AxiosCommentList(URL + `/post/${UserId}/comments?limit=50`))
     }
   }, [commentStatus])
+
 
   function getUserInfo() {
     try {
@@ -85,14 +88,15 @@ export default function FeedPostDetail() {
         (modal === true) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
       }
       <ScrollMain>
-        <DetailWrapper>
-          {
-            postDetail?.id === UserId && <FeedPost post={postDetail} />
-          }
-        </DetailWrapper>
+        {
+          postDetail?.id === UserId && <DetailWrapper>
+            <FeedPost post={postDetail} />
+          </DetailWrapper>
+        }
+
         <ul>
           {
-            commentList?.map((comment) => {
+            postDetail?.id === UserId && commentList?.map((comment) => {
               return (
                 <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} img={comment.author.image} onClick={() => handleonClick(comment.id, comment.author.accountname)} setModal={setModal} modal={modal} />
               )
