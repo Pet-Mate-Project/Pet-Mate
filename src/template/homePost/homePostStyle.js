@@ -13,6 +13,11 @@ export const PostStyle = styled.li`
   :last-child {
     border-bottom: none;
   }
+
+  @media screen and (min-width: 470px) {
+  height: 235px;
+}
+
 `
 
 export const PetImg = styled.img`
@@ -20,16 +25,29 @@ export const PetImg = styled.img`
   height: 120px;
   border-radius: 10px;
   border: 1px solid ${palette.lightGray};
-  object-fit: cover;  
+  object-fit: cover;
+  flex-shrink: 0;
+
+  @media screen and (min-width: 470px) {
+    width: 150px;
+  height: 150px;
+}
 `
 
 export const TitleTxt = styled.p`
   font-size: 17px;
   line-height: 20px;
+  margin-top: 5px ;
   color: ${palette.textPoint};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+@media screen and (min-width: 470px) {
+  font-size: 22px;
+  line-height: 27px;
+  margin-top: 10px ;
+}
+
 `
 
 export const ContentTxt = styled.p`
@@ -41,13 +59,21 @@ export const ContentTxt = styled.p`
   font-size: 14px;
   line-height: 17px;
   word-break: keep-all;
+  @media screen and (min-width: 470px) {
+  font-size: 18px;
+  line-height: 27px;
+}
 `
 
 export const DateTxt = styled.p`
   font-size: 10px;
-  line-height: 12px;
+  line-height: 14px;
   color: ${palette.darkGray};
   margin-bottom: 5px;
+  @media screen and (min-width: 470px) {
+  font-size: 13px;
+  line-height: 16px;
+}
 `
 export const WrapPost = styled.div`
 display: flex;
