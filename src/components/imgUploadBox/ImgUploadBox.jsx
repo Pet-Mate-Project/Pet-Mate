@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FileUploader, FileInput, ImgRegist, TitleTxt, ImgUploadWrapper } from './imgUploadBoxStyle'
+import { FileUploader, FileInput, ImgRegist,BeforeRegist, TitleTxt, ImgUploadWrapper } from './imgUploadBoxStyle'
 
 export default function ImgUploadBox({ onChange, fileref, src, defaultImg }) {
  
