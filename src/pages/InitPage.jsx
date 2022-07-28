@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { AxiosVerifyToken, getTokenVerifyStatus } from '../reducers/verifyTokenSlice'
+
 import Start from '../template/main/Start'
 import Main from '../template/main/Main'
-import { AxiosVerifyToken, getTokenVerifyStatus } from '../reducers/verifyTokenSlice'
-import { useDispatch,useSelector } from 'react-redux'
 
 export default function InitPage() {
 
@@ -23,24 +24,24 @@ export default function InitPage() {
 
 
   useEffect(() => {
-    if(VerifyToken==='idle'){
+    if (VerifyToken === 'idle') {
       const URL = "https://mandarin.api.weniv.co.kr";
-      dispatch(AxiosVerifyToken( URL+'/user/checktoken'))
+      dispatch(AxiosVerifyToken(URL + '/user/checktoken'))
     }
 
     console.log(VerifyToken);
     //토큰값검증
-    if ( VerifyToken===true ) { 
+    if (VerifyToken === true) {
       navigate('/homepage');
     }
     //토큰값이 없거나, 유효하지않을경우
-    else if ((VerifyToken==='fail') || (VerifyToken===false)){  // 토큰
+    else if ((VerifyToken === 'fail') || (VerifyToken === false)) {  // 토큰
       window.localStorage.removeItem("token");
       window.localStorage.removeItem("accountname");
       navigate('/login');
     }
-  
-  }, [dispatch,VerifyToken])
+
+  }, [dispatch, VerifyToken])
   return (
     <>
       <Start loading={loading} />

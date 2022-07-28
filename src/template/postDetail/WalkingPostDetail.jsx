@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useLocation } from "react-router-dom"
-import { selectWalkingPostDetail, AxiosWalkingPostDetail } from '../../reducers/getPostDetailSlice'
 import { useSelector, useDispatch } from 'react-redux'
+import { selectWalkingPostDetail, AxiosWalkingPostDetail } from '../../reducers/getPostDetailSlice'
 import { palette } from '../../style/globalColor'
 import { AllWrap, ScrollMain } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
 import { UserFollow } from '../../components/user/User'
-import { PostDetailWrapper, ContentWrapper, PetImg, TitleTxt, ContentTxt, DateTxt } from '../postDetail/walkingPostDetailStyle'
 import { Button } from '../../components/button/buttonStyle'
+import { PostDetailWrapper, ContentWrapper, PetImg, TitleTxt, ContentTxt, DateTxt } from '../postDetail/walkingPostDetailStyle'
 
 export default function WalkingPostDetail() {
   const dispatch = useDispatch();

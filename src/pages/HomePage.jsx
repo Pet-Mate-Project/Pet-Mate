@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
-import { NavSearch } from '../components/navBack/NavBack'
-import { AllWrap } from '../style/commonStyle'
-import TabMenu from '../components/tabMenu/TabMenu'
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import PacmanLoader from 'react-spinners/PacmanLoader';
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { getAllPetPost, AxiosAllPetInfo ,getAllPostStatus } from '../reducers/getAllpetInfoSlice'
+import { getAllPetPost, AxiosAllPetInfo, getAllPostStatus } from '../reducers/getAllpetInfoSlice'
+import { AxiosFollow, selectAllFollowers } from '../reducers/getFollowSlice'
+import { getPostStatus } from '../reducers/getPetInfoSlice'
+
+import { AllWrap } from '../style/commonStyle'
+import { palette } from '../style/globalColor'
+
+import TabMenu from '../components/tabMenu/TabMenu'
+import { AddBtn } from '../components/iconButton/IconButton'
+import { NavSearch } from '../components/navBack/NavBack'
 import DefaultFeed from '../template/walkingFeed/DefaultFeed'
 import WalkingFeed from '../template/walkingFeed/WalkingFeed'
-import { AddBtn } from '../components/iconButton/IconButton'
-import { Link } from 'react-router-dom'
-import { AxiosFollow, selectAllFollowers } from '../reducers/getFollowSlice'
-import PacmanLoader from 'react-spinners/PacmanLoader';
-import { palette } from '../style/globalColor'
-import { getPostStatus } from '../reducers/getPetInfoSlice'
 
 export default function HomePage() {
 
@@ -24,9 +25,9 @@ export default function HomePage() {
   const follower = useSelector(selectAllFollowers);
   const MypetStatus = useSelector(getPostStatus);
 
-  console.log("MypetStatus",MypetStatus);
-  console.log("status💄",postsStatus);
-  console.log("posts💍",posts)
+  console.log("MypetStatus", MypetStatus);
+  console.log("status💄", postsStatus);
+  console.log("posts💍", posts)
 
   const ReqPath = `/product/?limit=2000`;
   // 제한을 없애고싶은데 일단 2000으로 해놨습니다.
@@ -60,14 +61,16 @@ export default function HomePage() {
         <NavSearch text={"산책 피드"} url={"/search"} />
       </header>
       {
-        postsStatus === 'loading' ? 
-          <div style={{   position: "fixed",
+        postsStatus === 'loading' ?
+          <div style={{
+            position: "fixed",
             top: "50%",
             left: "50%",
-            transform: "translate(-50%, -50%)",}}>
-            <PacmanLoader color={palette.mainColor} width={100} height ={100} /></div> :
-          followpost?.length === 0 ? <DefaultFeed /> : 
-            <WalkingFeed followpost={followpost}  />
+            transform: "translate(-50%, -50%)",
+          }}>
+            <PacmanLoader color={palette.mainColor} width={100} height={100} /></div> :
+          followpost?.length === 0 ? <DefaultFeed /> :
+            <WalkingFeed followpost={followpost} />
       }
       <Link to={'/post'}>
         <AddBtn />

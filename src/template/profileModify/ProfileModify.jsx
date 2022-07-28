@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux/es/exports'
+import { AxiosUserData, selectUserData } from '../../reducers/getUserInfoSlice'
 import axios from 'axios';
+
 import { ProfileSaveNav } from '../../components/navBack/NavBack';
 import { ImgUpload } from '../../pages/SignUpMain';
 import { ProfileModifySet } from '../profile/ProfileSet';
-import { useForm } from 'react-hook-form';
 import { AllWrap } from '../../style/commonStyle';
 import { ProfileModifyMain } from './profileModifyStyle'
-import { useNavigate } from 'react-router-dom'
-import { AxiosUserData, getUserDataStatus, selectUserData } from '../../reducers/getUserInfoSlice'
-import { useDispatch, useSelector } from 'react-redux/es/exports'
 
 function ProfileModify() {
 

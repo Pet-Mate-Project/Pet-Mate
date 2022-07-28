@@ -1,23 +1,23 @@
 import React from 'react'
-import { Message } from './profilePageStyle'
 import { PaddingMain, Title, AllWrap } from '../../style/commonStyle'
 import { StartBtn } from '../../components/button/Button'
+import { Message } from './profilePageStyle'
 import { ProfileSet } from '../profile/ProfileSet'
 
-function ProfilePage({ 
+function ProfilePage({
   userName,
   setName,
   userId,
-  setId, 
-  userIntro, 
+  setId,
+  userIntro,
   setIntro,
   message,
-  IdCheck, 
-  userImg, 
+  IdCheck,
+  userImg,
   setImg,
-  disabled, 
-  signUp, 
-  register, 
+  disabled,
+  signUp,
+  register,
   errors }) {
   return (
     <AllWrap>

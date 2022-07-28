@@ -1,5 +1,4 @@
 import React, { useState, useLayoutEffect } from 'react'
-import axios from 'axios'
 import { AllWrap, ScrollMain } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
 import Comment from '../../components/comment/Comment'

@@ -1,9 +1,9 @@
 import React from 'react'
-import { ContentTxt, DateTxt, PetImg, PostStyle, TextWrap, TitleTxt, WrapPost } from './homePostStyle'
-import { UserChat } from '../../components/user/User'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AxiosWalkingPostDetail } from '../../reducers/getPostDetailSlice';
+import { ContentTxt, DateTxt, PetImg, PostStyle, TextWrap, TitleTxt, WrapPost } from './homePostStyle'
+import { UserChat } from '../../components/user/User'
 
 export default function HomePost({ followpost }) {
   const dispatch = useDispatch();
