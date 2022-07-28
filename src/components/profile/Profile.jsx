@@ -68,7 +68,7 @@ export function ProfileModifyShow({ setImg, userInfoList }) {
   const fileInput = useRef(null)
   const url = "https://mandarin.api.weniv.co.kr";
   //화면에 보여주기용 이미지 상태관리
-  const userInfoUrl = `${url}/${userInfoList.image}`;
+  const userInfoUrl = userInfoList.image;
   const [showImg, setShowImg] = useState('');
 
   useEffect(() => {

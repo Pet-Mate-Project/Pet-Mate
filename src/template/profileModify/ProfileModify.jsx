@@ -59,7 +59,7 @@ function ProfileModify() {
       const imgUploadData = await ImgUpload(userImg)
       const token = JSON.parse(localStorage.getItem("token"));
       console.log('img res', imgUploadData)
-      userData.user.image = url + '/' + imgUploadData
+      userData.user.image = imgUploadData
       const res = await axios.put(url + '/user', userData, {
         headers: {
           "Authorization": `Bearer ${token}`,

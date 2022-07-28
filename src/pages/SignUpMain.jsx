@@ -6,11 +6,11 @@ import SignUp from '../template/signUp/SignUp';
 import ProfilePage from '../template/signUp/ProfilePage';
 
 export async function ImgUpload(userImg) {
-
+  const url = "https://mandarin.api.weniv.co.kr";
   let formData = new FormData()
   formData.append('image', userImg)
   const res = await axios.post('https://mandarin.api.weniv.co.kr/image/uploadfile', formData)
-  return res.data.filename
+  return url + '/' + res.data.filename
 }
 
 export function SignUpMainPage() {
@@ -22,11 +22,14 @@ export function SignUpMainPage() {
   const [userPassword, setPassword] = useState("");
   const [userConfirmPassword, setConfirmPassword] = useState("");
   //넣어주는 이미지 
-  const [userImg, setImg] = useState('https://mandarin.api.weniv.co.kr/1657812669741.png');
+  const [userImg, setImg] = useState('');
   //에러 출력 메세지
   const [message, setMessage] = useState('');
   //다음 버튼 상태관리
   const [next, setNext] = useState(false)
+  const defaultImgUrl = 'https://mandarin.api.weniv.co.kr/1657812669741.png'
+
+  const undefindUrl = 'https://mandarin.api.weniv.co.kr/undefined'
 
   const url = "https://mandarin.api.weniv.co.kr";
   const navigator = useNavigate();
@@ -54,8 +57,10 @@ export function SignUpMainPage() {
   async function signUp() {
     const imgUploadData = await ImgUpload(userImg)
     console.log('img res', imgUploadData)
-    //유저데이터 변수의 이미지에 저장 
-    userData.user.image = `${url}/${imgUploadData}`
+    // 유저데이터 변수의 이미지에 저장 (이미지가 빈값이면 기본이미지)
+    imgUploadData === undefindUrl ?
+      userData.user.image = defaultImgUrl :
+      userData.user.image = imgUploadData
     //회원가입 최종 전송
     axios.post(url + '/user', userData,
       { headers: { "Content-type": "application/json" } })
