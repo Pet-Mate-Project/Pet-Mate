@@ -1,26 +1,25 @@
 import { EmailLoginBtn, JoinBtn } from '../../components/button/Button.jsx';
 import React from 'react'
-import { LogoStyle, Gap } from './mainStyle.js';
-import { AllWrap, PaddingMain } from '../../style/commonStyle'
+import { LogoStyle, Gap, Wrapper } from './mainStyle.js';
+import { AllWrap } from '../../style/commonStyle'
 import { Link } from "react-router-dom";
 
 
-function Main({ loading, visible }) {
+function Main({ loading }) {
 
   return (
     <>
       {
         (loading === 'false') &&
-        <AllWrap  key={Math.random() * 100} >
-          <PaddingMain>
+        <AllWrap>
+          <Wrapper>
             <LogoStyle />
             <Gap>
-              <Link to="/login" >  <EmailLoginBtn /></Link>
+              <Link to="/login"><EmailLoginBtn /></Link>
+              <Link to="/join"><JoinBtn /></Link>
             </Gap>
-            <Link to="/join" > <JoinBtn /></Link>
-          </PaddingMain>
+          </Wrapper>
         </AllWrap>
-
       }
     </>
   )

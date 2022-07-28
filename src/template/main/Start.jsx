@@ -1,6 +1,6 @@
 import React from 'react'
-import { FullLogoStyle } from './mainStyle'
-import { AllWrap, PaddingMain } from '../../style/commonStyle'
+import { FullLogoStyle, Wrapper} from './mainStyle'
+import { AllWrap } from '../../style/commonStyle'
 
 function Start({ loading }) {
   return (
@@ -8,9 +8,9 @@ function Start({ loading }) {
       {
         (loading === 'true') &&
         <AllWrap>
-          <PaddingMain>
+          <Wrapper>
             <FullLogoStyle />
-          </PaddingMain>
+          </Wrapper>
         </AllWrap>
       }
     </>
