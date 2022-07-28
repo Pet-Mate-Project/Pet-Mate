@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { useLocation } from 'react-router-dom';
+import axios from 'axios'
+import { AllWrap } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
 import { UserFollow } from '../../components/user/User'
-import { FollowMain } from './followStyle'
 import TabMenu from '../../components/tabMenu/TabMenu'
-import { AllWrap } from '../../style/commonStyle'
+import { FollowMain } from './followStyle'
 
 function YourFollower() {
   const NavBackTitle = useLocation().state.text;
@@ -19,7 +19,7 @@ function YourFollower() {
     getFollowerList();
     getFollowingList();
   }, []);
-  
+
   async function getFollowerList() {
     await axios.get(url + `/profile/${accountname}/follower?limit=1000`, {
       headers: {
@@ -48,7 +48,7 @@ function YourFollower() {
         text={NavBackTitle} />
       <FollowMain>
         {
-          NavBackTitle==='followers' &&
+          NavBackTitle === 'followers' &&
           followerList.map((userInfo, index) => (
             <UserFollow
               key={index}
@@ -58,7 +58,7 @@ function YourFollower() {
           ))
         }
         {
-          NavBackTitle==='followings' &&
+          NavBackTitle === 'followings' &&
           followingList.map((userInfo, index) => (
             <UserFollow
               key={index}

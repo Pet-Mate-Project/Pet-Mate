@@ -1,8 +1,8 @@
-import { EmailLoginBtn, JoinBtn } from '../../components/button/Button.jsx';
 import React from 'react'
-import { LogoStyle, Gap, Wrapper } from './mainStyle.js';
-import { AllWrap } from '../../style/commonStyle'
 import { Link } from "react-router-dom";
+import { AllWrap } from '../../style/commonStyle'
+import { EmailLoginBtn, JoinBtn } from '../../components/button/Button.jsx';
+import { LogoStyle, Gap, Wrapper } from './mainStyle.js';
 
 
 function Main({ loading }) {

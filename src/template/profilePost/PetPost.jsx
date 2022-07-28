@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { AnimalBox } from '../../components/animalBox/AnimalBox'
-import { selectAllPosts } from '../../reducers/getPetInfoSlice'
-import { useSelector, useDispatch } from 'react-redux'
-import { MiniPostTitle, MiniPostWrap, SectionAllWrap } from './petPostStyle'
-import Modal from '../../components/postModal/PostModal';
-import { deleteActions } from '../../reducers/deletePostSlice'
 import { useLocation } from 'react-router-dom'
-import { SelectId } from '../../reducers/deletePostSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectAllPosts } from '../../reducers/getPetInfoSlice'
+import { deleteActions } from '../../reducers/deletePostSlice'
 import { Link } from 'react-router-dom'
+import { SelectId } from '../../reducers/deletePostSlice'
+
+import { MiniPostTitle, MiniPostWrap, SectionAllWrap } from './petPostStyle'
+import { AnimalBox } from '../../components/animalBox/AnimalBox'
+import Modal from '../../components/postModal/PostModal';
 
 export function PetPost() {
   const URL = "https://mandarin.api.weniv.co.kr";

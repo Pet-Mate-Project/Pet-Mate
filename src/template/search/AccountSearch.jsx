@@ -1,13 +1,12 @@
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-import React, { useState } from 'react'
-import { useEffect } from 'react'
 import { SearchMessageStyle } from '../../components/errorMessage/errorStyle'
 import { NavTxtSearch } from '../../components/navBack/NavBack'
 import TabMenu from '../../components/tabMenu/TabMenu'
 import { User } from '../../components/user/User'
 import { AllWrap } from '../../style/commonStyle'
 import { FollowMain } from '../follow/followStyle'
-import { Link } from 'react-router-dom'
 
 function AccountSearch() {
   const [searchResult, setSearchResult] = useState([])
@@ -36,15 +35,15 @@ function AccountSearch() {
   return (
     <AllWrap>
       <header>
-        <NavTxtSearch 
-          placeholder={"계정 검색"} 
+        <NavTxtSearch
+          placeholder={"계정 검색"}
           onChange={(e) => setKeyword(e.target.value)} >
         </NavTxtSearch>
       </header>
 
       <FollowMain>
         {keyword.length === 0
-          ? 
+          ?
           // 입력된 keyword가 0이면 메시지 출력
           <SearchMessageStyle>사용자 계정 또는 이름을 입력해 주세요.</SearchMessageStyle>
           :
@@ -52,14 +51,14 @@ function AccountSearch() {
           searchResult.map((user) => {
             console.log(user.image)
             return (
-              <Link 
+              <Link
                 key={user._id}
-                to='/userprofile' 
+                to='/userprofile'
                 state={{ userId: user.accountname }}>
-                <User 
-                  userName={user.username} 
-                  userId={user.accountname} 
-                  img={user.image} 
+                <User
+                  userName={user.username}
+                  userId={user.accountname}
+                  img={user.image}
                   keyword={keyword}
                 />
               </Link>

@@ -1,12 +1,12 @@
-import React from 'react'
-import { NavSearch } from '../components/navBack/NavBack'
-import { AllWrap } from '../style/commonStyle'
-import { AddBtn } from '../components/iconButton/IconButton'
-import TabMenu from '../components/tabMenu/TabMenu'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { AxiosFeedPost, selectFeedPosts, getFeedStatus } from '../reducers/getFeedPostSlice'
-import { useEffect } from 'react'
+import { AllWrap } from '../style/commonStyle'
+
+import { NavSearch } from '../components/navBack/NavBack'
+import { AddBtn } from '../components/iconButton/IconButton'
+import TabMenu from '../components/tabMenu/TabMenu'
 import DefaultSnsFeed from '../template/snsFeed/DefaultSnsFeed'
 import SnsFeed from '../template/snsFeed/SnsFeed'
 export default function FeedPage() {
@@ -17,7 +17,7 @@ export default function FeedPage() {
   const status = useSelector(getFeedStatus);
 
   useEffect(() => {
-    if(status ==='idle'){
+    if (status === 'idle') {
       dispatch(AxiosFeedPost(URL + "/post/feed"))
     }
   }, [status])

@@ -1,7 +1,7 @@
 import React from 'react'
+import { AllWrap, PaddingMain, Title } from '../../style/commonStyle'
 import { EmailInput, PasswordConfirmInput, PasswordInput } from '../../components/input/Input'
 import { NextBtn } from '../../components/button/Button'
-import { AllWrap, PaddingMain, Title } from '../../style/commonStyle'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 import { LoginFormStyle } from '../login/loginStyle.js';
 
@@ -10,7 +10,7 @@ function SignUp({
   nextClick,
   userEmail,
   setEmail,
-  userPassword, 
+  userPassword,
   setPassword,
   userConfirmPassword,
   setConfirmPassword,

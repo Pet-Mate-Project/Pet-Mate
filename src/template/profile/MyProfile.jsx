@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux/es/exports'
+import { selectUserData, AxiosUserData } from '../../reducers/getUserInfoSlice'
+
 import { ProfileImg } from '../../components/profile/profileStyle'
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap } from './ProfileStyle'
 import { Button } from '../../components/button/buttonStyle'
-import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux/es/exports'
-import { selectUserData } from '../../reducers/getUserInfoSlice'
-import { AxiosUserData } from '../../reducers/getUserInfoSlice'
 
 function MyProfile() {
   const URL = "https://mandarin.api.weniv.co.kr";
