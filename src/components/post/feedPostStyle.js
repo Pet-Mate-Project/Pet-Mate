@@ -25,6 +25,14 @@ border: 1px solid ${palette.lightGray};
 border-radius: 10px;
 box-sizing: border-box;
 object-fit: cover;
+
+@media screen and (min-width: 600px) {
+  height: 370px;
+}
+
+@media screen and (min-width: 450px) and (max-width : 600px) {
+  height: 300px;
+}
 `
 
 export const IconWrap = styled.div`
