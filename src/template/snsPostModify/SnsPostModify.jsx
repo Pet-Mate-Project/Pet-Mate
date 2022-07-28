@@ -1,7 +1,7 @@
 import React, { useState, useRef, useLayoutEffect, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom"
 import { AxiosPost } from '../../reducers/getPostSlice';
-import { SelectId } from '../../reducers/deletePostSlice';
 import { AxiosDetail, selectDetailPosts } from '../../reducers/getPostDetailSlice'
 import axios from 'axios'
 
@@ -13,7 +13,9 @@ import { ImgUpload } from '../../pages/SignUpMain'
 
 export default function ModifySnsPost() {
   const dispatch = useDispatch();
-  const selectId = useSelector(SelectId);
+  const UserIdPath = useLocation();
+  const selectId = UserIdPath.pathname.slice(15,);
+
   const URL = "https://mandarin.api.weniv.co.kr";
   //선택한게시글
   const detailPostData = useSelector(selectDetailPosts).post;
