@@ -68,9 +68,9 @@ export default function ModifySnsPost() {
     setPostImg(postImg.filter((_, index) => index !== id));
   };
 
-
-
-
+  // 나중에 지울게요^_^
+  console.log(showImg);  //짬뽕됨
+  console.log(postImg); //추가된애 이미지객체
 
 
   //업로드버튼 클릭시 실행 함수
@@ -139,7 +139,7 @@ export default function ModifySnsPost() {
           {
             showImg?.map((image, id) => (
               <div key={id} >
-                <Img key={id} src={image.slice(0, 4) !== "blob" === true ? URL + "/" + image : image} />
+                <Img key={id} src={image} />
                 <DeleteBtn onClick={() => handleDeleteImg(id)} />
               </div>
             ))

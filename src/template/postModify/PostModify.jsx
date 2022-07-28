@@ -43,9 +43,13 @@ export default function ModifyPost() {
       "itemName": Title?.length === 0 ? preTitle : Title,
       "price": 9999999,
       "link": petInfo?.length === 0 ? prepetInfo : petInfo,
-      "itemImage": ""
+      "itemImage": showImg?.length === 0 ? preImg : showImg
     },
   }
+
+  console.log("길이",showImg?.length);
+  console.log(showImg?.length === 0 ? preImg : showImg);
+
 
   useEffect(() => {
     setTitle("")
@@ -88,13 +92,15 @@ export default function ModifyPost() {
     }
     reader.readAsDataURL(e.target.files[0])
   }
-
-
+  console.log("이전이미지",preImg);
+  console.log("쇼이미지",showImg);
   // 게시글 서버에 보내기
   async function PostSave() {
     try {
-      const imgData = await ImgUpload(userImg);
-      postData.product.itemImage = imgData;
+      if(showImg!==""){ 
+        const imgData = await ImgUpload(userImg);
+        postData.product.itemImage = imgData;
+      }
       const ReqPath = `/product/${selectId}`;
       const token = JSON.parse(localStorage.getItem("token"))
       const accountname = JSON.parse(localStorage.getItem("accountname"))
@@ -119,7 +125,7 @@ export default function ModifyPost() {
         <PostSaveNav onClick={PostSave} disabled={btn} link={"/profilepage"} />
       </header>
       <PaddingMain>
-        <ImgUploadBox onChange={onChange} src={showImg} fileref={fileInput} defaultImg={URL + "/" + preImg} />
+        <ImgUploadBox onChange={onChange} src={showImg} fileref={fileInput} defaultImg={preImg} />
         <FormStyle>
           <TitleInput Title={Title} setTitle={setTitle} defaultValue={preTitle} />
           <PetInfoInput petInfo={petInfo} setPetInfo={setPetInfo} defaultValue={prepetInfo} />
