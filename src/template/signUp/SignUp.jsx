@@ -1,7 +1,7 @@
 import React from 'react'
-import { EmailInput, PasswordInput } from '../../components/input/Input'
+import { EmailInput, PasswordConfirmInput, PasswordInput } from '../../components/input/Input'
 import { NextBtn } from '../../components/button/Button'
-import { AllWrap, FormStyle, PaddingMain, Title } from '../../style/commonStyle'
+import { AllWrap, PaddingMain, Title } from '../../style/commonStyle'
 import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 import { LoginFormStyle } from '../login/loginStyle.js';
 
@@ -10,13 +10,16 @@ function SignUp({
   nextClick,
   userEmail,
   setEmail,
-  userPassword,
+  userPassword, 
   setPassword,
+  userConfirmPassword,
+  setConfirmPassword,
   message,
   emailCheck,
   register,
   errors
 }) {
+
   return (
     <AllWrap>
       <PaddingMain>
@@ -36,6 +39,13 @@ function SignUp({
             register={register}
           ></PasswordInput>
           {errors.password && <SignUpErrorMessage message={errors.password.message} />}
+          <PasswordConfirmInput
+            userPassword={userPassword}
+            userConfirmPassword={userConfirmPassword}
+            setConfirmPassword={setConfirmPassword}
+            register={register}
+          ></PasswordConfirmInput>
+          {errors.userConfirmPassword && <SignUpErrorMessage message={errors.userConfirmPassword.message} />}
         </LoginFormStyle>
         <NextBtn
           nextClick={nextClick}
