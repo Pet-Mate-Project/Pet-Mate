@@ -1,4 +1,4 @@
-import { configureStore  } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import getPetInfoReducer from './reducers/getPetInfoSlice'
 import getPostReducer from "./reducers/getPostSlice";
 import deletePostReducer from './reducers/deletePostSlice'
@@ -7,6 +7,7 @@ import getdetailReducer from './reducers/getPostDetailSlice'
 import getAllPetInfoReducer from './reducers/getAllpetInfoSlice'
 import getCommentReducer from "./reducers/getCommentSlice";
 import getFeedPostReducer from "./reducers/getFeedPostSlice";
+import getUserDataReducer from "./reducers/getUserInfoSlice";
 import verifyTokenReducer from './reducers/verifyTokenSlice'
 //추후고려
 // const userToken = localStorage.getItem("userInfo")
@@ -27,7 +28,8 @@ export const store = configureStore({
     DetailInfo: getdetailReducer,
     getAllPetInfo: getAllPetInfoReducer,
     getCommentList: getCommentReducer,
-    getFeedPost : getFeedPostReducer,
-    verifyToken : verifyTokenReducer,
+    getFeedPost: getFeedPostReducer,
+    verifyToken: verifyTokenReducer,
+    userInfo: getUserDataReducer
   },
 })
