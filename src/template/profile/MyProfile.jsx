@@ -1,39 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { ProfileImg } from '../../components/profile/profileStyle'
-import basicImg from '../../assets/basic-profile.svg'
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap } from './ProfileStyle'
 import { Button } from '../../components/button/buttonStyle'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux/es/exports'
+import { selectUserData } from '../../reducers/getUserInfoSlice'
+import { AxiosUserData } from '../../reducers/getUserInfoSlice'
 
 function MyProfile() {
   const URL = "https://mandarin.api.weniv.co.kr";
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
   const marketImg = "http://146.56.183.55:5050/Ellipse.png";
-  const [userInfoList, setUserInfoList] = useState([])
-  const token = JSON.parse(localStorage.getItem("token"));
   const accountname = JSON.parse(localStorage.getItem("accountname"));
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    getUserInfo()
+    dispatch(AxiosUserData(URL + `/profile/${accountname}`))
   }, [])
 
-  console.log('UserInfoList', userInfoList)
-
-  //사용자 정보 받아오는 함수
-  function getUserInfo() {
-    try {
-      axios.get(URL + `/profile/${accountname}`, {
-        headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-type": "application/json"
-        }
-      }).then((res) => setUserInfoList(res.data.profile))
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
+  const userInfoList = useSelector(selectUserData)
 
   //기본이미지체크
   function imgCheck(img) {

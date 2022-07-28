@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { EmailInput, PasswordInput } from '../../components/input/Input';
 import { LoginBtn } from '../../components/button/Button';
 import { SignUpLink, LoginFormStyle } from './loginStyle';
-import { PaddingMain, FormStyle, Title, AllWrap } from '../../style/commonStyle';
+import { PaddingMain, Title, AllWrap } from '../../style/commonStyle';
 import { LoginErrorMessege, SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";

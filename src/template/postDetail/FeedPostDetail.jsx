@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import axios from 'axios'
 import { AllWrap, ScrollMain } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
@@ -12,12 +12,13 @@ import { AxiosCommentList, getCommentList, getCommentStatus, commentAction } fro
 import { useLocation } from "react-router-dom"
 import Modal from '../../components/postModal/PostModal';
 import { selectCommentAuthor } from '../../reducers/getCommentSlice'
+import { selectUserData } from '../../reducers/getUserInfoSlice'
+import { AxiosUserData } from '../../reducers/getUserInfoSlice'
 
 
 export default function FeedPostDetail() {
   const UserIdPath = useLocation();
   const PostId = UserIdPath.pathname.slice(15,);
-  const [userInfoList, setUserInfoList] = useState([]);
   const URL = "https://mandarin.api.weniv.co.kr";
   const token = JSON.parse(localStorage.getItem("token"));
   const accountname = JSON.parse(localStorage.getItem("accountname"));
@@ -27,10 +28,10 @@ export default function FeedPostDetail() {
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   const commnetAuthor = useSelector(selectCommentAuthor);
-
+  const userInfoList = useSelector(selectUserData) //유저정보상태
 
   useLayoutEffect(() => {
-    getUserInfo();
+    dispatch(AxiosUserData(URL + `/profile/${accountname}`))
     dispatch(AxiosDetail(URL + `/post/${PostId}`))
     dispatch(AxiosCommentList(URL + `/post/${PostId}/comments?limit=50`))
   }, [])
@@ -41,20 +42,6 @@ export default function FeedPostDetail() {
       dispatch(AxiosCommentList(URL + `/post/${PostId}/comments?limit=50`))
     }
   }, [commentStatus])
-
-  function getUserInfo() {
-    try {
-      axios.get(URL + `/profile/${accountname}`, {
-        headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-type": "application/json"
-        }
-      }).then((res) => setUserInfoList(res.data.profile))
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
 
   const handleonClick = (postId, postAuthor) => {
     dispatch(commentAction.selectCommentId(postId))
@@ -90,11 +77,11 @@ export default function FeedPostDetail() {
             <FeedPost post={postDetail} />
           </DetailWrapper>
         }
-          
+
 
         <ul>
           {
-            commentStatus==="success"&&  commentList?.map((comment) => {
+            commentStatus === "success" && commentList?.map((comment) => {
               return (
                 <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} img={comment.author.image} onClick={() => handleonClick(comment.id, comment.author.accountname)} setModal={setModal} modal={modal} />
               )
