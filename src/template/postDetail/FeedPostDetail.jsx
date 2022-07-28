@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import axios from 'axios'
 import { AllWrap, ScrollMain } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
@@ -90,11 +90,11 @@ export default function FeedPostDetail() {
             <FeedPost post={postDetail} />
           </DetailWrapper>
         }
-          
+
 
         <ul>
           {
-            commentStatus==="success"&&  commentList?.map((comment) => {
+            commentStatus === "success" && commentList?.map((comment) => {
               return (
                 <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} img={comment.author.image} onClick={() => handleonClick(comment.id, comment.author.accountname)} setModal={setModal} modal={modal} />
               )

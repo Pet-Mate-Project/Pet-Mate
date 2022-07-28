@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContentTxt, DateTxt, PetImg, PetInfoTxt, PostStyle, TextWrap, TitleTxt, TxtBox, WrapPost } from './homePostStyle'
+import { ContentTxt, DateTxt, PetImg, PostStyle, TextWrap, TitleTxt, WrapPost } from './homePostStyle'
 import { UserChat } from '../../components/user/User'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -27,9 +27,9 @@ export default function HomePost({ followpost }) {
                   post.itemImage &&
                     (post.itemImage?.search(URL) !== -1 || post.itemImage?.search('base64') !== -1 || post.itemImage?.search('.svg') !== -1)
                     ?
-                    <PetImg src={post.itemImage} alt="펫이미지"/>
+                    <PetImg src={post.itemImage} alt="펫이미지" />
                     :
-                    <PetImg src={`${URL}/${post.itemImage}`} alt="펫이미지"/>
+                    <PetImg src={`${URL}/${post.itemImage}`} alt="펫이미지" />
                 }
                 <TextWrap>
                   <TitleTxt>{post.itemName}</TitleTxt>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { ProfileImg } from '../../components/profile/profileStyle'
-import basicImg from '../../assets/basic-profile.svg'
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap } from './ProfileStyle'
 import { Button } from '../../components/button/buttonStyle'
 import { Link } from 'react-router-dom'
@@ -20,10 +19,7 @@ function MyProfile() {
     dispatch(AxiosUserData(URL + `/profile/${accountname}`))
   }, [])
 
-  console.log('🐿️account', accountname)
   const userInfoList = useSelector(selectUserData)
-  console.log('🐿️UserInfoList', userInfoList)
-
 
   //기본이미지체크
   function imgCheck(img) {
