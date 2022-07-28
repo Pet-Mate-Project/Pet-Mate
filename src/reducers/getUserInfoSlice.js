@@ -31,16 +31,16 @@ export const userInfoSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(AxiosUserData.pending, (state) => {
-        console.log("로드중");
+        console.log("🐿️로드중");
         state.status = 'loading';
       })
       .addCase(AxiosUserData.fulfilled, (state, action) => {
-        console.log("성공", action);
+        console.log("🐿️성공", action);
         state.status = 'success';
         state.userData = action.payload;
       })
       .addCase(AxiosUserData.rejected, (state) => {
-        console.log("실패");
+        console.log("🐿️실패");
         state.status = 'fail';
       });
   },

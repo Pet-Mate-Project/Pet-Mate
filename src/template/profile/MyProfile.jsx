@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { ProfileImg } from '../../components/profile/profileStyle'
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap } from './ProfileStyle'
 import { Button } from '../../components/button/buttonStyle'
@@ -11,7 +11,6 @@ function MyProfile() {
   const URL = "https://mandarin.api.weniv.co.kr";
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
   const marketImg = "http://146.56.183.55:5050/Ellipse.png";
-  const token = JSON.parse(localStorage.getItem("token"));
   const accountname = JSON.parse(localStorage.getItem("accountname"));
   const dispatch = useDispatch()
 
