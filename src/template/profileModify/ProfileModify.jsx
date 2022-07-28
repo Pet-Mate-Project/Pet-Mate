@@ -18,7 +18,6 @@ function ProfileModify() {
   const [userImg, setImg] = useState("");
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-  const token = JSON.parse(localStorage.getItem("token"));
   const accountname = JSON.parse(localStorage.getItem("accountname"));
   const url = "https://mandarin.api.weniv.co.kr";
   const dispatch = useDispatch();
@@ -26,7 +25,6 @@ function ProfileModify() {
   const URL = "https://mandarin.api.weniv.co.kr";
 
   useEffect(() => {
-
     dispatch(AxiosUserData(URL + `/profile/${accountname}`))
     setImg(userInfoList.image)
     setName(userInfoList.username);
@@ -60,7 +58,7 @@ function ProfileModify() {
       const imgUploadData = await ImgUpload(userImg)
       const token = JSON.parse(localStorage.getItem("token"));
       console.log('img res', imgUploadData)
-      userData.user.image = imgUploadData
+      userData.user.image = url + '/' + imgUploadData
       const res = await axios.put(url + '/user', userData, {
         headers: {
           "Authorization": `Bearer ${token}`,
