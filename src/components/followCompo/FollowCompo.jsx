@@ -26,7 +26,7 @@ export function NotFoundCompo() {
     <FollowCompoWrapper>
       <img src={logo404} />
       <DefaultTxt>
-        페이지를 찾을 수 없습니다. :(
+        페이지를 찾을 수 없습니다. :&#40;
       </DefaultTxt>
       <MiddleBtn textBtn={'홈으로 이동'} onClickFt={()=>navigate('homepage')}/>
     </FollowCompoWrapper>
