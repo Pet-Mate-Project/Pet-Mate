@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { Wrapper, FileUploader, ProfileImg, FileInput } from './profileStyle'
 import { useDispatch, useSelector } from 'react-redux/es/exports'
 import { AxiosUserData, selectUserData } from '../../reducers/getUserInfoSlice'
+import { imgCheck } from '../user/User'
 
 export function Profile({ setImg }) {
   const fileInput = useRef(null)
