@@ -36,11 +36,10 @@ export function ProfileSet({ userName, setName, userId, setId, userIntro, setInt
 }
 
 
-export function ProfileModifySet({ userName, setName, userIntro, setIntro, IdCheck, userImg, setImg, register, errors, userInfoList, userId, setId }) {
+export function ProfileModifySet({ userName, setName, userIntro, setIntro, IdCheck, userImg, setImg, register, errors, userId, setId }) {
   return (
     <>
       <ProfileModifyShow
-        userInfoList={userInfoList}
         userImg={userImg}
         setImg={setImg} />
       <FormStyle>

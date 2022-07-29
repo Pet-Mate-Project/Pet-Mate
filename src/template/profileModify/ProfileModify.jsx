@@ -33,6 +33,11 @@ function ProfileModify() {
     setId(userInfoList.accountname);
   }, [])
 
+  const fixImg = useSelector(selectUserData).image
+  console.log('✔️fix', fixImg)
+
+  console.log('😄프로필수정', userImg)
+
   //유효성 검사를 위한 react-hook-form 변수 선언
   const {
     register,
@@ -40,14 +45,15 @@ function ProfileModify() {
   } = useForm({ mode: "onChange" });
 
   //이미지업로드
-  ImgUpload(userImg)
+  // ImgUpload(userImg)
+  // console.log('함수실행후', userImg)
 
   let userData = {
     "user": {
       "username": userName,
       "accountname": userId,
       "intro": userIntro,
-      "image": ""
+      "image": ''
     }
   }
 
@@ -55,11 +61,11 @@ function ProfileModify() {
   //프로필수정
   async function profileSave() {
     try {
-      console.log(userImg);
+      console.log('이게뭐야🔥', userImg);
       const imgUploadData = await ImgUpload(userImg)
       const token = JSON.parse(localStorage.getItem("token"));
-      console.log('img res', imgUploadData)
-      userData.user.image = imgUploadData
+      console.log('img res🔥', imgUploadData)
+      userData.user.image = imgUploadData.search('undefined') === -1 ? imgUploadData : fixImg
       const res = await axios.put(url + '/user', userData, {
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -72,7 +78,6 @@ function ProfileModify() {
     catch (error) {
       console.log(error);
     }
-
   }
 
   return (
@@ -85,7 +90,6 @@ function ProfileModify() {
         </header>
         <ProfileModifyMain>
           <ProfileModifySet
-            userInfoList={userInfoList}
             userName={userName} setName={setName} userId={userId} setId={setId} userIntro={userIntro} setIntro={setIntro} message={message} userImg={userImg} setImg={setImg} register={register} errors={errors} />
         </ProfileModifyMain>
       </AllWrap>
