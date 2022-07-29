@@ -14,16 +14,10 @@ export function NavBack(props) {
   const navigate = useNavigate();
   const linkName = useLocation().pathname.slice(0,);
 
-  const Path = linkName.slice(1,14)
   const goBack = () => {
-    if(Path==='snspostdetail'){
-      navigate('/feedpage');
-    }
-    else{
-      navigate(-1);
-    }
+    navigate(-1);
   }
-  
+
   let list = [];
   let alertTxt = [];
 
