@@ -1,13 +1,13 @@
-import React from 'react'
-import { SnsUploadNav } from '../../components/navBack/NavBack'
+import React, { useState, useRef, useEffect } from 'react'
+import { useDispatch } from "react-redux";
+import { AxiosPost } from '../../reducers/getPostSlice'
+import axios from 'axios'
+
 import { AllWrap } from '../../style/commonStyle'
 import { FileInput, FileUploader, TextInput, SingleImg, Img, TextLable, DeleteBtn, ImgWrapper } from './addSnsPostStyle'
 import { PaddingMain } from '../../style/commonStyle'
-import { useState, useRef, useEffect } from 'react'
+import { SnsUploadNav } from '../../components/navBack/NavBack'
 import { ImgUpload } from '../../pages/SignUpMain'
-import axios from 'axios'
-import { useDispatch } from "react-redux";
-import { AxiosPost } from '../../reducers/getPostSlice'
 
 export default function AddSnsPost() {
   const dispatch = useDispatch();

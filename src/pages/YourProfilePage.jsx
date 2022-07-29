@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
-import { NavBack } from '../components/navBack/NavBack'
-import { AllWrap, ScrollMain } from '../style/commonStyle'
-import YourProfile from '../template/profile/YourProfile'
-import TabMenu from '../components/tabMenu/TabMenu'
-import { PetPost } from '../template/profilePost/PetPost'
+import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllPosts, AxiosPetInfo, getPostStatus } from '../reducers/getPetInfoSlice'
+import { selectAllSnsPosts, AxiosPost } from '../reducers/getPostSlice';
+
+import { AllWrap, ScrollMain } from '../style/commonStyle'
+import { NavBack } from '../components/navBack/NavBack'
+import TabMenu from '../components/tabMenu/TabMenu'
+import YourProfile from '../template/profile/YourProfile'
+import { PetPost } from '../template/profilePost/PetPost'
 import MyProfileSnsPost from '../template/profilePost/MyProfileSnsPost'
-import { selectAllSnsPosts } from '../reducers/getPostSlice';
-import { useLocation } from 'react-router-dom';
-import { AxiosPost } from '../reducers/getPostSlice'
 
 function YourProfilePage() {
   const location = useLocation();

@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { NavWrapper, Img, NavBtn, NavTxt } from './navBackStyle'
+import { SaveBtn, PostSaveBtn, UploadBtn } from '../button/Button';
+import { SearchInput } from '../input/Input'
+import Modal from '../postModal/PostModal';
 import arrow from '../../assets/icon-arrow-left.svg'
 import vertical from '../../assets/icon-more-vertical.svg'
 import searchbar from '../../assets/icon-search.svg'
-import { SearchInput } from '../input/Input'
-import { SaveBtn, PostSaveBtn, UploadBtn } from '../button/Button';
-import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom";
-import Modal from '../postModal/PostModal';
 
 // props가 있는 경우 chat-nav, 없는경우 top-basic-nav  
 // 사용예 (텍스트가 있는경우): <NavBack text={"코랑이"} /> 
 export function NavBack(props) {
   const navigate = useNavigate();
+  const linkName = useLocation().pathname.slice(0,);
+
   const goBack = () => {
     navigate(-1);
   }
@@ -20,16 +21,14 @@ export function NavBack(props) {
   let list = [];
   let alertTxt = [];
 
-  if (props.text === undefined) {
-    list = { '설정 및 개인정보': '/profilemodify', '로그아웃': '' };
-    //취솜말고 나머지애들
-    alertTxt = ['로그아웃하시겠어요?','로그아웃'];
-  }
-  else {
+  if (linkName === '/chatroom') {
     list = { '채팅방 나가기': '/chatpage', '신고하기': '' };
+  } else {
+    list = { '설정 및 개인정보': '/profilemodify', '로그아웃': '' };
+    alertTxt = ['로그아웃하시겠어요?', '로그아웃'];
   }
-  const [modal, setModal] = useState(false)
 
+  const [modal, setModal] = useState(false)
   const toggleModal = () => {
     setModal(modal => !modal)
     console.log(modal);
@@ -101,7 +100,7 @@ export function ProfileSaveNav({ profileSave }) {
   )
 }
 
-export function PostSaveNav({ onClick, disabled,link }) {
+export function PostSaveNav({ onClick, disabled, link }) {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -115,7 +114,6 @@ export function PostSaveNav({ onClick, disabled,link }) {
     </NavWrapper>
   )
 }
-
 
 export function SnsUploadNav({ disabled, onClick }) {
   const navigate = useNavigate();

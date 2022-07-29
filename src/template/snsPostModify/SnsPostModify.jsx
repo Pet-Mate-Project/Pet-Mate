@@ -1,20 +1,21 @@
-import React from 'react'
-import { SnsUploadNav } from '../../components/navBack/NavBack'
-import { AllWrap, PaddingMain } from '../../style/commonStyle'
-import { FileInput, FileUploader, TextInput, ImgBox, Img, TextLable, DeleteBtn, ImgWrapper } from '../snsPost/addSnsPostStyle'
-
-import { useState, useRef, useLayoutEffect, useEffect } from 'react'
-import { ImgUpload } from '../../pages/SignUpMain'
-import axios from 'axios'
+import React, { useState, useRef, useLayoutEffect, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom"
 import { AxiosPost } from '../../reducers/getPostSlice';
-import { SelectId } from '../../reducers/deletePostSlice';
 import { AxiosDetail, selectDetailPosts } from '../../reducers/getPostDetailSlice'
+import axios from 'axios'
+
+import { AllWrap, PaddingMain } from '../../style/commonStyle'
+import { SnsUploadNav } from '../../components/navBack/NavBack'
+import { FileInput, FileUploader, TextInput, Img, TextLable, DeleteBtn, ImgWrapper } from '../snsPost/addSnsPostStyle'
+import { ImgUpload } from '../../pages/SignUpMain'
 
 
 export default function ModifySnsPost() {
   const dispatch = useDispatch();
-  const selectId = useSelector(SelectId);
+  const UserIdPath = useLocation();
+  const selectId = UserIdPath.pathname.slice(15,);
+
   const URL = "https://mandarin.api.weniv.co.kr";
   //선택한게시글
   const detailPostData = useSelector(selectDetailPosts).post;
@@ -69,9 +70,9 @@ export default function ModifySnsPost() {
     setPostImg(postImg.filter((_, index) => index !== id));
   };
 
-
-
-
+  // 나중에 지울게요^_^
+  console.log(showImg);  //짬뽕됨
+  console.log(postImg); //추가된애 이미지객체
 
 
   //업로드버튼 클릭시 실행 함수
@@ -140,7 +141,7 @@ export default function ModifySnsPost() {
           {
             showImg?.map((image, id) => (
               <div key={id} >
-                <Img key={id} src={image.slice(0, 4) !== "blob" === true ? URL + "/" + image : image} />
+                <Img key={id} src={image} />
                 <DeleteBtn onClick={() => handleDeleteImg(id)} />
               </div>
             ))

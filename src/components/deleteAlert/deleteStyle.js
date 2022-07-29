@@ -1,13 +1,13 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { palette } from '../../style/globalColor';
 
 const fadeIn = keyframes`
-from {
-  opacity: 0;
-}
-to{
-  opacity: 1;
-}
+  from {
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 `
 
 export const AlertOver = styled.div`
@@ -41,21 +41,20 @@ export const DeleteTxt = styled.strong`
   margin : 23px 0;
 `
 
-export const BtnTxt = styled.strong`
-  display: block;
-  text-align:center;
-`
-export const RedTxt = styled(BtnTxt)`
-  color: ${palette.textRedPoint};
-`
-
 export const DeleteAlertBtn = styled.button`
-  box-sizing:border-box;
+  text-align:center;
+  box-sizing: border-box;
+  width: 50%;
   cursor: pointer;
-  width: 125px;
   height: 46px;
   border-top: 1px solid ${palette.lightGray};
   &:last-child{
     border-left: 1px solid ${palette.lightGray};
   }
+  ${({ right }) => {
+    if (right) {
+      return css`
+        color: red;
+    `}
+  }}
 `

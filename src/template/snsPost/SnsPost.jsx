@@ -1,9 +1,9 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { selectFeedPosts } from '../../reducers/getFeedPostSlice'
 import { selectAllSnsPosts } from '../../reducers/getPostSlice'
 import FeedPost from '../../components/post/FeedPost'
-import { useLocation } from 'react-router-dom'
 
 export function SnsPost() {
   const location = useLocation();

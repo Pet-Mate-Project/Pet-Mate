@@ -1,8 +1,8 @@
 import React from 'react'
-import { AlbumImage, AlbumWrap } from './SnsAlbumStyle'
-import { selectAllSnsPosts } from '../../reducers/getPostSlice.js'
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectAllSnsPosts } from '../../reducers/getPostSlice.js'
+import { AlbumImage, AlbumWrap } from './SnsAlbumStyle'
 
 export function SnsAlbum() {
   const snsPosts = useSelector(selectAllSnsPosts).post;

@@ -17,6 +17,25 @@ word-break: keep-all;
 white-space: pre-wrap;
 margin:14px 0;  
 `
+export const PostImgWrap = styled.div`
+display: flex;
+flex-direction: row;
+gap: 10px;
+overflow: auto;
+padding-bottom: 10px;
+
+::-webkit-scrollbar {
+    height: 7px;
+}
+::-webkit-scrollbar-track {
+    background-color: none;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #EdEded;
+    border-radius: 10px;
+}
+`
+
 
 export const PostImg = styled.img`
 width: 100%;
@@ -25,6 +44,15 @@ border: 1px solid ${palette.lightGray};
 border-radius: 10px;
 box-sizing: border-box;
 object-fit: cover;
+flex-shrink: 0;
+
+@media screen and (min-width: 600px) {
+  height: 370px;
+}
+
+@media screen and (min-width: 450px) and (max-width : 600px) {
+  height: 300px;
+}
 `
 
 export const IconWrap = styled.div`

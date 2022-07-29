@@ -28,7 +28,7 @@ export function NotFoundCompo() {
       <DefaultTxt>
         페이지를 찾을 수 없습니다. :(
       </DefaultTxt>
-      <MiddleBtn textBtn={'이전 페이지'} onClickFt={()=>navigate(-1)}/>
+      <MiddleBtn textBtn={'홈으로 이동'} onClickFt={()=>navigate('homepage')}/>
     </FollowCompoWrapper>
   )
 }

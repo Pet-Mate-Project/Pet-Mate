@@ -2,7 +2,7 @@ import React, { useState, useEffect, memo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { deleteActions } from '../../reducers/deletePostSlice'
 import { UserMore } from '../user/User.jsx'
-import { WrapSection, PostText, PostImg, DateText, IconWrap, IconImg } from './feedPostStyle'
+import { WrapSection, PostText, PostImg, DateText, IconWrap, IconImg, PostImgWrap } from './feedPostStyle'
 import emptyheartIcon from '../../assets/icon-heart.svg'
 import heartIcon from '../../assets/icon-heart-fill.svg'
 import messageIcon from '../../assets/icon-message.svg'
@@ -54,7 +54,7 @@ function FeedPost({ post }) {
   }
 
   //모달
-  const list = { '삭제': '', '수정': '/snspostmodify' };
+  const list = { '삭제': '', '수정': `/snspostmodify/${post.id}` };
   const alertTxt = ['삭제하시겠어요?', '삭제'];
   const [modal, setModal] = useState(false);
 
@@ -88,7 +88,7 @@ function FeedPost({ post }) {
     }
   }
   let keyVal = 1;
-  
+
   return (
     <>
       {
@@ -99,20 +99,21 @@ function FeedPost({ post }) {
       <WrapSection onClick={() => { handleOnClick(post.id) }}>
         <Link to={'/snspostdetail/' + post.id} >
           <PostText>{post.content}</PostText>
-          {
-            images?.map((image) => {
-              if (image) {
-                return (
-                  (image?.search(URL) !== -1 || image?.search('base64') !== -1 || image?.search('.svg') !== -1)
-                    ?
-
-                    <PostImg key ={keyVal++} src={image} alt="게시글 이미지"  />
-                    :
-                    <PostImg  key ={keyVal++} src={`${URL}/${image}`} alt="게시글 이미지" />
-                )
-              }
-            })
-          }
+          <PostImgWrap>
+            {
+              images?.map((image) => {
+                if (image) {
+                  return (
+                    (image?.search(URL) !== -1 || image?.search('base64') !== -1 || image?.search('.svg') !== -1)
+                      ?
+                      <PostImg key={keyVal++} src={image} alt="게시글 이미지" />
+                      :
+                      <PostImg key={keyVal++} src={`${URL}/${image}`} alt="게시글 이미지" />
+                  )
+                }
+              })
+            }
+          </PostImgWrap>
         </Link>
         <IconWrap>
           <button onClick={handlesetLike} style={{ cursor: 'pointer' }}>

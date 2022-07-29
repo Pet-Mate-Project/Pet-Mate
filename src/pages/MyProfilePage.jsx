@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
-import { NavBack } from '../components/navBack/NavBack'
-import { AllWrap, ScrollMain } from '../style/commonStyle'
-import MyProfile from '../template/profile/MyProfile'
-import TabMenu from '../components/tabMenu/TabMenu'
-import { PetPost } from '../template/profilePost/PetPost'
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAllPosts, AxiosPetInfo, getPostStatus } from '../reducers/getPetInfoSlice'
-import MyProfileSnsPost from '../template/profilePost/MyProfileSnsPost'
 import { selectAllSnsPosts } from '../reducers/getPostSlice';
 import { AxiosPost } from '../reducers/getPostSlice'
 
+import { AllWrap, ScrollMain } from '../style/commonStyle'
+import { NavBack } from '../components/navBack/NavBack'
+import TabMenu from '../components/tabMenu/TabMenu'
+import MyProfile from '../template/profile/MyProfile'
+import { PetPost } from '../template/profilePost/PetPost'
+import { selectAllPosts, AxiosPetInfo, getPostStatus } from '../reducers/getPetInfoSlice'
+import MyProfileSnsPost from '../template/profilePost/MyProfileSnsPost'
+
 function MyProfilePage() {
   const dispatch = useDispatch();
-  const postsStatus = useSelector(getPostStatus);
   //펫등록 게시글 수 
   const postLength = useSelector(selectAllPosts).product?.length;
   //sns게시글 수
@@ -24,7 +24,7 @@ function MyProfilePage() {
 
   useEffect(() => {
     dispatch(AxiosPetInfo(URL + ReqPath))
-    dispatch(AxiosPost(URL+"/post/"+accountname+"/userpost")) 
+    dispatch(AxiosPost(URL + "/post/" + accountname + "/userpost/?limit=30"))
   }, [dispatch])
 
   return (

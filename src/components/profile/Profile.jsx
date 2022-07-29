@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 import { Wrapper, FileUploader, ProfileImg, FileInput } from './profileStyle'
+import { useDispatch, useSelector } from 'react-redux/es/exports'
+import { AxiosUserData, selectUserData } from '../../reducers/getUserInfoSlice'
 
 export function Profile({ setImg }) {
   const fileInput = useRef(null)
@@ -64,16 +66,25 @@ export function Profile({ setImg }) {
   )
 }
 
-export function ProfileModifyShow({ setImg, userInfoList }) {
+export function ProfileModifyShow({ setImg }) {
   const fileInput = useRef(null)
   const url = "https://mandarin.api.weniv.co.kr";
+  const userInfoList = useSelector(selectUserData)
+  const userInfoURl = useSelector(selectUserData).image
   //화면에 보여주기용 이미지 상태관리
-  const userInfoUrl = `${url}/${userInfoList.image}`;
   const [showImg, setShowImg] = useState('');
+  const dispatch = useDispatch()
+  const accountname = JSON.parse(localStorage.getItem("accountname"));
 
   useEffect(() => {
-    setShowImg(userInfoUrl);
-  }, [userInfoUrl]);
+    dispatch(AxiosUserData(url + `/profile/${accountname}`))
+  }, []);
+
+  useEffect(() => {
+    setShowImg(userInfoURl);
+  }, [userInfoURl])
+
+  console.log('🐿️🔥', userInfoList)
 
   const onChange = (e) => {
     if (e.target.files[0]) {
@@ -92,7 +103,7 @@ export function ProfileModifyShow({ setImg, userInfoList }) {
 
       if (fileSize > maxSize) {
         alert("첨부파일 사이즈는 10MB 이내로 등록 가능합니다.");
-        setShowImg(userInfoUrl)
+        setShowImg(userInfoList.image)
         return false;
       }
     }

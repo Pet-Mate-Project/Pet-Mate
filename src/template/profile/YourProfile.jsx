@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ProfileImg } from '../../components/profile/profileStyle'
-import basicImg from '../../assets/basic-profile.svg'
+import axios from 'axios'
+
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap, OnlyIconButton } from './ProfileStyle'
+import { ProfileImg } from '../../components/profile/profileStyle'
 import { ProfileFollowToggleBtn } from '../../components/button/Button'
 import chatIcon from '../../assets/icon-message.svg'
 import shareIcon from '../../assets/icon-share.svg'
-import axios from 'axios'
 
 function YourProfile({ userId }) {
   const URL = "https://mandarin.api.weniv.co.kr";

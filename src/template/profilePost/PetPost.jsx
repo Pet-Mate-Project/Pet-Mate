@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { AnimalBox } from '../../components/animalBox/AnimalBox'
-import { selectAllPosts } from '../../reducers/getPetInfoSlice'
-import { useSelector, useDispatch } from 'react-redux'
-import { MiniPostTitle, MiniPostWrap, SectionAllWrap } from './petPostStyle'
-import Modal from '../../components/postModal/PostModal';
-import { deleteActions } from '../../reducers/deletePostSlice'
 import { useLocation } from 'react-router-dom'
-import { SelectId } from '../../reducers/deletePostSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectAllPosts } from '../../reducers/getPetInfoSlice'
+import { deleteActions } from '../../reducers/deletePostSlice'
 import { Link } from 'react-router-dom'
+import { SelectId } from '../../reducers/deletePostSlice'
+
+import { MiniPostTitle, MiniPostWrap, SectionAllWrap } from './petPostStyle'
+import { AnimalBox } from '../../components/animalBox/AnimalBox'
+import Modal from '../../components/postModal/PostModal';
 
 export function PetPost() {
   const URL = "https://mandarin.api.weniv.co.kr";
@@ -15,11 +16,10 @@ export function PetPost() {
   const name = location.state?.userId;
   const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts).product;
-  const list = { '삭제': '', '수정': '/postmodify', '상세페이지로 가기': '' };
   const alertTxt = ['삭제하시겠어요?', '삭제'];
   const [modal, setModal] = useState(false);
   const postId = useSelector(SelectId);
-
+  const list = { '삭제': '', '수정': `/postmodify/${postId}`, '상세페이지로 가기': `/walkingpostdetail/${postId}` };
   const closeModal = () => {
     setModal(false)
   }
@@ -43,7 +43,7 @@ export function PetPost() {
     <SectionAllWrap>
       <MiniPostTitle>산책가까?</MiniPostTitle>
       {
-        (modal === true) && (name === undefined) && (list['상세페이지로 가기'] = `/walkingpostdetail/${postId}`) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
+        (modal === true) && (name === undefined) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
       }
       <MiniPostWrap>
         {
