@@ -13,7 +13,6 @@ import MyProfileSnsPost from '../template/profilePost/MyProfileSnsPost'
 
 function MyProfilePage() {
   const dispatch = useDispatch();
-  const postsStatus = useSelector(getPostStatus);
   //펫등록 게시글 수 
   const postLength = useSelector(selectAllPosts).product?.length;
   //sns게시글 수
@@ -25,7 +24,7 @@ function MyProfilePage() {
 
   useEffect(() => {
     dispatch(AxiosPetInfo(URL + ReqPath))
-    dispatch(AxiosPost(URL + "/post/" + accountname + "/userpost"))
+    dispatch(AxiosPost(URL + "/post/" + accountname + "/userpost/?limit=30"))
   }, [dispatch])
 
   return (

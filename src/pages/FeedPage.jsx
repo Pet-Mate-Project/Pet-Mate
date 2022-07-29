@@ -18,7 +18,7 @@ export default function FeedPage() {
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(AxiosFeedPost(URL + "/post/feed"))
+      dispatch(AxiosFeedPost(URL + "/post/feed/?limit=30"))
     }
   }, [status])
 
