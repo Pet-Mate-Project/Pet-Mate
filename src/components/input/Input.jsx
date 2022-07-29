@@ -45,9 +45,14 @@ export function IdInput({ setId, IdCheck, register, placeholder, disabled, userI
             value: /^[_A-Za-z0-9.]*$/,
             message: "*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다."
           },
+          maxLength: {
+            value: 20,
+            message: "*계정 ID는 20자 이내여야 합니다."
+          },
           onChange: (e) => setId(e.target.value),
-          onBlur: IdCheck
+          onBlur: IdCheck,
         })}
+        maxLength='20'
       />
     </LabelStyle>
   )
