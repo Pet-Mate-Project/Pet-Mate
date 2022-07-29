@@ -6,21 +6,35 @@ import { TextWrapper, UserId, UserName, Wrapper, MoreIcon, ChatPreview, ChatDate
 import moreIcon from '../../assets/icon-more-vertical-small.svg'
 import { Link } from 'react-router-dom'
 
-export function User({ userName, userId, img, keyword }) {
-  const URL = 'https://mandarin.api.weniv.co.kr'
+//이미지 체크 함수
+export function imgCheck(img) {
   const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
-  const marketImg = "http://146.56.183.55:5050/Ellipse.png";
+  const URL = 'https://mandarin.api.weniv.co.kr'
+  if (img?.search('Ellipse') !== -1 || img?.search('undefined') !== -1) {
+    console.log('이클립스있는 기본이미지일경우 if')
+    return defaultImg;
+  } else if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1) {
+    console.log('이미지에 주소 잘들어가있는경우 if')
+    return img;
+  }
+  else if (img?.search('/') !== -1) {
+    console.log('이미지에 경로가있는 경우 if')
+    return defaultImg
+  }
+  else if (img?.search(URL) === -1) {
+    console.log('이미지에 url없는경우 if')
+    console.log('이미지', img)
+    return `${URL}/${img}`
+  }
+  else {
+    return defaultImg;
+  }
+
+}
+
+export function User({ userName, userId, img, keyword }) {
 
   //기본이미지체크
-  function imgCheck(img) {
-    if (img === marketImg) {
-      return defaultImg;
-    } else if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1 || img?.search('.svg') !== -1 )  {
-      return img;
-    } else if (img?.search(URL) === -1) {
-      return `${URL}/${img}`
-    }
-  }
 
   return (
     <Wrapper>
@@ -129,14 +143,14 @@ export function UserMore({ userName, userId, img, onClick }) {
           userId === MyId
             ?
             <Link to='/profilepage'>
-              <User userName={userName} userId={userId} img={img} alt="내 프로필"/>
+              <User userName={userName} userId={userId} img={img} alt="내 프로필" />
             </Link>
             :
             <Link to='/userprofile' state={{ userId: userId }}>
-              <User userName={userName} userId={userId} img={img} alt="유저 프로필"/>
+              <User userName={userName} userId={userId} img={img} alt="유저 프로필" />
             </Link>
         }
-        <MoreIcon src={moreIcon} onClick={onClick} alt="게시글 설정"/>
+        <MoreIcon src={moreIcon} onClick={onClick} alt="게시글 설정" />
       </Wrapper>
     </>
   )

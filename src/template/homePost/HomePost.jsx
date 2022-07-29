@@ -18,6 +18,7 @@ export default function HomePost({ followpost }) {
   return (
     <ul >
       {followpost && followpost.map((post) => {
+        console.log('🐶', post.author.image)
         return (
           <PostStyle key={post._id} >
             <UserChat userName={post.author.username} userId={post.author.accountname} img={post.author.image} />
