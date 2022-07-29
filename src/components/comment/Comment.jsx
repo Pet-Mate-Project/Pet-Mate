@@ -1,14 +1,18 @@
 import React ,{useState} from 'react'
+import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { AxiosCommentList } from '../../reducers/getCommentSlice'
+import {  AxiosDetail } from '../../reducers/getPostDetailSlice'
+import axios from 'axios';
+
 import { ProfileIconS } from '../profileIcon/ProfileIcon'
 import { CommentBtnStyled, CommentTextStyle, Wrapper } from './commentStyle'
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import { SelectId } from '../../reducers/deletePostSlice'
-import { AxiosCommentList } from '../../reducers/getCommentSlice'
+
 
 export default function Comment({ img }) {
   const dispatch = useDispatch();
-  const currentPostId = useSelector(SelectId);
+  const location = useLocation();
+  const currentPostId = location.pathname.slice(15,); 
   const [content,Setcontent] = useState("");
   const token = JSON.parse(localStorage.getItem("token"));
   const URL = "https://mandarin.api.weniv.co.kr";
@@ -27,8 +31,8 @@ export default function Comment({ img }) {
 
   async  function postComment() {
     try {
-      await axios.post(URL + ReqPath,data,config)
-        .then(res => console.log(res))
+      const res = await axios.post(URL + ReqPath,data,config)
+      return res.data.comment.content;
     }
     catch (error) {
       console.log(error);
@@ -37,14 +41,24 @@ export default function Comment({ img }) {
 
   const handleSubmit = () => {
     postComment() 
-    dispatch(AxiosCommentList(URL+`/post/${currentPostId}/comments`)) 
+      .then(
+        (res) => dispatch(AxiosCommentList(URL+`/post/${currentPostId}/comments?limit=50`))
+      )
+      .then(
+        (res) => dispatch(AxiosDetail(URL + `/post/${currentPostId}`))
+      ) 
     Setcontent("");
   }
 
   const handleKeyPress = (e) => {
     if(e.key==='Enter'){
       postComment() 
-      dispatch(AxiosCommentList(URL+`/post/${currentPostId}/comments`)) 
+        .then(
+          (res) => dispatch(AxiosCommentList(URL+`/post/${currentPostId}/comments?limit=50`))
+        )
+        .then(
+          (res) => dispatch(AxiosDetail(URL + `/post/${currentPostId}`))
+        ) 
       Setcontent("");
     }
   }
