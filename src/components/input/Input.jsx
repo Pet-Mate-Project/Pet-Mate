@@ -136,6 +136,7 @@ export function PasswordConfirmInput({ userPassword, userConfirmPassword, setCon
   );
 }
 
+export const  MemoPasswordConfirmInput = memo(PasswordConfirmInput)
 // post에 필요한 input
 export function TitleInput({ Title, setTitle,defaultValue }) {
   console.log(defaultValue);
