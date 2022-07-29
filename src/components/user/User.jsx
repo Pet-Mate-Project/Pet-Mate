@@ -38,7 +38,7 @@ export function User({ userName, userId, img, keyword }) {
 
   return (
     <Wrapper>
-      <ProfileIconS img={imgCheck(img)} />
+      <ProfileIconS img={img} />
       <TextWrapper>
         {/* 입력한 결괏값이랑 일치하는 문자 색상 변경 */}
         {

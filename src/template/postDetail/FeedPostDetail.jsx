@@ -87,7 +87,7 @@ export default function FeedPostDetail() {
           }
         </ul>
       </ScrollMain>
-      <Comment img={userInfoList.image?.search('http') === -1 ? URL + `/${userInfoList.image}` : userInfoList.image} ></Comment>
+      <Comment img={userInfoList.image} ></Comment>
     </AllWrap>
   )
 }
