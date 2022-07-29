@@ -58,7 +58,7 @@ export default function HomePage() {
   return (
     <AllWrap>
       <header>
-        <NavSearch text={"산책 피드"} url={"/search"} />
+        <NavSearch text={"산책 가까?"} url={"/search"} />
       </header>
       {
         postsStatus === 'loading' ?

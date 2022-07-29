@@ -18,7 +18,7 @@ export function TabMenu() {
           hovericon={homeIconFill}>홈</NavLinkStyle>
         <NavLinkStyle to="/feedpage"
           icon={snsIcon}
-          hovericon={snsIconFill}>피드</NavLinkStyle>
+          hovericon={snsIconFill}>SNS</NavLinkStyle>
         <NavLinkStyle to="/chatpage"
           icon={messageIcon}
           hovericon={messageIconFill}>채팅</NavLinkStyle>
