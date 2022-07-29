@@ -19,7 +19,6 @@ export default function FeedPostDetail() {
   const UserIdPath = useLocation();
   const PostId = UserIdPath.pathname.slice(15,);
   const URL = "https://mandarin.api.weniv.co.kr";
-  const token = JSON.parse(localStorage.getItem("token"));
   const accountname = JSON.parse(localStorage.getItem("accountname"));
   const postDetail = useSelector(selectDetailPosts).post;
   const commentList = useSelector(getCommentList).comments; //댓글리스트
@@ -88,7 +87,7 @@ export default function FeedPostDetail() {
           }
         </ul>
       </ScrollMain>
-      <Comment img={URL + `/${userInfoList.image}`}></Comment>
+      <Comment img={userInfoList.image?.search('http') === -1 ? URL + `/${userInfoList.image}` : userInfoList.image} ></Comment>
     </AllWrap>
   )
 }
