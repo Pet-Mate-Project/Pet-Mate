@@ -1,76 +1,69 @@
-import React from "react";
-// import styled from "styled-components";
+import React,{ memo } from "react";
 import { LabelStyle, InputStyle, SearchStyle, TextAreaStyle } from './inputStyle';
 
 //회원가입, login input 
 export function NameInput({ userName, setName, register, placeholder }) {
   return (
-    <>
-      <LabelStyle>사용자 이름
-        <InputStyle
-          placeholder={placeholder}
-          type="text"
-          name="userName"
-          value={userName}
-          {...register("userName", {
-            required: "*이름은 필수 입력 사항입니다.",
-            minLength: {
-              value: 2,
-              message: "*이름은 2-10자 이내여야 합니다."
-            },
-            maxLength: {
-              value: 10,
-              message: "*이름은 2-10자 이내여야 합니다."
-            },
-            onChange: (e) => setName(e.target.value),
-          })}
-          maxLength='10'
-          autoFocus
-        />
-      </LabelStyle>
-    </>
+    <LabelStyle>사용자 이름
+      <InputStyle
+        placeholder={placeholder}
+        type="text"
+        name="userName"
+        value={userName}
+        {...register("userName", {
+          required: "*이름은 필수 입력 사항입니다.",
+          minLength: {
+            value: 2,
+            message: "*이름은 2-10자 이내여야 합니다."
+          },
+          maxLength: {
+            value: 10,
+            message: "*이름은 2-10자 이내여야 합니다."
+          },
+          onChange: (e) => setName(e.target.value),
+        })}
+        maxLength='10'
+        autoFocus
+      />
+    </LabelStyle>
   )
 }
 
 export function IdInput({ setId, IdCheck, register, placeholder, disabled, userId }) {
   return (
-    <>
-      <LabelStyle>계정 ID
-        <InputStyle
-          disabled={disabled}
-          placeholder={placeholder}
-          type="text"
-          name="userId"
-          value={userId}
-          {...register("userId", {
-            required: "*계정 ID는 필수 입력 사항입니다.",
-            pattern: {
-              value: /^[_A-Za-z0-9.]*$/,
-              message: "*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다."
-            },
-            onChange: (e) => setId(e.target.value),
-            onBlur: IdCheck
-          })}
-        />
-      </LabelStyle>
-    </>
+    <LabelStyle>계정 ID
+      <InputStyle
+        disabled={disabled}
+        placeholder={placeholder}
+        type="text"
+        name="userId"
+        value={userId}
+        {...register("userId", {
+          required: "*계정 ID는 필수 입력 사항입니다.",
+          pattern: {
+            value: /^[_A-Za-z0-9.]*$/,
+            message: "*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다."
+          },
+          onChange: (e) => setId(e.target.value),
+          onBlur: IdCheck
+        })}
+      />
+    </LabelStyle>
   )
 }
 
 export function IntroInput({ userIntro, setIntro, placeholder }) {
   return (
-    <>
-      <LabelStyle>소개
-        <InputStyle
-          placeholder={placeholder}
-          type="text"
-          name="userIntro"
-          value={userIntro}
-          onChange={(e) => setIntro(e.target.value)}
-          autoComplete="off"
-        />
-      </LabelStyle>
-    </>
+    <LabelStyle>소개
+      <InputStyle
+        placeholder={placeholder}
+        type="text"
+        name="userIntro"
+        value={userIntro}
+        onChange={(e) => setIntro(e.target.value)}
+        autoComplete="off"
+      />
+    </LabelStyle>
   )
 }
 
@@ -88,7 +81,7 @@ export function EmailInput({ userEmail, setEmail, emailCheck, register }) {
             value: /\S+@\S+\.\S+/,
             message: "*올바르지 않은 이메일 형식입니다."
           },
-          onChange: (e) => setEmail(e.target.value),
+          onChange: (e) => setEmail(e.target.value) ,
           onBlur: emailCheck
         })}
         autoFocus
@@ -96,6 +89,7 @@ export function EmailInput({ userEmail, setEmail, emailCheck, register }) {
     </LabelStyle>
   );
 }
+export const MemoEmailInput = memo(EmailInput)
 
 export function PasswordInput({ userPassword, setPassword, register }) {
   return (
@@ -117,6 +111,7 @@ export function PasswordInput({ userPassword, setPassword, register }) {
     </LabelStyle>
   );
 }
+export const MemoPasswordInput = memo(PasswordInput);
 
 export function PasswordConfirmInput({ userPassword, userConfirmPassword, setConfirmPassword, register }) {
   return (

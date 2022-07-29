@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styled from 'styled-components'
 import { palette } from './globalColor'
 
@@ -44,6 +45,7 @@ export const Title = styled.h1`
     font-size: 30px;
   }
 `
+export const MemoTitle = memo(Title);
 
 export const FormStyle = styled.div`
   display: flex;
