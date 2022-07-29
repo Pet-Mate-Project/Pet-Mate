@@ -31,14 +31,6 @@ export function PetPost() {
     setModal(modal => !modal);
   }
 
-  function imgCheck(img) {
-    if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1) {
-      return img;
-    } else if (img?.search(URL) === -1) {
-      return `${URL}/${img}`;
-    }
-  }
-
   return (
     <SectionAllWrap>
       <MiniPostTitle>산책가까?</MiniPostTitle>
@@ -52,12 +44,12 @@ export function PetPost() {
               name === undefined
                 ?
                 <AnimalBox key={post.id}
-                  src={imgCheck(post.itemImage)}
+                  src={post.itemImage}
                   title={post.itemName} time={post.updatedAt.substring(0, 10)} onClick={() => handleId(post.id)} />
                 :
                 <Link to={'/walkingpostdetail/' + post.id} key={post.id}>
                   <AnimalBox
-                    src={imgCheck(post.itemImage)}
+                    src={post.itemImage}
                     title={post.itemName} time={post.updatedAt.substring(0, 10)} onClick={() => handleId(post.id)} />
                 </Link>
             )

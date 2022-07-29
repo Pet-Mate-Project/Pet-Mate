@@ -1,7 +1,7 @@
 import React from 'react'
-import { PaddingMain, Title, AllWrap } from '../../style/commonStyle'
+import { PaddingMain, MemoTitle, AllWrap } from '../../style/commonStyle'
 import { StartBtn } from '../../components/button/Button'
-import { Message } from './profilePageStyle'
+import { MemoMessage } from './profilePageStyle'
 import { ProfileSet } from '../profile/ProfileSet'
 
 function ProfilePage({
@@ -22,9 +22,9 @@ function ProfilePage({
   return (
     <AllWrap>
       <PaddingMain>
-        <Title>프로필 설정</Title>
-        <Message>나중에 언제든지 변경할 수 있습니다.
-        </Message>
+        <MemoTitle>프로필 설정</MemoTitle>
+        <MemoMessage>나중에 언제든지 변경할 수 있습니다.
+        </MemoMessage>
         <ProfileSet
           message={message}
           userName={userName}

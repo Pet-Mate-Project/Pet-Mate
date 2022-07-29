@@ -6,6 +6,7 @@ import { selectUserData, AxiosUserData } from '../../reducers/getUserInfoSlice'
 import { ProfileImg } from '../../components/profile/profileStyle'
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap } from './ProfileStyle'
 import { Button } from '../../components/button/buttonStyle'
+import { imgCheck } from '../../components/user/User'
 
 function MyProfile() {
   const URL = "https://mandarin.api.weniv.co.kr";
@@ -19,17 +20,6 @@ function MyProfile() {
   }, [])
 
   const userInfoList = useSelector(selectUserData)
-
-  //기본이미지체크
-  function imgCheck(img) {
-    if (img === marketImg) {
-      return defaultImg;
-    } else if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1) {
-      return img;
-    } else if (img?.search(URL) === -1) {
-      return `${URL}/${img}`
-    }
-  }
 
   return (
     <>
