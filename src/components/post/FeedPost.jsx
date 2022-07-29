@@ -24,9 +24,14 @@ function FeedPost({ post }) {
   const linkName = useLocation().pathname.slice(1, 14);
 
   useEffect(() => {
+    dispatch(AxiosFeedPost(URL + "/post/feed/?limit=30"))
+  }, [isLike])
+
+  useEffect(() => {
     setheartCount(post.heartCount)
     setIsLike(post.hearted)
   }, [post])
+
 
   //모달
   const list = { '삭제': '', '수정': `/snspostmodify/${post.id}` };
