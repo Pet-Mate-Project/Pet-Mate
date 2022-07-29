@@ -28,6 +28,7 @@ export function NameInput({ userName, setName, register, placeholder }) {
     </LabelStyle>
   )
 }
+export const MemoNameInput = memo(NameInput)
 
 export function IdInput({ setId, IdCheck, register, placeholder, disabled, userId }) {
   return (
@@ -66,6 +67,7 @@ export function IntroInput({ userIntro, setIntro, placeholder }) {
     </LabelStyle>
   )
 }
+export const MemoIntroInput = memo(IntroInput);
 
 export function EmailInput({ userEmail, setEmail, emailCheck, register }) {
   return (
