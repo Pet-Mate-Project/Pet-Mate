@@ -9,6 +9,7 @@ import getCommentReducer from "./reducers/getCommentSlice";
 import getFeedPostReducer from "./reducers/getFeedPostSlice";
 import getUserDataReducer from "./reducers/getUserInfoSlice";
 import verifyTokenReducer from './reducers/verifyTokenSlice'
+import likeInfoReducer from './reducers/verifyTokenSlice'
 //추후고려
 // const userToken = localStorage.getItem("userInfo")
 //   ? JSON.parse(localStorage.getItem("userinfo")).user.token
@@ -30,6 +31,7 @@ export const store = configureStore({
     getCommentList: getCommentReducer,
     getFeedPost: getFeedPostReducer,
     verifyToken: verifyTokenReducer,
-    userInfo: getUserDataReducer
+    userInfo: getUserDataReducer,
+    likeInfo: likeInfoReducer
   },
 })
