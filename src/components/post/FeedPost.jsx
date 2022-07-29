@@ -7,9 +7,11 @@ import emptyheartIcon from '../../assets/icon-heart.svg'
 import heartIcon from '../../assets/icon-heart-fill.svg'
 import messageIcon from '../../assets/icon-message.svg'
 import Modal from '../../components/postModal/PostModal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AxiosDetail } from '../../reducers/getPostDetailSlice';
+import { AxiosGetLike, AxiosDeleteLike, getLikeState, deleteLikeState } from '../../reducers/likeSlice'
 import axios from 'axios'
+import { AxiosFeedPost } from '../../reducers/getFeedPostSlice'
 
 function FeedPost({ post }) {
   const dispatch = useDispatch();
@@ -22,37 +24,9 @@ function FeedPost({ post }) {
   const linkName = useLocation().pathname.slice(1, 14);
 
   useEffect(() => {
-    setIsLike(post.hearted)
     setheartCount(post.heartCount)
+    setIsLike(post.hearted)
   }, [post])
-
-  //좋아요
-  async function postLike() {
-    await axios.post(`${URL}/post/${post.id}/heart`, [], {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-type": "application/json"
-      }
-    }).then(res => {
-      console.log('💗res', res.data.post)
-      setIsLike(res.data.post.hearted)
-      setheartCount(res.data.post.heartCount)
-    })
-  }
-
-  //좋아요 취소
-  async function postLikeCancle() {
-    await axios.delete(`${URL}/post/${post.id}/unheart`, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-type": "application/json"
-      }
-    }).then(res => {
-      console.log('💔res', res.data.post)
-      setIsLike(res.data.post.hearted)
-      setheartCount(res.data.post.heartCount)
-    })
-  }
 
   //모달
   const list = { '삭제': '', '수정': `/snspostmodify/${post.id}` };
@@ -73,9 +47,20 @@ function FeedPost({ post }) {
   // 좋아요 버튼 함수
   const handlesetLike = () => {
     if (!isLike) {
-      postLike();
+      dispatch(AxiosGetLike(`${URL}/post/${post.id}/heart`))
+        .then((res) => {
+          console.log('💜', res.payload.heartCount)
+          setheartCount(res.payload.heartCount)
+        }
+        )
+      setIsLike(true)
     } else {
-      postLikeCancle();
+      dispatch(AxiosDeleteLike(`${URL}/post/${post.id}/unheart`))
+        .then((res) => {
+          console.log('💔', res.payload.heartCount)
+          setheartCount(res.payload.heartCount)
+        })
+      setIsLike(false)
     }
   }
 
