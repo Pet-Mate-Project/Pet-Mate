@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 import { palette } from '../../style/globalColor';
 import { FormStyle } from '../../style/commonStyle';
@@ -13,6 +14,7 @@ export const SignUpLink = styled.button`
     font-size: 15px;
   }
 `
+export const MemoSignUpLink = memo(SignUpLink)
 
 export const LoginFormStyle = styled(FormStyle)`
   gap: 15px;
