@@ -16,11 +16,10 @@ export function PetPost() {
   const name = location.state?.userId;
   const dispatch = useDispatch();
   const posts = useSelector(selectAllPosts).product;
-  const list = { '삭제': '', '수정': '/postmodify', '상세페이지로 가기': '' };
   const alertTxt = ['삭제하시겠어요?', '삭제'];
   const [modal, setModal] = useState(false);
   const postId = useSelector(SelectId);
-
+  const list = { '삭제': '', '수정': `/postmodify/${postId}`, '상세페이지로 가기': `/walkingpostdetail/${postId}` };
   const closeModal = () => {
     setModal(false)
   }
@@ -44,7 +43,7 @@ export function PetPost() {
     <SectionAllWrap>
       <MiniPostTitle>산책가까?</MiniPostTitle>
       {
-        (modal === true) && (name === undefined) && (list['상세페이지로 가기'] = `/walkingpostdetail/${postId}`) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
+        (modal === true) && (name === undefined) && <Modal list={list} alertTxt={alertTxt} closeModal={closeModal} setModal={setModal} />
       }
       <MiniPostWrap>
         {
