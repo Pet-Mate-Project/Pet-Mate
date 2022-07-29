@@ -50,7 +50,7 @@ function MyProfile() {
       </Wrapper>
       <ColumnWapper>
         <NameText>{userInfoList.username}</NameText>
-        <IdText>@ {userInfoList.accountname}</IdText>
+        <IdText>&#64; {userInfoList.accountname}</IdText>
         <IntroText>{userInfoList.intro}</IntroText>
       </ColumnWapper>
       <ButtonWrap>

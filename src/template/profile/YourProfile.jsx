@@ -101,7 +101,7 @@ function YourProfile({ userId }) {
       </Wrapper>
       <ColumnWapper>
         <NameText>{yourInfoList.username}</NameText>
-        <IdText>@ {yourInfoList.accountname}</IdText>
+        <IdText>&#64; {yourInfoList.accountname}</IdText>
         <IntroText>{yourInfoList.intro}</IntroText>
       </ColumnWapper>
       <ButtonWrap>
