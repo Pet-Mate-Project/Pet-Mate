@@ -25,8 +25,9 @@ export const PetImg = styled.img`
   box-sizing: border-box;
   object-fit: cover;
 
-  @media screen and (min-width:500px) {
+  @media screen and (min-width:470px) {
     margin-top: 20px;
+    height: 350px;
   }
 `
 
@@ -35,7 +36,7 @@ export const TitleTxt = styled.h2`
   color: ${palette.textPoint};
 
   @media screen and (min-width:500px) {
-    font-size: 24px;
+    font-size: 22px;
   }
 `
 
@@ -46,7 +47,7 @@ export const ContentTxt = styled.p`
 
   @media screen and (min-width:500px) {
     font-size: 18px;
-    line-height: 25px;
+    line-height: 22px;
   }
 `
 

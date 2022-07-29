@@ -14,7 +14,7 @@ export const PostStyle = styled.li`
     border-bottom: none;
   }
 
-  @media screen and (min-width: 470px) {
+  @media screen and (min-width: 500px) {
   height: 235px;
 }
 
@@ -28,7 +28,7 @@ export const PetImg = styled.img`
   object-fit: cover;
   flex-shrink: 0;
 
-  @media screen and (min-width: 470px) {
+  @media screen and (min-width: 500px) {
     width: 150px;
   height: 150px;
 }
@@ -42,9 +42,9 @@ export const TitleTxt = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-@media screen and (min-width: 470px) {
-  font-size: 22px;
-  line-height: 27px;
+@media screen and (min-width: 500px) {
+  font-size: 20px;
+  line-height: 23px;
   margin-top: 10px ;
 }
 
@@ -59,9 +59,9 @@ export const ContentTxt = styled.p`
   font-size: 14px;
   line-height: 17px;
   word-break: keep-all;
-  @media screen and (min-width: 470px) {
-  font-size: 18px;
-  line-height: 27px;
+  @media screen and (min-width: 500px) {
+  font-size: 16px;
+  line-height: 20px;
 }
 `
 
