@@ -1,21 +1,29 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { palette } from '../../style/globalColor';
-
-// export const WrapperArticle = styled.article`
-// width: 100%;
-// `
 
 export const WrapSection = styled.div`
 padding-left: 45px;
 `
 
 export const PostText = styled.p`
-font-size: 14px;
-line-height: 17px;
-text-align: left;
-word-break: keep-all;
-white-space: pre-wrap;
-margin:14px 0;  
+  font-size: 14px;
+  line-height: 17px;
+  text-align: left;
+  margin: 14px 0;  
+  word-wrap: break-word;
+  word-break: keep-all;
+  white-space: pre-wrap;
+
+  ${({ linkName }) => {
+    if (linkName !== 'snspostdetail') {
+      return css`
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    `}
+  }}
 `
 export const PostImgWrap = styled.div`
 display: flex;
@@ -35,7 +43,6 @@ padding-bottom: 10px;
     border-radius: 10px;
 }
 `
-
 
 export const PostImg = styled.img`
 width: 100%;

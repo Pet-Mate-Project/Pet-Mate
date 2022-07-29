@@ -19,6 +19,7 @@ function FeedPost({ post }) {
   const images = post.image?.split(",");
   const [isLike, setIsLike] = useState("");
   const [heartCount, setheartCount] = useState("");
+  const linkName = useLocation().pathname.slice(1, 14);
 
   useEffect(() => {
     setIsLike(post.hearted)
@@ -98,7 +99,7 @@ function FeedPost({ post }) {
 
       <WrapSection onClick={() => { handleOnClick(post.id) }}>
         <Link to={'/snspostdetail/' + post.id} >
-          <PostText>{post.content}</PostText>
+          <PostText linkName={linkName}>{post.content}</PostText>
           <PostImgWrap>
             {
               images?.map((image) => {
