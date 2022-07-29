@@ -40,8 +40,14 @@ export const IntroText = styled.p`
 font-size: 14px;
 line-height: 17px;
 color: ${palette.darkGray};
-margin-top: 12px;
-color: ${palette.darkGray};
+margin: 12px 96px 0;
+word-wrap: break-word;
+word-break: keep-all;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
 `
 export const ButtonWrap = styled.div`
 display: flex;

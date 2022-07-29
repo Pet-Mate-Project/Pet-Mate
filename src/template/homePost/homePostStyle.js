@@ -17,7 +17,6 @@ export const PostStyle = styled.li`
   @media screen and (min-width: 500px) {
   height: 235px;
 }
-
 `
 
 export const PetImg = styled.img`
@@ -42,23 +41,26 @@ export const TitleTxt = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  
 @media screen and (min-width: 500px) {
   font-size: 20px;
   line-height: 23px;
   margin-top: 10px ;
 }
-
 `
 
 export const ContentTxt = styled.p`
+  font-size: 14px;
+  line-height: 17px;
+  word-wrap: break-word;
+  word-break: keep-all;
+  white-space: pre-wrap;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  font-size: 14px;
-  line-height: 17px;
-  word-break: keep-all;
+  
   @media screen and (min-width: 500px) {
   font-size: 16px;
   line-height: 20px;

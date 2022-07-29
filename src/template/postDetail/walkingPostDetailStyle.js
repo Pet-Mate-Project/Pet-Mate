@@ -34,6 +34,9 @@ export const PetImg = styled.img`
 export const TitleTxt = styled.h2`
   font-size: 20px;
   color: ${palette.textPoint};
+  word-wrap: break-word;
+  word-break: keep-all;
+  white-space: pre-wrap;
 
   @media screen and (min-width:500px) {
     font-size: 22px;
@@ -43,7 +46,9 @@ export const TitleTxt = styled.h2`
 export const ContentTxt = styled.p`
   font-size: 15px;
   line-height: 19px;
+  word-wrap: break-word;
   word-break: keep-all;
+  white-space: pre-wrap;
 
   @media screen and (min-width:500px) {
     font-size: 18px;

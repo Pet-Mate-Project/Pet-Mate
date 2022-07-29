@@ -29,6 +29,9 @@ export const UserName = styled.p`
   line-height: 17px;
   color: ${palette.textDark};
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const UserId = styled.p`
@@ -36,6 +39,9 @@ export const UserId = styled.p`
   line-height: 14px;
   color: ${palette.textDark};
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const MoreIcon = styled.img`
