@@ -108,7 +108,6 @@
 <div align='center'>
 
 ## 🐱 기능 구현
-추가 예정(~7/31)
 |Splash|회원가입|로그인|
 |:---:|:---:|:---:|
 |<img src="https://user-images.githubusercontent.com/54096506/181924923-f69bb8c4-7223-42cb-ac15-d699e6e0089f.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925184-5b8edd37-c817-46df-bd89-87466019079a.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925215-8567a921-825a-4ee0-bd4a-aff121529d33.gif" width=250 /> 
