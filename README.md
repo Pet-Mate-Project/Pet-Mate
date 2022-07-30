@@ -130,7 +130,7 @@
 
 |매칭 게시글 수정|SNS 게시글 수정| 매칭 & SNS 게시글 삭제|
 |:---:|:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/54096506/181926317-46e79c35-7995-4480-b992-a9c203f355de.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925612-63d61455-3adc-4d4b-b2e2-fffdaa33673d.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925841-59d34376-5fcc-4b93-b546-575170435dd4.gif" width=250 />
+|<img src="https://user-images.githubusercontent.com/54096506/181933950-b12e53d6-ea16-4120-983a-e0ae82350fd6.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181926317-46e79c35-7995-4480-b992-a9c203f355de.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925841-59d34376-5fcc-4b93-b546-575170435dd4.gif" width=250 />
 
 <br>
 
@@ -140,9 +140,9 @@
 
 <br>
 
-|검색 기능|채팅 UI|로그아웃|
+|검색 기능|채팅 UI & 404|로그아웃|
 |:---:|:---:|:---:|
-|<img src="https://user-images.githubusercontent.com/54096506/181925970-0331fcbe-015f-4f32-b162-0f3c56e61fa6.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925954-52e04388-5cdf-4459-9aad-d064c597244e.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925942-cb724fb1-fe01-4c6f-b707-8a5afc8096ce.gif" width=250 /> 
+|<img src="https://user-images.githubusercontent.com/54096506/181925970-0331fcbe-015f-4f32-b162-0f3c56e61fa6.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181933993-1c07ac6b-aa35-463b-990a-adead26aeca5.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925942-cb724fb1-fe01-4c6f-b707-8a5afc8096ce.gif" width=250 /> 
 	
 </div>
 
