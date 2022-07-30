@@ -29,7 +29,10 @@ export function ProfileSet({ userName, setName, userId, setId, userIntro, setInt
         <MemoIntroInput
           placeholder={'자신과 반려동물에 대해 소개해 주세요!'}
           userIntro={userIntro}
-          setIntro={setIntro} />
+          setIntro={setIntro}
+          register={register}
+        />
+        {errors.userIntro && <MemoSignUpErrorMessage message={errors.userIntro.message} />}
       </LoginFormStyle>
     </>
   )
