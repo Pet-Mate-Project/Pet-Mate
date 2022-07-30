@@ -12,8 +12,8 @@ export default function ChatRoom() {
     <AllWrap>
       <NavBack text={'코랑이'} />
       <ChatRoomWrapper>
-        <LeftSpeechBubble chat={'아랑이랑 산책하고 싶어서 게시글 시간보고 연락드려요~ 6/28 3시 가능하신가요?'} time={'12:39'} />
-        <LeftSpeechBubble chat={'대답 좀 해주세요.'} time={'12:41'} />
+        <LeftSpeechBubble chat={'"산책가까?"는 소중한 반려동물의 소울메이트를 쉽고 편하게 찾을 수 있는 반려동물 매칭 서비스 입니다. '} time={'12:39'} />
+        <LeftSpeechBubble chat={'사용자를 팔로우하고 커뮤니케이션 해보세요! 🐿️'} time={'12:41'} />
         <RightSpeechBubble chat={'하고있는데요.'} time={'12:50'} />
         <RightSpeechBubble img={petImage} time={'12:51'} />
       </ChatRoomWrapper>
