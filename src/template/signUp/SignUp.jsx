@@ -1,8 +1,8 @@
 import React from 'react'
-import { AllWrap, PaddingMain, Title } from '../../style/commonStyle'
-import { EmailInput, PasswordConfirmInput, PasswordInput } from '../../components/input/Input'
+import { AllWrap, PaddingMain, MemoTitle } from '../../style/commonStyle'
+import { MemoEmailInput, MemoPasswordConfirmInput, MemoPasswordInput } from '../../components/input/Input'
 import { NextBtn } from '../../components/button/Button'
-import { SignUpErrorMessage } from '../../components/errorMessage/errorMessage'
+import { MemoSignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 import { LoginFormStyle } from '../login/loginStyle.js';
 
 function SignUp({
@@ -23,29 +23,29 @@ function SignUp({
   return (
     <AllWrap>
       <PaddingMain>
-        <Title>이메일로 회원가입</Title>
+        <MemoTitle>이메일로 회원가입</MemoTitle>
         <LoginFormStyle>
-          <EmailInput
+          <MemoEmailInput
             userEmail={userEmail}
             setEmail={setEmail}
             emailCheck={emailCheck}
             register={register}
-          ></EmailInput>
-          {errors.email && <SignUpErrorMessage message={errors.email.message} />}
-          {message && <SignUpErrorMessage message={message} />}
-          <PasswordInput
+          ></MemoEmailInput>
+          {errors.email && <MemoSignUpErrorMessage message={errors.email.message} />}
+          {message && <MemoSignUpErrorMessage message={message} />}
+          <MemoPasswordInput
             userPassword={userPassword}
             setPassword={setPassword}
             register={register}
-          ></PasswordInput>
-          {errors.password && <SignUpErrorMessage message={errors.password.message} />}
-          <PasswordConfirmInput
+          ></MemoPasswordInput>
+          {errors.password && <MemoSignUpErrorMessage message={errors.password.message} />}
+          <MemoPasswordConfirmInput
             userPassword={userPassword}
             userConfirmPassword={userConfirmPassword}
             setConfirmPassword={setConfirmPassword}
             register={register}
-          ></PasswordConfirmInput>
-          {errors.userConfirmPassword && <SignUpErrorMessage message={errors.userConfirmPassword.message} />}
+          ></MemoPasswordConfirmInput>
+          {errors.userConfirmPassword && <MemoSignUpErrorMessage message={errors.userConfirmPassword.message} />}
         </LoginFormStyle>
         <NextBtn
           nextClick={nextClick}

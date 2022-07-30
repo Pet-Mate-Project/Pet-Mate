@@ -1,5 +1,6 @@
 import React from 'react'
-import { FollowCompoWrapper, DefaultImg, DefaultTxt } from './followCompoStyle'
+import { Heading } from '../../style/commonStyle'
+import { FollowCompoWrapper , DefaultTxt } from './followCompoStyle'
 import grayLogo from '../../assets/gray-logo.svg'
 import logo404 from '../../assets/404-logo.svg'
 import { MiddleBtn } from '../../components/button/Button'
@@ -24,6 +25,7 @@ export function NotFoundCompo() {
   const navigate = useNavigate();
   return (
     <FollowCompoWrapper>
+      <Heading>페이지를 찾을 수 없습니다.</Heading>
       <img src={logo404} />
       <DefaultTxt>
         페이지를 찾을 수 없습니다. :&#40;

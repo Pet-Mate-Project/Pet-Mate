@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{memo} from 'react'
 import { ErrorMessageStyle, CorrectMessageStyle } from './errorStyle'
 
 export function SignUpErrorMessage({ message }) {
@@ -17,6 +17,7 @@ export function SignUpErrorMessage({ message }) {
     )
   }
 }
+export const MemoSignUpErrorMessage = memo(SignUpErrorMessage)
 
 export function LoginErrorMessege() {
   return (

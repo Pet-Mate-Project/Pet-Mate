@@ -1,18 +1,19 @@
 import React, { useState, useLayoutEffect } from 'react'
-import { AllWrap, ScrollMain } from '../../style/commonStyle'
-import { NavBack } from '../../components/navBack/NavBack'
-import Comment from '../../components/comment/Comment'
-import FeedPost from '../../components/post/FeedPost'
-import { DetailWrapper } from './FeedPostDetailStyle'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectDetailPosts, AxiosDetail } from '../../reducers/getPostDetailSlice'
-import CommentList from '../../components/commentList/CommentList'
-import { AxiosCommentList, getCommentList, getCommentStatus, commentAction } from '../../reducers/getCommentSlice'
 import { useLocation } from "react-router-dom"
-import Modal from '../../components/postModal/PostModal';
+import { useDispatch, useSelector } from 'react-redux'
+import { AxiosCommentList, getCommentList, getCommentStatus, commentAction } from '../../reducers/getCommentSlice'
 import { selectCommentAuthor } from '../../reducers/getCommentSlice'
 import { selectUserData } from '../../reducers/getUserInfoSlice'
 import { AxiosUserData } from '../../reducers/getUserInfoSlice'
+import { selectDetailPosts, AxiosDetail } from '../../reducers/getPostDetailSlice'
+
+import { DetailWrapper } from './FeedPostDetailStyle'
+import Modal from '../../components/postModal/PostModal';
+import FeedPost from '../../components/post/FeedPost'
+import { AllWrap, ScrollMain,Heading } from '../../style/commonStyle'
+import { NavBack } from '../../components/navBack/NavBack'
+import Comment from '../../components/comment/Comment'
+import CommentList from '../../components/commentList/CommentList'
 
 
 export default function FeedPostDetail() {
@@ -31,15 +32,9 @@ export default function FeedPostDetail() {
   useLayoutEffect(() => {
     dispatch(AxiosUserData(URL + `/profile/${accountname}`))
     dispatch(AxiosDetail(URL + `/post/${PostId}`))
-    dispatch(AxiosCommentList(URL + `/post/${PostId}/comments?limit=50`))
+    dispatch(AxiosCommentList(URL + `/post/${PostId}/comments/?limit=50`))
   }, [])
 
-  useLayoutEffect(() => {
-    if (commentStatus === 'loading') {
-      dispatch(AxiosDetail(URL + `/post/${PostId}`))
-      dispatch(AxiosCommentList(URL + `/post/${PostId}/comments?limit=50`))
-    }
-  }, [commentStatus])
 
   const handleonClick = (postId, postAuthor) => {
     dispatch(commentAction.selectCommentId(postId))
@@ -64,6 +59,7 @@ export default function FeedPostDetail() {
   return (
     <AllWrap>
       <header>
+        <Heading> SNS게시글 디테일 페이지</Heading>
         <NavBack />
       </header>
       {
@@ -76,7 +72,6 @@ export default function FeedPostDetail() {
           </DetailWrapper>
         }
 
-
         <ul>
           {
             commentStatus === "success" && commentList?.map((comment) => {
@@ -87,7 +82,7 @@ export default function FeedPostDetail() {
           }
         </ul>
       </ScrollMain>
-      <Comment img={userInfoList.image?.search('http') === -1 ? URL + `/${userInfoList.image}` : userInfoList.image} ></Comment>
+      <Comment img={userInfoList.image} ></Comment>
     </AllWrap>
   )
 }

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { AxiosPetInfo } from '../../reducers/getPetInfoSlice'
 import axios from 'axios';
 
-import { AllWrap, PaddingMain, FormStyle } from '../../style/commonStyle'
+import { AllWrap, PaddingMain, FormStyle, Heading } from '../../style/commonStyle'
 import { PostSaveNav } from '../../components/navBack/NavBack'
 import ImgUploadBox from '../../components/imgUploadBox/ImgUploadBox'
 import { TitleInput, PetInfoInput } from '../../components/input/Input'
@@ -90,6 +90,7 @@ export default function AddPost() {
   return (
     <AllWrap>
       <header>
+        <Heading> 펫 게시글 작성 페이지</Heading>
         <PostSaveNav onClick={PostSave} disabled={btn} link={"/profilepage"} />
       </header>
       <PaddingMain>

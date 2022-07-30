@@ -3,21 +3,13 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectAllSnsPosts } from '../../reducers/getPostSlice.js'
 import { AlbumImage, AlbumWrap } from './SnsAlbumStyle'
+import { imgCheck } from '../../components/user/User.jsx';
 
 export function SnsAlbum() {
   const snsPosts = useSelector(selectAllSnsPosts).post;
   const URL = "https://mandarin.api.weniv.co.kr";
 
   console.log('sns', snsPosts)
-
-  function imgCheck(img) {
-    if (img?.search(URL) !== -1) {
-      return img;
-    }
-    else {
-      return URL + "/" + img
-    }
-  }
 
   return (
     <AlbumWrap>

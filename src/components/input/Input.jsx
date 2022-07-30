@@ -28,6 +28,7 @@ export function NameInput({ userName, setName, register, placeholder }) {
     </LabelStyle>
   )
 }
+export const MemoNameInput = memo(NameInput)
 
 export function IdInput({ setId, IdCheck, register, placeholder, disabled, userId }) {
   return (
@@ -44,15 +45,20 @@ export function IdInput({ setId, IdCheck, register, placeholder, disabled, userI
             value: /^[_A-Za-z0-9.]*$/,
             message: "*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다."
           },
+          maxLength: {
+            value: 20,
+            message: "*계정 ID는 20자 이내여야 합니다."
+          },
           onChange: (e) => setId(e.target.value),
-          onBlur: IdCheck
+          onBlur: IdCheck,
         })}
+        maxLength='20'
       />
     </LabelStyle>
   )
 }
 
-export function IntroInput({ userIntro, setIntro, placeholder }) {
+export function IntroInput({ userIntro, setIntro, placeholder, register }) {
   return (
     <LabelStyle>소개
       <InputStyle
@@ -60,12 +66,20 @@ export function IntroInput({ userIntro, setIntro, placeholder }) {
         type="text"
         name="userIntro"
         value={userIntro}
-        onChange={(e) => setIntro(e.target.value)}
+        {...register("userIntro", {
+          maxLength: {
+            value: 200,
+            message: "*프로필 소개는 200자 이내여야 합니다."
+          },
+          onChange: (e) => setIntro(e.target.value)
+        })}
         autoComplete="off"
+        maxLength='200'
       />
     </LabelStyle>
   )
 }
+export const MemoIntroInput = memo(IntroInput);
 
 export function EmailInput({ userEmail, setEmail, emailCheck, register }) {
   return (
@@ -136,6 +150,7 @@ export function PasswordConfirmInput({ userPassword, userConfirmPassword, setCon
   );
 }
 
+export const  MemoPasswordConfirmInput = memo(PasswordConfirmInput)
 // post에 필요한 input
 export function TitleInput({ Title, setTitle,defaultValue }) {
   console.log(defaultValue);

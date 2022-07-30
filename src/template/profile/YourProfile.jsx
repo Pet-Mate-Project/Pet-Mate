@@ -5,6 +5,7 @@ import axios from 'axios'
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap, OnlyIconButton } from './ProfileStyle'
 import { ProfileImg } from '../../components/profile/profileStyle'
 import { ProfileFollowToggleBtn } from '../../components/button/Button'
+import { imgCheck } from '../../components/user/User'
 import chatIcon from '../../assets/icon-message.svg'
 import shareIcon from '../../assets/icon-share.svg'
 
@@ -71,16 +72,6 @@ function YourProfile({ userId }) {
     })
   }
 
-  //기본이미지체크
-  function imgCheck(img) {
-    if (img === marketImg) {
-      return defaultImg;
-    } else if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1) {
-      return img;
-    } else if (img?.search(URL) === -1) {
-      return `${URL}/${img}`
-    }
-  }
 
   return (
     <>
