@@ -13,7 +13,7 @@ export function imgCheck(img) {
   if (img?.search('Ellipse') !== -1 || img?.search('undefined') !== -1) {
     console.log('이클립스있는 기본이미지일경우 if')
     return defaultImg;
-  } else if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1) {
+  } else if (img?.search(URL) !== -1 || img?.search('base64') !== -1 || img?.search('.svg') !== -1 || img?.search('blob') !== -1) {
     console.log('이미지에 주소 잘들어가있는경우 if')
     return img;
   }
