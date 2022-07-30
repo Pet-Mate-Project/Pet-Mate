@@ -11,6 +11,7 @@ import { FollowMain } from '../follow/followStyle'
 function AccountSearch() {
   const [searchResult, setSearchResult] = useState([])
   const [keyword, setKeyword] = useState('')
+  const accountname = JSON.parse(localStorage.getItem("accountname"));
 
   useEffect(() => {
     if (keyword) {
@@ -50,11 +51,12 @@ function AccountSearch() {
           :
           // 입력된 keyword가 있으면 결괏값 출력
           searchResult.map((user) => {
-            console.log(user.image)
+            let linkName='';
+            accountname === user.accountname ? linkName='/profilepage': linkName='/userprofile';
             return (
               <Link
                 key={user._id}
-                to='/userprofile'
+                to={linkName}
                 state={{ userId: user.accountname }}>
                 <User
                   userName={user.username}
