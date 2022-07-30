@@ -8,8 +8,8 @@ import TabMenu from '../../components/tabMenu/TabMenu'
 import { FollowMain } from './followStyle'
 
 function YourFollower() {
-  const NavBackTitle = useLocation().state.text;
-  const accountname = useLocation().state.userId;
+  const NavBackTitle = useLocation().state?.text;
+  const accountname = useLocation().state?.userId;
   const url = "https://mandarin.api.weniv.co.kr";
   const token = JSON.parse(localStorage.getItem("token"));
   const [followerList, setFollowerList] = useState([]);
