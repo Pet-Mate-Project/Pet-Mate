@@ -6,7 +6,7 @@ export const ChatRoomWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: ${palette.lineColor};
+  background: #EDEDED;
 `
 
 export const ChatInputWrapper = styled.div`
