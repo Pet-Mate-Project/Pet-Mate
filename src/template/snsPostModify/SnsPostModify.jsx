@@ -9,7 +9,7 @@ import { AllWrap, PaddingMain, Heading } from '../../style/commonStyle'
 import { SnsUploadNav } from '../../components/navBack/NavBack'
 import { FileInput, FileUploader, TextInput, Img, TextLable, DeleteBtn, ImgWrapper } from '../snsPost/addSnsPostStyle'
 import { ImgUpload } from '../../pages/SignUpMain'
-
+import { imgCheck } from '../../components/user/User';
 
 export default function ModifySnsPost() {
   const dispatch = useDispatch();
@@ -55,13 +55,13 @@ export default function ModifySnsPost() {
       const currentImgURL = window.URL.createObjectURL(fileArr[i]);
       fileURLs.push(currentImgURL);
       files.push(fileArr[i]);
-    } 
+    }
 
     if (fileURLs.length > 3) {
       alert("사진은 최대 3장까지 업로드 가능합니다.");
-      fileURLs = fileURLs.slice(0, 3);  
+      fileURLs = fileURLs.slice(0, 3);
       const preImglen = getPreImglen(fileURLs);
-      files = files.slice(0, 3-preImglen);  // 추가 이미지 길이  = 3- 기존이미지 길이 
+      files = files.slice(0, 3 - preImglen);  // 추가 이미지 길이  = 3- 기존이미지 길이 
     }
     setPostImg(files); // 추가한
     setShowImg(fileURLs);  // 모든
@@ -71,18 +71,18 @@ export default function ModifySnsPost() {
   const handleDeleteImg = (id) => {
     const preImglen = getPreImglen(showImgs);
     setShowImg(showImgs.filter((_, index) => index !== id));
-    setPostImg(postImg.filter((_, index) => index !== id-preImglen));
+    setPostImg(postImg.filter((_, index) => index !== id - preImglen));
   };
 
   // 나중에 지울게요^_^
-  console.log("🥶모든객체",showImgs);  //짬뽕됨
-  console.log("🥶추가된애",postImg); //추가된애 이미지객체
+  console.log("🥶모든객체", showImgs);  //짬뽕됨
+  console.log("🥶추가된애", postImg); //추가된애 이미지객체
 
   //기존 사진 길이 계산 함수
-  function getPreImglen(showImgs){
+  function getPreImglen(showImgs) {
     let addImgLength = 0;
-    showImgs.map((image) =>{
-      if(image.slice(0,4)==="blob") { //추가된 이미지 개수
+    showImgs.map((image) => {
+      if (image.slice(0, 4) === "blob") { //추가된 이미지 개수
         addImgLength += 1;
       }
     })
@@ -93,8 +93,8 @@ export default function ModifySnsPost() {
   async function handlePostSns() {
     let imgList = [];
 
-    showImgs?.map((showImg)=>{
-      if(showImg.slice(0, 4) !== "blob"){
+    showImgs?.map((showImg) => {
+      if (showImg.slice(0, 4) !== "blob") {
         imgList.push(showImg);
       }
     })
@@ -107,8 +107,8 @@ export default function ModifySnsPost() {
     if (imgList.length === 0) {
       SetuploadBtn(true)
     }
-    else if (imgList.length >3) {
-      imgList.slice(0,3)
+    else if (imgList.length > 3) {
+      imgList.slice(0, 3)
     }
 
     data.post.image = imgList.join(",");
@@ -160,7 +160,7 @@ export default function ModifySnsPost() {
           {
             showImgs?.map((image, id) => (
               <div key={id} >
-                <Img key={id} src={image.slice(0, 4) !== "blob" === true ? URL + "/" + image : image} />
+                <Img key={id} src={imgCheck(image)} />
                 <DeleteBtn onClick={() => handleDeleteImg(id)} />
               </div>
             ))
