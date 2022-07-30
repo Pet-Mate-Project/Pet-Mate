@@ -5,7 +5,7 @@ import { SearchMessageStyle } from '../../components/errorMessage/errorStyle'
 import { NavTxtSearch } from '../../components/navBack/NavBack'
 import TabMenu from '../../components/tabMenu/TabMenu'
 import { User } from '../../components/user/User'
-import { AllWrap } from '../../style/commonStyle'
+import { AllWrap, Heading } from '../../style/commonStyle'
 import { FollowMain } from '../follow/followStyle'
 
 function AccountSearch() {
@@ -35,6 +35,7 @@ function AccountSearch() {
   return (
     <AllWrap>
       <header>
+        <Heading>유저 검색 페이지</Heading>
         <NavTxtSearch
           placeholder={"계정 검색"}
           onChange={(e) => setKeyword(e.target.value)} >
