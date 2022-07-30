@@ -8,7 +8,7 @@ import axios from 'axios';
 import { ProfileSaveNav } from '../../components/navBack/NavBack';
 import { ImgUpload } from '../../pages/SignUpMain';
 import { ProfileModifySet } from '../profile/ProfileSet';
-import { AllWrap } from '../../style/commonStyle';
+import { AllWrap, Heading } from '../../style/commonStyle';
 import { ProfileModifyMain } from './profileModifyStyle'
 
 function ProfileModify() {
@@ -84,6 +84,7 @@ function ProfileModify() {
     <>
       <AllWrap>
         <header>
+          <Heading>내 프로필 수정 페이지</Heading>
           <ProfileSaveNav profileSave={profileSave}
             message={message}
             disabled={isValid} />
