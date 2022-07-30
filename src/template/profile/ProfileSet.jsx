@@ -50,7 +50,7 @@ export function ProfileModifySet({ userName, setName, userIntro, setIntro, IdChe
           userName={userName}
           setName={setName}
           register={register} />
-        {errors.userName && <MemoSignUpErrorMessage message={errors.userName.messabge} />}
+        {errors.userName && <MemoSignUpErrorMessage message={errors.userName.message} />}
         <IdInput
           disabled={true}
           userId={userId}
