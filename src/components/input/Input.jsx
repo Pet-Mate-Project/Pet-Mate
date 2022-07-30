@@ -58,7 +58,7 @@ export function IdInput({ setId, IdCheck, register, placeholder, disabled, userI
   )
 }
 
-export function IntroInput({ userIntro, setIntro, placeholder }) {
+export function IntroInput({ userIntro, setIntro, placeholder, register }) {
   return (
     <LabelStyle>소개
       <InputStyle
@@ -66,8 +66,15 @@ export function IntroInput({ userIntro, setIntro, placeholder }) {
         type="text"
         name="userIntro"
         value={userIntro}
-        onChange={(e) => setIntro(e.target.value)}
+        {...register("userIntro", {
+          maxLength: {
+            value: 200,
+            message: "*프로필 소개는 200자 이내여야 합니다."
+          },
+          onChange: (e) => setIntro(e.target.value)
+        })}
         autoComplete="off"
+        maxLength='200'
       />
     </LabelStyle>
   )
