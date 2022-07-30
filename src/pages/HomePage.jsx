@@ -6,7 +6,7 @@ import { getAllPetPost, AxiosAllPetInfo, getAllPostStatus } from '../reducers/ge
 import { AxiosFollow, selectAllFollowers } from '../reducers/getFollowSlice'
 import { getPostStatus } from '../reducers/getPetInfoSlice'
 
-import { AllWrap } from '../style/commonStyle'
+import { AllWrap,Heading } from '../style/commonStyle'
 import { palette } from '../style/globalColor'
 
 import TabMenu from '../components/tabMenu/TabMenu'
@@ -30,21 +30,12 @@ export default function HomePage() {
   console.log("posts💍", posts)
 
   const ReqPath = `/product/?limit=2000`;
-  // 제한을 없애고싶은데 일단 2000으로 해놨습니다.
 
   //다른탭에서 이동했을경우
   useEffect(() => {
     dispatch(AxiosAllPetInfo(URL + ReqPath))
     dispatch(AxiosFollow(`${URL}/profile/${myAccountname}/following`))
   }, [])
-
-  //초기화면 렌더링
-  // useEffect(() => {
-  //   if (postsStatus === "idle") {
-  //     dispatch(AxiosAllPetInfo(URL + ReqPath))
-  //     dispatch(AxiosFollow(`${URL}/profile/${myAccountname}/following`))
-  //   }
-  // }, [postsStatus,posts,MypetStatus])
 
 
   const followerId = [myAccountname]
@@ -58,6 +49,7 @@ export default function HomePage() {
   return (
     <AllWrap>
       <header>
+        <Heading>펫 게시글페이지</Heading>
         <NavSearch text={"산책 가까?"} url={"/search"} />
       </header>
       {

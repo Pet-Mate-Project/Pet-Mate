@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { palette } from '../../style/globalColor';
 
-export const FollowCompoWrapper = styled.div`
+export const FollowCompoWrapper = styled.section`
   padding:180px 0 220px 0;
   width: 210px;
   display : block;

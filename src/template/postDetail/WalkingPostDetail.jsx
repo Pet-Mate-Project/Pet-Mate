@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
 import { selectWalkingPostDetail, AxiosWalkingPostDetail } from '../../reducers/getPostDetailSlice'
 import { palette } from '../../style/globalColor'
-import { AllWrap, ScrollMain } from '../../style/commonStyle'
+import { AllWrap, ScrollMain, Heading } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
 import { UserFollow } from '../../components/user/User'
 import { Button } from '../../components/button/buttonStyle'
@@ -24,6 +24,7 @@ export default function WalkingPostDetail() {
   return (
     <AllWrap>
       <header>
+        <Heading> 펫 게시글 디테일 페이지</Heading>
         <NavBack />
       </header>
       {
