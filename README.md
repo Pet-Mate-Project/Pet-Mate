@@ -1,7 +1,7 @@
 # 🐾 반려동물 산책 메이트 매칭 서비스앱 '산책가까?'
 <div align='center'>
 
-<img src="https://velog.velcdn.com/images/nu11/post/691acb38-82d0-468e-a00f-1453167ef515/image.png" height=600 width=600 />
+<img src="https://user-images.githubusercontent.com/54096506/181926408-e4c02559-e140-40c6-9257-6f421b518cab.jpg" />
 	
 </div>
 
@@ -9,6 +9,8 @@
 
 ## 📑 프로젝트 소개
 - 배포 : https://pet-mate.vercel.app/
+- Test ID : petmate@naver.com
+- Test PW : petmate
 
 <br>
 
@@ -107,27 +109,40 @@
 
 ## 🐱 기능 구현
 추가 예정(~7/31)
-|Splash|로그인|회원가입|
+|Splash|회원가입|로그인|
 |:---:|:---:|:---:|
-|구현이미지|구현이미지|구현이미지|
+|<img src="https://user-images.githubusercontent.com/54096506/181924923-f69bb8c4-7223-42cb-ac15-d699e6e0089f.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925184-5b8edd37-c817-46df-bd89-87466019079a.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925215-8567a921-825a-4ee0-bd4a-aff121529d33.gif" width=250 /> 
 
 <br>
 
-|홈페이지|SNS|프로필|
+|홈페이지|SNS페이지|내프로필&수정|
 |:---:|:---:|:---:|
-|구현이미지|구현이미지|구현이미지|
+|<img src="https://user-images.githubusercontent.com/54096506/181925355-e94dfa0f-74f5-4e81-95ea-e18d580ed551.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925398-1a66c960-2daf-4d2a-8d6a-b0701988f945.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925430-b9622dcc-9f53-48f7-8fea-0bb3e669d849.gif" width=250 /> 
+
 
 <br>
 
-|팔로우|검색|게시글|
+|매칭 게시글 등록|SNS 게시글 등록|사용자 프로필|
 |:---:|:---:|:---:|
-|구현이미지|구현이미지|구현이미지|
+|<img src="https://user-images.githubusercontent.com/54096506/181925600-83cd9fa1-7ac7-41f8-b0f8-10464393aa06.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925612-63d61455-3adc-4d4b-b2e2-fffdaa33673d.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925631-d58c9755-087a-4f52-8ca1-e6d10b562632.gif" width=250 /> 
 
 <br>
 
-|업로드|채팅|404페이지|
+|매칭 게시글 수정|SNS 게시글 수정| 매칭 & SNS 게시글 삭제|
 |:---:|:---:|:---:|
-|구현이미지|구현이미지|구현이미지|
+|<img src="https://user-images.githubusercontent.com/54096506/181926317-46e79c35-7995-4480-b992-a9c203f355de.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925612-63d61455-3adc-4d4b-b2e2-fffdaa33673d.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925841-59d34376-5fcc-4b93-b546-575170435dd4.gif" width=250 />
+
+<br>
+
+|팔로우 기능|좋아요 기능|댓글 기능|
+|:---:|:---:|:---:|
+|<img src="https://user-images.githubusercontent.com/54096506/181925674-daa9e6eb-1765-458e-a765-213d0f1a5de0.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925692-d119787b-8373-4533-bc80-160667a50c3f.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925713-6a31e328-f5f0-40eb-bbe8-6259dda85f8d.gif" width=250 /> 
+
+<br>
+
+|검색 기능|채팅 UI|로그아웃|
+|:---:|:---:|:---:|
+|<img src="https://user-images.githubusercontent.com/54096506/181925970-0331fcbe-015f-4f32-b162-0f3c56e61fa6.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925954-52e04388-5cdf-4459-9aad-d064c597244e.gif" width=250 />|<img src="https://user-images.githubusercontent.com/54096506/181925942-cb724fb1-fe01-4c6f-b707-8a5afc8096ce.gif" width=250 /> 
 	
 </div>
 
