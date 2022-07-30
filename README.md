@@ -9,8 +9,8 @@
 
 ## 📑 프로젝트 소개
 - 배포 : https://pet-mate.vercel.app/
-- Test ID : petmate@naver.com
-- Test PW : petmate
+- Test ID : `petmate@naver.com`
+- Test PW : `petmate`
 
 <br>
 
