@@ -7,10 +7,9 @@ import emptyheartIcon from '../../assets/icon-heart.svg'
 import heartIcon from '../../assets/icon-heart-fill.svg'
 import messageIcon from '../../assets/icon-message.svg'
 import Modal from '../../components/postModal/PostModal';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AxiosDetail } from '../../reducers/getPostDetailSlice';
-import { AxiosGetLike, AxiosDeleteLike, getLikeState, deleteLikeState } from '../../reducers/likeSlice'
-import axios from 'axios'
+import { AxiosGetLike, AxiosDeleteLike } from '../../reducers/getLikeSlice'
 import { AxiosFeedPost } from '../../reducers/getFeedPostSlice'
 
 function FeedPost({ post }) {
