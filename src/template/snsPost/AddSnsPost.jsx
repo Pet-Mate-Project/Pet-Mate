@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { AxiosPost } from '../../reducers/getPostSlice'
 import axios from 'axios'
 
-import { AllWrap } from '../../style/commonStyle'
+import { AllWrap, Heading } from '../../style/commonStyle'
 import { FileInput, FileUploader, TextInput, SingleImg, Img, TextLable, DeleteBtn, ImgWrapper } from './addSnsPostStyle'
 import { PaddingMain } from '../../style/commonStyle'
 import { SnsUploadNav } from '../../components/navBack/NavBack'
@@ -107,6 +107,7 @@ export default function AddSnsPost() {
   return (
     <AllWrap>
       <header>
+        <Heading> SNS게시글 작성 페이지</Heading>
         <SnsUploadNav onClick={handlePostSns} disabled={uploadBtn} />
       </header>
       <PaddingMain>

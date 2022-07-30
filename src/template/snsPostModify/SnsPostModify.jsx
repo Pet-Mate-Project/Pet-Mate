@@ -5,7 +5,7 @@ import { AxiosPost } from '../../reducers/getPostSlice';
 import { AxiosDetail, selectDetailPosts } from '../../reducers/getPostDetailSlice'
 import axios from 'axios'
 
-import { AllWrap, PaddingMain } from '../../style/commonStyle'
+import { AllWrap, PaddingMain, Heading } from '../../style/commonStyle'
 import { SnsUploadNav } from '../../components/navBack/NavBack'
 import { FileInput, FileUploader, TextInput, Img, TextLable, DeleteBtn, ImgWrapper } from '../snsPost/addSnsPostStyle'
 import { ImgUpload } from '../../pages/SignUpMain'
@@ -132,6 +132,7 @@ export default function ModifySnsPost() {
   return (
     <AllWrap>
       <header>
+        <Heading>SNS 게시글 수정 페이지</Heading>
         <SnsUploadNav onClick={handlePostSns} disabled={uploadBtn} />
       </header>
       <PaddingMain>

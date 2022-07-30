@@ -10,7 +10,7 @@ import { selectDetailPosts, AxiosDetail } from '../../reducers/getPostDetailSlic
 import { DetailWrapper } from './FeedPostDetailStyle'
 import Modal from '../../components/postModal/PostModal';
 import FeedPost from '../../components/post/FeedPost'
-import { AllWrap, ScrollMain } from '../../style/commonStyle'
+import { AllWrap, ScrollMain,Heading } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
 import Comment from '../../components/comment/Comment'
 import CommentList from '../../components/commentList/CommentList'
@@ -59,6 +59,7 @@ export default function FeedPostDetail() {
   return (
     <AllWrap>
       <header>
+        <Heading> SNS게시글 디테일 페이지</Heading>
         <NavBack />
       </header>
       {
