@@ -22,7 +22,7 @@ export const NavBtn = styled.button`
     cursor:pointer;
     padding:5px;
 `
-export const NavTxt = styled.h1`
+export const NavTxt = styled.h2`
   padding:5px;
   font-size:18px;
   line-height:20px;

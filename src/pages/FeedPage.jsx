@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { AxiosFeedPost, selectFeedPosts, getFeedStatus } from '../reducers/getFeedPostSlice'
-import { AllWrap } from '../style/commonStyle'
+import { AllWrap,Heading } from '../style/commonStyle'
 
 import { NavSearch } from '../components/navBack/NavBack'
 import { AddBtn } from '../components/iconButton/IconButton'
@@ -28,6 +28,7 @@ export default function FeedPage() {
   return (
     <AllWrap>
       <header>
+        <Heading>SNS게시글페이지</Heading>
         <NavSearch text={"Pet Story"} url={url} />
       </header>
       {(postsLength === 0) ? <DefaultSnsFeed /> : <SnsFeed />}

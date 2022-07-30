@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectAllSnsPosts } from '../reducers/getPostSlice';
 import { AxiosPost } from '../reducers/getPostSlice'
 
-import { AllWrap, ScrollMain } from '../style/commonStyle'
+import { AllWrap, ScrollMain,Heading } from '../style/commonStyle'
 import { NavBack } from '../components/navBack/NavBack'
 import TabMenu from '../components/tabMenu/TabMenu'
 import MyProfile from '../template/profile/MyProfile'
@@ -29,6 +29,7 @@ function MyProfilePage() {
 
   return (
     <AllWrap>
+      <Heading> 나의 프로필 페이지</Heading>
       <NavBack />
       <ScrollMain>
         <MyProfile />

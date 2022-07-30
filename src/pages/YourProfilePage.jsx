@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectAllPosts, AxiosPetInfo, getPostStatus } from '../reducers/getPetInfoSlice'
 import { selectAllSnsPosts, AxiosPost } from '../reducers/getPostSlice';
 
-import { AllWrap, ScrollMain } from '../style/commonStyle'
+import { AllWrap, ScrollMain, Heading } from '../style/commonStyle'
 import { NavBack } from '../components/navBack/NavBack'
 import TabMenu from '../components/tabMenu/TabMenu'
 import YourProfile from '../template/profile/YourProfile'
@@ -29,6 +29,7 @@ function YourProfilePage() {
 
   return (
     <AllWrap>
+      <Heading> 유저 프로필 페이지</Heading>
       <NavBack />
       <ScrollMain>
         <YourProfile userId={accountname} />
