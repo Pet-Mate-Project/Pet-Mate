@@ -58,8 +58,10 @@ export function ProfileModifySet({ userName, setName, userIntro, setIntro, IdChe
           IdCheck={IdCheck}
           register={register} />
         <MemoIntroInput
+          register={register}
           userIntro={userIntro}
           setIntro={setIntro} />
+        {errors.userIntro && <MemoSignUpErrorMessage message={errors.userIntro.message} />}
       </FormStyle>
     </>
   )
