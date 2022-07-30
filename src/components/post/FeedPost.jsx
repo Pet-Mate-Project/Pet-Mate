@@ -110,10 +110,12 @@ function FeedPost({ post }) {
             <IconImg src={isLike ? heartIcon : emptyheartIcon} alt={"좋아요 버튼"} />
             {heartCount}
           </button>
-          <button style={{ marginLeft: "6px" }}>
-            <IconImg src={messageIcon} alt={"댓글 버튼"} />
-            {post.commentCount}
-          </button>
+          <Link to={ '/snspostdetail/'+post.id}>
+            <button style={{ marginLeft: "6px" }}>
+              <IconImg src={messageIcon} alt={"댓글 버튼"} />
+              {post.commentCount}
+            </button>
+          </Link>
         </IconWrap>
         <DateText>{post.updatedAt.substring(0, 10)}</DateText>
       </WrapSection>
