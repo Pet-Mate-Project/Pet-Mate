@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllPosts, AxiosPetInfo, getPostStatus } from '../reducers/getPetInfoSlice'
@@ -29,6 +30,9 @@ function YourProfilePage() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> 유저 프로필 - 산책가까? </title>
+      </Helmet>
       <Heading> 유저 프로필 페이지</Heading>
       <NavBack />
       <ScrollMain>

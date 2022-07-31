@@ -1,4 +1,5 @@
 import React, { useState, useRef, useLayoutEffect, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async';
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom"
 import { AxiosPost } from '../../reducers/getPostSlice';
@@ -149,6 +150,9 @@ export default function ModifySnsPost() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> SNS 게시글 수정 - 산책가까? </title>
+      </Helmet>
       <header>
         <Heading>SNS 게시글 수정 페이지</Heading>
         <SnsUploadNav onClick={handlePostSns} disabled={uploadBtn} />

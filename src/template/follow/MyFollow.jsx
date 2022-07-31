@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios'
 import { AllWrap } from '../../style/commonStyle'
@@ -44,6 +45,9 @@ function MyFollower() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> 내 팔로워/팔로잉 리스트 - 산책가까? </title>
+      </Helmet>
       <NavBack
         text={NavBackTitle} />
       <FollowMain>

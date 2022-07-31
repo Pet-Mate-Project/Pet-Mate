@@ -1,21 +1,22 @@
 import React, { useState, useEffect, memo } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { deleteActions } from '../../reducers/deletePostSlice'
-import { UserMore } from '../user/User.jsx'
-import { WrapSection, PostText, PostImg, DateText, IconWrap, IconImg, PostImgWrap } from './feedPostStyle'
-import emptyheartIcon from '../../assets/icon-heart.svg'
-import heartIcon from '../../assets/icon-heart-fill.svg'
-import messageIcon from '../../assets/icon-message.svg'
-import Modal from '../../components/postModal/PostModal';
 import { useDispatch } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom'
+
+import { deleteActions } from '../../reducers/deletePostSlice'
 import { AxiosDetail } from '../../reducers/getPostDetailSlice';
 import { AxiosGetLike, AxiosDeleteLike } from '../../reducers/getLikeSlice'
 import { AxiosFeedPost } from '../../reducers/getFeedPostSlice'
 
+import { WrapSection, PostText, PostImg, DateText, IconWrap, IconImg, PostImgWrap } from './feedPostStyle'
+import Modal from '../../components/postModal/PostModal';
+import { UserMore } from '../user/User.jsx'
+import emptyheartIcon from '../../assets/icon-heart.svg'
+import heartIcon from '../../assets/icon-heart-fill.svg'
+import messageIcon from '../../assets/icon-message.svg'
+
 function FeedPost({ post }) {
   const dispatch = useDispatch();
   const MyId = JSON.parse(localStorage.getItem("accountname"));
-  const token = JSON.parse(localStorage.getItem("token"));
   const URL = "https://mandarin.api.weniv.co.kr";
   const images = post.image?.split(",");
   const [isLike, setIsLike] = useState("");

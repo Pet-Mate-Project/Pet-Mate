@@ -1,6 +1,8 @@
 import React, { useState, useLayoutEffect } from 'react'
+import { Helmet } from 'react-helmet-async';
 import { useLocation } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
+
 import { AxiosCommentList, getCommentList, getCommentStatus, commentAction } from '../../reducers/getCommentSlice'
 import { selectCommentAuthor } from '../../reducers/getCommentSlice'
 import { selectUserData } from '../../reducers/getUserInfoSlice'
@@ -8,9 +10,9 @@ import { AxiosUserData } from '../../reducers/getUserInfoSlice'
 import { selectDetailPosts, AxiosDetail } from '../../reducers/getPostDetailSlice'
 
 import { DetailWrapper } from './FeedPostDetailStyle'
+import { AllWrap, ScrollMain,Heading } from '../../style/commonStyle'
 import Modal from '../../components/postModal/PostModal';
 import FeedPost from '../../components/post/FeedPost'
-import { AllWrap, ScrollMain,Heading } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
 import Comment from '../../components/comment/Comment'
 import CommentList from '../../components/commentList/CommentList'
@@ -58,6 +60,9 @@ export default function FeedPostDetail() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> SNS 게시글 상세 - 산책가까? </title>
+      </Helmet>
       <header>
         <Heading> SNS게시글 디테일 페이지</Heading>
         <NavBack />
@@ -76,7 +81,15 @@ export default function FeedPostDetail() {
           {
             commentStatus === "success" && commentList?.map((comment) => {
               return (
-                <CommentList key={comment.id} content={comment.content} time={comment.createdAt} author={comment.author.accountname} img={comment.author.image} onClick={() => handleonClick(comment.id, comment.author.accountname)} setModal={setModal} modal={modal} />
+                <CommentList 
+                  key={comment.id}
+                  content={comment.content} 
+                  time={comment.createdAt} 
+                  author={comment.author.accountname} 
+                  img={comment.author.image} 
+                  onClick={() => handleonClick(comment.id, comment.author.accountname)} 
+                  setModal={setModal} 
+                  modal={modal} />
               )
             })
           }

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async';
 import PacmanLoader from 'react-spinners/PacmanLoader';
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllPetPost, AxiosAllPetInfo, getAllPostStatus } from '../reducers/getAllpetInfoSlice'
@@ -48,6 +49,9 @@ export default function HomePage() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> 홈 피드 - 산책가까? </title>
+      </Helmet>
       <header>
         <Heading>펫 게시글페이지</Heading>
         <NavSearch text={"산책 가까?"} url={"/search"} />

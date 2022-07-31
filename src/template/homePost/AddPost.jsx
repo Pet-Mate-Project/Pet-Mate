@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async';
 import { useDispatch } from "react-redux";
 import { AxiosPetInfo } from '../../reducers/getPetInfoSlice'
 import axios from 'axios';
@@ -89,6 +90,9 @@ export default function AddPost() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> 펫 게시글 작성 - 산책가까? </title>
+      </Helmet>
       <header>
         <Heading> 펫 게시글 작성 페이지</Heading>
         <PostSaveNav onClick={PostSave} disabled={btn} link={"/profilepage"} />

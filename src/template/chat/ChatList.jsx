@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async';
 import { AllWrap, ScrollMain, Heading } from '../../style/commonStyle'
 import TabMenu from '../../components/tabMenu/TabMenu'
 import { NavBack } from '../../components/navBack/NavBack'
@@ -8,6 +9,9 @@ import { Link } from 'react-router-dom'
 export default function ChatList() {
   return (
     <AllWrap>
+      <Helmet>
+        <title> 채팅 - 산책가까? </title>
+      </Helmet>
       <Heading>채팅방 페이지 </Heading>
       <NavBack />
       <ScrollMain>

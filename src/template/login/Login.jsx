@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
@@ -56,6 +57,9 @@ export default function Login() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> 로그인 - 산책가까? </title>
+      </Helmet>
       <PaddingMain>
         <MemoTitle>로그인</MemoTitle>
         <LoginFormStyle>
