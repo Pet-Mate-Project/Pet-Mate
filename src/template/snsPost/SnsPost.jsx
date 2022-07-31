@@ -8,25 +8,24 @@ import FeedPost from '../../components/post/FeedPost'
 export function SnsPost() {
   const location = useLocation();
   const name = location.pathname;
-  console.log(name);
   const followSnsPosts = useSelector(selectFeedPosts).posts;
   const mySnsPosts = useSelector(selectAllSnsPosts).post;
 
   return (
     <ul>
       {/* 내가 팔로우한 사람들 SNS 게시글 */}
-      {name === "/feedpage" && followSnsPosts && followSnsPosts.map((post) => {
+      {name === '/feedpage' && followSnsPosts && followSnsPosts.map((post) => {
         return (
-          <li key={post.id} style={{ padding: "16px" }}>
+          <li key={post.id} style={{ padding: '16px' }}>
             <FeedPost post={post} />
           </li>
         )
       })}
 
       {/* 내 SNS 게시글 */}
-      {(name === "/profilepage" || name === "/userprofile") && mySnsPosts && mySnsPosts.map((post) => {
+      {(name === '/profilepage' || name === '/userprofile') && mySnsPosts && mySnsPosts.map((post) => {
         return (
-          <li key={post.id} style={{ padding: "16px" }}>
+          <li key={post.id} style={{ padding: '16px' }}>
             <FeedPost post={post} />
           </li>
         )
