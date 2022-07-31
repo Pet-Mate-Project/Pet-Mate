@@ -51,7 +51,6 @@ function FeedPost({ post }) {
     if (!isLike) {
       dispatch(AxiosGetLike(`${URL}/post/${post.id}/heart`))
         .then((res) => {
-          console.log('💜', res.payload.heartCount);
           setheartCount(res.payload.heartCount);
         }
         );
@@ -59,8 +58,7 @@ function FeedPost({ post }) {
     } else {
       dispatch(AxiosDeleteLike(`${URL}/post/${post.id}/unheart`))
         .then((res) => {
-          console.log('💔', res.payload.heartCount)
-          setheartCount(res.payload.heartCount)
+          setheartCount(res.payload.heartCount);
         });
       setIsLike(false);
     }
