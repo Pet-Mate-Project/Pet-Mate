@@ -54,28 +54,16 @@ function FeedPost({ post }) {
     if (!isLike) {
       dispatch(AxiosGetLike(`${URL}/post/${post.id}/heart`))
         .then((res) => {
-<<<<<<< Updated upstream
-          console.log('💜', res.payload.heartCount)
-          setheartCount(res.payload.heartCount)
-=======
           setheartCount(res.payload.heartCount);
->>>>>>> Stashed changes
         }
         )
       setIsLike(true)
     } else {
       dispatch(AxiosDeleteLike(`${URL}/post/${post.id}/unheart`))
         .then((res) => {
-<<<<<<< Updated upstream
-          console.log('💔', res.payload.heartCount)
-          setheartCount(res.payload.heartCount)
-        })
-      setIsLike(false)
-=======
           setheartCount(res.payload.heartCount);
         });
       setIsLike(false);
->>>>>>> Stashed changes
     }
   }
 
