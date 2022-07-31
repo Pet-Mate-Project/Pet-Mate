@@ -10,15 +10,15 @@ import { AllWrap, Heading } from '../../style/commonStyle'
 import { FollowMain } from '../follow/followStyle'
 
 function AccountSearch() {
-  const [searchResult, setSearchResult] = useState([])
-  const [keyword, setKeyword] = useState('')
+  const [searchResult, setSearchResult] = useState([]);
+  const [keyword, setKeyword] = useState('');
   const accountname = JSON.parse(localStorage.getItem("accountname"));
 
   useEffect(() => {
     if (keyword) {
       const search = async () => {
         const URL = 'https://mandarin.api.weniv.co.kr';
-        const token = JSON.parse(localStorage.getItem('token'))
+        const token = JSON.parse(localStorage.getItem('token'));
         const searchReqPath = '/user/searchuser/?keyword=' + keyword;
         // keyword에 검색어 입력과 accountname, username을 검색할 수 있음
 
@@ -28,25 +28,23 @@ function AccountSearch() {
             'Content-type': "application/json"
           }
         });
-        setSearchResult(response.data)
+        setSearchResult(response.data);
       }
-      search()
+      search();
     }
   }, [keyword]);
 
   return (
     <AllWrap>
       <Helmet>
-        <title> 유저 검색 - 산책가까? </title>
+        <title>유저 검색 - 산책가까?</title>
       </Helmet>
       <header>
         <Heading>유저 검색 페이지</Heading>
         <NavTxtSearch
           placeholder={"계정 검색"}
-          onChange={(e) => setKeyword(e.target.value)} >
-        </NavTxtSearch>
+          onChange={(e) => setKeyword(e.target.value)} />
       </header>
-
       <FollowMain>
         {keyword.length === 0
           ?
@@ -55,8 +53,8 @@ function AccountSearch() {
           :
           // 입력된 keyword가 있으면 결괏값 출력
           searchResult.map((user) => {
-            let linkName='';
-            accountname === user.accountname ? linkName='/profilepage': linkName='/userprofile';
+            let linkName = '';
+            accountname === user.accountname ? linkName = '/profilepage' : linkName = '/userprofile';
             return (
               <Link
                 key={user._id}
@@ -66,14 +64,16 @@ function AccountSearch() {
                   userName={user.username}
                   userId={user.accountname}
                   img={user.image}
-                  keyword={keyword}
-                />
+                  keyword={keyword} />
               </Link>
             )
           })
         }
         {/* 검색된 계정이 0개, 입력된 keyword가 1개 이상이면 출력 */}
-        {searchResult.length === 0 && keyword.length >= 1 && <SearchMessageStyle>검색된 결과가 없습니다.</SearchMessageStyle>}
+        {
+          searchResult.length === 0 && keyword.length >= 1 &&
+          <SearchMessageStyle>검색된 결과가 없습니다.</SearchMessageStyle>
+        }
       </FollowMain>
       <TabMenu />
     </AllWrap>

@@ -24,7 +24,6 @@ const logoFadeIn = keyframes`
     opacity: 1;
     background: url(${AfterLogo}) no-repeat;
     background-size: 300px 300px;
-    
   }
 `
 

@@ -1,24 +1,22 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Helmet } from 'react-helmet-async';
 import { useDispatch } from "react-redux";
-import { AxiosPetInfo } from '../../reducers/getPetInfoSlice'
+import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
-
-import { AllWrap, PaddingMain, FormStyle, Heading } from '../../style/commonStyle'
+import { AxiosPetInfo } from '../../reducers/getPetInfoSlice'
 import { PostSaveNav } from '../../components/navBack/NavBack'
 import ImgUploadBox from '../../components/imgUploadBox/ImgUploadBox'
 import { TitleInput, PetInfoInput } from '../../components/input/Input'
 import { ImgUpload } from '../../pages/SignUpMain';
+import { AllWrap, PaddingMain, FormStyle, Heading } from '../../style/commonStyle'
 
 export default function AddPost() {
-
   const dispatch = useDispatch();
-  const [showImg, setShowImg] = useState("")   //미리보기 이미지 state
-  const fileInput = useRef(null)    //서버에 보낼 file객체
-  const [userImg, setImg] = useState("");    //input 데이터
-  const [Title, setTitle] = useState("")
-  const [petInfo, setPetInfo] = useState("")
-  const [btn, setBtn] = useState(true)    //버튼활성화
+  const fileInput = useRef(null); // 서버에 보낼 file객체
+  const [showImg, setShowImg] = useState(""); // 미리보기 이미지 state
+  const [userImg, setImg] = useState(""); //input 데이터
+  const [Title, setTitle] = useState("");
+  const [petInfo, setPetInfo] = useState("");
+  const [btn, setBtn] = useState(true); //버튼활성화
 
   //서버에 보낼 데이터
   let postData = {
@@ -70,18 +68,16 @@ export default function AddPost() {
       const imgData = await ImgUpload(userImg);
       postData.product.itemImage = imgData
       const URL = "https://mandarin.api.weniv.co.kr";
-      const ReqPath = "/product";
+      const REQ_PATH = "/product";
       const token = JSON.parse(localStorage.getItem("token"))
       const accountname = JSON.parse(localStorage.getItem("accountname"))
-      const res = await axios.post(URL + ReqPath, postData, {
+      await axios.post(URL + REQ_PATH, postData, {
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-type": "application/json"
         },
       });
-      console.log("res : ", res);
-      console.log("URL", URL + ReqPath + "/" + accountname);
-      dispatch(AxiosPetInfo(URL + ReqPath + "/" + accountname))
+      dispatch(AxiosPetInfo(URL + REQ_PATH + "/" + accountname))
     }
     catch (error) {
       console.log(error);
@@ -91,14 +87,21 @@ export default function AddPost() {
   return (
     <AllWrap>
       <Helmet>
-        <title> 펫 게시글 작성 - 산책가까? </title>
+        <title>펫 게시글 작성 - 산책가까?</title>
       </Helmet>
       <header>
-        <Heading> 펫 게시글 작성 페이지</Heading>
-        <PostSaveNav onClick={PostSave} disabled={btn} link={"/profilepage"} />
+        <Heading>펫 게시글 작성 페이지</Heading>
+        <PostSaveNav
+          onClick={PostSave}
+          disabled={btn}
+          link={"/profilepage"} />
       </header>
       <PaddingMain>
-        <ImgUploadBox onChange={onChange} src={showImg} fileref={fileInput} setImg={setImg} />
+        <ImgUploadBox
+          onChange={onChange}
+          src={showImg}
+          fileref={fileInput}
+          setImg={setImg} />
         <FormStyle>
           <TitleInput Title={Title} setTitle={setTitle} />
           <PetInfoInput petInfo={petInfo} setPetInfo={setPetInfo} />

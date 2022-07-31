@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet-async';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import axios from 'axios'
-import { AllWrap } from '../../style/commonStyle'
 import { NavBack } from '../../components/navBack/NavBack'
 import { UserFollow } from '../../components/user/User'
 import TabMenu from '../../components/tabMenu/TabMenu'
+import { AllWrap } from '../../style/commonStyle'
 import { FollowMain } from './followStyle'
 
 function MyFollower() {
-  const NavBackTitle = useLocation().state?.text;
-  const url = "https://mandarin.api.weniv.co.kr";
+  const URL = "https://mandarin.api.weniv.co.kr";
   const token = JSON.parse(localStorage.getItem("token"));
   const accountname = JSON.parse(localStorage.getItem("accountname"));
+  const NavBackTitle = useLocation().state?.text;
   const [followerList, setFollowerList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
 
@@ -22,7 +22,7 @@ function MyFollower() {
   }, []);
 
   async function getFollowerList() {
-    await axios.get(url + `/profile/${accountname}/follower?limit=1000`, {
+    await axios.get(URL + `/profile/${accountname}/follower?limit=1000`, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
@@ -33,7 +33,7 @@ function MyFollower() {
   }
 
   async function getFollowingList() {
-    await axios.get(url + `/profile/${accountname}/following?limit=1000`, {
+    await axios.get(URL + `/profile/${accountname}/following?limit=1000`, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
@@ -46,10 +46,9 @@ function MyFollower() {
   return (
     <AllWrap>
       <Helmet>
-        <title> 내 팔로워/팔로잉 리스트 - 산책가까? </title>
+        <title>내 팔로워/팔로잉 리스트 - 산책가까?</title>
       </Helmet>
-      <NavBack
-        text={NavBackTitle} />
+      <NavBack text={NavBackTitle} />
       <FollowMain>
         {
           NavBackTitle === 'followers' &&

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux/es/exports'
 import { selectUserData, AxiosUserData } from '../../reducers/getUserInfoSlice'
-
 import { ProfileImg } from '../../components/profile/profileStyle'
 import { IdText, IntroText, Wrapper, ColumnWapper, FollowerText, FollowerCount, NameText, ButtonWrap } from './ProfileStyle'
 import { Button } from '../../components/button/buttonStyle'
@@ -10,16 +9,14 @@ import { imgCheck } from '../../components/user/User'
 
 function MyProfile() {
   const URL = "https://mandarin.api.weniv.co.kr";
-  const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
-  const marketImg = "http://146.56.183.55:5050/Ellipse.png";
   const accountname = JSON.parse(localStorage.getItem("accountname"));
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(AxiosUserData(URL + `/profile/${accountname}`))
+    dispatch(AxiosUserData(URL + `/profile/${accountname}`));
   }, [])
 
-  const userInfoList = useSelector(selectUserData)
+  const userInfoList = useSelector(selectUserData);
 
   return (
     <>
@@ -50,8 +47,8 @@ function MyProfile() {
             height={34}
             color={'#767676'}
             backColor={'white'}
-            hover
-          >프로필 수정
+            hover>
+            프로필 수정
           </Button>
         </Link>
         <Link to="/post">
@@ -60,8 +57,8 @@ function MyProfile() {
             height={34}
             color={'#767676'}
             backColor={'white'}
-            hover
-          >펫 등록
+            hover>
+            펫 등록
           </Button>
         </Link>
       </ButtonWrap>
