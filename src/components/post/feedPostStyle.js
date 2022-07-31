@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { palette } from '../../style/globalColor';
+import styled, { css } from 'styled-components'
+import { palette } from '../../style/globalColor'
 
 export const WrapSection = styled.div`
 padding-left: 45px;
@@ -33,13 +33,13 @@ overflow: auto;
 padding-bottom: 10px;
 
 ::-webkit-scrollbar {
-    height: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-    background-color: none;
+  background-color: none;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #EdEded;
+  background-color: #EdEded;
     border-radius: 10px;
 }
 `
@@ -57,7 +57,7 @@ flex-shrink: 0;
   height: 370px;
 }
 
-@media screen and (min-width: 450px) and (max-width : 600px) {
+@media screen and (min-width: 450px) and (max-width: 600px) {
   height: 300px;
 }
 `

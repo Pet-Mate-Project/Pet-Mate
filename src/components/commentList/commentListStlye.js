@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { palette } from '../../style/globalColor';
+import styled from 'styled-components'
+import { palette } from '../../style/globalColor'
 
 export const CommentWrpper = styled.div`
-  display:flex;
+  display: flex;
 `
 
 export const Name = styled.strong`

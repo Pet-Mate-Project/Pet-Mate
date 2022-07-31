@@ -1,11 +1,10 @@
 import React from 'react'
 import { Heading } from '../../style/commonStyle'
-import { FollowCompoWrapper , DefaultTxt } from './followCompoStyle'
+import { FollowCompoWrapper, DefaultTxt } from './followCompoStyle'
 import grayLogo from '../../assets/gray-logo.svg'
 import logo404 from '../../assets/404-logo.svg'
 import { MiddleBtn } from '../../components/button/Button'
-import { Link,useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom"
 
 export function FollowCompo(props) {
   return (
@@ -14,11 +13,11 @@ export function FollowCompo(props) {
       <DefaultTxt>
         {props.textDefault}
       </DefaultTxt>
-      <Link to= {props.url}>
+      <Link to={props.url}>
         <MiddleBtn textBtn={props.textBtn} />
       </Link>
     </FollowCompoWrapper>
-  )
+  );
 }
 
 export function NotFoundCompo() {
@@ -30,8 +29,8 @@ export function NotFoundCompo() {
       <DefaultTxt>
         페이지를 찾을 수 없습니다. :&#40;
       </DefaultTxt>
-      <MiddleBtn textBtn={'홈으로 이동'} onClickFt={()=>navigate('homepage')}/>
+      <MiddleBtn textBtn={'홈으로 이동'} onClickFt={() => navigate('homepage')} />
     </FollowCompoWrapper>
-  )
+  );
 }
 

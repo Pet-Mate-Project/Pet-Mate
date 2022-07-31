@@ -1,5 +1,5 @@
-import styled, { css, keyframes } from 'styled-components';
-import { palette } from '../../style/globalColor';
+import styled, { css, keyframes } from 'styled-components'
+import { palette } from '../../style/globalColor'
 
 const fadeIn = keyframes`
   from {
@@ -48,7 +48,7 @@ export const DeleteAlertBtn = styled.button`
   cursor: pointer;
   height: 46px;
   border-top: 1px solid ${palette.lightGray};
-  &:last-child{
+  &:last-child {
     border-left: 1px solid ${palette.lightGray};
   }
   ${({ right }) => {
