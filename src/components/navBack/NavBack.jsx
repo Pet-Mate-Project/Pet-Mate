@@ -29,7 +29,6 @@ export function NavBack(props) {
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
     setModal(modal => !modal);
-    console.log(modal);
   }
   const closeModal = () => {
     setModal(false);
