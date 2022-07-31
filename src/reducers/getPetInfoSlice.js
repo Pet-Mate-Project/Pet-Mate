@@ -1,47 +1,42 @@
-import {createSlice,createAsyncThunk,current } from "@reduxjs/toolkit";
+import { createSlice,createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
   petData : [],
-  status : "idle",
+  status : 'idle',
   error: null
 }
 
-
 export const AxiosPetInfo = createAsyncThunk(
   'petinfo/axiosPetinfo',
-  async(url) =>{
-    const token = JSON.parse(localStorage.getItem("token")) ;
+  async(URL) =>{
+    const token = JSON.parse(localStorage.getItem('token'));
     const config = {
       headers: {
-        "Authorization" : `Bearer ${token}`,
-        "Content-type" : "application/json"
+        'Authorization' : `Bearer ${token}`,
+        'Content-type' : 'application/json'
       },
     }
-    const res = await axios(url,config);
-    console.log("👺res.data : ",res.data);
-    return res.data
+    const res = await axios(URL,config);
+    return res.data;
   }
 )
 
 export const petInfoSlice = createSlice({
-  name : "getPetInfo",
+  name : 'getPetInfo',
   initialState,
   reducers:{
   },
   extraReducers: (builder) => {
     builder
       .addCase(AxiosPetInfo.pending, (state) => {
-        console.log("로드중");
         state.status = 'loading';
       })
-      .addCase(AxiosPetInfo.fulfilled, (state, action) => {
-        console.log("나의 펫데이터 성공👺",action);
+      .addCase(AxiosPetInfo.fulfilled, (state,action) => {
         state.status = 'success';
         state.petData = action.payload;
       })
-      .addCase(AxiosPetInfo.rejected,(state,action) => {
-        console.log("실패");
+      .addCase(AxiosPetInfo.rejected,(state) => {
         state.state = 'fail';
       });
   },
@@ -50,5 +45,5 @@ export const petInfoSlice = createSlice({
 export const selectAllPosts = (state) =>state.getPetInfo.petData;
 export const getPostsError = (state) => state.getPetInfo.error;
 export const getPostStatus = (state) => state.getPetInfo.status;
-export default  petInfoSlice.reducer;
 export const postActions = petInfoSlice.actions;
+export default  petInfoSlice.reducer;

@@ -1,58 +1,48 @@
-import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-  postData: "",
-  status: "idle",
+  postData: '',
+  status: 'idle',
 }
-
 
 export const AxiosFollow = createAsyncThunk(
   'follow/axiosfollow',
-  async (url) => {
-    console.log(url);
-    const token = JSON.parse(localStorage.getItem("token"));
+  async (URL) => {
+    const token = JSON.parse(localStorage.getItem('token'));
     const config = {
       headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-type": "application/json"
+        'Authorization': `Bearer ${token}`,
+        'Content-type': 'application/json'
       },
     }
-    const res = await axios(url, config);
-    console.log("follow res.data : ", res.data);
-    return res.data
+    const res = await axios(URL, config);
+    return res.data;
   }
 )
 
 export const followInfoSlice = createSlice({
-  name: "getFollow",
+  name: 'getFollow',
   initialState,
   reducers: {
   },
   extraReducers: (builder) => {
     builder
       .addCase(AxiosFollow.pending, (state) => {
-        console.log("로드중");
         state.status = 'loading';
       })
       .addCase(AxiosFollow.fulfilled, (state, action) => {
-        console.log("성공", action);
         state.status = 'success';
         state.followData = action.payload;
-        console.log('follow', current(state));
       })
-      .addCase(AxiosFollow.rejected, (state, action) => {
-        console.log("실패");
+      .addCase(AxiosFollow.rejected, (state) => {
         state.state = 'fail';
       });
   },
 })
 
-console.log("followInfoSlice", followInfoSlice);
-
 export const selectAllFollowers = (state) => state.getFollow.followData;
 export const getFollowError = (state) => state.getFollow.error;
 export const getFollowStatus = (state) => state.getFollow.status;
-
-export default followInfoSlice.reducer;
 export const followActions = followInfoSlice.actions;
+export default followInfoSlice.reducer;
