@@ -58,10 +58,10 @@ function SignUp({
           disabled={disabled}
           message={message}
         ></NextBtn>
+        <Link to='/login'>
+          <MemoSignUpLink> 로그인페이지로 가기</MemoSignUpLink>
+        </Link>
       </PaddingMain>
-      <Link to='/login'>
-        <MemoSignUpLink> 로그인페이지로 가기</MemoSignUpLink>
-      </Link>
     </AllWrap>
   )
 }
