@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
 import GlobalStyles from './style/globalStyle';
-import { Route, Routes, useNavigate, Navigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import FeedPage from './pages/FeedPage';
 import InitPage from './pages/InitPage';
 import Login from './template/login/Login'
-import { AnimatePresence } from 'framer-motion';
 import SignUpMainPage from './pages/SignUpMain';
 import MyProfilePage from './pages/MyProfilePage'
 import ProfileModify from './template/profileModify/ProfileModify'
@@ -29,7 +28,6 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <AnimatePresence />
       <Routes>
         {/* public page */}
         <Route path='/' element={<InitPage />}></Route>
@@ -54,7 +52,6 @@ function App() {
         <Route path='/userprofile' element={<PrivateRoute><YourProfilePage /></PrivateRoute>}></Route>
         <Route path="/*" element={<NotFound />}></Route>
       </Routes>
-      <AnimatePresence />
     </>
   )
 }

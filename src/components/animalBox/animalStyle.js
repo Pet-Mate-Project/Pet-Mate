@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { palette } from '../../style/globalColor';
+import styled from 'styled-components'
+import { palette } from '../../style/globalColor'
 
 export const AnimalWrapper = styled.article`
   cursor: pointer;
@@ -39,8 +39,5 @@ export const TitleTxt = styled(Txt)`
 export const TimeTxt = styled(Txt)`
   font-size: 11px;
   color: ${palette.mainColor};
-  margin-left: 3px
+  margin-left: 3px;
 `
-
-
-

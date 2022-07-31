@@ -1,13 +1,13 @@
-import styled, { css } from 'styled-components';
-import { palette } from '../../style/globalColor';
+import styled, { css } from 'styled-components'
+import { palette } from '../../style/globalColor'
 
 export const Button = styled.button`
   position: relative;
   width: 100%;
   height: 44px;
   text-align: center;
-  color : white;
-  cursor:pointer;
+  color: white;
+  cursor: pointer;
   background-color: ${palette.subColor};
   border-radius: 44px;
   box-sizing: border-box;
@@ -34,7 +34,7 @@ export const Button = styled.button`
       return css`
         :hover{
           background-color: ${palette.mainColor};
-          color : white;
+          color: white;
         }
     `}
   }}
@@ -47,7 +47,6 @@ export const Button = styled.button`
   }}
 `;
 
-//icon이 존재할경우 스타일
 export const IconButton = styled(Button)`
   ${(props) =>
     props.icon &&

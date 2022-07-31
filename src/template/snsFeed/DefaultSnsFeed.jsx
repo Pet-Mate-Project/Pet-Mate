@@ -4,7 +4,7 @@ import { FollowCompo } from '../../components/followCompo/FollowCompo'
 export default function DefaultSnsFeed() {
   return (
     <main>
-      <FollowCompo textBtn={'검색하기'} textDefault={"유저를 검색해 팔로우 해보세요!"} url={"/search"}/>
+      <FollowCompo TEXT_DEFAULT={'검색하기'} TEXT_BTN={"유저를 검색해 팔로우 해보세요!"} URL={"/search"}/>
     </main>
   )
 }

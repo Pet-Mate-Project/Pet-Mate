@@ -1,54 +1,49 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 import { AxiosPost } from '../../reducers/getPostSlice'
 import axios from 'axios'
-
-import { AllWrap, Heading } from '../../style/commonStyle'
+import { AllWrap, Heading, PaddingMain } from '../../style/commonStyle'
 import { FileInput, FileUploader, TextInput, SingleImg, Img, TextLable, DeleteBtn, ImgWrapper } from './addSnsPostStyle'
-import { PaddingMain } from '../../style/commonStyle'
 import { SnsUploadNav } from '../../components/navBack/NavBack'
 import { ImgUpload } from '../../pages/SignUpMain'
 
 export default function AddSnsPost() {
   const dispatch = useDispatch();
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const fileInput = useRef(null)
   const [showImg, setShowImg] = useState([]);
   const [postImg, setPostImg] = useState([]);
   const [uploadBtn, SetuploadBtn] = useState(true);
 
-  //이미지미리보기
   const handleAddImg = (e) => {
     let fileURLs = [...showImg];
     let files = [...postImg];
     let fileArr = e.target.files;
-    //크기제한
     let maxSize = 10 * 1024 * 1024;
     let TotalfileSize = 0;
-    //여러이미지 push
+
     for (let i = 0; i < fileArr.length; i++) {
-      console.log(fileArr[i].size);
       TotalfileSize += fileArr[i].size;
+
       if (TotalfileSize > maxSize) {
-        alert("첨부파일의 총 사이즈는 10MB 이내로 등록 가능합니다.");
+        alert('첨부파일의 총 사이즈는 10MB 이내로 등록 가능합니다.');
         return
       }
+
       const currentImgURL = URL.createObjectURL(fileArr[i]);
       fileURLs.push(currentImgURL);
       files.push(fileArr[i]);
     }
 
     if (fileURLs.length > 3) {
-      alert("사진은 최대 3장까지 업로드 가능합니다.");
+      alert('사진은 최대 3장까지 업로드 가능합니다.');
       fileURLs = fileURLs.slice(0, 3);
       files = files.slice(0, 3);
     }
+
     setPostImg(files);
     setShowImg(fileURLs);
-    console.log("서버", files);
-    console.log("미리보기", fileURLs);
-
   }
 
   //삭제함수
@@ -58,38 +53,33 @@ export default function AddSnsPost() {
   };
 
   let data = {
-    "post": {
-      "content": "",
-      "image": ""
+    'post': {
+      'content': '',
+      'image': ''
     }
   }
 
   async function handlePostSns() {
-    // 요청URL
-    const URL = "https://mandarin.api.weniv.co.kr";
-    const ReqPath = "/post";
-    //사진 filename 가져오기
+    const URL = 'https://mandarin.api.weniv.co.kr';
+    const REQ_PATH = '/post';
     let imgList = [];
     for (let i = 0; i < postImg?.length; i++) {
-      const img = await ImgUpload(postImg[i])
+      const img = await ImgUpload(postImg[i]);
       imgList.push(img);
     }
-    data.post.image = imgList.join(",");
+    data.post.image = imgList.join(',');
     data.post.content = content;
-    //header값
-    const token = JSON.parse(localStorage.getItem("token"))
-    const accountname = JSON.parse(localStorage.getItem("accountname"))
-    //axios post요청 
+    const token = JSON.parse(localStorage.getItem('token'));
+    const accountname = JSON.parse(localStorage.getItem('accountname'));
 
     try {
-      const res = await axios.post(URL + ReqPath, data, {
+      await axios.post(URL + REQ_PATH, data, {
         headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-type": "application/json"
+          'Authorization': `Bearer ${token}`,
+          'Content-type': 'application/json'
         },
-      });
-      console.log("게시글post요청결과", res);
-      dispatch(AxiosPost(URL + ReqPath + "/" + accountname + "/userpost"))
+      })
+        .then(dispatch(AxiosPost(URL + REQ_PATH + '/' + accountname + '/userpost')))
     }
     catch (error) {
       console.log(error);
@@ -98,32 +88,35 @@ export default function AddSnsPost() {
 
   useEffect(() => {
     if (content.length > 0 && postImg.length > 0) {
-      SetuploadBtn(false)
+      SetuploadBtn(false);
     }
     else {
-      SetuploadBtn(true)
+      SetuploadBtn(true);
     }
   }, [content, postImg])
 
   return (
     <AllWrap>
       <Helmet>
-        <title> SNS 게시글 작성 - 산책가까? </title>
+        <title>SNS 게시글 작성 - 산책가까?</title>
       </Helmet>
       <header>
-        <Heading> SNS게시글 작성 페이지</Heading>
+        <Heading>SNS게시글 작성 페이지</Heading>
         <SnsUploadNav onClick={handlePostSns} disabled={uploadBtn} />
       </header>
       <PaddingMain>
-        <TextLable htmlFor="snspost" />
-        <TextInput name="snspost" id="snspost" placeholder="게시글 입력하기 ..." value={content} onChange={(e) => { setContent(e.target.value) }} />
+        <TextLable htmlFor='snspost' />
+        <TextInput 
+          name='snspost' 
+          id='snspost' 
+          placeholder='게시글 입력하기 ...' 
+          value={content} 
+          onChange={(e) => { setContent(e.target.value) }} />
         <ImgWrapper>
-
           {
             showImg.length === 1 ?
               showImg.map((image, id) => (
                 <div key={id} >
-                  {console.log(image)}
                   <SingleImg key={id} src={image} />
                   <DeleteBtn onClick={() => handleDeleteImg(id)} />
                 </div>
@@ -131,19 +124,17 @@ export default function AddSnsPost() {
               :
               showImg.map((image, id) => (
                 <div key={id} >
-                  {console.log(image)}
                   <Img key={id} src={image} />
                   <DeleteBtn onClick={() => handleDeleteImg(id)} />
                 </div>
               ))
           }
-
         </ImgWrapper>
-        <FileUploader htmlFor="input-file">
+        <FileUploader htmlFor='input-file'>
           <FileInput
-            id="input-file"
+            id='input-file'
             name='PostingImg'
-            type="file"
+            type='file'
             multiple
             accept='.jpg, .gif, .png, .jpeg, .bmp, .tif, .heic'
             onChange={handleAddImg}
