@@ -15,13 +15,13 @@ export default function YourProfilePage() {
   const location = useLocation();
   const dispatch = useDispatch();
   const accountname = location.state?.userId;
-  const URL = "https://mandarin.api.weniv.co.kr";
+  const URL = 'https://mandarin.api.weniv.co.kr';
   const postLength = useSelector(selectAllPosts).product?.length; 
   const snsPostLength = useSelector(selectAllSnsPosts).post?.length;  
 
   useEffect(() => {
-    dispatch(AxiosPetInfo(URL + "/product/" + accountname));
-    dispatch(AxiosPost(URL + "/post/" + accountname + "/userpost"));
+    dispatch(AxiosPetInfo(URL + '/product/' + accountname));
+    dispatch(AxiosPost(URL + '/post/' + accountname + '/userpost'));
   }, [dispatch])
 
   return (
@@ -34,10 +34,10 @@ export default function YourProfilePage() {
       <ScrollMain>
         <YourProfile userId={accountname} />
         {
-          postLength === 0 ? " " : <PetPost />
+          postLength === 0 ? ' ' : <PetPost />
         }
         {
-          snsPostLength === 0 ? " " : <MyProfileSnsPost />
+          snsPostLength === 0 ? ' ' : <MyProfileSnsPost />
         }
       </ScrollMain>
       <TabMenu />

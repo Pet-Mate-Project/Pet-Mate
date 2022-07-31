@@ -9,7 +9,6 @@ export const LeftSpeechBubbleWrapper = styled.div`
   :first-of-type {
     margin-top: auto;
   }
-
   :last-of-type {
     margin-bottom: 80px;
   }
@@ -21,6 +20,7 @@ export const RightSpeechBubbleWrapper = styled(LeftSpeechBubbleWrapper)`
 
 export const LeftChat = styled.span`
   display: none;
+
   ${(props) => {
     if (props.children) {
       return css`
@@ -55,6 +55,7 @@ export const ChatTime = styled.strong`
 
 export const ChatImage = styled.img`
   display: none;
+  
   ${(props) => {
     if (props.src) {
       return css`

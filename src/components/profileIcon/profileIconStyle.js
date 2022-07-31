@@ -5,6 +5,7 @@ import { palette } from '../../style/globalColor'
 export const IconStyle = styled.img`
 object-fit: cover;
 border-radius: 50%;
+
 ${(props) => {
     return css`
     width: ${props.width}px;
