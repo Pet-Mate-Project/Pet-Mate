@@ -11,8 +11,8 @@ import TabMenu from '../components/tabMenu/TabMenu'
 import DefaultSnsFeed from '../template/snsFeed/DefaultSnsFeed'
 
 export default function FeedPage() {
-  const SEARCH_URL = "/search";
-  const URL = "https://mandarin.api.weniv.co.kr";
+  const SEARCH_URL = '/search';
+  const URL = 'https://mandarin.api.weniv.co.kr';
   const dispatch = useDispatch();
   const status = useSelector(getFeedStatus);
   const posts = useSelector(selectFeedPosts)?.posts;
@@ -20,7 +20,7 @@ export default function FeedPage() {
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(AxiosFeedPost(URL + "/post/feed/?limit=30"));
+      dispatch(AxiosFeedPost(URL + '/post/feed/?limit=30'));
     }
   }, [status])
 
@@ -31,7 +31,7 @@ export default function FeedPage() {
       </Helmet>
       <header>
         <Heading>SNS게시글페이지</Heading>
-        <NavSearch text={"Pet Story"} url={SEARCH_URL} />
+        <NavSearch text={'Pet Story'} url={SEARCH_URL} />
       </header>
       {(postsLength === 0) ? <DefaultSnsFeed /> : <SnsFeed />}
       <SnsFeed />

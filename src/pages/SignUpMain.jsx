@@ -6,7 +6,7 @@ import SignUp from '../template/signUp/SignUp';
 import ProfilePage from '../template/signUp/ProfilePage'
 
 export async function ImgUpload(userImg) {
-  const URL = "https://mandarin.api.weniv.co.kr";
+  const URL = 'https://mandarin.api.weniv.co.kr';
   let formData = new FormData()
   formData.append('image', userImg)
   const res = await axios.post('https://mandarin.api.weniv.co.kr/image/uploadfile', formData)
@@ -14,37 +14,37 @@ export async function ImgUpload(userImg) {
 }
 
 export default function SignUpMainPage() {
-  const [userName, setName] = useState("");
-  const [userId, setId] = useState("");
-  const [userIntro, setIntro] = useState("");
-  const [userEmail, setEmail] = useState("");
-  const [userPassword, setPassword] = useState("");
-  const [userConfirmPassword, setConfirmPassword] = useState("");
+  const [userName, setName] = useState('');
+  const [userId, setId] = useState('');
+  const [userIntro, setIntro] = useState('');
+  const [userEmail, setEmail] = useState('');
+  const [userPassword, setPassword] = useState('');
+  const [userConfirmPassword, setConfirmPassword] = useState('');
   const [userImg, setImg] = useState('');
   const [message, setMessage] = useState('');   //에러 출력 메세지
   const [next, setNext] = useState(false)   //다음 버튼 상태관리
   const DEFAULT_IMG_URL = 'https://mandarin.api.weniv.co.kr/1657812669741.png'
   const UNDEFIND_URL = 'https://mandarin.api.weniv.co.kr/undefined'
-  const URL = "https://mandarin.api.weniv.co.kr";
+  const URL = 'https://mandarin.api.weniv.co.kr';
   const navigator = useNavigate();
 
   //유효성 검사를 위한 react-hook-form 변수 선언
   const {
     register,
     formState: { isValid, errors },
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: 'onChange' });
 
   ImgUpload(userImg)  //이미지 업로드 함수 실행
 
   //유저 데이터 
   let userData = {
-    "user": {
-      "username": userName,
-      "email": userEmail,
-      "password": userPassword,
-      "accountname": userId,
-      "intro": userIntro,
-      "image": ""
+    'user': {
+      'username': userName,
+      'email': userEmail,
+      'password': userPassword,
+      'accountname': userId,
+      'intro': userIntro,
+      'image': ''
     }
   }
 
@@ -57,9 +57,8 @@ export default function SignUpMainPage() {
       userData.user.image = imgUploadData;
     //회원가입 최종 전송
     axios.post(URL + '/user', userData,
-      { headers: { "Content-type": "application/json" } })
+      { headers: { 'Content-type': 'application/json' } })
       .then((res) => {
-        console.log('회원가입', res);
         navigator('/login')
       })
   }
@@ -72,20 +71,19 @@ export default function SignUpMainPage() {
   //이메일 검증
   function emailCheck() {
     let emailData = {
-      "user": {
-        "email": userEmail
+      'user': {
+        'email': userEmail
       }
     };
 
     if (!errors.email) {
       axios.post(URL + '/user/emailvalid', emailData, {
         headers: {
-          "Content-type": "application/json"
+          'Content-type': 'application/json'
         }
       })
         .then(
           (res) => {
-            console.log(res);
             setMessage(res.data.message);
           });
     }
@@ -99,19 +97,18 @@ export default function SignUpMainPage() {
   // 계정 검증 함수
   function IdCheck() {
     let idData = {
-      "user": {
-        "accountname": userId
+      'user': {
+        'accountname': userId
       }
     }
     if (!errors.userId) {
       axios.post(URL + '/user/accountnamevalid', idData, {
         headers: {
-          "Content-type": "application/json"
+          'Content-type': 'application/json'
         }
       })
         .then(
           (res) => {
-            console.log('res', res);
             setMessage(res.data.message);
           });
     }

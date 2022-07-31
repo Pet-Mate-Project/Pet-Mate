@@ -16,8 +16,8 @@ import WalkingFeed from '../template/walkingFeed/WalkingFeed'
 export default function HomePage() {
   const dispatch = useDispatch();
   const postsStatus = useSelector(getAllPostStatus);
-  const URL = "https://mandarin.api.weniv.co.kr";
-  const myAccountname = JSON.parse(localStorage.getItem("accountname"));
+  const URL = 'https://mandarin.api.weniv.co.kr';
+  const myAccountname = JSON.parse(localStorage.getItem('accountname'));
   const posts = useSelector(getAllPetPost).product;
   const follower = useSelector(selectAllFollowers);
   const ReqPath = `/product/?limit=2000`;
@@ -41,15 +41,15 @@ export default function HomePage() {
       </Helmet>
       <header>
         <Heading>펫 게시글페이지</Heading>
-        <NavSearch text={"산책 가까?"} url={"/search"} />
+        <NavSearch text={'산책 가까?'} url={'/search'} />
       </header>
       {
         postsStatus === 'loading' ?
           <div style={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",}}>
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',}}>
             <PacmanLoader color={palette.mainColor} width={100} height={100} />
           </div> 
           :

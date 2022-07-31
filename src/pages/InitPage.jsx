@@ -21,7 +21,7 @@ export default function InitPage() {
 
   useEffect(() => {
     if (VerifyToken === 'idle') {
-      const URL = "https://mandarin.api.weniv.co.kr";
+      const URL = 'https://mandarin.api.weniv.co.kr';
       dispatch(AxiosVerifyToken(URL + '/user/checktoken'));
     }
 
@@ -29,8 +29,8 @@ export default function InitPage() {
       navigate('/homepage');
     }
     else if ((VerifyToken === 'fail') || (VerifyToken === false)) {  
-      window.localStorage.removeItem("token");
-      window.localStorage.removeItem("accountname");
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('accountname');
       navigate('/login');
     }
   }, [dispatch, VerifyToken])
