@@ -11,23 +11,24 @@ import userIconFill from '../../assets/icon-user-fill.svg'
 
 export function TabMenu() {
   return (
-    <>
-      <TabMenuStyle>
-        <NavLinkStyle to="/homepage"
-          icon={homeIcon}
-          hovericon={homeIconFill}>홈</NavLinkStyle>
-        <NavLinkStyle to="/feedpage"
-          icon={snsIcon}
-          hovericon={snsIconFill}>SNS</NavLinkStyle>
-        <NavLinkStyle to="/chatpage"
-          icon={messageIcon}
-          hovericon={messageIconFill}>채팅</NavLinkStyle>
-        <NavLinkStyle to="/profilepage"
-          icon={userIcon}
-          hovericon={userIconFill}>프로필</NavLinkStyle>
-      </TabMenuStyle>
-
-    </>
+    <TabMenuStyle>
+      <NavLinkStyle
+        to="/homepage"
+        icon={homeIcon}
+        hovericon={homeIconFill}>홈</NavLinkStyle>
+      <NavLinkStyle
+        to="/feedpage"
+        icon={snsIcon}
+        hovericon={snsIconFill}>SNS</NavLinkStyle>
+      <NavLinkStyle
+        to="/chatpage"
+        icon={messageIcon}
+        hovericon={messageIconFill}>채팅</NavLinkStyle>
+      <NavLinkStyle
+        to="/profilepage"
+        icon={userIcon}
+        hovericon={userIconFill}>프로필</NavLinkStyle>
+    </TabMenuStyle>
   )
 }
 
