@@ -1,7 +1,9 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async';
+import { Link } from "react-router-dom";
 import { AllWrap, PaddingMain, MemoTitle } from '../../style/commonStyle'
 import { MemoEmailInput, MemoPasswordConfirmInput, MemoPasswordInput } from '../../components/input/Input'
+import { MemoSignUpLink } from '../../template/login/loginStyle'
 import { NextBtn } from '../../components/button/Button'
 import { MemoSignUpErrorMessage } from '../../components/errorMessage/errorMessage'
 import { LoginFormStyle } from '../login/loginStyle.js';
@@ -57,6 +59,9 @@ function SignUp({
           message={message}
         ></NextBtn>
       </PaddingMain>
+      <Link to='/login'>
+        <MemoSignUpLink> 로그인페이지로 가기</MemoSignUpLink>
+      </Link>
     </AllWrap>
   )
 }
