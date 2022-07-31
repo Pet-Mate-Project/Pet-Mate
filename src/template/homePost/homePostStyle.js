@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { palette } from '../../style/globalColor';
 
-
 export const PostStyle = styled.li`
   width: 100%;
   height: 205px;
@@ -15,7 +14,7 @@ export const PostStyle = styled.li`
   }
 
   @media screen and (min-width: 500px) {
-  height: 235px;
+    height: 235px;
 }
 `
 
@@ -29,7 +28,7 @@ export const PetImg = styled.img`
 
   @media screen and (min-width: 500px) {
     width: 150px;
-  height: 150px;
+    height: 150px;
 }
 `
 
@@ -42,10 +41,10 @@ export const TitleTxt = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   
-@media screen and (min-width: 500px) {
-  font-size: 20px;
-  line-height: 23px;
-  margin-top: 10px ;
+  @media screen and (min-width: 500px) {
+    font-size: 20px;
+    line-height: 23px;
+    margin-top: 10px ;
 }
 `
 
@@ -62,8 +61,8 @@ export const ContentTxt = styled.p`
   -webkit-box-orient: vertical;
   
   @media screen and (min-width: 500px) {
-  font-size: 16px;
-  line-height: 20px;
+    font-size: 16px;
+    line-height: 20px;
 }
 `
 
@@ -72,22 +71,24 @@ export const DateTxt = styled.p`
   line-height: 14px;
   color: ${palette.darkGray};
   margin-bottom: 5px;
+
   @media screen and (min-width: 470px) {
-  font-size: 13px;
-  line-height: 16px;
+    font-size: 13px;
+    line-height: 16px;
 }
 `
+
 export const WrapPost = styled.div`
-display: flex;
-flex-direction: row;
-margin-top:5px;
+  display: flex;
+  flex-direction: row;
+  margin-top:5px;
 `
 
 export const TextWrap = styled.div`
-min-width: 200px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-margin-left: 16px;
-gap: 10px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 16px;
+  gap: 10px;
 `

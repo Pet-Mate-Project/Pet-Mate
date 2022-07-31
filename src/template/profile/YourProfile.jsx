@@ -11,8 +11,6 @@ import shareIcon from '../../assets/icon-share.svg'
 
 function YourProfile({ userId }) {
   const URL = "https://mandarin.api.weniv.co.kr";
-  const defaultImg = "https://mandarin.api.weniv.co.kr/1657812669741.png";
-  const marketImg = "http://146.56.183.55:5050/Ellipse.png";
   const token = JSON.parse(localStorage.getItem("token"));
   const accountname = userId;
   const [yourInfoList, setYourInfoList] = useState([]);
@@ -30,7 +28,7 @@ function YourProfile({ userId }) {
 
   useEffect(() => {
     getYourInfo();
-  }, [])
+  }, []);
 
   // your정보 받아오는 함수
   async function getYourInfo() {
@@ -45,10 +43,9 @@ function YourProfile({ userId }) {
     })
   }
 
-  const data = {};
   // 팔로우 정보 받아오는 함수
   async function postUserFollow() {
-    await axios.post(URL + `/profile/${accountname}/follow`, data, {
+    await axios.post(URL + `/profile/${accountname}/follow`, {}, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-type": "application/json"
@@ -96,7 +93,9 @@ function YourProfile({ userId }) {
         <IntroText>{yourInfoList.intro}</IntroText>
       </ColumnWapper>
       <ButtonWrap>
-        <OnlyIconButton icon={chatIcon} color={'#767676'}
+        <OnlyIconButton
+          icon={chatIcon}
+          color={'#767676'}
           backColor={'white'}
           width={34}
           height={34}>
@@ -104,7 +103,9 @@ function YourProfile({ userId }) {
         {
           isFollow !== undefined && <ProfileFollowToggleBtn onClick={onClick} isFollow={isFollow} />
         }
-        <OnlyIconButton icon={shareIcon} color={'#767676'}
+        <OnlyIconButton
+          icon={shareIcon}
+          color={'#767676'}
           backColor={'white'}
           width={34}
           height={34}>

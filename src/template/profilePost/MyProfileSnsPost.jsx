@@ -8,16 +8,16 @@ import { SnsPost } from '../snsPost/SnsPost'
 import SnsAlbum from './SnsAlbum'
 
 function MyProfileSnsPost() {
-  const [isList, setIsList] = useState(true)
+  const [isList, setIsList] = useState(true);
 
   function listClick() {
     isList === false &&
-      setIsList(true)
+      setIsList(true);
   }
 
   function albumClick() {
     isList === true &&
-      setIsList(false)
+      setIsList(false);
   }
 
   return (
@@ -26,11 +26,16 @@ function MyProfileSnsPost() {
         <section>
           <ShowWrap>
             <button>
-              <ShowBtnStyle src={listOn} onClick={listClick} alt="리스트형 게시글 버튼" />
+              <ShowBtnStyle
+                src={listOn}
+                onClick={listClick}
+                alt="리스트형 게시글 버튼" />
             </button>
             <button>
-              <ShowBtnStyle src={albumOff}
-                onClick={albumClick} alt="앨범형 게시글 버튼" />
+              <ShowBtnStyle
+                src={albumOff}
+                onClick={albumClick}
+                alt="앨범형 게시글 버튼" />
             </button>
           </ShowWrap>
           <SnsPost />
@@ -39,18 +44,22 @@ function MyProfileSnsPost() {
         <section>
           <ShowWrap>
             <button>
-              <ShowBtnStyle src={listOff} onClick={listClick} alt="리스트형 게시글 버튼" />
+              <ShowBtnStyle
+                src={listOff}
+                onClick={listClick}
+                alt="리스트형 게시글 버튼" />
             </button>
             <button>
-              <ShowBtnStyle src={albumOn}
-                onClick={albumClick} alt= "앨범형 게시글 버튼" />
+              <ShowBtnStyle
+                src={albumOn}
+                onClick={albumClick}
+                alt="앨범형 게시글 버튼" />
             </button>
           </ShowWrap>
           <SnsAlbum />
         </section>
       }
     </>
-
   )
 }
 

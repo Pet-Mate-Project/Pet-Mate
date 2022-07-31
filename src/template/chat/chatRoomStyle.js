@@ -24,6 +24,7 @@ export const ChatInputWrapper = styled.div`
 export const ChatInput = styled.input`
   width: 90%;
   border: none;
+
   :focus {
     outline: none;
   }

@@ -22,11 +22,10 @@ function SignUp({
   register,
   errors
 }) {
-
   return (
     <AllWrap>
       <Helmet>
-        <title> 회원가입 - 산책가까? </title>
+        <title>회원가입 - 산책가까?</title>
       </Helmet>
       <PaddingMain>
         <MemoTitle>이메일로 회원가입</MemoTitle>
@@ -35,31 +34,27 @@ function SignUp({
             userEmail={userEmail}
             setEmail={setEmail}
             emailCheck={emailCheck}
-            register={register}
-          ></MemoEmailInput>
+            register={register} />
           {errors.email && <MemoSignUpErrorMessage message={errors.email.message} />}
           {message && <MemoSignUpErrorMessage message={message} />}
           <MemoPasswordInput
             userPassword={userPassword}
             setPassword={setPassword}
-            register={register}
-          ></MemoPasswordInput>
+            register={register} />
           {errors.password && <MemoSignUpErrorMessage message={errors.password.message} />}
           <MemoPasswordConfirmInput
             userPassword={userPassword}
             userConfirmPassword={userConfirmPassword}
             setConfirmPassword={setConfirmPassword}
-            register={register}
-          ></MemoPasswordConfirmInput>
+            register={register} />
           {errors.userConfirmPassword && <MemoSignUpErrorMessage message={errors.userConfirmPassword.message} />}
         </LoginFormStyle>
         <NextBtn
           nextClick={nextClick}
           disabled={disabled}
-          message={message}
-        ></NextBtn>
+          message={message} />
         <Link to='/login'>
-          <MemoSignUpLink> 로그인페이지로 가기</MemoSignUpLink>
+          <MemoSignUpLink>로그인페이지로 가기</MemoSignUpLink>
         </Link>
       </PaddingMain>
     </AllWrap>

@@ -9,4 +9,5 @@ text-align: center;
 margin-top: 12px;
 margin-bottom: 20px;
 `
-export const MemoMessage = memo(Message)
+
+export const MemoMessage = memo(Message);

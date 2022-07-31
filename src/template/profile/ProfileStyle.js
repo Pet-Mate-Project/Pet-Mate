@@ -14,6 +14,7 @@ flex-direction: column;
 justify-content: center;
 text-align: center;
 `
+
 export const FollowerCount = styled.p`
 font-weight: 600;
 font-style: italic;
@@ -21,21 +22,25 @@ font-size: 18px;
 line-height: 21px;
 margin-bottom: 7px;
 `
+
 export const FollowerText = styled.p`
 font-size: 8px;
 color: ${palette.darkGray};
 `
+
 export const NameText = styled.p`
 font-weight: 600;
 font-size: 16px;
 line-height: 19px;
 margin-bottom: 6px;
 `
+
 export const IdText = styled.p`
 font-size: 12px;
 line-height: 14px;
 color: ${palette.darkGray};
 `
+
 export const IntroText = styled.p`
 font-size: 14px;
 line-height: 17px;
@@ -49,6 +54,7 @@ display: -webkit-box;
 -webkit-line-clamp: 3;
 -webkit-box-orient: vertical;
 `
+
 export const ButtonWrap = styled.div`
 display: flex;
 gap: 10px;
@@ -57,15 +63,16 @@ margin: 24px 0;
 `
 
 export const OnlyIconButton = styled.button`
-position: relative;
-width: 34px;
-height: 34px;
-cursor : pointer;
-background-color: white;
-border: 1px solid ${palette.darkGray};
-border-radius: 50%;
-box-sizing: border-box;
-${(props) =>
+  position: relative;
+  width: 34px;
+  height: 34px;
+  cursor : pointer;
+  background-color: white;
+  border: 1px solid ${palette.darkGray};
+  border-radius: 50%;
+  box-sizing: border-box;
+
+  ${(props) =>
     css`
       ::before {
         content: '';
@@ -77,5 +84,5 @@ ${(props) =>
         height: 24px;
         background: url(${props.icon}) no-repeat center;
       }
-    `}
+  `}
 `

@@ -20,15 +20,15 @@ function ProfilePage({
   signUp,
   register,
   errors }) {
+
   return (
     <AllWrap>
       <Helmet>
-        <title> 프로필 설정 - 산책가까? </title>
+        <title>프로필 설정 - 산책가까?</title>
       </Helmet>
       <PaddingMain>
         <MemoTitle>프로필 설정</MemoTitle>
-        <MemoMessage>나중에 언제든지 변경할 수 있습니다.
-        </MemoMessage>
+        <MemoMessage>나중에 언제든지 변경할 수 있습니다.</MemoMessage>
         <ProfileSet
           message={message}
           userName={userName}
