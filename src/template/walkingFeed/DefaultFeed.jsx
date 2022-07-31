@@ -7,7 +7,7 @@ export default function DefaultFeed() {
   const URL = '/post'
   return (
     <main>
-      <FollowCompo URL={URL} TEXT_BTN={TEXT_BTN} TEXT_DEFAULT={TEXT_DEFAULT} />
+      <FollowCompo URL={URL} TEXT_BTN={TEXT_DEFAULT} TEXT_DEFAULT={TEXT_BTN} />
     </main>
   )
 }

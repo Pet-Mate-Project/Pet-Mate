@@ -6,15 +6,15 @@ import logo404 from '../../assets/404-logo.svg'
 import { MiddleBtn } from '../../components/button/Button'
 import { Link, useNavigate } from "react-router-dom"
 
-export function FollowCompo(props) {
+export function FollowCompo({TEXT_BTN,TEXT_DEFAULT,URL}) {
   return (
     <FollowCompoWrapper>
       <img src={grayLogo} />
       <DefaultTxt>
-        {props.textDefault}
+        {TEXT_BTN}
       </DefaultTxt>
-      <Link to={props.url}>
-        <MiddleBtn textBtn={props.textBtn} />
+      <Link to={URL}>
+        <MiddleBtn textBtn={TEXT_DEFAULT} />
       </Link>
     </FollowCompoWrapper>
   );
