@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import GlobalStyles from './style/globalStyle';
-import { Route, Routes, useNavigate, Navigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import FeedPage from './pages/FeedPage';
 import InitPage from './pages/InitPage';
