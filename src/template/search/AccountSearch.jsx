@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { SearchMessageStyle } from '../../components/errorMessage/errorStyle'
@@ -35,6 +36,9 @@ function AccountSearch() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> 유저 검색 - 산책가까? </title>
+      </Helmet>
       <header>
         <Heading>유저 검색 페이지</Heading>
         <NavTxtSearch

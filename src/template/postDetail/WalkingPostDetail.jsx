@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async';
 import { useLocation } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
 import { selectWalkingPostDetail, AxiosWalkingPostDetail } from '../../reducers/getPostDetailSlice'
@@ -23,6 +24,9 @@ export default function WalkingPostDetail() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> 펫 게시글 상세 - 산책가까? </title>
+      </Helmet>
       <header>
         <Heading> 펫 게시글 디테일 페이지</Heading>
         <NavBack />

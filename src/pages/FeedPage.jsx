@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom'
 import { AxiosFeedPost, selectFeedPosts, getFeedStatus } from '../reducers/getFeedPostSlice'
 import { AllWrap,Heading } from '../style/commonStyle'
@@ -27,6 +28,9 @@ export default function FeedPage() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> SNS 피드 - 산책가까? </title>
+      </Helmet>
       <header>
         <Heading>SNS게시글페이지</Heading>
         <NavSearch text={"Pet Story"} url={url} />

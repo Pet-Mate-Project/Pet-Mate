@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async';
 import { AllWrap, PaddingMain, MemoTitle } from '../../style/commonStyle'
 import { MemoEmailInput, MemoPasswordConfirmInput, MemoPasswordInput } from '../../components/input/Input'
 import { NextBtn } from '../../components/button/Button'
@@ -22,6 +23,9 @@ function SignUp({
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> 회원가입 - 산책가까? </title>
+      </Helmet>
       <PaddingMain>
         <MemoTitle>이메일로 회원가입</MemoTitle>
         <LoginFormStyle>

@@ -1,4 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react'
+import { Helmet } from 'react-helmet-async';
 import { useLocation } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -59,6 +60,9 @@ export default function FeedPostDetail() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> SNS 게시글 상세 - 산책가까? </title>
+      </Helmet>
       <header>
         <Heading> SNS게시글 디테일 페이지</Heading>
         <NavBack />

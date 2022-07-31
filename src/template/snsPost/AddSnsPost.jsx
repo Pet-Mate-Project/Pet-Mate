@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async';
 import { useDispatch } from "react-redux";
 import { AxiosPost } from '../../reducers/getPostSlice'
 import axios from 'axios'
@@ -106,6 +107,9 @@ export default function AddSnsPost() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> SNS 게시글 작성 - 산책가까? </title>
+      </Helmet>
       <header>
         <Heading> SNS게시글 작성 페이지</Heading>
         <SnsUploadNav onClick={handlePostSns} disabled={uploadBtn} />

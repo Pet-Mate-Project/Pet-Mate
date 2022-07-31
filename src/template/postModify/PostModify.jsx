@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async';
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom"
 import { AxiosDetail, selectDetailPosts } from '../../reducers/getPostDetailSlice'
@@ -122,6 +123,9 @@ export default function ModifyPost() {
 
   return (
     <AllWrap>
+      <Helmet>
+        <title> 펫 게시글 수정 - 산책가까? </title>
+      </Helmet>
       <header>
         <Heading>펫 게시글 수정 페이지</Heading>
         <PostSaveNav onClick={PostSave} disabled={btn} link={"/profilepage"} />

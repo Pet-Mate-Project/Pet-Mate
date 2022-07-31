@@ -1,4 +1,5 @@
 import React from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from "react-router-dom";
 import { createRoot } from 'react-dom/client';
 import { Provider } from "react-redux";
@@ -12,7 +13,9 @@ root.render(
 
   <Provider store={store}> 
     <BrowserRouter>
-      <App tab="home" />
+      <HelmetProvider>
+        <App tab="home" />
+      </HelmetProvider>
     </BrowserRouter>  
   </Provider>
 );

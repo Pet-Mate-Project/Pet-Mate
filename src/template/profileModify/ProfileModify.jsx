@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux/es/exports'
@@ -83,6 +84,9 @@ function ProfileModify() {
   return (
     <>
       <AllWrap>
+        <Helmet>
+          <title> 내 프로필 수정 - 산책가까? </title>
+        </Helmet>
         <header>
           <Heading>내 프로필 수정 페이지</Heading>
           <ProfileSaveNav profileSave={profileSave}
