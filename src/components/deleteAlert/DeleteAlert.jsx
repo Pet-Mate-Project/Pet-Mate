@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import { AlertOver, AlertWrapper, DeleteTxt, DeleteAlertBtn, BtnTxt, RedTxt, TextWrapper } from './deleteStyle'
+import { Link, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { DeleteType, AxiosDeletePost, SelectId, selectDeleteMsg } from '../../reducers/deletePostSlice'
+
+import { DeleteType, AxiosDeletePost, SelectId } from '../../reducers/deletePostSlice'
+import { selectCommentId, AxiosCommentList } from '../../reducers/getCommentSlice'
+import { AxiosDetail } from '../../reducers/getPostDetailSlice'
 import { AxiosPetInfo } from '../../reducers/getPetInfoSlice';
 import { AxiosPost } from '../../reducers/getPostSlice'
-import { useLocation } from 'react-router-dom';
-import { selectCommentId, AxiosCommentList } from '../../reducers/getCommentSlice'
+
+import { AlertOver, AlertWrapper, DeleteTxt, DeleteAlertBtn } from './deleteStyle'
 
 export function DeleteAlert({ mainTxt, rightBtnTxt, closeAlert, setModal }) {
   const dispatch = useDispatch();
@@ -30,9 +32,9 @@ export function DeleteAlert({ mainTxt, rightBtnTxt, closeAlert, setModal }) {
     const URL = "https://mandarin.api.weniv.co.kr";
     // 댓글삭제
     if (curPath === '/snspostdetail/') {
-      console.log(curPath, "에서 진행중");
       dispatch(AxiosDeletePost(URL + `/post/${postId}/comments/${commentId}`))
         .then(() => dispatch(AxiosCommentList(URL + `/post/${postId}/comments`)))
+        .then(() => dispatch(AxiosDetail(URL + `/post/${postId}`)) )
       setModal(false);
     }
     //내 pet,sns게시글 삭제
