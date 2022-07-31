@@ -2,7 +2,6 @@ import React ,{memo} from 'react'
 import { ErrorMessageStyle, CorrectMessageStyle } from './errorStyle'
 
 export function SignUpErrorMessage({ message }) {
-
   if (message === "사용 가능한 이메일 입니다.") {
     return (
       <CorrectMessageStyle>{message}</CorrectMessageStyle>
@@ -17,7 +16,7 @@ export function SignUpErrorMessage({ message }) {
     )
   }
 }
-export const MemoSignUpErrorMessage = memo(SignUpErrorMessage)
+export const MemoSignUpErrorMessage = memo(SignUpErrorMessage);
 
 export function LoginErrorMessege() {
   return (

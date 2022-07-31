@@ -1,22 +1,22 @@
-import styled, { css, keyframes } from "styled-components";
-import { palette } from '../../style/globalColor';
+import styled, { css, keyframes } from 'styled-components'
+import { palette } from '../../style/globalColor'
 
 const slideUp = keyframes`
-from {
-  transform: translateY(200px);
-}
-to{
-  transform: translateY(0px);
-}
+  from {
+    transform: translateY(200px);
+  }
+  to {
+    transform: translateY(0px);
+  }
 `
 
 const fadeIn = keyframes`
-from {
-  opacity: 0;
-}
-to{
-  opacity: 1;
-}
+  from {
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 `
 
 export const ModalOver = styled.div`
@@ -32,10 +32,10 @@ box-sizing: border-box;
   `
 
 export const ModalWrapper = styled.div`
-background-color: white;
-position: fixed;
-bottom: 0;
-z-index: 10;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
   width: 100%;
   padding-bottom: 10px;
   border-radius: 20px 20px 0 0;

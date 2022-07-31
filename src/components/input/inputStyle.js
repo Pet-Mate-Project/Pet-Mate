@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { palette } from '../../style/globalColor';
+import styled, { css } from 'styled-components'
+import { palette } from '../../style/globalColor'
 
 export const LabelStyle = styled.label`
   display: block;
@@ -35,11 +35,12 @@ export const InputStyle = styled.input`
     if (props.nohover) {
       return css`
       :hover{
-        border-color:none;
+        border-color: none;
       }
       `
     }
   }}
+
   @media screen and (min-width:450px) {
     padding: 10px 7px;
     margin-top: 15px;
@@ -54,12 +55,12 @@ export const TextAreaStyle = styled.textarea`
   padding-left: 4px;
   display: block;
   background-color: white;
-  border: none; 
+  border: none;
   border-bottom: 1px solid ${palette.lightGray};
   padding-bottom: 5px;
   :hover{
     border-color:  ${palette.mainColor};
-  }  
+  }
   :focus{
     outline-color: ${palette.mainColor};
   }
@@ -80,8 +81,8 @@ export const TextAreaStyle = styled.textarea`
 
 export const SearchStyle = styled.input`
   padding: 8px 12px;
-  width:100%;
-  margin:0 20px;
+  width: 100%;
+  margin: 0 20px;
   background-color: ${palette.veryLigntGray};
   border: none;
   border-radius: 32px;

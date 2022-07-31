@@ -1,13 +1,11 @@
 import React ,{useState} from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { AxiosCommentList } from '../../reducers/getCommentSlice'
 import {  AxiosDetail } from '../../reducers/getPostDetailSlice'
-import axios from 'axios';
-
+import axios from 'axios'
 import { ProfileIconS } from '../profileIcon/ProfileIcon'
 import { CommentBtnStyled, CommentTextStyle, Wrapper } from './commentStyle'
-
 
 export default function Comment({ img }) {
   const dispatch = useDispatch();
@@ -29,9 +27,9 @@ export default function Comment({ img }) {
     }
   }
 
-  async  function postComment() {
+  async function postComment() {
     try {
-      const res = await axios.post(URL + ReqPath,data,config)
+      const res = await axios.post(URL + ReqPath,data,config);
       return res.data.comment.content;
     }
     catch (error) {
@@ -46,7 +44,7 @@ export default function Comment({ img }) {
       )
       .then(
         (res) => dispatch(AxiosDetail(URL + `/post/${currentPostId}`))
-      ) 
+      ); 
     Setcontent("");
   }
 
@@ -58,19 +56,20 @@ export default function Comment({ img }) {
         )
         .then(
           (res) => dispatch(AxiosDetail(URL + `/post/${currentPostId}`))
-        ) 
+        );
       Setcontent("");
     }
   }
 
   return (
-    <>
-      <Wrapper>
-        <ProfileIconS img={img}></ProfileIconS>
-        <CommentTextStyle
-          placeholder='댓글 입력하기...' onKeyDown={handleKeyPress} value={content} onChange={(e)=>Setcontent(e.target.value)} />
-        <CommentBtnStyled type='submit' onClick={handleSubmit}>게시</CommentBtnStyled>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <ProfileIconS img={img} />
+      <CommentTextStyle
+        placeholder='댓글 입력하기...'
+        onKeyDown={handleKeyPress}
+        value={content}
+        onChange={(e) => Setcontent(e.target.value)} />
+      <CommentBtnStyled type='submit' onClick={handleSubmit}>게시</CommentBtnStyled>
+    </Wrapper>
   )
 }
