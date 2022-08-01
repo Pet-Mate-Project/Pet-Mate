@@ -34,7 +34,6 @@ export default function SignUpMainPage() {
     formState: { isValid, errors },
   } = useForm({ mode: 'onChange' });
 
-  ImgUpload(userImg)  //이미지 업로드 함수 실행
 
   //유저 데이터 
   let userData = {
