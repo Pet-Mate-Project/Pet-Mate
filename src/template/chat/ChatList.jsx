@@ -11,6 +11,7 @@ export default function ChatList() {
     <AllWrap>
       <Helmet>
         <title>채팅 - 산책가까?</title>
+        <meta name='description' content='산책가까 채팅방입니다. 유저들과 소통해보세요 '/>
       </Helmet>
       <Heading>채팅방 페이지</Heading>
       <NavBack />

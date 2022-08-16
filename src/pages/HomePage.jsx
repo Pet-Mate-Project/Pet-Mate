@@ -38,6 +38,7 @@ export default function HomePage() {
     <AllWrap>
       <Helmet>
         <title>홈 피드 - 산책가까?</title>
+        <meta name='description' content='산책가까 홈피드입니다. 펫 정보를 공유하여 산책 친구를 찾아보세요. '/>
       </Helmet>
       <header>
         <Heading>펫 게시글페이지</Heading>

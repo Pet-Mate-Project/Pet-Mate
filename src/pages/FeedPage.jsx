@@ -28,6 +28,7 @@ export default function FeedPage() {
     <AllWrap>
       <Helmet>
         <title>SNS 피드 - 산책가까?</title>
+        <meta name='description' content='산책가까 피드페이지입니다. 글을 작성하고 댓글을 달며 자유롭게 소통해보세요.'/>
       </Helmet>
       <header>
         <Heading>SNS게시글페이지</Heading>

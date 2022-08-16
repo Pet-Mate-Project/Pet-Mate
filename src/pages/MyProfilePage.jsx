@@ -28,6 +28,7 @@ export default function MyProfilePage() {
     <AllWrap>
       <Helmet>
         <title>내 프로필 - 산책가까?</title>
+        <meta name='description' content='산책가까에서 내 프로필을 편집해보세요.'/>
       </Helmet>
       <Heading>나의 프로필 페이지</Heading>
       <NavBack />

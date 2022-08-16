@@ -38,6 +38,7 @@ function AccountSearch() {
     <AllWrap>
       <Helmet>
         <title>유저 검색 - 산책가까?</title>
+        <meta name='description' content='산책가까 계정 검색 페이지입니다. 유저들을 검색해보세요.'/>
       </Helmet>
       <header>
         <Heading>유저 검색 페이지</Heading>
