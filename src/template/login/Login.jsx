@@ -54,6 +54,7 @@ export default function Login() {
     <AllWrap>
       <Helmet>
         <title>로그인 - 산책가까?</title>
+        <meta name='description' content='산책가까를 로그인하여 서비스를 이용해보세요.'/>
       </Helmet>
       <PaddingMain>
         <MemoTitle>로그인</MemoTitle>
