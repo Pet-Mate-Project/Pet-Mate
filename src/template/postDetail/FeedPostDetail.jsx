@@ -49,6 +49,7 @@ export default function FeedPostDetail() {
     alertTxt = ['삭제하시겠어요?', '삭제'];
   } else {
     list = { '신고하기': '' };
+    alertTxt = ['신고하시겠어요?', '신고'];
   }
 
   const closeModal = () => {

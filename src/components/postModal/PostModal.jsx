@@ -7,10 +7,9 @@ export default function Modal({ list, closeModal, alertTxt, setModal }) {
   const [alert, setAlert] = useState(false);
 
   const showAlert = () => {
-    setAlert(alert=>!alert);
-    if (Object.keys(list).find(txt => txt === '신고하기' || txt === '웹사이트에서 상품 보기')) {
-      setAlert(false);
-    }
+    setAlert(alert => !alert);
+    Object.keys(list).find(txt => txt === '웹사이트에서 상품 보기')
+      ? setAlert(false) : setAlert(true)
   };
   const closeAlert = () => {
     setAlert(false);
@@ -35,7 +34,7 @@ export default function Modal({ list, closeModal, alertTxt, setModal }) {
         </ul>
       </ModalWrapper>
       {
-        alert === true && 
+        alert === true &&
         <DeleteAlert
           mainTxt={alertTxt[0]}
           rightBtnTxt={alertTxt[1]}
