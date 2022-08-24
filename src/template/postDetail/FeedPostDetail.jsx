@@ -7,6 +7,7 @@ import { selectCommentAuthor } from '../../reducers/getCommentSlice'
 import { selectUserData } from '../../reducers/getUserInfoSlice'
 import { AxiosUserData } from '../../reducers/getUserInfoSlice'
 import { selectDetailPosts, AxiosDetail } from '../../reducers/getPostDetailSlice'
+import { deleteActions } from '../../reducers/deletePostSlice';
 import { DetailWrapper } from './FeedPostDetailStyle'
 import { AllWrap, ScrollMain, Heading } from '../../style/commonStyle'
 import Modal from '../../components/postModal/PostModal';
@@ -36,6 +37,7 @@ export default function FeedPostDetail() {
   }, [])
 
   const handleonClick = (postId, postAuthor) => {
+    dispatch(deleteActions.checkType('comments'));
     dispatch(commentAction.selectCommentId(postId));
     dispatch(commentAction.selectCommentAuthor(postAuthor));
     setModal(modal => !modal);
@@ -49,6 +51,7 @@ export default function FeedPostDetail() {
     alertTxt = ['삭제하시겠어요?', '삭제'];
   } else {
     list = { '신고하기': '' };
+    alertTxt = ['신고하시겠어요?', '신고'];
   }
 
   const closeModal = () => {

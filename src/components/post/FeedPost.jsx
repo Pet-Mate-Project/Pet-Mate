@@ -1,5 +1,5 @@
 import React, { useState, useEffect, memo } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import { deleteActions } from '../../reducers/deletePostSlice'
 import { AxiosDetail } from '../../reducers/getPostDetailSlice'
@@ -16,10 +16,12 @@ function FeedPost({ post }) {
   const dispatch = useDispatch();
   const MyId = JSON.parse(localStorage.getItem('accountname'));
   const URL = 'https://mandarin.api.weniv.co.kr';
+  const curPath = useLocation().pathname;
+  const linkName = useLocation().pathname.slice(1, 14);
   const images = post.image?.split(',');
   const [isLike, setIsLike] = useState('');
   const [heartCount, setheartCount] = useState('');
-  const linkName = useLocation().pathname.slice(1, 14);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     dispatch(AxiosFeedPost(URL + '/post/feed/?limit=30'));
@@ -31,9 +33,15 @@ function FeedPost({ post }) {
   }, [post]);
 
   //모달
-  const list = { '삭제': '', '수정': `/snspostmodify/${post.id}` };
-  const alertTxt = ['삭제하시겠어요?', '삭제'];
-  const [modal, setModal] = useState(false);
+  let list = [];
+  let alertTxt = [];
+  if (curPath === "/profilepage" || MyId === post.author.accountname) {
+    list = { '삭제': '', '수정': `/snspostmodify/${post.id}` };
+    alertTxt = ['삭제하시겠어요?', '삭제'];
+  } else {
+    list = { '신고하기': '' };
+    alertTxt = ['신고하시겠어요?', '신고'];
+  }
 
   const closeModal = () => {
     setModal(false);
@@ -44,7 +52,6 @@ function FeedPost({ post }) {
     dispatch(deleteActions.selectId(snsId));
     setModal(modal => !modal);
   }
-
 
   // 좋아요 버튼 함수
   const handlesetLike = () => {
@@ -64,7 +71,6 @@ function FeedPost({ post }) {
     }
   }
 
-
   const location = useLocation();
   const handleOnClick = (postId) => {
     const path = location.pathname;
@@ -78,7 +84,7 @@ function FeedPost({ post }) {
   return (
     <>
       {
-        (modal === true) && (post.author.accountname === MyId) && 
+        (modal === true) &&
         <Modal
           list={list}
           alertTxt={alertTxt}
@@ -115,7 +121,7 @@ function FeedPost({ post }) {
             <IconImg src={isLike ? heartIcon : emptyheartIcon} alt={'좋아요 버튼'} />
             {heartCount}
           </button>
-          <Link to={'/snspostdetail/'+post.id}>
+          <Link to={'/snspostdetail/' + post.id}>
             <button style={{ marginLeft: '6px' }}>
               <IconImg src={messageIcon} alt={'댓글 버튼'} />
               {post.commentCount}
