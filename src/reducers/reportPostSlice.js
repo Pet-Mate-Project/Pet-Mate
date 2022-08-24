@@ -30,9 +30,6 @@ export const reportPost = createSlice({
     selectId(state, action) {
       state.id = action.payload;
     },
-    checkType(state, action) {
-      state.type = action.payload;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -52,7 +49,6 @@ export const reportPost = createSlice({
 
 export const selectReportMsg = (state) => state.reportPost.resMeg;
 export const getReportStatus = (state) => state.reportPost.status;
-export const ReportId = (state) => state.reportPost.id;
-export const ReportType = (state) => state.reportPost.type;
+export const reportId = (state) => state.reportPost.id;
 export const reportActions = reportPost.actions;
 export default reportPost.reducer;
